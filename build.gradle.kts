@@ -32,6 +32,10 @@ dependencies {
     implementation("com.github.victools:jsonschema-generator:4.18.0")
     implementation("com.beust:klaxon:5.5")
 
+    /* Logging */
+    implementation("org.lighthousegames:logging-jvm:1.0.0")
+    implementation("org.slf4j:slf4j-simple:1.7.32")
+
     /* Kotlin */
 
     // Reflection

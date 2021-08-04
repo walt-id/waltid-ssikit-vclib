@@ -1,12 +1,14 @@
 package id.walt.vclib
 
 import id.walt.vclib.vclist.*
+import org.lighthousegames.logging.logging
 
 
 object Defaults {
 
-    fun loadVcLibDefaults() {
-        // Register default types
+    private val log = logging()
+
+    private val defaults = lazy {
         VcLibManager.register<PermanentResidentCard>(PermanentResidentCard)
         VcLibManager.register<VerifiableAttestation>(VerifiableAttestation)
         VcLibManager.register<VerifiableAuthorization>(VerifiableAuthorization)
@@ -15,4 +17,11 @@ object Defaults {
         VcLibManager.register<UniversityDegree>(UniversityDegree)
     }
 
+    fun loadVcLibDefaults() {
+        // Register default types
+        if (!defaults.isInitialized()) {
+            log.info { "Registering default templates" }
+            defaults.value
+        }
+    }
 }
