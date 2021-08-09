@@ -11,5 +11,5 @@ object VcTemplateManager {
     fun loadTemplate(type: List<String>): VerifiableCredential = VcTypeRegistry.getMetadata(type).getTemplate()
     fun loadTemplate(type: String): VerifiableCredential = VcTypeRegistry.getMetadata(type).getTemplate()
 
-    fun listTemplateIds(): List<String> = listOf("Europass", "VerifiableAttestation", "VerifiableCredential")
+    fun getTemplateList(): List<String> = VcTypeRegistry.getTemplateTypes()
 }

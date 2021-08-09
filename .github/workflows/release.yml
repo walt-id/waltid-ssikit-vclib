@@ -32,6 +32,9 @@ jobs:
             ${{ runner.os }}-gradle-
       - name: Running gradle build
         uses: eskatos/gradle-command-action@v1.3.3
+        env:
+          SECRET_MAVEN_USERNAME: ${{ secrets.SECRET_MAVEN_USERNAME }}
+          SECRET_MAVEN_PASSWORD: ${{ secrets.SECRET_MAVEN_PASSWORD }}
         with:
           arguments: clean build publish
       - name: Bump version and push tag

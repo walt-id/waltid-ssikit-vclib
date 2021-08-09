@@ -55,6 +55,9 @@ object VcTypeRegistry {
     fun getMetadata(type: List<String>): VerifiableCredentialMetadata = registry[computeKey(type)]!!.metadata
     fun getMetadata(type: String): VerifiableCredentialMetadata = getRegistration(type)!!.metadata
 
+    fun getTypesWithTemplate() = registry.filterValues { it.metadata.template != null }
+    fun getTemplateTypes() = getTypesWithTemplate().map { it.value.vc.simpleName!! }
+
     init {
         Defaults.loadVcLibDefaults()
     }
