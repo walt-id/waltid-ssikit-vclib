@@ -5,6 +5,9 @@ import id.walt.vclib.model.VerifiableCredential
 
 object Helpers {
 
-    fun VerifiableCredential.encode(): String = Klaxon().toJsonString(this)
+    private val klaxon = Klaxon()
+
+    fun VerifiableCredential.encode(): String = klaxon.toJsonString(this)
+    fun VerifiableCredential.toMap(): Map<String, Any> = klaxon.parse(encode())!!
     fun String.toCredential() = VcLibManager.getVerifiableCredential(this)
 }
