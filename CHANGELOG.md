@@ -3,7 +3,6 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
-
 - Make TemplateManager usable with template ids
   - ```kotlin
     VcTemplateManager.loadTemplate("Europass")
@@ -13,7 +12,10 @@ All notable changes to this project will be documented in this file.
   - ```kotlin
     VcTemplateManager.getTemplateList()
     ```
-
+- Added toMap method for VCs 
+  - ```kotlin
+    VerifiableCredential.toMap(): Map<String, Any>
+    ```
 ## [1.3.0] - 2021-07-28
 
 - reworked VC registration to allow for VC metadata, e.g.
