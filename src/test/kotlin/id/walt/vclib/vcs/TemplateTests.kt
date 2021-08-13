@@ -9,12 +9,18 @@ import io.kotest.matchers.shouldNotBe
 class TemplateTests : StringSpec({
 
     val europassTemplateType = listOf("VerifiableCredential", "VerifiableAttestation", "Europass")
+    val verifiableIDTemplateType = listOf("VerifiableCredential", "VerifiableID")
 
     "default definitions registered" {
         println("Loading Europass by type")
         val europass = VcTemplateManager.loadTemplate(europassTemplateType)
 
         europass.type shouldBe europassTemplateType
+
+        println("Loading VerifiableID by type")
+        val verifiableID = VcTemplateManager.loadTemplate(verifiableIDTemplateType)
+
+        verifiableID.type shouldBe verifiableIDTemplateType
     }
 
     "test aliases loading by type" {
