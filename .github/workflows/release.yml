@@ -52,8 +52,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           message: Automatic relase commits for ${{ github.event.inputs.versionName }}
-        env:
-          INPUT_BRANCH: master
+          branch: master
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
