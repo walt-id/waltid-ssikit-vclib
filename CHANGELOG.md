@@ -4,8 +4,6 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [1.4.2] - 2021-08-13
-
 -   Make TemplateManager usable with template ids
     -   ```kotlin
         VcTemplateManager.loadTemplate("Europass")
@@ -15,7 +13,7 @@ All notable changes to this project will be documented in this file.
     -   ```kotlin
         VcTemplateManager.getTemplateList()
         ```
--   Added toMap method for VCs 
+-   Added toMap method for VCs
     -   ```kotlin
         VerifiableCredential.toMap(): Map<String, Any>
         ```
