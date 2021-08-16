@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.4.1] - 2021-08-16
+
 ## [1.4.0] - 2021-08-14
 
 -   Make TemplateManager usable with template ids
@@ -56,7 +58,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.0...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.1...HEAD
+
+[1.4.1]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.0...1.4.1
 
 [1.4.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.3.0...1.4.0
 
