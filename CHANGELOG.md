@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [1.4.2] - 2021-08-13
+## [1.4.0] - 2021-08-14
 
 -   Make TemplateManager usable with template ids
     -   ```kotlin
@@ -15,7 +15,7 @@ All notable changes to this project will be documented in this file.
     -   ```kotlin
         VcTemplateManager.getTemplateList()
         ```
--   Added toMap method for VCs 
+-   Added toMap method for VCs
     -   ```kotlin
         VerifiableCredential.toMap(): Map<String, Any>
         ```
@@ -56,7 +56,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.2...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.0...HEAD
+
+[1.4.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.3.0...1.4.0
 
 [1.4.2]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.3.0...1.4.2
 
