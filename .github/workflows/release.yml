@@ -52,14 +52,14 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           message: Automatic relase commits for ${{ github.event.inputs.versionName }}
-
+          branch: master
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           body_path: CHANGELOG.md
           tag_name: ${{ github.event.inputs.versionName }}
           files: |
-            LICENSE.txt
+            LICENSE
             build/libs/*.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
