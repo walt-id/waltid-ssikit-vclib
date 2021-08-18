@@ -212,7 +212,13 @@
         "creator" : {
           "type" : "string"
         },
+        "domain" : {
+          "type" : "string"
+        },
         "jws" : {
+          "type" : "string"
+        },
+        "nonce" : {
           "type" : "string"
         },
         "proofPurpose" : {
@@ -225,7 +231,7 @@
           "type" : "string"
         }
       },
-      "required" : [ "created", "creator", "jws", "proofPurpose", "type", "verificationMethod" ]
+      "required" : [ "created", "creator", "domain", "jws", "nonce", "proofPurpose", "type", "verificationMethod" ]
     },
     "type" : {
       "type" : "array",
