@@ -21,7 +21,7 @@ class SerializeEuropass : StringSpec({
                 identifier = "0904008084H",
                 givenNames = "Jane",
                 familyName = "DOE",
-                dateOfBirth = "1993-04-08",
+                dateOfBirth = "1993-04-08T00:00:00Z",
                 gradingScheme = Europass.CredentialSubject.GradingScheme(
                     id = "https://blockchain.univ-lille.fr/ontology#GradingScheme",
                     title = "Lower Second-Class Honours"
@@ -45,7 +45,7 @@ class SerializeEuropass : StringSpec({
                         homepage = "https://www.univ-lille.fr/"
                     ),
                     location = "FRANCE",
-                    startedAtTime = "Unknown",
+                    startedAtTime = "2015-11-03T00:00:00Z",
                     endedAtTime = "2020-11-03T00:00:00Z"
                 ),
                 learningSpecification = Europass.CredentialSubject.LearningSpecification(
@@ -53,8 +53,8 @@ class SerializeEuropass : StringSpec({
                     iscedfCode = listOf(
                         "7"
                     ),
-                    eCTSCreditPoints = 120,
-                    eQFLevel = 7,
+                    ectsCreditPoints = 120,
+                    eqfLevel = 7,
                     nqfLevel = listOf(
                         "7"
                     )
@@ -68,9 +68,11 @@ class SerializeEuropass : StringSpec({
                 id = "https://api.preprod.ebsi.eu/trusted-schemas-registry/v1/schemas/0x312e332e362e312e342e312e3831342e372e3138392e322e332e332e3132",
                 type = "JsonSchemaValidator2018"
             ),
-            proof =
-            Proof(
+            proof = Proof(
                 type = "EcdsaSecp256k1Signature2019",
+                creator = "did:ebsi:2sMvVBpwueU8j6WBnJcUAkcNnPXLQvGy3a6a3X59wKRnJzZQ",
+                domain = "https://api.preprod.ebsi.eu",
+                nonce = "d04442d3-661f-411e-a80f-42f19f594c9d",
                 created = "2021-07-26T18:40:49Z",
                 proofPurpose = "assertionMethod",
                 verificationMethod = "did:ebsi:2LGKvDMrNUPR6FhSNrXzQQ1h295zr4HwoX9UqvwAsenSKHe9#z6Mkfvb1T28UuRTY7MZR19mHgXXxQGPfWoC1kCwH6HMW8tkE",

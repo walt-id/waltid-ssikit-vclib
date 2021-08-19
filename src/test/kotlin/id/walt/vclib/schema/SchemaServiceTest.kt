@@ -10,7 +10,6 @@ import java.io.File
 class SchemaServiceTest : StringSpec({
     "testing schema generation"   {
         val schema = SchemaService.generateSchema(Europass::class).toPrettyString()
-        println("Generated schema: $schema")
         val expected = File("src/test/resources/schemas/Europass-schema.json").readText()
         schema shouldEqualJson expected
     }
