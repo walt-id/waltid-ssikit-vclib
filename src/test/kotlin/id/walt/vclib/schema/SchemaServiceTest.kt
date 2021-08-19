@@ -1,5 +1,6 @@
 package id.walt.vclib.schema
 
+import id.walt.vclib.Helpers.toCredential
 import id.walt.vclib.vclist.Europass
 import io.kotest.assertions.json.shouldEqualJson
 import io.kotest.core.spec.style.StringSpec
@@ -16,8 +17,7 @@ class SchemaServiceTest : StringSpec({
 
     "testing schema validation" {
         SchemaService.validateSchema(
-            File("src/test/resources/schemas/Europass-schema.json").readText(),
-            File("src/test/resources/serialized/Europass.json").readText()
+            File("src/test/resources/serialized/Europass.json").readText().toCredential()
         ) shouldBe true
     }
 })

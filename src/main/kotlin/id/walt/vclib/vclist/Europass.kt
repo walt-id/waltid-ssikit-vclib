@@ -9,7 +9,7 @@ import id.walt.vclib.model.VerifiableCredential
 import id.walt.vclib.registry.VerifiableCredentialMetadata
 
 data class Europass(
-    @Json(name = "@context")
+    @Json(name = "context")
     var context: List<String> = listOf(
         "https://www.w3.org/2018/credentials/v1"
     ),
@@ -67,12 +67,12 @@ data class Europass(
                     ),
                     learningSpecification = CredentialSubject.LearningSpecification(
                         id = "https://blockchain.univ-lille.fr/ontology#LearningSpecification",
-                        iSCEDFCode = listOf(
+                        iscedfCode = listOf(
                             "7"
                         ),
                         eCTSCreditPoints = 120,
                         eQFLevel = 7,
-                        nQFLevel = listOf(
+                        nqfLevel = listOf(
                             "7"
                         )
                     )
@@ -141,10 +141,10 @@ data class Europass(
 
         data class LearningSpecification(
             var id: String, // https://blockchain.univ-lille.fr/ontology#LearningSpecification
-            @Json(name = "ISCEDFCode") var iSCEDFCode: List<String>,
+            @Json(name = "iscedfCode") var iscedfCode: List<String>,
             @Json(name = "ECTSCreditPoints") var eCTSCreditPoints: Int? = null, // 120
             @Json(name = "EQFLevel") var eQFLevel: Int? = null, // 7
-            @Json(name = "NQFLevel") var nQFLevel: List<String>
+            @Json(name = "nqfLevel") var nqfLevel: List<String>
         )
     }
 }

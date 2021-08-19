@@ -50,12 +50,12 @@ class SerializeEuropass : StringSpec({
                 ),
                 learningSpecification = Europass.CredentialSubject.LearningSpecification(
                     id = "https://blockchain.univ-lille.fr/ontology#LearningSpecification",
-                    iSCEDFCode = listOf(
+                    iscedfCode = listOf(
                         "7"
                     ),
                     eCTSCreditPoints = 120,
                     eQFLevel = 7,
-                    nQFLevel = listOf(
+                    nqfLevel = listOf(
                         "7"
                     )
                 )

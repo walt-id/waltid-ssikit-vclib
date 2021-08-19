@@ -6,7 +6,12 @@ import com.github.victools.jsonschema.generator.OptionPreset
 import com.github.victools.jsonschema.generator.SchemaGenerator
 import com.github.victools.jsonschema.generator.SchemaGeneratorConfigBuilder
 import com.github.victools.jsonschema.generator.SchemaVersion
+import id.walt.vclib.Helpers.encode
+import id.walt.vclib.model.VerifiableCredential
+import id.walt.vclib.vclist.Europass
+import id.walt.vclib.vclist.VerifiableID
 import net.pwall.json.schema.JSONSchema
+import java.net.URL
 import kotlin.reflect.KClass
 
 object SchemaService {
@@ -25,5 +30,16 @@ object SchemaService {
 
     fun <T : Any> generateSchema(clazz: KClass<T>): ObjectNode = generator.generateSchema(clazz.java)
 
-    fun validateSchema(schema: String, json: String): Boolean = JSONSchema.parse(schema).validate(json)
+    fun validateSchema(vc: VerifiableCredential): Boolean {
+        val schema = when (vc) {
+            is Europass -> vc.credentialSchema!!.id
+            is VerifiableID -> vc.credentialStatus!!.id
+            else -> throw IllegalStateException("Data model unsupported yet.")
+        }.let { URL(it).readText() }
+
+        val output = JSONSchema.parse(schema).validateBasic(vc.encode())
+        output.errors?.forEach { println("${it.error} - ${it.instanceLocation}") }
+
+        return output.errors.isNullOrEmpty()
+    }
 }
