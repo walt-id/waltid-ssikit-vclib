@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Added VerifiableID model
+
 ## [1.4.2] - 2021-08-18
 
 ## [1.4.1] - 2021-08-16
