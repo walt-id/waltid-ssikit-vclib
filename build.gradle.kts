@@ -24,6 +24,7 @@ dependencies {
     https://github.com/victools/jsonschema-generator recommended here: http://json-schema.org/implementations.html
     */
     implementation("com.github.victools:jsonschema-generator:4.18.0")
+    implementation("net.pwall.json:json-kotlin-schema:0.23")
     implementation("com.beust:klaxon:5.5")
 
     /* Logging */

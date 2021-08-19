@@ -6,9 +6,10 @@ import com.github.victools.jsonschema.generator.OptionPreset
 import com.github.victools.jsonschema.generator.SchemaGenerator
 import com.github.victools.jsonschema.generator.SchemaGeneratorConfigBuilder
 import com.github.victools.jsonschema.generator.SchemaVersion
+import net.pwall.json.schema.JSONSchema
 import kotlin.reflect.KClass
 
-object SchemaGeneratorService {
+object SchemaService {
 
     annotation class Nullable
 
@@ -23,4 +24,6 @@ object SchemaGeneratorService {
     }
 
     fun <T : Any> generateSchema(clazz: KClass<T>): ObjectNode = generator.generateSchema(clazz.java)
+
+    fun validateSchema(schema: String, json: String): Boolean = JSONSchema.parse(schema).validate(json)
 }
