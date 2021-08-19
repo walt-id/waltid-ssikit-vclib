@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.4.3] - 2021-08-19
+
+-   Added VerifiableID model
+
 ## [1.4.2] - 2021-08-18
 
 ## [1.4.1] - 2021-08-16
@@ -60,7 +64,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.2...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.3...HEAD
+
+[1.4.3]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.2...1.4.3
 
 [1.4.2]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.1...1.4.2
 

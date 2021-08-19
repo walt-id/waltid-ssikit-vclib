@@ -61,7 +61,7 @@
     "type": "CredentialsStatusList2020"
   },
   "credentialSchema": {
-    "id": "https://essif.europa.eu/trusted-schemas-registry/v1/schemas/to_be_obtained_after_registration_of_the_schema",
+    "id": "https://api.preprod.ebsi.eu/trusted-schemas-registry/v1/schemas/0x312e332e362e312e342e312e3831342e372e3138392e322e332e332e3132",
     "type": "JsonSchemaValidator2018"
   },
   "proof": {

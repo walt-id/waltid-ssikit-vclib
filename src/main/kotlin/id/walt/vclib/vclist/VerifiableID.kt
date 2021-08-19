@@ -45,7 +45,7 @@ data class VerifiableID(
                     type = "CredentialsStatusList2020"
                 ),
                 credentialSchema = CredentialSchema(
-                    id = "https://essif.europa.eu/trusted-schemas-registry/v1/schemas/to_be_obtained_after_registration_of_the_schema",
+                    id = "https://api.preprod.ebsi.eu/trusted-schemas-registry/v1/schemas/0x312e332e362e312e342e312e3934382e342e3136392e322e312e322e3435",
                     type = "JsonSchemaValidator2018"
                 ),
                 evidence = Evidence(
