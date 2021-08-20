@@ -1,7 +1,6 @@
 package id.walt.vclib.vclist
 
 import com.beust.klaxon.Json
-import com.fasterxml.jackson.annotation.JsonPropertyOrder
 import id.walt.vclib.model.CredentialSchema
 import id.walt.vclib.model.CredentialStatus
 import id.walt.vclib.model.Proof
@@ -11,7 +10,6 @@ import id.walt.vclib.schema.SchemaService.DateTimeFormat
 import id.walt.vclib.schema.SchemaService.Nullable
 import id.walt.vclib.schema.SchemaService.PropertyName
 
-@JsonPropertyOrder("@context", "id")
 data class VerifiableID(
     @Json(name = "@context") @field:PropertyName(name = "@context") var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
     var id: String? = null, // identity#verifiableID#51e42fda-cb0a-4333-b6a6-35cb147e1a88
