@@ -20,7 +20,7 @@ class SerializeVerifiableID : StringSpec({
                 id = "did:ebsi:22AhtW7XMssv7es4YcQTdV2MCM3c8b1VsiBfi5weHsjcCY9o",
                 familyName = "DOE",
                 firstName = "Jane",
-                dateOfBirth = "1993-04-08",
+                dateOfBirth = "1993-04-08T00:00:00Z",
                 personalIdentifier = "0904008084H",
                 nameAndFamilyNameAtBirth = "Jane DOE",
                 placeOfBirth = "LILLE, FRANCE",
@@ -45,6 +45,9 @@ class SerializeVerifiableID : StringSpec({
             ),
             proof = Proof(
                 type = "EcdsaSecp256k1Signature2019",
+                creator = "did:ebsi:2sMvVBpwueU8j6WBnJcUAkcNnPXLQvGy3a6a3X59wKRnJzZQ",
+                domain = "https://api.preprod.ebsi.eu",
+                nonce = "d04442d3-661f-411e-a80f-42f19f594c9d",
                 created = "2021-07-26T18:40:49Z",
                 proofPurpose = "assertionMethod",
                 verificationMethod = "did:ebsi:2LGKvDMrNUPR6FhSNrXzQQ1h295zr4HwoX9UqvwAsenSKHe9#z6Mkfvb1T28UuRTY7MZR19mHgXXxQGPfWoC1kCwH6HMW8tkE",

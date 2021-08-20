@@ -1,25 +1,29 @@
 package id.walt.vclib.vclist
 
 import com.beust.klaxon.Json
+import com.fasterxml.jackson.annotation.JsonPropertyOrder
 import id.walt.vclib.model.CredentialSchema
 import id.walt.vclib.model.CredentialStatus
 import id.walt.vclib.model.Proof
 import id.walt.vclib.model.VerifiableCredential
 import id.walt.vclib.registry.VerifiableCredentialMetadata
+import id.walt.vclib.schema.SchemaService.DateTimeFormat
+import id.walt.vclib.schema.SchemaService.Nullable
+import id.walt.vclib.schema.SchemaService.PropertyName
 
+@JsonPropertyOrder("@context", "id")
 data class VerifiableID(
-    @Json(name = "@context")
-    var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
-    @Json(serializeNull = false) var id: String? = null, // identity#verifiableID#51e42fda-cb0a-4333-b6a6-35cb147e1a88
-    @Json(serializeNull = false) var issuer: String? = null, // did:ebsi:2LGKvDMrNUPR6FhSNrXzQQ1h295zr4HwoX9UqvwAsenSKHe9
-    @Json(serializeNull = false) var issuanceDate: String? = null, // 2020-11-03T00:00:00Z
-    @Json(serializeNull = false) var validFrom: String? = null, // 2020-11-03T00:00:00Z
-    @Json(serializeNull = false) var expirationDate: String? = null,
-    @Json(serializeNull = false) var credentialSubject: CredentialSubject? = null,
-    @Json(serializeNull = false) var credentialStatus: CredentialStatus? = null,
-    @Json(serializeNull = false) var credentialSchema: CredentialSchema? = null,
-    @Json(serializeNull = false) var evidence: Evidence,
-    @Json(serializeNull = false) var proof: Proof? = null
+    @Json(name = "@context") @field:PropertyName(name = "@context") var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
+    var id: String? = null, // identity#verifiableID#51e42fda-cb0a-4333-b6a6-35cb147e1a88
+    var issuer: String? = null, // did:ebsi:2LGKvDMrNUPR6FhSNrXzQQ1h295zr4HwoX9UqvwAsenSKHe9
+    @field:DateTimeFormat var issuanceDate: String? = null, // 2020-11-03T00:00:00Z
+    @field:DateTimeFormat var validFrom: String? = null, // 2020-11-03T00:00:00Z
+    @field:DateTimeFormat @field:Nullable @Json(serializeNull = false) var expirationDate: String? = null,
+    var credentialSubject: CredentialSubject? = null,
+    var credentialStatus: CredentialStatus? = null,
+    var credentialSchema: CredentialSchema? = null,
+    var evidence: Evidence,
+    var proof: Proof? = null
 ) : VerifiableCredential(type) {
     companion object : VerifiableCredentialMetadata(
         type = listOf("VerifiableCredential", "VerifiableID"),
@@ -33,7 +37,7 @@ data class VerifiableID(
                     id = "did:ebsi:22AhtW7XMssv7es4YcQTdV2MCM3c8b1VsiBfi5weHsjcCY9o",
                     familyName = "DOE",
                     firstName = "Jane",
-                    dateOfBirth = "1993-04-08",
+                    dateOfBirth = "1993-04-08T00:00:00Z",
                     personalIdentifier = "0904008084H",
                     nameAndFamilyNameAtBirth = "Jane DOE",
                     placeOfBirth = "LILLE, FRANCE",
@@ -70,14 +74,14 @@ data class VerifiableID(
     )
 
     data class CredentialSubject(
-        @Json(serializeNull = false) var id: String? = null, // did:ebsi:22AhtW7XMssv7es4YcQTdV2MCM3c8b1VsiBfi5weHsjcCY9o
-        @Json(serializeNull = false) var familyName: String? = null, // DOE
-        @Json(serializeNull = false) var firstName: String? = null, // Jane
-        @Json(serializeNull = false) var dateOfBirth: String? = null, // 1993-04-08
-        @Json(serializeNull = false) var personalIdentifier: String? = null, // 0904008084H
-        @Json(serializeNull = false) var nameAndFamilyNameAtBirth: String? = null, // Jane DOE
-        @Json(serializeNull = false) var placeOfBirth: String? = null, // LILLE, FRANCE
-        @Json(serializeNull = false) var currentAddress: String? = null, // 1 Boulevard de la Liberté, 59800 Lille
-        @Json(serializeNull = false) var gender: String? = null, // FEMALE
+        var id: String? = null, // did:ebsi:22AhtW7XMssv7es4YcQTdV2MCM3c8b1VsiBfi5weHsjcCY9o
+        var familyName: String? = null, // DOE
+        var firstName: String? = null, // Jane
+        @field:DateTimeFormat var dateOfBirth: String? = null, // 1993-04-08T00:00:00Z
+        var personalIdentifier: String? = null, // 0904008084H
+        @field:Nullable @Json(serializeNull = false) var nameAndFamilyNameAtBirth: String? = null, // Jane DOE
+        @field:Nullable @Json(serializeNull = false) var placeOfBirth: String? = null, // LILLE, FRANCE
+        @field:Nullable @Json(serializeNull = false) var currentAddress: String? = null, // 1 Boulevard de la Liberté, 59800 Lille
+        @field:Nullable @Json(serializeNull = false) var gender: String? = null, // FEMALE
     )
 }

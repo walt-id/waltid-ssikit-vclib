@@ -17,7 +17,7 @@ data class Europass(
     var issuer: String? = null, // did:ebsi:2LGKvDMrNUPR6FhSNrXzQQ1h295zr4HwoX9UqvwAsenSKHe9
     @field:DateTimeFormat var issuanceDate: String? = null, // 2020-11-03T00:00:00Z
     @field:DateTimeFormat var validFrom: String? = null, // 2020-11-03T00:00:00Z
-    @field:DateTimeFormat @field:Nullable @Json(serializeNull = false)var expirationDate: String? = null,
+    @field:DateTimeFormat @field:Nullable @Json(serializeNull = false) var expirationDate: String? = null,
     var credentialSubject: CredentialSubject? = null,
     var credentialStatus: CredentialStatus? = null,
     var credentialSchema: CredentialSchema? = null,
