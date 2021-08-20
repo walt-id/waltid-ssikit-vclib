@@ -10,16 +10,16 @@ import id.walt.vclib.registry.VerifiableCredentialMetadata
 
 data class Europass(
     @Json(name = "@context") var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
-    @Json(serializeNull = false) var id: String? = null, // education#higherEducation#51e42fda-cb0a-4333-b6a6-35cb147e1a88
-    @Json(serializeNull = false) var issuer: String? = null, // did:ebsi:2LGKvDMrNUPR6FhSNrXzQQ1h295zr4HwoX9UqvwAsenSKHe9
-    @Json(serializeNull = false) var issuanceDate: String? = null, // 2020-11-03T00:00:00Z
-    @Json(serializeNull = false) var validFrom: String? = null, // 2020-11-03T00:00:00Z
+    var id: String? = null, // education#higherEducation#51e42fda-cb0a-4333-b6a6-35cb147e1a88
+    var issuer: String? = null, // did:ebsi:2LGKvDMrNUPR6FhSNrXzQQ1h295zr4HwoX9UqvwAsenSKHe9
+    var issuanceDate: String? = null, // 2020-11-03T00:00:00Z
+    var validFrom: String? = null, // 2020-11-03T00:00:00Z
     @Json(serializeNull = false) var expirationDate: String? = null,
-    @Json(serializeNull = false) var credentialSubject: CredentialSubject? = null,
-    @Json(serializeNull = false) var credentialStatus: CredentialStatus? = null,
-    @Json(serializeNull = false) var credentialSchema: CredentialSchema? = null,
+    var credentialSubject: CredentialSubject? = null,
+    var credentialStatus: CredentialStatus? = null,
+    var credentialSchema: CredentialSchema? = null,
     @Json(serializeNull = false) var evidence: Evidence? = null,
-    @Json(serializeNull = false) var proof: Proof? = null
+    var proof: Proof? = null
 ) : VerifiableCredential(type) {
     companion object : VerifiableCredentialMetadata(
         type = listOf("VerifiableCredential", "VerifiableAttestation", "Europass"),
@@ -95,15 +95,15 @@ data class Europass(
     )
 
     data class CredentialSubject(
-        @Json(serializeNull = false) var id: String? = null, // did:ebsi:22AhtW7XMssv7es4YcQTdV2MCM3c8b1VsiBfi5weHsjcCY9o
-        @Json(serializeNull = false) var identifier: String? = null, // 0904008084H
-        @Json(serializeNull = false) var givenNames: String? = null, // Jane
-        @Json(serializeNull = false) var familyName: String? = null, // DOE
-        @Json(serializeNull = false) var dateOfBirth: String? = null, // 1993-04-08T00:00:00Z
-        @Json(serializeNull = false) var gradingScheme: GradingScheme? = null,
-        @Json(serializeNull = false) var learningAchievement: LearningAchievement? = null,
-        @Json(serializeNull = false) var awardingOpportunity: AwardingOpportunity? = null,
-        @Json(serializeNull = false) var learningSpecification: LearningSpecification? = null
+        var id: String? = null, // did:ebsi:22AhtW7XMssv7es4YcQTdV2MCM3c8b1VsiBfi5weHsjcCY9o
+        var identifier: String? = null, // 0904008084H
+        var givenNames: String? = null, // Jane
+        var familyName: String? = null, // DOE
+        var dateOfBirth: String? = null, // 1993-04-08T00:00:00Z
+        var gradingScheme: GradingScheme? = null,
+        var learningAchievement: LearningAchievement? = null,
+        var awardingOpportunity: AwardingOpportunity? = null,
+        var learningSpecification: LearningSpecification? = null
     ) {
         data class GradingScheme(
             var id: String, // https://blockchain.univ-lille.fr/ontology#GradingScheme
