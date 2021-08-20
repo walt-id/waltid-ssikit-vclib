@@ -7,18 +7,21 @@ import id.walt.vclib.model.CredentialStatus
 import id.walt.vclib.model.Proof
 import id.walt.vclib.model.VerifiableCredential
 import id.walt.vclib.registry.VerifiableCredentialMetadata
+import id.walt.vclib.schema.SchemaGeneratorService.PropertyName
+import id.walt.vclib.schema.SchemaGeneratorService.Nullable
+import id.walt.vclib.schema.SchemaGeneratorService.DateTimeFormat
 
 data class Europass(
-    @Json(name = "@context") var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
+    @Json(name = "@context") @field:PropertyName(name = "@context") var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
     var id: String? = null, // education#higherEducation#51e42fda-cb0a-4333-b6a6-35cb147e1a88
     var issuer: String? = null, // did:ebsi:2LGKvDMrNUPR6FhSNrXzQQ1h295zr4HwoX9UqvwAsenSKHe9
-    var issuanceDate: String? = null, // 2020-11-03T00:00:00Z
-    var validFrom: String? = null, // 2020-11-03T00:00:00Z
-    @Json(serializeNull = false) var expirationDate: String? = null,
+    @field:DateTimeFormat var issuanceDate: String? = null, // 2020-11-03T00:00:00Z
+    @field:DateTimeFormat var validFrom: String? = null, // 2020-11-03T00:00:00Z
+    @field:DateTimeFormat @field:Nullable @Json(serializeNull = false) var expirationDate: String? = null,
     var credentialSubject: CredentialSubject? = null,
     var credentialStatus: CredentialStatus? = null,
     var credentialSchema: CredentialSchema? = null,
-    @Json(serializeNull = false) var evidence: Evidence? = null,
+    @field:Nullable @Json(serializeNull = false) var evidence: Evidence? = null,
     var proof: Proof? = null
 ) : VerifiableCredential(type) {
     companion object : VerifiableCredentialMetadata(
@@ -86,12 +89,12 @@ data class Europass(
     );
 
     data class Evidence(
-        @Json(serializeNull = false) var id: String? = null,
-        @Json(serializeNull = false) var type: List<String?>? = null,
-        @Json(serializeNull = false) var verifier: String? = null,
-        @Json(serializeNull = false) var evidenceDocument: List<String?>? = null,
-        @Json(serializeNull = false) var subjectPresence: String? = null,
-        @Json(serializeNull = false) var documentPresence: List<String?>? = null
+        @field:Nullable @Json(serializeNull = false) var id: String? = null,
+        @field:Nullable @Json(serializeNull = false) var type: List<String?>? = null,
+        @field:Nullable @Json(serializeNull = false) var verifier: String? = null,
+        @field:Nullable @Json(serializeNull = false) var evidenceDocument: List<String?>? = null,
+        @field:Nullable @Json(serializeNull = false) var subjectPresence: String? = null,
+        @field:Nullable @Json(serializeNull = false) var documentPresence: List<String?>? = null
     )
 
     data class CredentialSubject(
@@ -99,7 +102,7 @@ data class Europass(
         var identifier: String? = null, // 0904008084H
         var givenNames: String? = null, // Jane
         var familyName: String? = null, // DOE
-        var dateOfBirth: String? = null, // 1993-04-08T00:00:00Z
+        @field:DateTimeFormat var dateOfBirth: String? = null, // 1993-04-08T00:00:00Z
         var gradingScheme: GradingScheme? = null,
         var learningAchievement: LearningAchievement? = null,
         var awardingOpportunity: AwardingOpportunity? = null,
@@ -107,39 +110,39 @@ data class Europass(
     ) {
         data class GradingScheme(
             var id: String, // https://blockchain.univ-lille.fr/ontology#GradingScheme
-            @Json(serializeNull = false) var title: String? = null, // Lower Second-Class Honours
-            @Json(serializeNull = false) var description: String? = null
+            @field:Nullable @Json(serializeNull = false) var title: String? = null, // Lower Second-Class Honours
+            @field:Nullable @Json(serializeNull = false) var description: String? = null
         )
 
         data class LearningAchievement(
             var id: String, // https://blockchain.univ-lille.fr/ontology#LearningAchievment
             var title: String, // MASTERS LAW, ECONOMICS AND MANAGEMENT
-            @Json(serializeNull = false) var description: String? = null, // MARKETING AND SALES
-            @Json(serializeNull = false) var additionalNote: List<String>? = null
+            @field:Nullable @Json(serializeNull = false) var description: String? = null, // MARKETING AND SALES
+            @field:Nullable @Json(serializeNull = false) var additionalNote: List<String>? = null
         )
 
         data class AwardingOpportunity(
             var id: String, // https://blockchain.univ-lille.fr/ontology#AwardingOpportunity
             var identifier: String, // https://certificate-demo.bcdiploma.com/check/87ED2F2270E6C41456E94B86B9D9115B4E35BCCAD200A49B846592C14F79C86BV1Fnbllta0NZTnJkR3lDWlRmTDlSRUJEVFZISmNmYzJhUU5sZUJ5Z2FJSHpWbmZZ
             var awardingBody: AwardingBody,
-            @Json(serializeNull = false) var location: String? = null, // FRANCE
-            @Json(serializeNull = false) var startedAtTime: String? = null, // Unknown
-            @Json(serializeNull = false) var endedAtTime: String? = null // 2020-11-03T00:00:00Z
+            @field:Nullable @Json(serializeNull = false) var location: String? = null, // FRANCE
+            @field:DateTimeFormat @field:Nullable @Json(serializeNull = false) var startedAtTime: String? = null, // Unknown
+            @field:DateTimeFormat @field:Nullable @Json(serializeNull = false) var endedAtTime: String? = null // 2020-11-03T00:00:00Z
         ) {
             data class AwardingBody(
                 var id: String, // did:ebsi:2LGKvDMrNUPR6FhSNrXzQQ1h295zr4HwoX9UqvwAsenSKHe9
                 var eidasLegalIdentifier: String, // Unknown
                 var registration: String, // 0597065J
                 var preferredName: String, // Université de Lille
-                @Json(serializeNull = false) var homepage: String? = null // https://www.univ-lille.fr/
+                @field:Nullable @Json(serializeNull = false) var homepage: String? = null // https://www.univ-lille.fr/
             )
         }
 
         data class LearningSpecification(
             var id: String, // https://blockchain.univ-lille.fr/ontology#LearningSpecification
             var iscedfCode: List<String>,
-            @Json(serializeNull = false) var ectsCreditPoints: Int? = null, // 120
-            @Json(serializeNull = false) var eqfLevel: Int? = null, // 7
+            @field:Nullable @Json(serializeNull = false) var ectsCreditPoints: Int? = null, // 120
+            @field:Nullable @Json(serializeNull = false) var eqfLevel: Int? = null, // 7
             var nqfLevel: List<String>
         )
     }
