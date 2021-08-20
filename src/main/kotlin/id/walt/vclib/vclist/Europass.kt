@@ -76,10 +76,11 @@ data class Europass(
                         )
                     )
                 ),
-                credentialStatus = CredentialStatus(
-                    id = "https://essif.europa.eu/status/education#higherEducation#51e42fda-cb0a-4333-b6a6-35cb147e1a88",
-                    type = "CredentialsStatusList2020"
-                ),
+                //  EBSI does not support credentialStatus yet
+                //  credentialStatus = CredentialStatus(
+                //      id = "https://essif.europa.eu/status/education#higherEducation#51e42fda-cb0a-4333-b6a6-35cb147e1a88",
+                //      type = "CredentialsStatusList2020"
+                //  ),
                 credentialSchema = CredentialSchema(
                     id = "https://api.preprod.ebsi.eu/trusted-schemas-registry/v1/schemas/0x312e332e362e312e342e312e3831342e372e3138392e322e332e332e3132",
                     type = "JsonSchemaValidator2018"

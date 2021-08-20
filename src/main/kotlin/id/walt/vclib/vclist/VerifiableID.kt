@@ -42,10 +42,11 @@ data class VerifiableID(
                     currentAddress = "1 Boulevard de la Liberté, 59800 Lille",
                     gender = "FEMALE"
                 ),
-                credentialStatus = CredentialStatus(
-                    id = "https://essif.europa.eu/status/identity#verifiableID#51e42fda-cb0a-4333-b6a6-35cb147e1a88",
-                    type = "CredentialsStatusList2020"
-                ),
+                //  EBSI does not support credentialStatus yet
+                //  credentialStatus = CredentialStatus(
+                //      id = "https://essif.europa.eu/status/identity#verifiableID#51e42fda-cb0a-4333-b6a6-35cb147e1a88",
+                //      type = "CredentialsStatusList2020"
+                //  ),
                 credentialSchema = CredentialSchema(
                     id = "https://api.preprod.ebsi.eu/trusted-schemas-registry/v1/schemas/0x312e332e362e312e342e312e3934382e342e3136392e322e312e322e3435",
                     type = "JsonSchemaValidator2018"
