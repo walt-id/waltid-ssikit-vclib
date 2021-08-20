@@ -46,12 +46,12 @@
     },
     "learningSpecification": {
       "id": "https://blockchain.univ-lille.fr/ontology#LearningSpecification",
-      "ISCEDFCode": [
+      "iscedfCode": [
         "7"
       ],
-      "ECTSCreditPoints": 120,
-      "EQFLevel": 7,
-      "NQFLevel": [
+      "ectsCreditPoints": 120,
+      "eqfLevel": 7,
+      "nqfLevel": [
         "7"
       ]
     }

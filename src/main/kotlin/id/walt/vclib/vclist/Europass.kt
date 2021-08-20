@@ -9,10 +9,7 @@ import id.walt.vclib.model.VerifiableCredential
 import id.walt.vclib.registry.VerifiableCredentialMetadata
 
 data class Europass(
-    @Json(name = "@context")
-    var context: List<String> = listOf(
-        "https://www.w3.org/2018/credentials/v1"
-    ),
+    @Json(name = "@context") var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
     @Json(serializeNull = false) var id: String? = null, // education#higherEducation#51e42fda-cb0a-4333-b6a6-35cb147e1a88
     @Json(serializeNull = false) var issuer: String? = null, // did:ebsi:2LGKvDMrNUPR6FhSNrXzQQ1h295zr4HwoX9UqvwAsenSKHe9
     @Json(serializeNull = false) var issuanceDate: String? = null, // 2020-11-03T00:00:00Z
@@ -22,7 +19,6 @@ data class Europass(
     @Json(serializeNull = false) var credentialStatus: CredentialStatus? = null,
     @Json(serializeNull = false) var credentialSchema: CredentialSchema? = null,
     @Json(serializeNull = false) var evidence: Evidence? = null,
-    //@Json(serializeNull = false) var proof: List<Proof>? = null
     @Json(serializeNull = false) var proof: Proof? = null
 ) : VerifiableCredential(type) {
     companion object : VerifiableCredentialMetadata(
@@ -38,7 +34,7 @@ data class Europass(
                     identifier = "0904008084H",
                     givenNames = "Jane",
                     familyName = "DOE",
-                    dateOfBirth = "1993-04-08",
+                    dateOfBirth = "1993-04-08T00:00:00Z",
                     gradingScheme = CredentialSubject.GradingScheme(
                         id = "https://blockchain.univ-lille.fr/ontology#GradingScheme",
                         title = "Lower Second-Class Honours"
@@ -67,12 +63,12 @@ data class Europass(
                     ),
                     learningSpecification = CredentialSubject.LearningSpecification(
                         id = "https://blockchain.univ-lille.fr/ontology#LearningSpecification",
-                        iSCEDFCode = listOf(
+                        iscedfCode = listOf(
                             "7"
                         ),
-                        eCTSCreditPoints = 120,
-                        eQFLevel = 7,
-                        nQFLevel = listOf(
+                        ectsCreditPoints = 120,
+                        eqfLevel = 7,
+                        nqfLevel = listOf(
                             "7"
                         )
                     )
@@ -103,7 +99,7 @@ data class Europass(
         @Json(serializeNull = false) var identifier: String? = null, // 0904008084H
         @Json(serializeNull = false) var givenNames: String? = null, // Jane
         @Json(serializeNull = false) var familyName: String? = null, // DOE
-        @Json(serializeNull = false) var dateOfBirth: String? = null, // 1993-04-08
+        @Json(serializeNull = false) var dateOfBirth: String? = null, // 1993-04-08T00:00:00Z
         @Json(serializeNull = false) var gradingScheme: GradingScheme? = null,
         @Json(serializeNull = false) var learningAchievement: LearningAchievement? = null,
         @Json(serializeNull = false) var awardingOpportunity: AwardingOpportunity? = null,
@@ -141,86 +137,10 @@ data class Europass(
 
         data class LearningSpecification(
             var id: String, // https://blockchain.univ-lille.fr/ontology#LearningSpecification
-            @Json(name = "ISCEDFCode") var iSCEDFCode: List<String>,
-            @Json(name = "ECTSCreditPoints") var eCTSCreditPoints: Int? = null, // 120
-            @Json(name = "EQFLevel") var eQFLevel: Int? = null, // 7
-            @Json(name = "NQFLevel") var nQFLevel: List<String>
+            var iscedfCode: List<String>,
+            @Json(serializeNull = false) var ectsCreditPoints: Int? = null, // 120
+            @Json(serializeNull = false) var eqfLevel: Int? = null, // 7
+            var nqfLevel: List<String>
         )
     }
 }
-
-/*
-@Serializable
-class Europass(
-    @SerialName("@context") override var context: List<String>,
-    override var id: String,
-    override var type: List<String>,
-    override var issuer: String,
-    override var issuanceDate: String,
-    override var validFrom: String,
-    @field:Nullable override var expirationDate: String? = null,
-    override var credentialSubject: EuropassCredentialSubject,
-    override var credentialStatus: CredentialStatus,
-    override var credentialSchema: CredentialSchema,
-    @field:Nullable override var evidence: Evidence? = null,
-    override var proof: Proof
-) : VerifiableCredential<EuropassCredentialSubject>() {
-    override fun encode() = Json { prettyPrint = true }.encodeToString(this)
-}
-
-@Serializable
-data class EuropassCredentialSubject(
-    var id: String,
-    var identifier: String,
-    var givenNames: String,
-    var familyName: String,
-    var dateOfBirth: String,
-    var gradingScheme: GradingScheme,
-    var learningAchievement: LearningAchievement,
-    var awardingOpportunity: AwardingOpportunity,
-    var learningSpecification: LearningSpecification
-) : CredentialSubject
-
-@Serializable
-data class GradingScheme(
-    var id: String,
-    @field:Nullable var title: String? = null,
-    @field:Nullable var description: String? = null,
-)
-
-@Serializable
-data class LearningAchievement(
-    var id: String,
-    var title: String,
-    @field:Nullable var description: String? = null,
-    @field:Nullable var additionalNote: List<String>? = null
-)
-
-@Serializable
-data class AwardingOpportunity(
-    var id: String,
-    var identifier: String,
-    var awardingBody: Organisation,
-    @field:Nullable var location: String? = null,
-    @field:Nullable var startedAtTime: String? = null,
-    @field:Nullable var endedAtTime: String? = null
-)
-
-@Serializable
-data class Organisation(
-    var id: String,
-    var eidasLegalIdentifier: String,
-    var registration: String,
-    var preferredName: String,
-    @field:Nullable var homepage: String? = null
-)
-
-@Serializable
-data class LearningSpecification(
-    var id: String,
-    @SerialName("ISCEDFCode") var iscedfCode: List<String>,
-    @SerialName("ECTSCreditPoints") @field:Nullable var ectsCreditPoints: Int? = null,
-    @SerialName("EQFLevel") @field:Nullable var eqfLevel: Int? = null,
-    @SerialName("NQFLevel") var nqfLevel: List<String>
-)
- */
