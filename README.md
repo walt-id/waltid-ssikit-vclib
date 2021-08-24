@@ -2,6 +2,20 @@
 Typesafe implementation of W3C Verifiable Credentials in order to facilitate interoperability among various applications.
 
 
+### Setup
+
+Add the dependency using Gradle:
+
+    implementation("id.walt:waltid-ssikit-vclib:1.4.3")
+    
+or Maven:
+
+    <dependency>
+        <groupId>id.walt</groupId>
+        <artifactId>waltid-ssikit-vclib</artifactId>
+        <version>1.4.3</version>
+    </dependency>
+    
 ### Create a credential
 ```kotlin
 val verifiableAuthorization: VerifiableCredential = VerifiableAuthorization(
