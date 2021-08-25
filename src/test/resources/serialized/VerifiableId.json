@@ -1,0 +1,29 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1"
+  ],
+  "type": [
+    "VerifiableCredential",
+    "VerifiableAttestation",
+    "VerifiableId"
+  ],
+  "validFrom": "2020-11-03T00:00:00Z",
+  "credentialSubject": {
+    "familyName": "DOE",
+    "firstName": "Jane",
+    "dateOfBirth": "1993-04-08T00:00:00Z",
+    "personalIdentifier": "0904008084H"
+  },
+  "credentialSchema": {
+    "id": "https://api.preprod.ebsi.eu/trusted-schemas-registry/v1/schemas/0x2488fd38783d65e4fd46e7889eb113743334dbc772b05df382b8eadce763101b",
+    "type": "JsonSchemaValidator2018"
+  },
+  "evidence" : {
+    "id": "https://essif.europa.eu/tsr-vid/evidence/f2aeec97-fc0d-42bf-8ca7-0548192d4231",
+    "type": ["DocumentVerification"],
+    "verifier": "did:ebsi:2LGKvDMrNUPR6FhSNrXzQQ1h295zr4HwoX9UqvwAsenSKHe9",
+    "evidenceDocument": ["Passport"],
+    "subjectPresence": "Physical",
+    "documentPresence": ["Physical"]
+  }
+}

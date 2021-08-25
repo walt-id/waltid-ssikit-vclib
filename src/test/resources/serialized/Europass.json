@@ -45,12 +45,12 @@
     },
     "learningSpecification": {
       "id": "https://blockchain.univ-lille.fr/ontology#LearningSpecification",
-      "iscedfCode": [
+      "ISCEDFCode": [
         "7"
       ],
-      "ectsCreditPoints": 120,
-      "eqfLevel": 7,
-      "nqfLevel": [
+      "ECTSCreditPoints": 120,
+      "EQFLevel": 7,
+      "NQFLevel": [
         "7"
       ]
     }
@@ -60,7 +60,7 @@
     "type": "CredentialsStatusList2020"
   },
   "credentialSchema": {
-    "id": "https://api.preprod.ebsi.eu/trusted-schemas-registry/v1/schemas/0x312e332e362e312e342e312e3831342e372e3138392e322e332e332e3132",
+    "id": "https://essif.europa.eu/trusted-schemas-registry/v1/schemas/to_be_obtained_after_registration_of_the_schema",
     "type": "JsonSchemaValidator2018"
   },
   "proof": {

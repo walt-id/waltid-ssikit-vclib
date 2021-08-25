@@ -50,12 +50,12 @@ class SerializeEuropass : StringSpec({
                 ),
                 learningSpecification = Europass.CredentialSubject.LearningSpecification(
                     id = "https://blockchain.univ-lille.fr/ontology#LearningSpecification",
-                    iscedfCode = listOf(
+                    iSCEDFCode = listOf(
                         "7"
                     ),
-                    ectsCreditPoints = 120,
-                    eqfLevel = 7,
-                    nqfLevel = listOf(
+                    eCTSCreditPoints = 120,
+                    eQFLevel = 7,
+                    nQFLevel = listOf(
                         "7"
                     )
                 )
@@ -65,7 +65,7 @@ class SerializeEuropass : StringSpec({
                 type = "CredentialsStatusList2020"
             ),
             credentialSchema = CredentialSchema(
-                id = "https://api.preprod.ebsi.eu/trusted-schemas-registry/v1/schemas/0x312e332e362e312e342e312e3831342e372e3138392e322e332e332e3132",
+                id = "https://essif.europa.eu/trusted-schemas-registry/v1/schemas/to_be_obtained_after_registration_of_the_schema",
                 type = "JsonSchemaValidator2018"
             ),
             proof = Proof(
@@ -81,6 +81,6 @@ class SerializeEuropass : StringSpec({
         )
         val europassJson = europass.encode()
 
-        File("src/test/resources/serialized/Europass.json").readText() shouldEqualJson europassJson
+        europassJson shouldEqualJson File("src/test/resources/serialized/Europass.json").readText()
     }
 })

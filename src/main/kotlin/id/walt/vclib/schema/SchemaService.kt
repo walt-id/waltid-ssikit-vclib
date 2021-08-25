@@ -5,7 +5,7 @@ import com.github.victools.jsonschema.generator.*
 import id.walt.vclib.Helpers.encode
 import id.walt.vclib.model.VerifiableCredential
 import id.walt.vclib.vclist.Europass
-import id.walt.vclib.vclist.VerifiableID
+import id.walt.vclib.vclist.VerifiableId
 import net.pwall.json.schema.JSONSchema
 import java.util.*
 import kotlin.reflect.KClass
@@ -34,13 +34,13 @@ object SchemaService {
 
     private fun getTitleResolver(type: TypeScope) = when (type.type.erasedType) {
         Europass::class.java -> "EBSI Verifiable Attestation - Diploma"
-        VerifiableID::class.java -> "EBSI Natural Person Verifiable ID"
+        VerifiableId::class.java -> "EBSI Natural Person Verifiable ID"
         else -> null
     }
 
     private fun getDescriptionResolver(type: TypeScope) = when (type.type.erasedType) {
         Europass::class.java -> "Schema of an EBSI Verifiable Attestation - Diploma"
-        VerifiableID::class.java -> "Schema of an EBSI Verifiable ID for a natural person"
+        VerifiableId::class.java -> "Schema of an EBSI Verifiable ID for a natural person"
         else -> null
     }
 
