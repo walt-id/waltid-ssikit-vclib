@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Added credential template for Verifiable Diplomas
+- Updated Europass & Verifiable ID data model in aligned with the EBSI Schemas
+- Improved Schema Generator
+
 ## [1.4.3] - 2021-08-19
 
 -   Added VerifiableID model
