@@ -21,7 +21,7 @@ class SerializeEuropass : StringSpec({
                 identifier = "0904008084H",
                 givenNames = "Jane",
                 familyName = "DOE",
-                dateOfBirth = "1993-04-08",
+                dateOfBirth = "1993-04-08T00:00:00Z",
                 gradingScheme = Europass.CredentialSubject.GradingScheme(
                     id = "https://blockchain.univ-lille.fr/ontology#GradingScheme",
                     title = "Lower Second-Class Honours"
@@ -45,7 +45,7 @@ class SerializeEuropass : StringSpec({
                         homepage = "https://www.univ-lille.fr/"
                     ),
                     location = "FRANCE",
-                    startedAtTime = "Unknown",
+                    startedAtTime = "2015-11-03T00:00:00Z",
                     endedAtTime = "2020-11-03T00:00:00Z"
                 ),
                 learningSpecification = Europass.CredentialSubject.LearningSpecification(
@@ -68,9 +68,11 @@ class SerializeEuropass : StringSpec({
                 id = "https://essif.europa.eu/trusted-schemas-registry/v1/schemas/to_be_obtained_after_registration_of_the_schema",
                 type = "JsonSchemaValidator2018"
             ),
-            proof =
-            Proof(
+            proof = Proof(
                 type = "EcdsaSecp256k1Signature2019",
+                creator = "did:ebsi:2sMvVBpwueU8j6WBnJcUAkcNnPXLQvGy3a6a3X59wKRnJzZQ",
+                domain = "https://api.preprod.ebsi.eu",
+                nonce = "d04442d3-661f-411e-a80f-42f19f594c9d",
                 created = "2021-07-26T18:40:49Z",
                 proofPurpose = "assertionMethod",
                 verificationMethod = "did:ebsi:2LGKvDMrNUPR6FhSNrXzQQ1h295zr4HwoX9UqvwAsenSKHe9#z6Mkfvb1T28UuRTY7MZR19mHgXXxQGPfWoC1kCwH6HMW8tkE",
@@ -79,6 +81,6 @@ class SerializeEuropass : StringSpec({
         )
         val europassJson = europass.encode()
 
-        File("src/test/resources/serialized/Europass.json").readText() shouldEqualJson europassJson
+        europassJson shouldEqualJson File("src/test/resources/serialized/Europass.json").readText()
     }
 })

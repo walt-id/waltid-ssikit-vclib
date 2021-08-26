@@ -15,7 +15,8 @@ object Defaults {
         VcLibManager.register<VerifiablePresentation>(VerifiablePresentation)
         VcLibManager.register<Europass>(Europass)
         VcLibManager.register<UniversityDegree>(UniversityDegree)
-        VcLibManager.register<VerifiableID>(VerifiableID)
+        VcLibManager.register<VerifiableId>(VerifiableId)
+        VcLibManager.register<VerifiableDiploma>(VerifiableDiploma)
     }
 
     fun loadVcLibDefaults() {

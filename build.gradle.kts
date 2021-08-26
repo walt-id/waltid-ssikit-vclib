@@ -18,12 +18,8 @@ repositories {
 dependencies {
     /* JSON */
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
-
-    /* TODO: to discuss and validate with Phil
-    http://json-schema.org/ <- schema spec used in EBSI https://api.preprod.ebsi.eu/trusted-schemas-registry/v1/schemas/0x312e332e362e312e342e312e313730312e372e3130372e322e322e332e3235
-    https://github.com/victools/jsonschema-generator recommended here: http://json-schema.org/implementations.html
-    */
     implementation("com.github.victools:jsonschema-generator:4.18.0")
+    implementation("net.pwall.json:json-kotlin-schema:0.23")
     implementation("com.beust:klaxon:5.5")
 
     /* Logging */
