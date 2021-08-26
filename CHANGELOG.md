@@ -4,9 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- Added credential template for Verifiable Diplomas
-- Updated Europass & Verifiable ID data model in aligned with the EBSI Schemas
-- Improved Schema Generator
+## [1.4.4] - 2021-08-26
+
+-   Added credential template for Verifiable Diplomas
+-   Updated Europass & Verifiable ID data model in aligned with the EBSI Schemas
+-   Improved Schema Generator
 
 ## [1.4.3] - 2021-08-19
 
@@ -68,7 +70,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.3...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.4...HEAD
+
+[1.4.4]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.3...1.4.4
 
 [1.4.3]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.2...1.4.3
 
