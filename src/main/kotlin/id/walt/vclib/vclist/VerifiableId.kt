@@ -6,6 +6,7 @@ import id.walt.vclib.model.CredentialStatus
 import id.walt.vclib.model.Proof
 import id.walt.vclib.model.VerifiableCredential
 import id.walt.vclib.registry.VerifiableCredentialMetadata
+import java.util.*
 
 data class VerifiableId(
     @Json(name = "@context") var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
@@ -24,21 +25,40 @@ data class VerifiableId(
         type = listOf("VerifiableCredential", "VerifiableAttestation", "VerifiableId"),
         template = {
             VerifiableId(
+                id = "identity#verifiableID#${UUID.randomUUID()}",
+                issuer = "did:ebsi:2A9BZ9SUe6BatacSpvs1V5CdjHvLpQ7bEsi2Jb6LdHKnQxaN",
+                issuanceDate = "2021-08-31T00:00:00Z",
+                validFrom = "2021-08-31T00:00:00Z",
+                credentialSubject = CredentialSubject(
+                    id = "did:ebsi:2AEMAqXWKYMu1JHPAgGcga4dxu7ThgfgN95VyJBJGZbSJUtp",
+                    familyName = "DOE",
+                    firstName = "Jane",
+                    dateOfBirth = "1993-04-08T00:00:00Z",
+                    personalIdentifier = "0904008084H",
+                    nameAndFamilyNameAtBirth = "Jane DOE",
+                    placeOfBirth = "LILLE, FRANCE",
+                    currentAddress = "1 Boulevard de la Liberté, 59800 Lille",
+                    gender = "FEMALE"
+                ),
+                //  EBSI does not support credentialStatus yet
+                //  credentialStatus = CredentialStatus(
+                //      id = "https://api.preprod.ebsi.eu/status/identity#verifiableID#51e42fda-cb0a-4333-b6a6-35cb147e1a88",
+                //      type = "CredentialsStatusList2020"
+                //  ),
                 credentialSchema = CredentialSchema(
                     id = "https://api.preprod.ebsi.eu/trusted-schemas-registry/v1/schemas/0x2488fd38783d65e4fd46e7889eb113743334dbc772b05df382b8eadce763101b",
                     type = "JsonSchemaValidator2018"
+                ),
+                evidence = Evidence(
+                    id = "https://leaston.bcdiploma.com/law-economics-management#V_ID_evidence",
+                    type = listOf("DocumentVerification"),
+                    verifier = "did:ebsi:2A9BZ9SUe6BatacSpvs1V5CdjHvLpQ7bEsi2Jb6LdHKnQxaN",
+                    evidenceDocument = listOf("Passport"),
+                    subjectPresence = "Physical",
+                    documentPresence = listOf("Physical")
                 )
             )
         }
-    );
-
-    data class Evidence(
-        val id: String,
-        val type: List<String?>,
-        val verifier: String,
-        val evidenceDocument: List<String?>,
-        val subjectPresence: String,
-        val documentPresence: List<String?>
     )
 
     data class CredentialSubject(
@@ -51,5 +71,14 @@ data class VerifiableId(
         @Json(serializeNull = false) var placeOfBirth: String? = null,
         @Json(serializeNull = false) var currentAddress: String? = null,
         @Json(serializeNull = false) var gender: String? = null,
+    )
+
+    data class Evidence(
+        var id: String,
+        var type: List<String?>,
+        var verifier: String,
+        var evidenceDocument: List<String?>,
+        var subjectPresence: String,
+        var documentPresence: List<String?>
     )
 }
