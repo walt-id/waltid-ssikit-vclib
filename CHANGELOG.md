@@ -3,6 +3,7 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+-   Changed default data for Verifiable ID, Verifiable Diploma and Europass credential templates
 
 ## [1.4.4] - 2021-08-26
 
