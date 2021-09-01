@@ -3,6 +3,9 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+
+## [1.4.5] - 2021-09-01
+
 -   Changed default data for Verifiable ID, Verifiable Diploma and Europass credential templates
 
 ## [1.4.4] - 2021-08-26
@@ -73,7 +76,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.4...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.5...HEAD
+
+[1.4.5]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.4...1.4.5
 
 [1.4.4]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.4...1.4.4
 
