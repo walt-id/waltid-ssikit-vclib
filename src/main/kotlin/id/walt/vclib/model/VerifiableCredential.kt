@@ -12,6 +12,7 @@ abstract class VerifiableCredential(val type: List<String>) {
     @Json(ignored = true)
     var json: String? = null
 
-    @Json(serializeNull = false)
-    open var proof: Proof? = null
+    @field:SchemaService.JsonIgnore
+    @Json(ignored = true)
+    var jwt: String? = null // the original JWT token, if credential was given in JWT format
 }

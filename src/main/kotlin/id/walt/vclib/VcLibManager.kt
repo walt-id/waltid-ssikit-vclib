@@ -23,14 +23,14 @@ object VcLibManager {
         var vc = klaxon.fieldConverter(NestedVCs::class, nestedVCsConverter).parse<VerifiableCredential>(json)!!
         vc.json = json
         if(isJwt) {
-            vc.proof = Proof(jwt = data)
+            vc.jwt = data
         }
         return vc
     }
 
     fun getVerifiableCredentialString(vc: VerifiableCredential): String {
-        if(vc?.proof?.jwt != null) {
-            return vc!!.proof!!.jwt!!
+        if(vc?.jwt != null) {
+            return vc!!.jwt!!
         } else {
             return klaxon.toJsonString(vc)
         }

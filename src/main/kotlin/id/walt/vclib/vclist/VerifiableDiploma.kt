@@ -19,7 +19,7 @@ data class VerifiableDiploma(
     @Json(serializeNull = false) var credentialStatus: CredentialStatus? = null,
     var credentialSchema: CredentialSchema? = null,
     @Json(serializeNull = false) var evidence: Evidence? = null,
-    @Json(serializeNull = false) override var proof: Proof? = null
+    @Json(serializeNull = false) var proof: Proof? = null
 ) : VerifiableCredential(type) {
     companion object : VerifiableCredentialMetadata(
         type = listOf("VerifiableCredential", "VerifiableAttestation", "VerifiableDiploma"),

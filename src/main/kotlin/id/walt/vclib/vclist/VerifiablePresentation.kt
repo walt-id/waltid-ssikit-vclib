@@ -12,7 +12,7 @@ data class VerifiablePresentation(
     var id: String,
     //var type: List<String>,
     @NestedVCs var verifiableCredential: List<VerifiableCredential>,
-    @Json(serializeNull = false) override var proof: Proof? = null
+    @Json(serializeNull = false) var proof: Proof? = null
 ) : VerifiableCredential(type) {
 
     companion object : VerifiableCredentialMetadata(

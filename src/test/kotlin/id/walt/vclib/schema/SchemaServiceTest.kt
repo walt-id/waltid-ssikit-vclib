@@ -2,7 +2,6 @@ package id.walt.vclib.schema
 
 import com.beust.klaxon.Json
 import id.walt.vclib.Helpers.encode
-import id.walt.vclib.model.Proof
 import id.walt.vclib.model.VerifiableCredential
 import id.walt.vclib.registry.VerifiableCredentialMetadata
 import io.kotest.assertions.json.shouldEqualJson
@@ -18,8 +17,7 @@ data class DummyCredential(
     @Json(name = "@context") @field:PropertyName(name = "@context") var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
     @Json(serializeNull = false) @field:Nullable var id: String? = null,
     @Json(serializeNull = false) @field:DateTimeFormat var issuanceDate: String? = null,
-    @field:JsonIgnore var toIgnore: String? = null,
-    @field:JsonIgnore override var proof: Proof? = null,
+    @field:JsonIgnore var toIgnore: String? = null
 ) : VerifiableCredential(type) {
     companion object : VerifiableCredentialMetadata(
         type = listOf("VerifiableCredential", "VerifiableAttestation", "Dummy"),
