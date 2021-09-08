@@ -14,8 +14,12 @@ object VcLibManager {
     val JWT_PATTERN = "(^[A-Za-z0-9-_]*\\.[A-Za-z0-9-_]*\\.[A-Za-z0-9-_]*\$)"
     val JWT_VC_CLAIM = "vc"
 
+    fun isJWT(data: String): Boolean {
+        return Regex(JWT_PATTERN).matches(data)
+    }
+
     fun getVerifiableCredential(data: String): VerifiableCredential {
-        val isJwt = Regex(JWT_PATTERN).matches(data)
+        val isJwt = isJWT(data)
         val json = when(isJwt) {
             true -> SignedJWT.parse(data).jwtClaimsSet.claims[JWT_VC_CLAIM].toString()
             false -> data
