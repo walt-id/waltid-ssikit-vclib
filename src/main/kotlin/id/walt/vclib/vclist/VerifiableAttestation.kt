@@ -18,7 +18,7 @@ data class VerifiableAttestation(
     @Json(serializeNull = false) var credentialStatus: CredentialStatus? = null,
     @Json(serializeNull = false) var credentialSchema: CredentialSchema? = null,
     @Json(serializeNull = false) var evidence: List<Evidence>? = null,
-    @Json(serializeNull = false) var proof: Proof? = null
+    @Json(serializeNull = false) override var proof: Proof? = null
 ) : VerifiableCredential(type) {
     data class CredentialSubject(
         var id: String // id123

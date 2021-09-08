@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "id.walt"
-version = "1.4.5"
+version = "1.4.6-SNAPSHOT"
 
 
 repositories {
@@ -33,6 +33,9 @@ dependencies {
 
     // Kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.5.21")
+
+    /* JWT */
+    implementation("com.nimbusds:nimbus-jose-jwt:9.9")
 
     /* Testing */
     testImplementation("io.kotest:kotest-runner-junit5:4.6.1")

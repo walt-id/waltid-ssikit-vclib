@@ -13,7 +13,7 @@ data class PermanentResidentCard(
     ),
     @Json(serializeNull = false) var credentialSubject: CredentialSubject2? = null,
     @Json(serializeNull = false) var issuer: String? = null,
-    @Json(serializeNull = false) var proof: Proof? = null,
+    @Json(serializeNull = false) override var proof: Proof?,
 ) : VerifiableCredential(type) {
     data class CredentialSubject2(
         @Json(serializeNull = false) var id: String? = null, // did:ebsi:00000004321

@@ -20,7 +20,7 @@ data class VerifiableAuthorization(
     var credentialSubject: CredentialSubject1,
     @Json(serializeNull = false) var credentialStatus: CredentialStatus? = null,
     @Json(serializeNull = false) var credentialSchema: CredentialSchema? = null,
-    @Json(serializeNull = false) var proof: Proof? = null,
+    @Json(serializeNull = false) override var proof: Proof? = null,
 ) : VerifiableCredential(type) {
     data class CredentialSubject1(
         var id: String, // did:ebsi:00000004321

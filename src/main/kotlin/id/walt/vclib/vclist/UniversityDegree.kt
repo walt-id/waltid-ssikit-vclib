@@ -16,7 +16,7 @@ data class UniversityDegree(
     var issuer: Issuer,
     var issuanceDate: String, // 2020-03-10T04:24:12.164Z
     var credentialSubject: CredentialSubject,
-    var proof: Proof
+    override var proof: Proof?
 ) : VerifiableCredential(type) {
     companion object : VerifiableCredentialMetadata(
         type = listOf("VerifiableCredential", "UniversityDegreeCredential"),

@@ -23,7 +23,7 @@ data class Europass(
     @Json(serializeNull = false) var credentialSchema: CredentialSchema? = null,
     @Json(serializeNull = false) var evidence: Evidence? = null,
     //@Json(serializeNull = false) var proof: List<Proof>? = null
-    @Json(serializeNull = false) var proof: Proof? = null
+    @Json(serializeNull = false) override var proof: Proof? = null
 ) : VerifiableCredential(type) {
     companion object : VerifiableCredentialMetadata(
         type = listOf("VerifiableCredential", "VerifiableAttestation", "Europass"),
