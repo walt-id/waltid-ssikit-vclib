@@ -34,7 +34,7 @@ object VcLibManager {
 
     fun getVerifiableCredentialString(vc: VerifiableCredential): String {
         if(vc?.jwt != null) {
-            return vc!!.jwt!!
+            return "\"${vc!!.jwt!!}\""
         } else {
             return klaxon.toJsonString(vc)
         }
