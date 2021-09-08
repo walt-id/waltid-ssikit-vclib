@@ -23,17 +23,14 @@ object VcLibManager {
         var vc = klaxon.fieldConverter(NestedVCs::class, nestedVCsConverter).parse<VerifiableCredential>(json)!!
         vc.json = json
         if(isJwt) {
-            vc.proof = Proof(jwt = data, type = "JWT")
+            vc.proof = Proof(jwt = data)
         }
         return vc
     }
 
     fun getVerifiableCredentialString(vc: VerifiableCredential): String {
-        if(vc?.proof?.type == "JWT") {
-            if(vc!!.proof?.jwt != null)
-                return vc!!.proof!!.jwt!!
-            else
-                throw Exception("Can't serialize JWT VCs, if jwt isn't set on proof property")
+        if(vc?.proof?.jwt != null) {
+            return vc!!.proof!!.jwt!!
         } else {
             return klaxon.toJsonString(vc)
         }
