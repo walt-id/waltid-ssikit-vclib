@@ -34,7 +34,7 @@ data class VerifiableDiploma(
                     identifier = "0904008084H",
                     givenNames = "Jane",
                     familyName = "DOE",
-                    dateOfBirth = "1993-04-08T00:00:00Z",
+                    dateOfBirth = "1993-04-08",
                     gradingScheme = CredentialSubject.GradingScheme(
                         id = "https://leaston.bcdiploma.com/law-economics-management#GradingScheme",
                         title = "Lower Second-Class Honours"

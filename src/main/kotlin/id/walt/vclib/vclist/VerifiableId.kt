@@ -33,7 +33,7 @@ data class VerifiableId(
                     id = "did:ebsi:2AEMAqXWKYMu1JHPAgGcga4dxu7ThgfgN95VyJBJGZbSJUtp",
                     familyName = "DOE",
                     firstName = "Jane",
-                    dateOfBirth = "1993-04-08T00:00:00Z",
+                    dateOfBirth = "1993-04-08",
                     personalIdentifier = "0904008084H",
                     nameAndFamilyNameAtBirth = "Jane DOE",
                     placeOfBirth = "LILLE, FRANCE",
