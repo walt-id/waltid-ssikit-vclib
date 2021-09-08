@@ -17,7 +17,12 @@ object nestedVCsConverter : Converter {
     override fun fromJson(jv: JsonValue): Any? {
         if(jv.array != null) {
             val arr = jv.array
-            return arr!!.mapChildren { it.toJsonString().toCredential() }.toList()
+            return arr!!.map {
+                when(it) {
+                    is JsonObject -> it.toJsonString().toCredential()
+                    else -> it.toString().toCredential()
+                }
+            }.toList()
         } else {
             throw KlaxonException("Couldn't parse nested verifiable credentials")
         }
