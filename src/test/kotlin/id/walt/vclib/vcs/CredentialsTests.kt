@@ -8,7 +8,7 @@ import kotlin.reflect.jvm.jvmName
 
 class CredentialsTests : StringSpec({
     "testing example json files" {
-        File("src/test/resources").listFiles { _, name -> name.endsWith(".json") }!!.forEach {
+        File("src/test/resources/serialized").listFiles { _, name -> name.endsWith(".json") }!!.forEach {
             println("Checking ${it.name}")
             val json = it.readText()
             val name = it.nameWithoutExtension
