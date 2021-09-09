@@ -7,7 +7,6 @@
     "VerifiableAttestation",
     "VerifiableDiploma"
   ],
-  "validFrom": "2020-11-03T00:00:00Z",
   "credentialSubject": {
     "identifier": "0904008084H",
     "givenNames": "Jane",
