@@ -1,6 +1,7 @@
 package id.walt.vclib.vclist
 
 import com.beust.klaxon.Json
+import id.walt.vclib.NestedVCs
 import id.walt.vclib.model.Proof
 import id.walt.vclib.model.VerifiableCredential
 import id.walt.vclib.registry.VerifiableCredentialMetadata
@@ -10,7 +11,7 @@ data class VerifiablePresentation(
     var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
     var id: String,
     //var type: List<String>,
-    var verifiableCredential: List<VerifiableCredential>,
+    @NestedVCs var verifiableCredential: List<VerifiableCredential>,
     @Json(serializeNull = false) var proof: Proof? = null
 ) : VerifiableCredential(type) {
 
