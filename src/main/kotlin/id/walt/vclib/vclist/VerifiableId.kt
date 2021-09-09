@@ -50,7 +50,8 @@ data class VerifiableId(
                     type = "JsonSchemaValidator2018"
                 ),
                 evidence = Evidence(
-                    id = "https://leaston.bcdiploma.com/law-economics-management#V_ID_evidence",
+                    // EBSI does not support evidence id yet
+                    // id = "https://leaston.bcdiploma.com/law-economics-management#V_ID_evidence",
                     type = listOf("DocumentVerification"),
                     verifier = "did:ebsi:2A9BZ9SUe6BatacSpvs1V5CdjHvLpQ7bEsi2Jb6LdHKnQxaN",
                     evidenceDocument = listOf("Passport"),
@@ -74,7 +75,7 @@ data class VerifiableId(
     )
 
     data class Evidence(
-        var id: String,
+        @Json(serializeNull = false) var id: String? = null,
         var type: List<String?>,
         var verifier: String,
         var evidenceDocument: List<String?>,
