@@ -4,9 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- JWT-aware credential parsing
-- preserve original credential JSON body and JWT (for JWT credentials)
-- support parsing verifiable presentations with nested VCs in JSON-LD or JWT format
+## [1.4.6] - 2021-09-09
+
+-   JWT-aware credential parsing
+-   preserve original credential JSON body and JWT (for JWT credentials)
+-   support parsing verifiable presentations with nested VCs in JSON-LD or JWT format
 
 ## [1.4.5] - 2021-09-01
 
@@ -80,7 +82,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.5...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.6...HEAD
+
+[1.4.6]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.5...1.4.6
 
 [1.4.5]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.4...1.4.5
 
