@@ -4,7 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- Fix JWT claim named "vp" for verifiable presentation according to EU spec
+## [1.4.7] - 2021-09-13
+
+-   Fix JWT claim named "vp" for verifiable presentation according to EU spec
 
 ## [1.4.6] - 2021-09-09
 
@@ -84,7 +86,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.6...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.7...HEAD
+
+[1.4.7]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.6...1.4.7
 
 [1.4.6]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.5...1.4.6
 
