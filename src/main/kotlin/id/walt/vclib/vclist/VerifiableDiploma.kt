@@ -50,7 +50,8 @@ data class VerifiableDiploma(
                         identifier = "https://certificate-demo.bcdiploma.com/check/87ED2F2270E6C41456E94B86B9D9115B4E35BCCAD200A49B846592C14F79C86BV1Fnbllta0NZTnJkR3lDWlRmTDlSRUJEVFZISmNmYzJhUU5sZUJ5Z2FJSHpWbmZZ",
                         awardingBody = CredentialSubject.AwardingOpportunity.AwardingBody(
                             id = "did:ebsi:2A9BZ9SUe6BatacSpvs1V5CdjHvLpQ7bEsi2Jb6LdHKnQxaN",
-                            eidasLegalIdentifier = "Unknown",
+                            // Some issuer do not support eidasLegalIdentifier yet
+                            // eidasLegalIdentifier = "Unknown",
                             registration = "0597065J",
                             preferredName = "Leaston University",
                             homepage = "https://leaston.bcdiploma.com/"
@@ -118,7 +119,7 @@ data class VerifiableDiploma(
         ) {
             data class AwardingBody(
                 var id: String,
-                var eidasLegalIdentifier: String,
+                @Json(serializeNull = false) var eidasLegalIdentifier: String? = null,
                 var registration: String,
                 var preferredName: String,
                 @Json(serializeNull = false) var homepage: String? = null
