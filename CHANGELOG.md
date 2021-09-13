@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- JWT-aware credential parsing
+- preserve original credential JSON body and JWT (for JWT credentials)
+- support parsing verifiable presentations with nested VCs in JSON-LD or JWT format
+
 ## [1.4.5] - 2021-09-01
 
 -   Changed default data for Verifiable ID, Verifiable Diploma and Europass credential templates
