@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Fix JWT claim named "vp" for verifiable presentation according to EU spec
+
 ## [1.4.6] - 2021-09-09
 
 -   JWT-aware credential parsing
