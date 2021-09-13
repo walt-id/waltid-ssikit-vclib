@@ -13,15 +13,24 @@ object VcLibManager {
     private val klaxon = Klaxon()
     val JWT_PATTERN = "(^[A-Za-z0-9-_]*\\.[A-Za-z0-9-_]*\\.[A-Za-z0-9-_]*\$)"
     val JWT_VC_CLAIM = "vc"
+    val JWT_VP_CLAIM = "vp"
 
     fun isJWT(data: String): Boolean {
         return Regex(JWT_PATTERN).matches(data)
     }
 
+    private fun vcJsonFromJwt(jwt: String): String {
+        val claims = SignedJWT.parse(jwt).jwtClaimsSet.claims
+        return when(claims.keys.contains(JWT_VP_CLAIM)) {
+            true -> claims[JWT_VP_CLAIM].toString()
+            false -> claims[JWT_VC_CLAIM].toString()
+        }
+    }
+
     fun getVerifiableCredential(data: String): VerifiableCredential {
         val isJwt = isJWT(data)
         val json = when(isJwt) {
-            true -> SignedJWT.parse(data).jwtClaimsSet.claims[JWT_VC_CLAIM].toString()
+            true -> vcJsonFromJwt(data)
             false -> data
         }
         var vc = klaxon.fieldConverter(NestedVCs::class, nestedVCsConverter).parse<VerifiableCredential>(json)!!
