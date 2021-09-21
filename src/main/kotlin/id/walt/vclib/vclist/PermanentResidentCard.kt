@@ -44,4 +44,7 @@ data class PermanentResidentCard(
             )
         )}
     )
+
+    @Json(serializeNull = false)
+    override var id: String? = null
 }

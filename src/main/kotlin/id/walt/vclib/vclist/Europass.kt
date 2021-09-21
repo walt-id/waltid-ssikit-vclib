@@ -13,7 +13,7 @@ data class Europass(
     var context: List<String> = listOf(
         "https://www.w3.org/2018/credentials/v1"
     ),
-    @Json(serializeNull = false) var id: String? = null, // education#higherEducation#51e42fda-cb0a-4333-b6a6-35cb147e1a88
+    @Json(serializeNull = false) override var id: String? = null, // education#higherEducation#51e42fda-cb0a-4333-b6a6-35cb147e1a88
     @Json(serializeNull = false) var issuer: String? = null, // did:ebsi:2LGKvDMrNUPR6FhSNrXzQQ1h295zr4HwoX9UqvwAsenSKHe9
     @Json(serializeNull = false) var issuanceDate: String? = null, // 2020-11-03T00:00:00Z
     @Json(serializeNull = false) var validFrom: String? = null, // 2020-11-03T00:00:00Z
