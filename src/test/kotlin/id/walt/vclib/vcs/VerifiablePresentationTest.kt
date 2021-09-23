@@ -7,29 +7,49 @@ import id.walt.vclib.model.VerifiableCredential
 import id.walt.vclib.vclist.PermanentResidentCard
 import id.walt.vclib.vclist.VerifiableAuthorization
 import id.walt.vclib.vclist.VerifiablePresentation
+import io.kotest.assertions.json.shouldNotContainJsonKey
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
+
+private val data1 = VerifiableAuthorization(
+    id = "did:ebsi-eth:00000001/credentials/1872",
+    issuer = "did:ebsi:000001234",
+    issuanceDate = "2020-08-24T14:13:44Z",
+    credentialSubject = VerifiableAuthorization.CredentialSubject1(
+        "did:ebsi:00000004321",
+        VerifiableAuthorization.CredentialSubject1.NaturalPerson("did:example:00001111")
+    ),
+    proof = Proof(
+        "EcdsaSecp256k1Signature2019",
+        "2020-08-24T14:13:44Z",
+        "assertionMethod",
+        "did:ebsi-eth:000001234#key-1",
+        "eyJhbGciOiJSUzI1NiIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19."
+    )
+)
+private val data2: VerifiableCredential = PermanentResidentCard(
+    credentialSubject = PermanentResidentCard.CredentialSubject2(
+        id = "did:example:123",
+        type = listOf(
+            "PermanentResident",
+            "Person"
+        ),
+        givenName = "JOHN",
+        birthDate = "1958-08-17"
+    ),
+    issuer = "did:example:456",
+    proof = Proof(
+        "Ed25519Signature2018",
+        "2020-04-22T10:37:22Z",
+        "assertionMethod",
+        "did:example:456#key-1",
+        "eyJjcml0IjpbImI2NCJdLCJiNjQiOmZhbHNlLCJhbGciOiJFZERTQSJ9..BhWew0x-txcroGjgdtK-yBCqoetg9DD9SgV4245TmXJi-PmqFzux6Cwaph0r-mbqzlE17yLebjfqbRT275U1AA"
+    )
+)
 
 class VerifiablePresentationTest : StringSpec({
     "testing VerifiablePresentation" {
         println("Generating VerifiableAuthorization:")
-        val data1: VerifiableCredential = VerifiableAuthorization(
-            id = "did:ebsi-eth:00000001/credentials/1872",
-            issuer = "did:ebsi:000001234",
-            issuanceDate = "2020-08-24T14:13:44Z",
-            credentialSubject = VerifiableAuthorization.CredentialSubject1(
-                "did:ebsi:00000004321",
-                VerifiableAuthorization.CredentialSubject1.NaturalPerson("did:example:00001111")
-            ),
-            proof = Proof(
-                "EcdsaSecp256k1Signature2019",
-                "2020-08-24T14:13:44Z",
-                "assertionMethod",
-                "did:ebsi-eth:000001234#key-1",
-                "eyJhbGciOiJSUzI1NiIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19."
-            )
-        )
-
         val vaJson = data1.encode()
         println(vaJson)
 
@@ -43,25 +63,6 @@ class VerifiablePresentationTest : StringSpec({
         println("-----")
 
         println("Generating PermanentResidentCard...")
-        val data2: VerifiableCredential = PermanentResidentCard(
-            credentialSubject = PermanentResidentCard.CredentialSubject2(
-                id = "did:example:123",
-                type = listOf(
-                    "PermanentResident",
-                    "Person"
-                ),
-                givenName = "JOHN",
-                birthDate = "1958-08-17"
-            ),
-            issuer = "did:example:456",
-            proof = Proof(
-                "Ed25519Signature2018",
-                "2020-04-22T10:37:22Z",
-                "assertionMethod",
-                "did:example:456#key-1",
-                "eyJjcml0IjpbImI2NCJdLCJiNjQiOmZhbHNlLCJhbGciOiJFZERTQSJ9..BhWew0x-txcroGjgdtK-yBCqoetg9DD9SgV4245TmXJi-PmqFzux6Cwaph0r-mbqzlE17yLebjfqbRT275U1AA"
-            )
-        )
         val prcJson = data2.encode()
         println(prcJson)
 
@@ -74,6 +75,8 @@ class VerifiablePresentationTest : StringSpec({
         val vpJson = vp.encode()
         println(vpJson)
 
+
+
         println("Parsing VerifiablePresentation...")
         val myVp = VcLibManager.getVerifiableCredential(vpJson)
 
@@ -83,5 +86,11 @@ class VerifiablePresentationTest : StringSpec({
         (myVp is VerifiablePresentation) shouldBe true
 
         (myVp as VerifiablePresentation).verifiableCredential.size shouldBe 2
+    }
+
+    "VerifiablePresentation null id and holder are not serialized" {
+        val vp = VerifiablePresentation(verifiableCredential = listOf(data1, data2)).encode()
+        vp shouldNotContainJsonKey "id"
+        vp shouldNotContainJsonKey "holder"
     }
 })
