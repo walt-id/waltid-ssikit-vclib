@@ -10,7 +10,7 @@ import id.walt.vclib.registry.VerifiableCredentialMetadata
 data class VerifiableAttestation(
     @Json(name = "@context")
     var context: List<String>,
-    var id: String, // education#higherEducation#3fea53a4-0432-4910-ac9c-69ah8da3c37f
+    override var id: String?, // education#higherEducation#3fea53a4-0432-4910-ac9c-69ah8da3c37f
     var issuer: String, // did:ebsi:2757945549477fc571663bee12042873fe555b674bd294a3
     @Json(serializeNull = false) var issuanceDate: String? = null, // 2019-06-22T14:11:44Z
     @Json(serializeNull = false) var validFrom: String? = null, // 2019-06-22T14:11:44Z

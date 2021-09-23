@@ -10,7 +10,7 @@ import java.util.*
 
 data class VerifiableId(
     @Json(name = "@context") var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
-    @Json(serializeNull = false) var id: String? = null,
+    @Json(serializeNull = false) override var id: String? = null,
     @Json(serializeNull = false) var issuer: String? = null,
     @Json(serializeNull = false) var issuanceDate: String? = null,
     var validFrom: String? = null,

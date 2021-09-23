@@ -12,7 +12,7 @@ data class VerifiableAuthorization(
     var context: List<String> = listOf(
         "https://www.w3.org/2018/credentials/v1"
     ),
-    var id: String,
+    override var id: String?,
     var issuer: String,
     @Json(serializeNull = false) var issuanceDate: String? = null,
     @Json(serializeNull = false) var validFrom: String? = null,
