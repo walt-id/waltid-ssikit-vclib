@@ -9,17 +9,17 @@ import id.walt.vclib.registry.VerifiableCredentialMetadata
 data class VerifiablePresentation(
     @Json(name = "@context")
     var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
-    override var id: String?,
-    //var type: List<String>,
+    @Json(serializeNull = false) override var id: String? = null,
+    @Json(serializeNull = false) var holder: String? = null,
     @NestedVCs var verifiableCredential: List<VerifiableCredential>,
     @Json(serializeNull = false) var proof: Proof? = null
 ) : VerifiableCredential(type) {
-
     companion object : VerifiableCredentialMetadata(
-        type = listOf("VerifiableCredential", "VerifiablePresentation"),
+        type = listOf("VerifiablePresentation"),
         template = {
             VerifiablePresentation(
                 id = "id",
+                holder = "did:ebsi:00000004321",
                 verifiableCredential = listOf(
                     VerifiableAuthorization(
                         id = "did:ebsi-eth:00000001/credentials/1872",
