@@ -9,7 +9,7 @@ import id.walt.vclib.registry.VerifiableCredentialMetadata
 data class VerifiablePresentation(
     @Json(name = "@context")
     var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
-    @Json(serializeNull = false) var id: String? = null,
+    @Json(serializeNull = false) override var id: String? = null,
     @Json(serializeNull = false) var holder: String? = null,
     @NestedVCs var verifiableCredential: List<VerifiableCredential>,
     @Json(serializeNull = false) var proof: Proof? = null
