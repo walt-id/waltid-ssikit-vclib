@@ -4,8 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- Updated VP data model according to EBSI spec
-- expose optional id field on VerifiableCredential abstract interface
+## [1.4.8] - 2021-09-24
+
+-   Updated VP data model according to EBSI spec
+-   expose optional id field on VerifiableCredential abstract interface
 
 ## [1.4.7] - 2021-09-13
 
@@ -89,7 +91,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.7...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.8...HEAD
+
+[1.4.8]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.7...1.4.8
 
 [1.4.7]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.6...1.4.7
 
