@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Updated VP data model according to EBSI spec
+- expose optional id field on VerifiableCredential abstract interface
+
 ## [1.4.7] - 2021-09-13
 
 -   Fix JWT claim named "vp" for verifiable presentation according to EU spec
