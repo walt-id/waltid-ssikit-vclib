@@ -3,6 +3,7 @@
     "https://www.w3.org/2018/credentials/v1"
   ],
   "id": "id",
+  "holder": "did:ebsi:00000004321",
   "verifiableCredential": [
     {
       "@context": [
@@ -59,7 +60,6 @@
     }
   ],
   "type": [
-    "VerifiableCredential",
     "VerifiablePresentation"
   ]
 }
