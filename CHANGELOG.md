@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+-   As issuanceDate and expirationDate, validFrom may now have also a non serialized null value according EBSI context.
+
 ## [1.4.7] - 2021-09-13
 
 -   Fix JWT claim named "vp" for verifiable presentation according to EU spec
