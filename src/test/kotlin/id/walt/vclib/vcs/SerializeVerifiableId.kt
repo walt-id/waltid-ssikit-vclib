@@ -10,7 +10,6 @@ import java.io.File
 class SerializeVerifiableId : StringSpec({
     "serialize verifiableID" {
         val verifiableId = VerifiableId(
-            validFrom = "2020-11-03T00:00:00Z",
             credentialSubject = VerifiableId.CredentialSubject(
                 familyName = "DOE",
                 firstName = "Jane",

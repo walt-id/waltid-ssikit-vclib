@@ -12,7 +12,7 @@ data class UniversityDegree(
         "https://www.w3.org/2018/credentials/v1",
         "https://www.w3.org/2018/credentials/examples/v1"
     ),
-    var id: String, // http://example.gov/credentials/3732
+    override var id: String?, // http://example.gov/credentials/3732
     var issuer: Issuer,
     var issuanceDate: String, // 2020-03-10T04:24:12.164Z
     var credentialSubject: CredentialSubject,

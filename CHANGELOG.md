@@ -4,7 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
--   As issuanceDate and expirationDate, validFrom may now have also a non serialized null value according EBSI context.
+- As issuanceDate and expirationDate, validFrom may now have also a non serialized null value according EBSI context.
+
+## [1.4.8] - 2021-09-24
+
+-   Updated VP data model according to EBSI spec
+-   expose optional id field on VerifiableCredential abstract interface
 
 ## [1.4.7] - 2021-09-13
 

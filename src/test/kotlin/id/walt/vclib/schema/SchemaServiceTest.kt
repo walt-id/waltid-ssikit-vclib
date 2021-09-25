@@ -15,7 +15,7 @@ import id.walt.vclib.schema.SchemaService.PropertyName;
 
 data class DummyCredential(
     @Json(name = "@context") @field:PropertyName(name = "@context") var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
-    @Json(serializeNull = false) @field:Nullable var id: String? = null,
+    @Json(serializeNull = false) @field:Nullable override var id: String? = null,
     @Json(serializeNull = false) @field:DateTimeFormat var issuanceDate: String? = null,
     @field:JsonIgnore var toIgnore: String? = null
 ) : VerifiableCredential(type) {

@@ -13,7 +13,6 @@ import java.io.File
 class SerializeVerifiableDiploma : StringSpec({
     "serialize verifiable diploma" {
         val verifiableDiploma = VerifiableDiploma(
-            validFrom = "2020-11-03T00:00:00Z",
             credentialSubject = VerifiableDiploma.CredentialSubject(
                 identifier = "0904008084H",
                 givenNames = "Jane",
