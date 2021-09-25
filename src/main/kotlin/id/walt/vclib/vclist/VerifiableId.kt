@@ -13,7 +13,7 @@ data class VerifiableId(
     @Json(serializeNull = false) override var id: String? = null,
     @Json(serializeNull = false) var issuer: String? = null,
     @Json(serializeNull = false) var issuanceDate: String? = null,
-    var validFrom: String? = null,
+    @Json(serializeNull = false) var validFrom: String? = null,
     @Json(serializeNull = false) var expirationDate: String? = null,
     var credentialSubject: CredentialSubject? = null,
     @Json(serializeNull = false) var credentialStatus: CredentialStatus? = null,
