@@ -4,7 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- As issuanceDate and expirationDate, validFrom may now have also a non serialized null value according EBSI context.
+## [1.4.9] - 2021-09-25
+
+-   As issuanceDate and expirationDate, validFrom may now have also a non serialized null value according EBSI context.
 
 ## [1.4.8] - 2021-09-24
 
@@ -93,7 +95,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.7...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.9...HEAD
+
+[1.4.9]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.8...1.4.9
 
 [1.4.7]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.6...1.4.7
 
