@@ -7,8 +7,7 @@ plugins {
 }
 
 group = "id.walt"
-version = "1.4-SNAPSHOT"
-
+version = "1.4.3-JAVA8"
 
 repositories {
     mavenCentral()
@@ -76,8 +75,20 @@ publishing {
     }
 }
 
+
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions.jvmTarget = "13"
+    kotlinOptions.jvmTarget = "1.8"
+}
+
+tasks {
+    compileKotlin {
+        sourceCompatibility = JavaVersion.VERSION_1_8.toString()
+        targetCompatibility = JavaVersion.VERSION_1_8.toString()
+
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
+    }
 }
 
 jacoco.toolVersion = "0.8.7"
