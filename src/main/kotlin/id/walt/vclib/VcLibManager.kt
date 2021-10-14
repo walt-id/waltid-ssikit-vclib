@@ -3,7 +3,6 @@ package id.walt.vclib
 import com.beust.klaxon.Klaxon
 import com.nimbusds.jwt.SignedJWT
 import id.walt.vclib.Helpers.encode
-import id.walt.vclib.model.Proof
 import id.walt.vclib.model.VerifiableCredential
 import id.walt.vclib.registry.VcTypeRegistry
 import id.walt.vclib.registry.VerifiableCredentialMetadata
@@ -27,18 +26,9 @@ object VcLibManager {
         }
     }
 
-    fun getVerifiableCredential(data: String): VerifiableCredential {
-        val isJwt = isJWT(data)
-        val json = when(isJwt) {
-            true -> vcJsonFromJwt(data)
-            false -> data
-        }
-        var vc = klaxon.fieldConverter(NestedVCs::class, nestedVCsConverter).parse<VerifiableCredential>(json)!!
-        vc.json = json
-        if(isJwt) {
-            vc.jwt = data
-        }
-        return vc
+    fun getVerifiableCredential(data: String) = when (isJWT(data)) {
+        false -> klaxon.parse<VerifiableCredential>(data)!!.also { it.json = data }
+        true -> klaxon.parse<VerifiableCredential>(vcJsonFromJwt(data))!!.also { it.jwt = data ; it.json = it.encode() }
     }
 
     fun getVerifiableCredentialString(vc: VerifiableCredential): String {
