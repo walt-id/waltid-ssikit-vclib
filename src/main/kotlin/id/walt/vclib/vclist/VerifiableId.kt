@@ -7,6 +7,7 @@ import id.walt.vclib.model.CredentialStatus
 import id.walt.vclib.model.Proof
 import id.walt.vclib.model.VerifiableCredential
 import id.walt.vclib.registry.VerifiableCredentialMetadata
+import id.walt.vclib.schema.SchemaService.JsonIgnore
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -64,6 +65,8 @@ data class VerifiableId(
         }
     )
 
+    @field:JsonIgnore
+    @Json(ignored = true)
     override var jwt: String? = null
         set(value) {
             field = value.also {
