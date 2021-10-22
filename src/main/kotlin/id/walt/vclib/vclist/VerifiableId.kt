@@ -1,11 +1,14 @@
 package id.walt.vclib.vclist
 
 import com.beust.klaxon.Json
+import com.nimbusds.jwt.SignedJWT
 import id.walt.vclib.model.CredentialSchema
 import id.walt.vclib.model.CredentialStatus
 import id.walt.vclib.model.Proof
 import id.walt.vclib.model.VerifiableCredential
 import id.walt.vclib.registry.VerifiableCredentialMetadata
+import id.walt.vclib.schema.SchemaService.JsonIgnore
+import java.text.SimpleDateFormat
 import java.util.*
 
 data class VerifiableId(
@@ -61,6 +64,22 @@ data class VerifiableId(
             )
         }
     )
+
+    @field:JsonIgnore
+    @Json(ignored = true)
+    override var jwt: String? = null
+        set(value) {
+            field = value.also {
+                val dateFormat = SimpleDateFormat("YYYY-MM-dd'T'HH:mm:ss'Z'")
+                val jwtClaimsSet = SignedJWT.parse(value).jwtClaimsSet
+                id = id ?: jwtClaimsSet.jwtid
+                issuer = issuer ?: jwtClaimsSet.issuer
+                issuanceDate = issuanceDate ?: jwtClaimsSet.issueTime?.let { dateFormat.format(it) }
+                validFrom = validFrom ?: jwtClaimsSet.notBeforeTime?.let { dateFormat.format(it) }
+                expirationDate = expirationDate ?: jwtClaimsSet.expirationTime?.let { dateFormat.format(it) }
+                credentialSubject?.also { it.id = it.id ?: jwtClaimsSet.subject }
+            }
+        }
 
     data class CredentialSubject(
         @Json(serializeNull = false) var id: String? = null,

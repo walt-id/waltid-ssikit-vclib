@@ -1,10 +1,12 @@
 package id.walt.vclib.vclist
 
 import com.beust.klaxon.Json
+import com.nimbusds.jwt.SignedJWT
 import id.walt.vclib.NestedVCs
 import id.walt.vclib.model.Proof
 import id.walt.vclib.model.VerifiableCredential
 import id.walt.vclib.registry.VerifiableCredentialMetadata
+import id.walt.vclib.schema.SchemaService.JsonIgnore
 
 data class VerifiablePresentation(
     @Json(name = "@context")
@@ -59,4 +61,15 @@ data class VerifiablePresentation(
             )
         }
     )
+
+    @field:JsonIgnore
+    @Json(ignored = true)
+    override var jwt: String? = null
+        set(value) {
+            field = value.also {
+                val jwtClaimsSet = SignedJWT.parse(value).jwtClaimsSet
+                id = id ?: jwtClaimsSet.jwtid
+                holder = holder ?: jwtClaimsSet.issuer
+            }
+        }
 }
