@@ -30,9 +30,11 @@ object nestedVCsConverter : Converter {
 
     override fun toJson(value: Any): String {
         if(value is List<*> && (value.isEmpty() || value.first() is VerifiableCredential)) {
-            return "[${
-                value.map { (it as VerifiableCredential).encode() }.joinToString()
-            }]"
+            return "[${ value.joinToString {
+                it as VerifiableCredential
+                if (it.jwt != null) "\"${ it.encode() }\""
+                else it.encode()
+            } }]"
         } else {
             throw KlaxonException("Couldn't convert nested verifiable credentials to Json")
         }

@@ -38,11 +38,7 @@ object VcLibManager {
     }
 
     fun getVerifiableCredentialString(vc: VerifiableCredential): String {
-        if(vc?.jwt != null) {
-            return "\"${vc!!.jwt!!}\""
-        } else {
-            return klaxon.toJsonString(vc)
-        }
+        return vc.jwt ?: klaxon.toJsonString(vc)
     }
 
     fun register(metadata: VerifiableCredentialMetadata, vc: KClass<out VerifiableCredential>) = VcTypeRegistry.register(metadata, vc)
