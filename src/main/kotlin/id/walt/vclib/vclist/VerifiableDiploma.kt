@@ -11,6 +11,8 @@ import id.walt.vclib.schema.SchemaService.JsonIgnore
 import java.text.SimpleDateFormat
 import java.util.*
 
+private val dateFormat = SimpleDateFormat("YYYY-MM-dd'T'HH:mm:ss'Z'").also { it.timeZone = TimeZone.getTimeZone("UTC") }
+
 data class VerifiableDiploma(
     @Json(name = "@context") var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
     @Json(serializeNull = false) override var id: String? = null, // education#higherEducation#51e42fda-cb0a-4333-b6a6-35cb147e1a88
@@ -93,7 +95,6 @@ data class VerifiableDiploma(
     override var jwt: String? = null
         set(value) {
             field = value.also {
-                val dateFormat = SimpleDateFormat("YYYY-MM-dd'T'HH:mm:ss'Z'")
                 val jwtClaimsSet = SignedJWT.parse(value).jwtClaimsSet
                 id = id ?: jwtClaimsSet.jwtid
                 issuer = issuer ?: jwtClaimsSet.issuer

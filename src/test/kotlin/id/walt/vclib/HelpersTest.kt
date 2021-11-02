@@ -29,11 +29,11 @@ class HelpersTest : StringSpec({
             .toCredential() as VerifiableId
 
         vId.id shouldBe "identity#verifiableID#93308ff1-c335-43c0-94da-a6863fb4bb9d"
-        vId.issuer shouldBe "did:ebsi:zkpVfh2Gr25RBAXjadtD8eg"
+        vId.issuer shouldBe "did:ebsi:z242pBrKr3KdTwEEZxEdVtVq"
         vId.issuanceDate shouldBe "2021-08-20T00:00:00Z"
-        vId.validFrom shouldBe "2021-08-20T00:00:00Z"
+        vId.validFrom shouldBe "2020-06-01T00:00:00Z"
         vId.expirationDate shouldBe null
-        vId.credentialSubject!!.id shouldBe "did:ebsi:zhueMmLMaCc72prdyt9pd4w"
+        vId.credentialSubject!!.id shouldBe "did:ebsi:zsT2x3C1LZpsYmztjzjL354"
     }
 
     "test toCredential JWT Proof VerifiableDiploma striped of redundant claims" {
@@ -42,11 +42,11 @@ class HelpersTest : StringSpec({
             .toCredential() as VerifiableDiploma
 
         vDiploma.id shouldBe "education#higherEducation#87ED2F2270E6C41456E94B86B9D9115B4E35BCCAD200A49B846592C14F79C86BV1Fnbllta0NZTnJkR3lDWlRmTDlSRUJEVFZISmNmYzJhUU5sZUJ5Z2FJSHpWbmZZ"
-        vDiploma.issuer shouldBe "did:ebsi:zkpVfh2Gr25RBAXjadtD8eg"
+        vDiploma.issuer shouldBe "did:ebsi:z242pBrKr3KdTwEEZxEdVtVq"
         vDiploma.issuanceDate shouldBe "2021-08-20T00:00:00Z"
         vDiploma.validFrom shouldBe "2020-06-01T00:00:00Z"
         vDiploma.expirationDate shouldBe null
-        vDiploma.credentialSubject!!.id shouldBe "did:ebsi:zhueMmLMaCc72prdyt9pd4w"
+        vDiploma.credentialSubject!!.id shouldBe "did:ebsi:zsT2x3C1LZpsYmztjzjL354"
     }
 
     "test toCredential JWT Proof VerifiablePresentation striped of redundant claims" {
@@ -54,8 +54,8 @@ class HelpersTest : StringSpec({
             .readText()
             .toCredential() as VerifiablePresentation
 
-        vp.id shouldBe "urn:uuid:2f2f3a29-156a-4ae5-bb76-972ca0a84b49"
-        vp.holder shouldBe "did:ebsi:zhueMmLMaCc72prdyt9pd4w"
+        vp.id shouldBe "urn:uuid:935c1af4-1ffa-4698-b509-807bed675123"
+        vp.holder shouldBe "did:ebsi:zsT2x3C1LZpsYmztjzjL354"
     }
 }) {
     data class DummyCredential(
