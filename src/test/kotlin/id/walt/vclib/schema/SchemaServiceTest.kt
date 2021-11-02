@@ -1,12 +1,10 @@
 package id.walt.vclib.schema
 
 import com.beust.klaxon.Json
-import id.walt.vclib.Helpers.encode
 import id.walt.vclib.model.VerifiableCredential
 import id.walt.vclib.registry.VerifiableCredentialMetadata
 import io.kotest.assertions.json.shouldEqualJson
 import io.kotest.core.spec.style.StringSpec
-import io.kotest.matchers.shouldBe
 import java.io.File
 import id.walt.vclib.schema.SchemaService.DateTimeFormat;
 import id.walt.vclib.schema.SchemaService.JsonIgnore;
@@ -31,12 +29,5 @@ class SchemaServiceTest : StringSpec({
         val schema = SchemaService.generateSchema(DummyCredential::class).toPrettyString()
         val expected = File("src/test/resources/schemas/DummyCredential-schema.json").readText()
         schema shouldEqualJson expected
-    }
-
-    "testing schema validation" {
-        val vc = DummyCredential(issuanceDate = "2021-08-25T16:49:00Z")
-        val schema = SchemaService.generateSchema(DummyCredential::class).toPrettyString()
-        SchemaService.validate(vc, schema) shouldBe true
-        SchemaService.validate(vc.encode(), schema) shouldBe true
     }
 })
