@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 ## [1.5.0] - 2021-11-02
 
+## [1.5.0] - 2021-11-02
+
 -   Fix/ebsi jwt to credential
 -   Fix/get verifiable credential string
 
@@ -101,6 +103,8 @@ All notable changes to this project will be documented in this file.
 -   Initial release
 
 [Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.5.0...HEAD
+
+[1.5.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.5.0...1.5.0
 
 [1.5.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.9...1.5.0
 
