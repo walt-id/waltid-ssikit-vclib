@@ -3,6 +3,8 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+- Fix/ebsi jwt to credential
+- Fix/get verifiable credential string
 
 ## [1.4.9] - 2021-09-25
 
