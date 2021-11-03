@@ -10,6 +10,8 @@ import id.walt.vclib.vclist.VerifiableId
 import id.walt.vclib.vclist.VerifiablePresentation
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.string.shouldContain
+import io.kotest.matchers.string.shouldNotContain
 import java.io.File
 import java.nio.file.Path
 
@@ -34,6 +36,13 @@ class HelpersTest : StringSpec({
         vId.validFrom shouldBe "2020-06-01T00:00:00Z"
         vId.expirationDate shouldBe null
         vId.credentialSubject!!.id shouldBe "did:ebsi:zsT2x3C1LZpsYmztjzjL354"
+
+        vId.json shouldContain "\"id\" : \"identity#verifiableID#93308ff1-c335-43c0-94da-a6863fb4bb9d\""
+        vId.json shouldContain "\"issuer\" : \"did:ebsi:z242pBrKr3KdTwEEZxEdVtVq\""
+        vId.json shouldContain "\"issuanceDate\" : \"2021-08-20T00:00:00Z\""
+        vId.json shouldContain "\"validFrom\" : \"2020-06-01T00:00:00Z\""
+        vId.json shouldNotContain "\"expirationDate\""
+        vId.json shouldContain "\"id\" : \"did:ebsi:zsT2x3C1LZpsYmztjzjL354\""
     }
 
     "test toCredential JWT Proof VerifiableDiploma striped of redundant claims" {
@@ -47,6 +56,13 @@ class HelpersTest : StringSpec({
         vDiploma.validFrom shouldBe "2020-06-01T00:00:00Z"
         vDiploma.expirationDate shouldBe null
         vDiploma.credentialSubject!!.id shouldBe "did:ebsi:zsT2x3C1LZpsYmztjzjL354"
+
+        vDiploma.json shouldContain "\"id\" : \"education#higherEducation#87ED2F2270E6C41456E94B86B9D9115B4E35BCCAD200A49B846592C14F79C86BV1Fnbllta0NZTnJkR3lDWlRmTDlSRUJEVFZISmNmYzJhUU5sZUJ5Z2FJSHpWbmZZ\""
+        vDiploma.json shouldContain "\"issuer\" : \"did:ebsi:z242pBrKr3KdTwEEZxEdVtVq\""
+        vDiploma.json shouldContain "\"issuanceDate\" : \"2021-08-20T00:00:00Z\""
+        vDiploma.json shouldContain "\"validFrom\" : \"2020-06-01T00:00:00Z\""
+        vDiploma.json shouldNotContain "\"expirationDate\""
+        vDiploma.json shouldContain "\"id\" : \"did:ebsi:zsT2x3C1LZpsYmztjzjL354\""
     }
 
     "test toCredential JWT Proof VerifiablePresentation striped of redundant claims" {
@@ -56,6 +72,9 @@ class HelpersTest : StringSpec({
 
         vp.id shouldBe "urn:uuid:935c1af4-1ffa-4698-b509-807bed675123"
         vp.holder shouldBe "did:ebsi:zsT2x3C1LZpsYmztjzjL354"
+
+        vp.json shouldContain "\"id\" : \"urn:uuid:935c1af4-1ffa-4698-b509-807bed675123\""
+        vp.json shouldContain "\"holder\" : \"did:ebsi:zsT2x3C1LZpsYmztjzjL354\""
     }
 }) {
     data class DummyCredential(
