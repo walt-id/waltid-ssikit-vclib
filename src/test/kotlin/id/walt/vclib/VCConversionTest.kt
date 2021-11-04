@@ -1,7 +1,6 @@
 package id.walt.vclib
 
 import com.beust.klaxon.Klaxon
-import com.nimbusds.jwt.SignedJWT
 import id.walt.vclib.Helpers.toCredential
 import id.walt.vclib.Helpers.toMap
 import id.walt.vclib.model.VerifiableCredential
