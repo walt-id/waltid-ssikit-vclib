@@ -8,7 +8,7 @@ import id.walt.vclib.registry.VerifiableCredentialMetadata
 import kotlin.reflect.KClass
 
 object VcLibManager {
-    private val klaxon = Klaxon()
+    private val klaxon = Klaxon().fieldConverter(NestedVCs::class, nestedVCsConverter)
     val JWT_PATTERN = "(^[A-Za-z0-9-_]*\\.[A-Za-z0-9-_]*\\.[A-Za-z0-9-_]*\$)"
     val JWT_VC_CLAIM = "vc"
     val JWT_VP_CLAIM = "vp"
@@ -26,14 +26,12 @@ object VcLibManager {
     }
 
     fun getVerifiableCredential(data: String): VerifiableCredential {
-        val isJwt = isJWT(data)
-        val json = when(isJwt) {
-            true -> vcJsonFromJwt(data)
-            false -> data
+        return if (!isJWT(data)) klaxon.parse<VerifiableCredential>(data)!!.also {
+            it.json = data
         }
-        return klaxon.fieldConverter(NestedVCs::class, nestedVCsConverter).parse<VerifiableCredential>(json)!!.also {
-            it.json = json
-            if(isJwt) it.jwt = data
+        else klaxon.parse<VerifiableCredential>(vcJsonFromJwt(data))!!.also {
+            it.jwt = data;
+            it.json = klaxon.toJsonString(it)
         }
     }
 
