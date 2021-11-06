@@ -64,13 +64,6 @@ data class VerifiableAttestation(
                         subjectPresence = "Physical",
                         documentPresence = "Physical"
                     )
-                ),
-                proof = Proof(
-                    type = "EidasSeal2021",
-                    created = "2019-06-22T14:11:44Z",
-                    proofPurpose = "assertionMethod",
-                    verificationMethod = "did:ebsi:2757945549477fc571663bee12042873fe555b674bd294a3#2368332668",
-                    jws = "HG21J4fdlnBvBA+y6D...amP7O="
                 )
             )
         }

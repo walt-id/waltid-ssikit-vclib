@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Removed proofs from templates
+
 ## [1.5.1] - 2021-11-06
 
 -   Added GaiaxCredential

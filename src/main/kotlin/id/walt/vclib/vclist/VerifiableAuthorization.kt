@@ -42,13 +42,6 @@ data class VerifiableAuthorization(
                 credentialSubject = CredentialSubject1(
                     "did:ebsi:00000004321",
                     CredentialSubject1.NaturalPerson("did:example:00001111")
-                ),
-                proof = Proof(
-                    "EcdsaSecp256k1Signature2019",
-                    "2020-08-24T14:13:44Z",
-                    "assertionMethod",
-                    "did:ebsi-eth:000001234#key-1",
-                    "eyJhbGciOiJSUzI1NiIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19."
                 )
             )
         }
