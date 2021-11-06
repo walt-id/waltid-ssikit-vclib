@@ -9,14 +9,17 @@ object Defaults {
     private val log = logging()
 
     private val defaults = lazy {
-        VcLibManager.register<PermanentResidentCard>(PermanentResidentCard)
-        VcLibManager.register<VerifiableAttestation>(VerifiableAttestation)
-        VcLibManager.register<VerifiableAuthorization>(VerifiableAuthorization)
-        VcLibManager.register<VerifiablePresentation>(VerifiablePresentation)
-        VcLibManager.register<Europass>(Europass)
-        VcLibManager.register<UniversityDegree>(UniversityDegree)
-        VcLibManager.register<VerifiableId>(VerifiableId)
-        VcLibManager.register<VerifiableDiploma>(VerifiableDiploma)
+        with(VcLibManager) {
+            register<PermanentResidentCard>(PermanentResidentCard)
+            register<VerifiableAttestation>(VerifiableAttestation)
+            register<VerifiableAuthorization>(VerifiableAuthorization)
+            register<VerifiablePresentation>(VerifiablePresentation)
+            register<Europass>(Europass)
+            register<UniversityDegree>(UniversityDegree)
+            register<VerifiableId>(VerifiableId)
+            register<VerifiableDiploma>(VerifiableDiploma)
+            register<GaiaxCredential>(GaiaxCredential)
+        }
     }
 
     fun loadVcLibDefaults() {

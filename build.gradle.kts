@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     kotlin("jvm") version "1.5.21"
     kotlin("plugin.serialization") version "1.5.21"
@@ -7,7 +9,7 @@ plugins {
 }
 
 group = "id.walt"
-version = "1.5.0"
+version = "1.5.1"
 
 
 repositories {
@@ -17,9 +19,9 @@ repositories {
 
 dependencies {
     /* JSON */
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
-    implementation("com.github.victools:jsonschema-generator:4.18.0")
-    implementation("net.pwall.json:json-kotlin-schema:0.23")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
+    implementation("com.github.victools:jsonschema-generator:4.20.0")
+    implementation("net.pwall.json:json-kotlin-schema:0.29")
     implementation("com.beust:klaxon:5.5")
 
     /* Logging */
@@ -35,12 +37,12 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.5.21")
 
     /* JWT */
-    implementation("com.nimbusds:nimbus-jose-jwt:9.9")
+    implementation("com.nimbusds:nimbus-jose-jwt:9.15.2")
 
     /* Testing */
-    testImplementation("io.kotest:kotest-runner-junit5:4.6.1")
-    testImplementation("io.kotest:kotest-assertions-core:4.6.1")
-    testImplementation("io.kotest:kotest-assertions-json:4.6.0")
+    testImplementation("io.kotest:kotest-runner-junit5:4.6.3")
+    testImplementation("io.kotest:kotest-assertions-core:4.6.3")
+    testImplementation("io.kotest:kotest-assertions-json:4.6.3")
 }
 
 tasks.withType<Test> {
@@ -76,7 +78,7 @@ publishing {
     }
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "13"
 }
 
