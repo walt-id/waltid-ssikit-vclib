@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+-   Added DNSpublicKey to GaiaxCredential
+
 ## [1.5.2] - 2021-11-06
 
 -   Removed proofs from templates
