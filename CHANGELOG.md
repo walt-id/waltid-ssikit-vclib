@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.5.3] - 2021-11-07
+
 -   Added DNSpublicKey to GaiaxCredential
 
 ## [1.5.2] - 2021-11-06
@@ -111,7 +113,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.5.2...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.5.3...HEAD
+
+[1.5.3]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.5.2...1.5.3
 
 [1.5.2]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.5.1...1.5.2
 
