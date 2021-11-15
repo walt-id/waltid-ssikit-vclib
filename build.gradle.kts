@@ -53,7 +53,7 @@ publishing {
     publications {
         create<MavenPublication>("mavenJava") {
             pom {
-                name.set("Walt.ID SSIKit-VCLib")
+                name.set("waltid-ssikit-vclib")
                 description.set("Typesafe implementation of W3C Verifiable Credentials in order to facilitate interoperability among various applications.")
                 url.set("https://walt.id")
             }
