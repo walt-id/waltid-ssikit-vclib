@@ -53,7 +53,7 @@ publishing {
     publications {
         create<MavenPublication>("mavenJava") {
             pom {
-                name.set("Walt.ID SSIKit-VCLib")
+                name.set("waltid-ssikit-vclib-java11")
                 description.set("Typesafe implementation of W3C Verifiable Credentials in order to facilitate interoperability among various applications.")
                 url.set("https://walt.id")
             }
@@ -79,7 +79,7 @@ publishing {
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "13"
+    kotlinOptions.jvmTarget = "11"
 }
 
 jacoco.toolVersion = "0.8.7"

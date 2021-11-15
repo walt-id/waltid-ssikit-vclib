@@ -1,2 +1,2 @@
-rootProject.name = "waltid-ssikit-vclib"
+rootProject.name = "waltid-ssikit-vclib-java11"
 
