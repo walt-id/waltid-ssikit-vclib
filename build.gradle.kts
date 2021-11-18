@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "id.walt"
-version = "1.5.3"
+version = "1.5.3-J11"
 
 
 repositories {
@@ -79,7 +79,7 @@ publishing {
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "13"
+    kotlinOptions.jvmTarget = "11"
 }
 
 jacoco.toolVersion = "0.8.7"
