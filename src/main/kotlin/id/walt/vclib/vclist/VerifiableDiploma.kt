@@ -55,8 +55,7 @@ data class VerifiableDiploma(
                         identifier = "https://certificate-demo.bcdiploma.com/check/87ED2F2270E6C41456E94B86B9D9115B4E35BCCAD200A49B846592C14F79C86BV1Fnbllta0NZTnJkR3lDWlRmTDlSRUJEVFZISmNmYzJhUU5sZUJ5Z2FJSHpWbmZZ",
                         awardingBody = CredentialSubject.AwardingOpportunity.AwardingBody(
                             id = "did:ebsi:2A9BZ9SUe6BatacSpvs1V5CdjHvLpQ7bEsi2Jb6LdHKnQxaN",
-                            // Some issuer do not support eidasLegalIdentifier yet
-                            // eidasLegalIdentifier = "Unknown",
+                            eidasLegalIdentifier = "Unknown",
                             registration = "0597065J",
                             preferredName = "Leaston University",
                             homepage = "https://leaston.bcdiploma.com/"
@@ -85,6 +84,14 @@ data class VerifiableDiploma(
                 credentialSchema = CredentialSchema(
                     id = "https://api.preprod.ebsi.eu/trusted-schemas-registry/v1/schemas/0xbf78fc08a7a9f28f5479f58dea269d3657f54f13ca37d380cd4e92237fb691dd",
                     type = "JsonSchemaValidator2018"
+                ),
+                evidence = Evidence(
+                    id = "https://essif.europa.eu/tsr-va/evidence/f2aeec97-fc0d-42bf-8ca7-0548192d5678",
+                    type = listOf("DocumentVerification"),
+                    verifier = "did:ebsi:2962fb784df61baa267c8132497539f8c674b37c1244a7a",
+                    evidenceDocument = listOf("Passport"),
+                    subjectPresence = "Physical",
+                    documentPresence = listOf("Physical")
                 )
             )
         }
