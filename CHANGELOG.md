@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.5.4] - 2021-11-20
+
 -   Added eidasLegalIdentifier to VerifiableDiploma
 
 ## [1.5.3] - 2021-11-07
@@ -115,7 +117,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.5.3...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.5.4...HEAD
+
+[1.5.4]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.5.3...1.5.4
 
 [1.5.3]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.5.2...1.5.3
 
