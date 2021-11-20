@@ -1,0 +1,70 @@
+{
+  "$schema" : "http://json-schema.org/draft-07/schema#",
+  "type" : "object",
+  "properties" : {
+    "context" : {
+      "type" : "array",
+      "items" : {
+        "type" : "string"
+      }
+    },
+    "holder" : {
+      "type" : "string"
+    },
+    "id" : {
+      "type" : "string"
+    },
+    "proof" : {
+      "type" : "object",
+      "properties" : {
+        "created" : {
+          "type" : "string"
+        },
+        "creator" : {
+          "type" : "string"
+        },
+        "domain" : {
+          "type" : "string"
+        },
+        "jws" : {
+          "type" : "string"
+        },
+        "nonce" : {
+          "type" : "string"
+        },
+        "proofPurpose" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "verificationMethod" : {
+          "type" : "string"
+        }
+      },
+      "required" : [ "created", "creator", "domain", "jws", "nonce", "proofPurpose", "type", "verificationMethod" ]
+    },
+    "type" : {
+      "type" : "array",
+      "items" : {
+        "type" : "string"
+      }
+    },
+    "verifiableCredential" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        },
+        "required" : [ "type" ]
+      }
+    }
+  },
+  "required" : [ "context", "holder", "id", "proof", "type", "verifiableCredential" ]
+}

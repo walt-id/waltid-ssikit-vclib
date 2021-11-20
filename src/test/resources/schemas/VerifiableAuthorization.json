@@ -1,0 +1,106 @@
+{
+  "$schema" : "http://json-schema.org/draft-07/schema#",
+  "type" : "object",
+  "properties" : {
+    "context" : {
+      "type" : "array",
+      "items" : {
+        "type" : "string"
+      }
+    },
+    "credentialSchema" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        }
+      },
+      "required" : [ "id", "type" ]
+    },
+    "credentialStatus" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        }
+      },
+      "required" : [ "id", "type" ]
+    },
+    "credentialSubject" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "naturalPerson" : {
+          "type" : "object",
+          "properties" : {
+            "did" : {
+              "type" : "string"
+            }
+          },
+          "required" : [ "did" ]
+        }
+      },
+      "required" : [ "id", "naturalPerson" ]
+    },
+    "expirationDate" : {
+      "type" : "string"
+    },
+    "id" : {
+      "type" : "string"
+    },
+    "issuanceDate" : {
+      "type" : "string"
+    },
+    "issuer" : {
+      "type" : "string"
+    },
+    "proof" : {
+      "type" : "object",
+      "properties" : {
+        "created" : {
+          "type" : "string"
+        },
+        "creator" : {
+          "type" : "string"
+        },
+        "domain" : {
+          "type" : "string"
+        },
+        "jws" : {
+          "type" : "string"
+        },
+        "nonce" : {
+          "type" : "string"
+        },
+        "proofPurpose" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "verificationMethod" : {
+          "type" : "string"
+        }
+      },
+      "required" : [ "created", "creator", "domain", "jws", "nonce", "proofPurpose", "type", "verificationMethod" ]
+    },
+    "type" : {
+      "type" : "array",
+      "items" : {
+        "type" : "string"
+      }
+    },
+    "validFrom" : {
+      "type" : "string"
+    }
+  },
+  "required" : [ "context", "credentialSchema", "credentialStatus", "credentialSubject", "expirationDate", "id", "issuanceDate", "issuer", "proof", "type", "validFrom" ]
+}
