@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+-   Added eidasLegalIdentifier to VerifiableDiploma
+
 ## [1.5.3] - 2021-11-07
 
 -   Added DNSpublicKey to GaiaxCredential
