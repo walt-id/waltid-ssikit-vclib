@@ -21,7 +21,7 @@ dependencies {
     /* JSON */
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
     implementation("com.github.victools:jsonschema-generator:4.20.0")
-    implementation("net.pwall.json:json-kotlin-schema:0.29")
+    implementation("net.pwall.json:json-kotlin-schema:0.30")
     implementation("com.beust:klaxon:5.5")
 
     /* Logging */

@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+-   Added schema-validation function to SchemaService
+-   Updated template of VerifiableDiploma 
+
 ## [1.5.4] - 2021-11-20
 
 -   Added eidasLegalIdentifier to VerifiableDiploma

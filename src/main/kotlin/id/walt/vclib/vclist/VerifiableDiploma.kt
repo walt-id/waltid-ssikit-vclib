@@ -30,9 +30,10 @@ data class VerifiableDiploma(
         type = listOf("VerifiableCredential", "VerifiableAttestation", "VerifiableDiploma"),
         template = {
             VerifiableDiploma(
-                id = "education#higherEducation#${UUID.randomUUID()}",
+                id = "education#higherEducation#392ac7f6-399a-437b-a268-4691ead8f176",
                 issuer = "did:ebsi:2A9BZ9SUe6BatacSpvs1V5CdjHvLpQ7bEsi2Jb6LdHKnQxaN",
                 issuanceDate = "2021-08-31T00:00:00Z",
+                expirationDate = "2022-08-31T00:00:00Z",
                 validFrom = "2021-08-31T00:00:00Z",
                 credentialSubject = CredentialSubject(
                     id = "did:ebsi:2AEMAqXWKYMu1JHPAgGcga4dxu7ThgfgN95VyJBJGZbSJUtp",
@@ -76,14 +77,13 @@ data class VerifiableDiploma(
                         )
                     )
                 ),
-                //  EBSI does not support credentialStatus yet
-                //  credentialStatus = CredentialStatus(
-                //      id = "https://essif.europa.eu/status/education#higherEducation#51e42fda-cb0a-4333-b6a6-35cb147e1a88",
-                //      type = "CredentialsStatusList2020"
-                //  ),
                 credentialSchema = CredentialSchema(
                     id = "https://api.preprod.ebsi.eu/trusted-schemas-registry/v1/schemas/0xbf78fc08a7a9f28f5479f58dea269d3657f54f13ca37d380cd4e92237fb691dd",
                     type = "JsonSchemaValidator2018"
+                ),
+                credentialStatus = CredentialStatus(
+                    id = "https://essif.europa.eu/status/education#higherEducation#392ac7f6-399a-437b-a268-4691ead8f176",
+                    type = "CredentialStatusList2020"
                 ),
                 evidence = Evidence(
                     id = "https://essif.europa.eu/tsr-va/evidence/f2aeec97-fc0d-42bf-8ca7-0548192d5678",
