@@ -63,7 +63,7 @@ class SchemaServiceTest : StringSpec({
     }
 
     "Verify PermanentResidentCard schema"   {
-        validateSchema<UniversityDegree>()
+        validateSchema<PermanentResidentCard>()
     }
 })
 

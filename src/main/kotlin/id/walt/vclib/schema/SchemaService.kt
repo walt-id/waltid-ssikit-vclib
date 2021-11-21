@@ -2,10 +2,14 @@ package id.walt.vclib.schema
 
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.github.victools.jsonschema.generator.*
+import id.walt.vclib.model.VerifiableCredential
 import id.walt.vclib.vclist.Europass
 import id.walt.vclib.vclist.VerifiableId
+import net.pwall.json.schema.JSONSchema
 import java.util.*
 import kotlin.reflect.KClass
+
+data class ValidationResult(val valid: Boolean, val errors: List<String>? = null)
 
 object SchemaService {
 
@@ -58,4 +62,13 @@ object SchemaService {
         field.getAnnotationConsideringFieldAndGetter(JsonIgnore::class.java) != null
 
     fun <T : Any> generateSchema(clazz: KClass<T>): ObjectNode = generator.generateSchema(clazz.java)
+
+    fun validateSchema(vc: VerifiableCredential, schema: String): ValidationResult {
+        val parsedSchema = JSONSchema.parse(schema)
+        val basicOutput = parsedSchema.validateBasic(vc.json!!)
+
+        val errors = basicOutput.errors?.map { it.error }
+
+        return ValidationResult(basicOutput.valid, errors)
+    }
 }
