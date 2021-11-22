@@ -2,7 +2,7 @@
   "$schema" : "http://json-schema.org/draft-07/schema#",
   "type" : "object",
   "properties" : {
-    "context" : {
+    "@context" : {
       "type" : "array",
       "items" : {
         "type" : "string"
@@ -17,8 +17,7 @@
         "type" : {
           "type" : "string"
         }
-      },
-      "required" : [ "id", "type" ]
+      }
     },
     "credentialStatus" : {
       "type" : "object",
@@ -29,8 +28,7 @@
         "type" : {
           "type" : "string"
         }
-      },
-      "required" : [ "id", "type" ]
+      }
     },
     "credentialSubject" : {
       "type" : "object",
@@ -62,8 +60,7 @@
         "placeOfBirth" : {
           "type" : "string"
         }
-      },
-      "required" : [ "currentAddress", "dateOfBirth", "familyName", "firstName", "gender", "id", "nameAndFamilyNameAtBirth", "personalIdentifier", "placeOfBirth" ]
+      }
     },
     "evidence" : {
       "type" : "object",
@@ -95,8 +92,7 @@
         "verifier" : {
           "type" : "string"
         }
-      },
-      "required" : [ "documentPresence", "evidenceDocument", "id", "subjectPresence", "type", "verifier" ]
+      }
     },
     "expirationDate" : {
       "type" : "string"
@@ -137,8 +133,7 @@
         "verificationMethod" : {
           "type" : "string"
         }
-      },
-      "required" : [ "created", "creator", "domain", "jws", "nonce", "proofPurpose", "type", "verificationMethod" ]
+      }
     },
     "type" : {
       "type" : "array",
@@ -150,7 +145,7 @@
       "type" : "string"
     }
   },
-  "required" : [ "context", "credentialSchema", "credentialStatus", "credentialSubject", "evidence", "expirationDate", "id", "issuanceDate", "issuer", "proof", "type", "validFrom" ],
+  "required" : [ "@context", "type" ],
   "title" : "EBSI Natural Person Verifiable ID",
   "description" : "Schema of an EBSI Verifiable ID for a natural person"
 }

@@ -7,7 +7,7 @@ import id.walt.vclib.schema.SchemaService
 
 
 @TypeFor(field = "type", adapter = VCTypeAdapter::class)
-abstract class VerifiableCredential(val type: List<String>) {
+abstract class VerifiableCredential(@field:SchemaService.Required val type: List<String>) {
     @field:SchemaService.JsonIgnore
     @Json(ignored = true)
     var json: String? = null

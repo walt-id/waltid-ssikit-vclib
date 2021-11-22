@@ -7,6 +7,7 @@ import id.walt.vclib.model.CredentialStatus
 import id.walt.vclib.model.Proof
 import id.walt.vclib.model.VerifiableCredential
 import id.walt.vclib.registry.VerifiableCredentialMetadata
+import id.walt.vclib.schema.SchemaService
 import id.walt.vclib.schema.SchemaService.JsonIgnore
 import java.text.SimpleDateFormat
 import java.util.*
@@ -14,7 +15,7 @@ import java.util.*
 private val dateFormat = SimpleDateFormat("YYYY-MM-dd'T'HH:mm:ss'Z'").also { it.timeZone = TimeZone.getTimeZone("UTC") }
 
 data class VerifiableId(
-    @Json(name = "@context") var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
+    @Json(name = "@context") @field:SchemaService.PropertyName(name = "@context") @field:SchemaService.Required var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
     @Json(serializeNull = false) override var id: String? = null,
     @Json(serializeNull = false) var issuer: String? = null,
     @Json(serializeNull = false) var issuanceDate: String? = null,

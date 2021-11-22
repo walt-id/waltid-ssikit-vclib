@@ -26,8 +26,7 @@
             "type" : "string"
           }
         }
-      },
-      "required" : [ "birthDate", "givenName", "id", "type" ]
+      }
     },
     "id" : {
       "type" : "string"
@@ -62,8 +61,7 @@
         "verificationMethod" : {
           "type" : "string"
         }
-      },
-      "required" : [ "created", "creator", "domain", "jws", "nonce", "proofPurpose", "type", "verificationMethod" ]
+      }
     },
     "type" : {
       "type" : "array",
@@ -72,5 +70,5 @@
       }
     }
   },
-  "required" : [ "context", "credentialSubject", "id", "issuer", "proof", "type" ]
+  "required" : [ "type" ]
 }

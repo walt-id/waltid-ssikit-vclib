@@ -17,8 +17,7 @@
         "type" : {
           "type" : "string"
         }
-      },
-      "required" : [ "id", "type" ]
+      }
     },
     "credentialStatus" : {
       "type" : "object",
@@ -29,8 +28,7 @@
         "type" : {
           "type" : "string"
         }
-      },
-      "required" : [ "id", "type" ]
+      }
     },
     "credentialSubject" : {
       "type" : "object",
@@ -44,11 +42,9 @@
             "did" : {
               "type" : "string"
             }
-          },
-          "required" : [ "did" ]
+          }
         }
-      },
-      "required" : [ "id", "naturalPerson" ]
+      }
     },
     "expirationDate" : {
       "type" : "string"
@@ -89,8 +85,7 @@
         "verificationMethod" : {
           "type" : "string"
         }
-      },
-      "required" : [ "created", "creator", "domain", "jws", "nonce", "proofPurpose", "type", "verificationMethod" ]
+      }
     },
     "type" : {
       "type" : "array",
@@ -102,5 +97,5 @@
       "type" : "string"
     }
   },
-  "required" : [ "context", "credentialSchema", "credentialStatus", "credentialSubject", "expirationDate", "id", "issuanceDate", "issuer", "proof", "type", "validFrom" ]
+  "required" : [ "type" ]
 }

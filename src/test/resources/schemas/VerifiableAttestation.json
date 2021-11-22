@@ -17,8 +17,7 @@
         "type" : {
           "type" : "string"
         }
-      },
-      "required" : [ "id", "type" ]
+      }
     },
     "credentialStatus" : {
       "type" : "object",
@@ -29,8 +28,7 @@
         "type" : {
           "type" : "string"
         }
-      },
-      "required" : [ "id", "type" ]
+      }
     },
     "credentialSubject" : {
       "type" : "object",
@@ -38,8 +36,7 @@
         "id" : {
           "type" : "string"
         }
-      },
-      "required" : [ "id" ]
+      }
     },
     "evidence" : {
       "type" : "array",
@@ -67,8 +64,7 @@
           "verifier" : {
             "type" : "string"
           }
-        },
-        "required" : [ "documentPresence", "evidenceDocument", "id", "subjectPresence", "type", "verifier" ]
+        }
       }
     },
     "id" : {
@@ -107,8 +103,7 @@
         "verificationMethod" : {
           "type" : "string"
         }
-      },
-      "required" : [ "created", "creator", "domain", "jws", "nonce", "proofPurpose", "type", "verificationMethod" ]
+      }
     },
     "type" : {
       "type" : "array",
@@ -120,5 +115,5 @@
       "type" : "string"
     }
   },
-  "required" : [ "context", "credentialSchema", "credentialStatus", "credentialSubject", "evidence", "id", "issuanceDate", "issuer", "proof", "type", "validFrom" ]
+  "required" : [ "type" ]
 }

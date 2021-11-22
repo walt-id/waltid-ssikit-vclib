@@ -17,8 +17,7 @@
         "type" : {
           "type" : "string"
         }
-      },
-      "required" : [ "id", "type" ]
+      }
     },
     "credentialStatus" : {
       "type" : "object",
@@ -29,8 +28,7 @@
         "type" : {
           "type" : "string"
         }
-      },
-      "required" : [ "id", "type" ]
+      }
     },
     "credentialSubject" : {
       "type" : "object",
@@ -56,8 +54,7 @@
                 "registration" : {
                   "type" : "string"
                 }
-              },
-              "required" : [ "eidasLegalIdentifier", "homepage", "id", "preferredName", "registration" ]
+              }
             },
             "endedAtTime" : {
               "type" : "string"
@@ -74,8 +71,7 @@
             "startedAtTime" : {
               "type" : "string"
             }
-          },
-          "required" : [ "awardingBody", "endedAtTime", "id", "identifier", "location", "startedAtTime" ]
+          }
         },
         "dateOfBirth" : {
           "type" : "string"
@@ -98,8 +94,7 @@
             "title" : {
               "type" : "string"
             }
-          },
-          "required" : [ "description", "id", "title" ]
+          }
         },
         "id" : {
           "type" : "string"
@@ -125,8 +120,7 @@
             "title" : {
               "type" : "string"
             }
-          },
-          "required" : [ "additionalNote", "description", "id", "title" ]
+          }
         },
         "learningSpecification" : {
           "type" : "object",
@@ -152,11 +146,9 @@
                 "type" : "string"
               }
             }
-          },
-          "required" : [ "ectsCreditPoints", "eqfLevel", "id", "iscedfCode", "nqfLevel" ]
+          }
         }
-      },
-      "required" : [ "awardingOpportunity", "dateOfBirth", "familyName", "givenNames", "gradingScheme", "id", "identifier", "learningAchievement", "learningSpecification" ]
+      }
     },
     "evidence" : {
       "type" : "object",
@@ -188,8 +180,7 @@
         "verifier" : {
           "type" : "string"
         }
-      },
-      "required" : [ "documentPresence", "evidenceDocument", "id", "subjectPresence", "type", "verifier" ]
+      }
     },
     "expirationDate" : {
       "type" : "string"
@@ -230,8 +221,7 @@
         "verificationMethod" : {
           "type" : "string"
         }
-      },
-      "required" : [ "created", "creator", "domain", "jws", "nonce", "proofPurpose", "type", "verificationMethod" ]
+      }
     },
     "type" : {
       "type" : "array",
@@ -243,5 +233,5 @@
       "type" : "string"
     }
   },
-  "required" : [ "context", "credentialSchema", "credentialStatus", "credentialSubject", "evidence", "expirationDate", "id", "issuanceDate", "issuer", "proof", "type", "validFrom" ]
+  "required" : [ "type" ]
 }

@@ -41,8 +41,7 @@
         "verificationMethod" : {
           "type" : "string"
         }
-      },
-      "required" : [ "created", "creator", "domain", "jws", "nonce", "proofPurpose", "type", "verificationMethod" ]
+      }
     },
     "type" : {
       "type" : "array",
@@ -66,5 +65,5 @@
       }
     }
   },
-  "required" : [ "context", "holder", "id", "proof", "type", "verifiableCredential" ]
+  "required" : [ "type" ]
 }
