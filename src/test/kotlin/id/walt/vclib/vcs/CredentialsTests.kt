@@ -2,8 +2,7 @@ package id.walt.vclib.vcs
 
 import id.walt.vclib.Helpers.encode
 import id.walt.vclib.Helpers.toCredential
-import id.walt.vclib.vclist.*
-import io.kotest.assertions.json.shouldEqualJson
+import id.walt.vclib.credentials.*
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import java.io.File

@@ -6,8 +6,7 @@ import id.walt.vclib.registry.VerifiableCredentialMetadata
 import id.walt.vclib.schema.SchemaService.DateTimeFormat
 import id.walt.vclib.schema.SchemaService.JsonIgnore
 import id.walt.vclib.schema.SchemaService.PropertyName
-import id.walt.vclib.vclist.*
-import io.kotest.assertions.json.shouldEqualJson
+import id.walt.vclib.credentials.*
 import io.kotest.core.spec.style.StringSpec
 import java.io.File
 

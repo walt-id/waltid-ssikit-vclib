@@ -1,6 +1,6 @@
 package id.walt.vclib
 
-import id.walt.vclib.vclist.*
+import id.walt.vclib.credentials.*
 import org.lighthousegames.logging.logging
 
 

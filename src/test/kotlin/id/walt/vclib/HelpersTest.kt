@@ -5,9 +5,9 @@ import id.walt.vclib.Helpers.toCredential
 import id.walt.vclib.Helpers.toMap
 import id.walt.vclib.model.VerifiableCredential
 import id.walt.vclib.registry.VerifiableCredentialMetadata
-import id.walt.vclib.vclist.VerifiableDiploma
-import id.walt.vclib.vclist.VerifiableId
-import id.walt.vclib.vclist.VerifiablePresentation
+import id.walt.vclib.credentials.VerifiableDiploma
+import id.walt.vclib.credentials.VerifiableId
+import id.walt.vclib.credentials.VerifiablePresentation
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldContain

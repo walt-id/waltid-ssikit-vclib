@@ -1,7 +1,7 @@
 package id.walt.vclib.vcs
 
 import id.walt.vclib.templates.VcTemplateManager
-import id.walt.vclib.vclist.VerifiableAuthorization
+import id.walt.vclib.credentials.VerifiableAuthorization
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe

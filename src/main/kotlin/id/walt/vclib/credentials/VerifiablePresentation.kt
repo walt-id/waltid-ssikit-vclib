@@ -1,4 +1,4 @@
-package id.walt.vclib.vclist
+package id.walt.vclib.credentials
 
 import com.beust.klaxon.Json
 import com.nimbusds.jwt.SignedJWT
