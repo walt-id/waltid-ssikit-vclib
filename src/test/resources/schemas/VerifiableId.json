@@ -17,7 +17,8 @@
         "type" : {
           "type" : "string"
         }
-      }
+      },
+      "additionalProperties" : false
     },
     "credentialStatus" : {
       "type" : "object",
@@ -28,7 +29,8 @@
         "type" : {
           "type" : "string"
         }
-      }
+      },
+      "additionalProperties" : false
     },
     "credentialSubject" : {
       "type" : "object",
@@ -60,7 +62,8 @@
         "placeOfBirth" : {
           "type" : "string"
         }
-      }
+      },
+      "additionalProperties" : false
     },
     "evidence" : {
       "type" : "object",
@@ -92,7 +95,8 @@
         "verifier" : {
           "type" : "string"
         }
-      }
+      },
+      "additionalProperties" : false
     },
     "expirationDate" : {
       "type" : "string"
@@ -133,7 +137,8 @@
         "verificationMethod" : {
           "type" : "string"
         }
-      }
+      },
+      "additionalProperties" : false
     },
     "type" : {
       "type" : "array",
@@ -147,5 +152,6 @@
   },
   "required" : [ "@context", "type" ],
   "title" : "EBSI Natural Person Verifiable ID",
-  "description" : "Schema of an EBSI Verifiable ID for a natural person"
+  "description" : "Schema of an EBSI Verifiable ID for a natural person",
+  "additionalProperties" : false
 }

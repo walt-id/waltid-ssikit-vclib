@@ -7,9 +7,13 @@ import id.walt.vclib.model.CredentialStatus
 import id.walt.vclib.model.Proof
 import id.walt.vclib.model.VerifiableCredential
 import id.walt.vclib.registry.VerifiableCredentialMetadata
+import id.walt.vclib.schema.SchemaService
+import id.walt.vclib.schema.SchemaService.PropertyName
+import id.walt.vclib.schema.SchemaService.Required
+import id.walt.vclib.schema.SchemaService.JsonIgnore
 
 data class Europass(
-    @Json(name = "@context")
+    @Json(name = "@context") @field:PropertyName(name = "@context") @field:Required
     var context: List<String> = listOf(
         "https://www.w3.org/2018/credentials/v1"
     ),
@@ -67,12 +71,12 @@ data class Europass(
                     ),
                     learningSpecification = CredentialSubject.LearningSpecification(
                         id = "https://leaston.bcdiploma.com/law-economics-management#LearningSpecification",
-                        iSCEDFCode = listOf(
+                        ISCEDFCode = listOf(
                             "7"
                         ),
-                        eCTSCreditPoints = 120,
-                        eQFLevel = 7,
-                        nQFLevel = listOf(
+                        ECTSCreditPoints = 120,
+                        EQFLevel = 7,
+                        NQFLevel = listOf(
                             "7"
                         )
                     )
@@ -141,10 +145,10 @@ data class Europass(
 
         data class LearningSpecification(
             var id: String, // https://leaston.bcdiploma.com/law-economics-management#LearningSpecification
-            @Json(name = "ISCEDFCode") var iSCEDFCode: List<String>,
-            @Json(name = "ECTSCreditPoints") var eCTSCreditPoints: Int? = null, // 120
-            @Json(name = "EQFLevel") var eQFLevel: Int? = null, // 7
-            @Json(name = "NQFLevel") var nQFLevel: List<String>
+            @Json(name = "ISCEDFCode") var ISCEDFCode: List<String>,
+            @Json(name = "ECTSCreditPoints") var ECTSCreditPoints: Int? = null, // 120
+            @Json(name = "EQFLevel") var EQFLevel: Int? = null, // 7
+            @Json(name = "NQFLevel") var NQFLevel: List<String>
         )
     }
 }

@@ -2,7 +2,7 @@
   "$schema" : "http://json-schema.org/draft-07/schema#",
   "type" : "object",
   "properties" : {
-    "context" : {
+    "@context" : {
       "type" : "array",
       "items" : {
         "type" : "string"
@@ -17,7 +17,8 @@
         "type" : {
           "type" : "string"
         }
-      }
+      },
+      "additionalProperties" : false
     },
     "credentialStatus" : {
       "type" : "object",
@@ -28,7 +29,8 @@
         "type" : {
           "type" : "string"
         }
-      }
+      },
+      "additionalProperties" : false
     },
     "credentialSubject" : {
       "type" : "object",
@@ -36,7 +38,8 @@
         "id" : {
           "type" : "string"
         }
-      }
+      },
+      "additionalProperties" : false
     },
     "evidence" : {
       "type" : "array",
@@ -64,7 +67,8 @@
           "verifier" : {
             "type" : "string"
           }
-        }
+        },
+        "additionalProperties" : false
       }
     },
     "id" : {
@@ -103,7 +107,8 @@
         "verificationMethod" : {
           "type" : "string"
         }
-      }
+      },
+      "additionalProperties" : false
     },
     "type" : {
       "type" : "array",
@@ -115,5 +120,6 @@
       "type" : "string"
     }
   },
-  "required" : [ "type" ]
+  "required" : [ "@context", "type" ],
+  "additionalProperties" : false
 }

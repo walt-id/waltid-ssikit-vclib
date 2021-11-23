@@ -19,7 +19,7 @@ object VcLibManager {
 
     private fun vcJsonFromJwt(jwt: String): String {
         val claims = SignedJWT.parse(jwt).jwtClaimsSet.claims
-        return when(claims.keys.contains(JWT_VP_CLAIM)) {
+        return when (claims.keys.contains(JWT_VP_CLAIM)) {
             true -> claims[JWT_VP_CLAIM].toString()
             false -> claims[JWT_VC_CLAIM].toString()
         }

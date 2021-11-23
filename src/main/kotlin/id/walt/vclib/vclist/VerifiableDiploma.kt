@@ -7,6 +7,9 @@ import id.walt.vclib.model.CredentialStatus
 import id.walt.vclib.model.Proof
 import id.walt.vclib.model.VerifiableCredential
 import id.walt.vclib.registry.VerifiableCredentialMetadata
+import id.walt.vclib.schema.SchemaService
+import id.walt.vclib.schema.SchemaService.PropertyName
+import id.walt.vclib.schema.SchemaService.Required
 import id.walt.vclib.schema.SchemaService.JsonIgnore
 import java.text.SimpleDateFormat
 import java.util.*
@@ -14,7 +17,8 @@ import java.util.*
 private val dateFormat = SimpleDateFormat("YYYY-MM-dd'T'HH:mm:ss'Z'").also { it.timeZone = TimeZone.getTimeZone("UTC") }
 
 data class VerifiableDiploma(
-    @Json(name = "@context") var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
+    @Json(name = "@context") @field:PropertyName(name = "@context") @field:Required
+    var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
     @Json(serializeNull = false) override var id: String? = null, // education#higherEducation#51e42fda-cb0a-4333-b6a6-35cb147e1a88
     @Json(serializeNull = false) var issuer: String? = null, // did:ebsi:2LGKvDMrNUPR6FhSNrXzQQ1h295zr4HwoX9UqvwAsenSKHe9
     @Json(serializeNull = false) var issuanceDate: String? = null, // 2020-11-03T00:00:00Z

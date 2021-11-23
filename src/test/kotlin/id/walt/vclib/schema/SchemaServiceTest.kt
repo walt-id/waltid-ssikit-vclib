@@ -12,7 +12,7 @@ import io.kotest.core.spec.style.StringSpec
 import java.io.File
 
 data class DummyCredential(
-    @Json(name = "@context") @field:PropertyName(name = "@context")  @field:SchemaService.Required var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
+    @Json(name = "@context") @field:PropertyName(name = "@context") @field:SchemaService.Required var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
     @Json(serializeNull = false) @field:SchemaService.Required override var id: String? = null,
     @Json(serializeNull = false) @field:DateTimeFormat var issuanceDate: String? = null,
     @field:JsonIgnore var toIgnore: String? = null
@@ -25,50 +25,48 @@ data class DummyCredential(
 
 class SchemaServiceTest : StringSpec({
 
-    "Testing schema generation"   {
-        validateSchema(DummyCredential::class.java)
+    "testing schema generation"   {
+        generateSchema(DummyCredential::class.java)
     }
 
-    "Verify VerifiableDiploma schema"   {
-        validateSchema(VerifiableDiploma::class.java)
+    "verify VerifiableDiploma schema"   {
+        generateSchema(VerifiableDiploma::class.java)
     }
 
-    "Verify VerifiableAttestation schema"   {
-        validateSchema(VerifiableAttestation::class.java)
+    "verify VerifiableAttestation schema"   {
+        generateSchema(VerifiableAttestation::class.java)
     }
 
-    "Verify VerifiableAuthorization schema"   {
-        validateSchema(VerifiableAuthorization::class.java)
+    "verify VerifiableAuthorization schema"   {
+        generateSchema(VerifiableAuthorization::class.java)
     }
 
-    "Verify VerifiablePresentation schema"   {
-        validateSchema(VerifiablePresentation::class.java)
+    "verify VerifiablePresentation schema"   {
+        generateSchema(VerifiablePresentation::class.java)
     }
 
-    "Verify VerifiableId schema"   {
-        validateSchema(VerifiableId::class.java)
+    "verify VerifiableId schema"   {
+        generateSchema(VerifiableId::class.java)
     }
 
-    "Verify Europass schema"   {
-        validateSchema(Europass::class.java)
+    "verify Europass schema"   {
+        generateSchema(Europass::class.java)
     }
 
-    "Verify GaiaxCredential schema"   {
-        validateSchema(GaiaxCredential::class.java)
+    "verify GaiaxCredential schema"   {
+        generateSchema(GaiaxCredential::class.java)
     }
 
-    "Verify UniversityDegree schema"   {
-        validateSchema(UniversityDegree::class.java)
+    "verify UniversityDegree schema"   {
+        generateSchema(UniversityDegree::class.java)
     }
 
-    "Verify PermanentResidentCard schema"   {
-        validateSchema(PermanentResidentCard::class.java)
+    "verify PermanentResidentCard schema"   {
+        generateSchema(PermanentResidentCard::class.java)
     }
 })
 
-private inline fun <T : VerifiableCredential>validateSchema(vc: Class<T>) {
+private inline fun <T : VerifiableCredential> generateSchema(vc: Class<T>) {
     val schema = SchemaService.generateSchema(vc)
     File("src/test/resources/schemas/${vc.simpleName}.json").writeText(schema)
-    val expected = File("src/test/resources/schemas/${vc.simpleName}.json").readText()
-    schema shouldEqualJson expected
 }

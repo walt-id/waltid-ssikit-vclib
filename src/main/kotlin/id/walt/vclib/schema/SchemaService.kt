@@ -29,6 +29,7 @@ object SchemaService {
             .withRequiredCheck { getRequiredCheck(it) }
             .withStringFormatResolver { getFormatResolverCheck(it) }
             .withIgnoreCheck { getIgnoreCheck(it) }
+        configBuilder.with(Option.FORBIDDEN_ADDITIONAL_PROPERTIES_BY_DEFAULT)
         SchemaGenerator(configBuilder.build())
     }
 
@@ -62,8 +63,7 @@ object SchemaService {
 
     fun <T : Any> generateSchema(clazz: Class<T>): String = generator.generateSchema(clazz).toPrettyString()
 
-    fun generateSchema(vc: VerifiableCredential): String =
-        generateSchema(vc.javaClass)
+    fun generateSchema(vc: VerifiableCredential): String = generateSchema(vc.javaClass)
 
     fun validateSchema(jsonLdCredential: String): ValidationResult =
         validateSchema(jsonLdCredential, generateSchema(jsonLdCredential.toCredential()))

@@ -4,9 +4,12 @@ import com.beust.klaxon.Json
 import id.walt.vclib.model.Proof
 import id.walt.vclib.model.VerifiableCredential
 import id.walt.vclib.registry.VerifiableCredentialMetadata
-
+import id.walt.vclib.schema.SchemaService
+import id.walt.vclib.schema.SchemaService.PropertyName
+import id.walt.vclib.schema.SchemaService.Required
+import id.walt.vclib.schema.SchemaService.JsonIgnore
 data class PermanentResidentCard(
-    @Json(name = "@context")
+    @Json(name = "@context") @field:PropertyName(name = "@context") @field:Required
     var context: List<String> = listOf(
         "https://www.w3.org/2018/credentials/v1",
         "https://w3id.org/citizenship/v1"

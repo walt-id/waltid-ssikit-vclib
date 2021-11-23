@@ -10,4 +10,6 @@ object Helpers {
     fun VerifiableCredential.encode(): String = VcLibManager.getVerifiableCredentialString(this)
     fun VerifiableCredential.toMap(): Map<String, Any> = klaxon.parse(encode())!!
     fun String.toCredential() = VcLibManager.getVerifiableCredential(this)
+
+
 }

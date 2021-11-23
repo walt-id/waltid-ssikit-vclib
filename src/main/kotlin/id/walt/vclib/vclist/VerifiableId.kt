@@ -11,11 +11,14 @@ import id.walt.vclib.schema.SchemaService
 import id.walt.vclib.schema.SchemaService.JsonIgnore
 import java.text.SimpleDateFormat
 import java.util.*
+import id.walt.vclib.schema.SchemaService.PropertyName
+import id.walt.vclib.schema.SchemaService.Required
 
 private val dateFormat = SimpleDateFormat("YYYY-MM-dd'T'HH:mm:ss'Z'").also { it.timeZone = TimeZone.getTimeZone("UTC") }
 
 data class VerifiableId(
-    @Json(name = "@context") @field:SchemaService.PropertyName(name = "@context") @field:SchemaService.Required var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
+    @Json(name = "@context") @field:PropertyName(name = "@context") @field:Required
+    var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
     @Json(serializeNull = false) override var id: String? = null,
     @Json(serializeNull = false) var issuer: String? = null,
     @Json(serializeNull = false) var issuanceDate: String? = null,

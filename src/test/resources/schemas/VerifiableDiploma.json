@@ -2,7 +2,7 @@
   "$schema" : "http://json-schema.org/draft-07/schema#",
   "type" : "object",
   "properties" : {
-    "context" : {
+    "@context" : {
       "type" : "array",
       "items" : {
         "type" : "string"
@@ -17,7 +17,8 @@
         "type" : {
           "type" : "string"
         }
-      }
+      },
+      "additionalProperties" : false
     },
     "credentialStatus" : {
       "type" : "object",
@@ -28,7 +29,8 @@
         "type" : {
           "type" : "string"
         }
-      }
+      },
+      "additionalProperties" : false
     },
     "credentialSubject" : {
       "type" : "object",
@@ -54,7 +56,8 @@
                 "registration" : {
                   "type" : "string"
                 }
-              }
+              },
+              "additionalProperties" : false
             },
             "endedAtTime" : {
               "type" : "string"
@@ -71,7 +74,8 @@
             "startedAtTime" : {
               "type" : "string"
             }
-          }
+          },
+          "additionalProperties" : false
         },
         "dateOfBirth" : {
           "type" : "string"
@@ -94,7 +98,8 @@
             "title" : {
               "type" : "string"
             }
-          }
+          },
+          "additionalProperties" : false
         },
         "id" : {
           "type" : "string"
@@ -120,7 +125,8 @@
             "title" : {
               "type" : "string"
             }
-          }
+          },
+          "additionalProperties" : false
         },
         "learningSpecification" : {
           "type" : "object",
@@ -146,9 +152,11 @@
                 "type" : "string"
               }
             }
-          }
+          },
+          "additionalProperties" : false
         }
-      }
+      },
+      "additionalProperties" : false
     },
     "evidence" : {
       "type" : "object",
@@ -180,7 +188,8 @@
         "verifier" : {
           "type" : "string"
         }
-      }
+      },
+      "additionalProperties" : false
     },
     "expirationDate" : {
       "type" : "string"
@@ -221,7 +230,8 @@
         "verificationMethod" : {
           "type" : "string"
         }
-      }
+      },
+      "additionalProperties" : false
     },
     "type" : {
       "type" : "array",
@@ -233,5 +243,6 @@
       "type" : "string"
     }
   },
-  "required" : [ "type" ]
+  "required" : [ "@context", "type" ],
+  "additionalProperties" : false
 }

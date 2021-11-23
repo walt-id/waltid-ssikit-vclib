@@ -2,7 +2,7 @@
   "$schema" : "http://json-schema.org/draft-07/schema#",
   "type" : "object",
   "properties" : {
-    "context" : {
+    "@context" : {
       "type" : "array",
       "items" : {
         "type" : "string"
@@ -26,7 +26,8 @@
             "type" : "string"
           }
         }
-      }
+      },
+      "additionalProperties" : false
     },
     "id" : {
       "type" : "string"
@@ -61,7 +62,8 @@
         "verificationMethod" : {
           "type" : "string"
         }
-      }
+      },
+      "additionalProperties" : false
     },
     "type" : {
       "type" : "array",
@@ -70,5 +72,6 @@
       }
     }
   },
-  "required" : [ "type" ]
+  "required" : [ "@context", "type" ],
+  "additionalProperties" : false
 }
