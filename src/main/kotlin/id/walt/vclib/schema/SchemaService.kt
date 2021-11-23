@@ -2,9 +2,9 @@ package id.walt.vclib.schema
 
 import com.github.victools.jsonschema.generator.*
 import id.walt.vclib.Helpers.toCredential
-import id.walt.vclib.model.VerifiableCredential
 import id.walt.vclib.credentials.Europass
 import id.walt.vclib.credentials.VerifiableId
+import id.walt.vclib.model.VerifiableCredential
 import net.pwall.json.schema.JSONSchema
 import java.util.*
 

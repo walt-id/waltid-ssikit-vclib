@@ -2,11 +2,11 @@ package id.walt.vclib.vcs
 
 import id.walt.vclib.Helpers.encode
 import id.walt.vclib.VcLibManager
-import id.walt.vclib.model.Proof
-import id.walt.vclib.model.VerifiableCredential
 import id.walt.vclib.credentials.PermanentResidentCard
 import id.walt.vclib.credentials.VerifiableAuthorization
 import id.walt.vclib.credentials.VerifiablePresentation
+import id.walt.vclib.model.Proof
+import id.walt.vclib.model.VerifiableCredential
 import io.kotest.assertions.json.shouldNotContainJsonKey
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
