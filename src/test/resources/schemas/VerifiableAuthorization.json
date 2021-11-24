@@ -2,7 +2,7 @@
   "$schema" : "http://json-schema.org/draft-07/schema#",
   "type" : "object",
   "properties" : {
-    "context" : {
+    "@context" : {
       "type" : "array",
       "items" : {
         "type" : "string"
@@ -18,7 +18,7 @@
           "type" : "string"
         }
       },
-      "required" : [ "id", "type" ]
+      "additionalProperties" : false
     },
     "credentialStatus" : {
       "type" : "object",
@@ -30,7 +30,7 @@
           "type" : "string"
         }
       },
-      "required" : [ "id", "type" ]
+      "additionalProperties" : false
     },
     "credentialSubject" : {
       "type" : "object",
@@ -45,10 +45,10 @@
               "type" : "string"
             }
           },
-          "required" : [ "did" ]
+          "additionalProperties" : false
         }
       },
-      "required" : [ "id", "naturalPerson" ]
+      "additionalProperties" : false
     },
     "expirationDate" : {
       "type" : "string"
@@ -90,7 +90,7 @@
           "type" : "string"
         }
       },
-      "required" : [ "created", "creator", "domain", "jws", "nonce", "proofPurpose", "type", "verificationMethod" ]
+      "additionalProperties" : false
     },
     "type" : {
       "type" : "array",
@@ -102,5 +102,6 @@
       "type" : "string"
     }
   },
-  "required" : [ "context", "credentialSchema", "credentialStatus", "credentialSubject", "expirationDate", "id", "issuanceDate", "issuer", "proof", "type", "validFrom" ]
+  "required" : [ "@context", "type" ],
+  "additionalProperties" : false
 }

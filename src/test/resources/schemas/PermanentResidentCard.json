@@ -11,20 +11,20 @@
     "credentialSubject" : {
       "type" : "object",
       "properties" : {
-        "degree" : {
-          "type" : "object",
-          "properties" : {
-            "name" : {
-              "type" : "string"
-            },
-            "type" : {
-              "type" : "string"
-            }
-          },
-          "additionalProperties" : false
+        "birthDate" : {
+          "type" : "string"
+        },
+        "givenName" : {
+          "type" : "string"
         },
         "id" : {
           "type" : "string"
+        },
+        "type" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
         }
       },
       "additionalProperties" : false
@@ -32,17 +32,8 @@
     "id" : {
       "type" : "string"
     },
-    "issuanceDate" : {
-      "type" : "string"
-    },
     "issuer" : {
-      "type" : "object",
-      "properties" : {
-        "id" : {
-          "type" : "string"
-        }
-      },
-      "additionalProperties" : false
+      "type" : "string"
     },
     "proof" : {
       "type" : "object",

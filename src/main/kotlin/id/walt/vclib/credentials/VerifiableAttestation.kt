@@ -1,4 +1,4 @@
-package id.walt.vclib.vclist
+package id.walt.vclib.credentials
 
 import com.beust.klaxon.Json
 import id.walt.vclib.model.CredentialSchema
@@ -6,9 +6,11 @@ import id.walt.vclib.model.CredentialStatus
 import id.walt.vclib.model.Proof
 import id.walt.vclib.model.VerifiableCredential
 import id.walt.vclib.registry.VerifiableCredentialMetadata
+import id.walt.vclib.schema.SchemaService.PropertyName
+import id.walt.vclib.schema.SchemaService.Required
 
 data class VerifiableAttestation(
-    @Json(name = "@context")
+    @Json(name = "@context") @field:PropertyName(name = "@context") @field:Required
     var context: List<String>,
     override var id: String?, // education#higherEducation#3fea53a4-0432-4910-ac9c-69ah8da3c37f
     var issuer: String, // did:ebsi:2757945549477fc571663bee12042873fe555b674bd294a3

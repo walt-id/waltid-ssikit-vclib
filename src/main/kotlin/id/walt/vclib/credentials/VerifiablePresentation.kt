@@ -1,4 +1,4 @@
-package id.walt.vclib.vclist
+package id.walt.vclib.credentials
 
 import com.beust.klaxon.Json
 import com.nimbusds.jwt.SignedJWT
@@ -7,9 +7,11 @@ import id.walt.vclib.model.Proof
 import id.walt.vclib.model.VerifiableCredential
 import id.walt.vclib.registry.VerifiableCredentialMetadata
 import id.walt.vclib.schema.SchemaService.JsonIgnore
+import id.walt.vclib.schema.SchemaService.PropertyName
+import id.walt.vclib.schema.SchemaService.Required
 
 data class VerifiablePresentation(
-    @Json(name = "@context")
+    @Json(name = "@context") @field:PropertyName(name = "@context") @field:Required
     var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
     @Json(serializeNull = false) override var id: String? = null,
     @Json(serializeNull = false) var holder: String? = null,

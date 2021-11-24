@@ -2,7 +2,7 @@
   "$schema" : "http://json-schema.org/draft-07/schema#",
   "type" : "object",
   "properties" : {
-    "context" : {
+    "@context" : {
       "type" : "array",
       "items" : {
         "type" : "string"
@@ -18,7 +18,7 @@
           "type" : "string"
         }
       },
-      "required" : [ "id", "type" ]
+      "additionalProperties" : false
     },
     "credentialStatus" : {
       "type" : "object",
@@ -30,7 +30,7 @@
           "type" : "string"
         }
       },
-      "required" : [ "id", "type" ]
+      "additionalProperties" : false
     },
     "credentialSubject" : {
       "type" : "object",
@@ -57,7 +57,7 @@
                   "type" : "string"
                 }
               },
-              "required" : [ "eidasLegalIdentifier", "homepage", "id", "preferredName", "registration" ]
+              "additionalProperties" : false
             },
             "endedAtTime" : {
               "type" : "string"
@@ -75,7 +75,7 @@
               "type" : "string"
             }
           },
-          "required" : [ "awardingBody", "endedAtTime", "id", "identifier", "location", "startedAtTime" ]
+          "additionalProperties" : false
         },
         "dateOfBirth" : {
           "type" : "string"
@@ -99,7 +99,7 @@
               "type" : "string"
             }
           },
-          "required" : [ "description", "id", "title" ]
+          "additionalProperties" : false
         },
         "id" : {
           "type" : "string"
@@ -126,7 +126,7 @@
               "type" : "string"
             }
           },
-          "required" : [ "additionalNote", "description", "id", "title" ]
+          "additionalProperties" : false
         },
         "learningSpecification" : {
           "type" : "object",
@@ -153,10 +153,10 @@
               }
             }
           },
-          "required" : [ "ectsCreditPoints", "eqfLevel", "id", "iscedfCode", "nqfLevel" ]
+          "additionalProperties" : false
         }
       },
-      "required" : [ "awardingOpportunity", "dateOfBirth", "familyName", "givenNames", "gradingScheme", "id", "identifier", "learningAchievement", "learningSpecification" ]
+      "additionalProperties" : false
     },
     "evidence" : {
       "type" : "object",
@@ -189,7 +189,7 @@
           "type" : "string"
         }
       },
-      "required" : [ "documentPresence", "evidenceDocument", "id", "subjectPresence", "type", "verifier" ]
+      "additionalProperties" : false
     },
     "expirationDate" : {
       "type" : "string"
@@ -231,7 +231,7 @@
           "type" : "string"
         }
       },
-      "required" : [ "created", "creator", "domain", "jws", "nonce", "proofPurpose", "type", "verificationMethod" ]
+      "additionalProperties" : false
     },
     "type" : {
       "type" : "array",
@@ -243,5 +243,6 @@
       "type" : "string"
     }
   },
-  "required" : [ "context", "credentialSchema", "credentialStatus", "credentialSubject", "evidence", "expirationDate", "id", "issuanceDate", "issuer", "proof", "type", "validFrom" ]
+  "required" : [ "@context", "type" ],
+  "additionalProperties" : false
 }
