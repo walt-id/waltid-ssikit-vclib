@@ -4,11 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- Introduced 'Required' annotation for schema generation
-- Added FORBIDDEN_ADDITIONAL_PROPERTIES_BY_DEFAULT for all generated json schemas
-- Added schema-validation function to SchemaService
-- Updated template of VerifiableDiploma & University Degree
-- Added VcUtils (previously in SSI Kit)
+## [1.6.0] - 2021-11-24
+
+-   Introduced 'Required' annotation for schema generation
+-   Added FORBIDDEN_ADDITIONAL_PROPERTIES_BY_DEFAULT for all generated json schemas
+-   Added schema-validation function to SchemaService
+-   Updated template of VerifiableDiploma & University Degree
+-   Added VcUtils (previously in SSI Kit)
 
 ## [1.5.4] - 2021-11-20
 
@@ -123,7 +125,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.5.4...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.6.0...HEAD
+
+[1.6.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.5.4...1.6.0
 
 [1.5.4]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.5.3...1.5.4
 
