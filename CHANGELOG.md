@@ -4,8 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
--   Added schema-validation function to SchemaService
--   Updated template of VerifiableDiploma 
+- Introduced 'Required' annotation for schema generation
+- Added FORBIDDEN_ADDITIONAL_PROPERTIES_BY_DEFAULT for all generated json schemas
+- Added schema-validation function to SchemaService
+- Updated template of VerifiableDiploma & University Degree
+- Added VcUtils (previously in SSI Kit)
 
 ## [1.5.4] - 2021-11-20
 
