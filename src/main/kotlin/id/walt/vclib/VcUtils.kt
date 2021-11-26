@@ -21,6 +21,7 @@ object VcUtils {
             else -> SignedJWT.parse(vcObj.jwt).jwtClaimsSet.issuer
         }
         is GaiaxCredential -> vcObj.issuer
+        is GaiaxSD -> vcObj.issuer
         else -> {
             log.warn { "No getIssuer for ${vcObj.type.last()}!" }
             ""
@@ -36,6 +37,7 @@ object VcUtils {
         is VerifiableAttestation -> vcObj.credentialSubject!!.id
         is VerifiableAuthorization -> vcObj.credentialSubject.id
         is GaiaxCredential -> vcObj.credentialSubject.id
+        is GaiaxSD -> vcObj.credentialSubject.id
         is VerifiablePresentation -> vcObj.holder!!
         else -> {
             log.warn { "No getHolder for ${vcObj.type.last()}!" }
@@ -102,6 +104,7 @@ object VcUtils {
             is VerifiableAuthorization -> vc.proof!!.nonce
             is VerifiablePresentation -> vc.proof!!.nonce
             is GaiaxCredential -> vc.proof!!.nonce
+            is GaiaxSD -> vc.proof!!.nonce
             else -> {
                 log.warn { "No getCredentialSchema for ${vc.type.last()}!" }
                 null
