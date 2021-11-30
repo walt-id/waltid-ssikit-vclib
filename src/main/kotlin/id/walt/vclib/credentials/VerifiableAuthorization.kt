@@ -35,7 +35,7 @@ data class VerifiableAuthorization(
 
     companion object : VerifiableCredentialMetadata(
         type = listOf("VerifiableCredential", "VerifiableAuthorization"),
-        aliases = arrayOf(listOf("VerifiableCredential", "VerifiableAuthorisation")),
+        //aliases = arrayOf(listOf("VerifiableCredential", "VerifiableAuthorisation")),
         template = {
             VerifiableAuthorization(
                 id = "did:ebsi-eth:00000001/credentials/1872",
