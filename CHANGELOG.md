@@ -4,7 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- Added GaiaxSelfDescription credential
+## [1.6.1] - 2021-11-30
+
+-   Added GaiaxSelfDescription credential
 
 ## [1.6.0] - 2021-11-24
 
@@ -127,7 +129,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.6.0...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.6.1...HEAD
+
+[1.6.1]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.6.0...1.6.1
 
 [1.6.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.5.4...1.6.0
 
