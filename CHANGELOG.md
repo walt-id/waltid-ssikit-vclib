@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Added GaiaxSelfDescription credential
+
 ## [1.6.0] - 2021-11-24
 
 -   Introduced 'Required' annotation for schema generation

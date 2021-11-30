@@ -19,7 +19,7 @@ object Defaults {
             register<VerifiableId>(VerifiableId)
             register<VerifiableDiploma>(VerifiableDiploma)
             register<GaiaxCredential>(GaiaxCredential)
-            register<GaiaxSD>(GaiaxSD)
+            register<GaiaxSelfDescription>(GaiaxSelfDescription)
         }
     }
 

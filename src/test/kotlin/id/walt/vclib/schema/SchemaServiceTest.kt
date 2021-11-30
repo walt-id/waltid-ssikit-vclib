@@ -19,7 +19,7 @@ data class DummyCredential(
     companion object : VerifiableCredentialMetadata(
         type = listOf("VerifiableCredential", "VerifiableAttestation", "Dummy"),
         template = { DummyCredential() }
-    );
+    )
 }
 
 class SchemaServiceTest : StringSpec({
@@ -64,12 +64,12 @@ class SchemaServiceTest : StringSpec({
         generateSchema(GaiaxCredential::class.java)
     }
 
-    "verify GaiaxSD schema"   {
-        generateSchema(GaiaxSD::class.java)
+    "verify GaiaxSelfDescription schema"   {
+        generateSchema(GaiaxSelfDescription::class.java)
     }
 })
 
-private inline fun <T : VerifiableCredential> generateSchema(vc: Class<T>) {
+private fun <T : VerifiableCredential> generateSchema(vc: Class<T>) {
     val schema = SchemaService.generateSchema(vc)
     File("src/test/resources/schemas/${vc.simpleName}.json").writeText(schema)
 }

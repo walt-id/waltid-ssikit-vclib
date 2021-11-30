@@ -7,7 +7,7 @@ import id.walt.vclib.registry.VerifiableCredentialMetadata
 import id.walt.vclib.schema.SchemaService.PropertyName
 import id.walt.vclib.schema.SchemaService.Required
 
-data class GaiaxSD(
+data class GaiaxSelfDescription(
     @Json(name = "@context") @field:PropertyName(name = "@context") @field:Required
     var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
     override var id: String?,
@@ -32,9 +32,9 @@ data class GaiaxSD(
     )
 
     companion object : VerifiableCredentialMetadata(
-        type = listOf("VerifiableCredential", "GaiaxSD"),
+        type = listOf("VerifiableCredential", "GaiaxSelfDescription"),
         template = {
-            GaiaxSD(
+            GaiaxSelfDescription(
                 id = "did:ebsi-eth:00000001/credentials/1872",
                 issuer = "did:example:456",
                 issuanceDate = "2020-08-24T14:13:44Z",
