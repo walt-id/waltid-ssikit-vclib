@@ -8,39 +8,39 @@ import net.pwall.yaml.YAMLSimple.log
 
 object VcUtils {
 
-    fun getIssuer(vcObj: VerifiableCredential): String = when (vcObj) {
-        is Europass -> vcObj.issuer!!
-        is VerifiableId -> vcObj.issuer!!
-        is VerifiableDiploma -> vcObj.issuer!!
-        is PermanentResidentCard -> vcObj.issuer!!
-        is UniversityDegree -> vcObj.issuer.id
-        is VerifiableAttestation -> vcObj.issuer
-        is VerifiableAuthorization -> vcObj.issuer
-        is VerifiablePresentation -> when (vcObj.jwt) {
-            null -> vcObj.proof!!.creator!!
-            else -> SignedJWT.parse(vcObj.jwt).jwtClaimsSet.issuer
+    fun getIssuer(vc: VerifiableCredential): String = when (vc) {
+        is Europass -> vc.issuer!!
+        is VerifiableId -> vc.issuer!!
+        is VerifiableDiploma -> vc.issuer!!
+        is PermanentResidentCard -> vc.issuer!!
+        is UniversityDegree -> vc.issuer.id
+        is VerifiableAttestation -> vc.issuer
+        is VerifiableAuthorization -> vc.issuer
+        is VerifiablePresentation -> when (vc.jwt) {
+            null -> vc.proof!!.creator!!
+            else -> SignedJWT.parse(vc.jwt).jwtClaimsSet.issuer
         }
-        is GaiaxCredential -> vcObj.issuer
-        is GaiaxSD -> vcObj.issuer
+        is GaiaxCredential -> vc.issuer
+        is GaiaxSD -> vc.issuer
         else -> {
-            log.warn { "No getIssuer for ${vcObj.type.last()}!" }
+            log.warn { "No getIssuer for ${vc.type.last()}!" }
             ""
         }
     }
 
-    fun getSubject(vcObj: VerifiableCredential): String = when (vcObj) {
-        is Europass -> vcObj.credentialSubject!!.id!!
-        is VerifiableId -> vcObj.credentialSubject!!.id!!
-        is VerifiableDiploma -> vcObj.credentialSubject!!.id!!
-        is PermanentResidentCard -> vcObj.credentialSubject!!.id!!
-        is UniversityDegree -> vcObj.credentialSubject.id
-        is VerifiableAttestation -> vcObj.credentialSubject!!.id
-        is VerifiableAuthorization -> vcObj.credentialSubject.id
-        is GaiaxCredential -> vcObj.credentialSubject.id
-        is GaiaxSD -> vcObj.credentialSubject.id
-        is VerifiablePresentation -> vcObj.holder!!
+    fun getSubject(vc: VerifiableCredential): String = when (vc) {
+        is Europass -> vc.credentialSubject!!.id!!
+        is VerifiableId -> vc.credentialSubject!!.id!!
+        is VerifiableDiploma -> vc.credentialSubject!!.id!!
+        is PermanentResidentCard -> vc.credentialSubject!!.id!!
+        is UniversityDegree -> vc.credentialSubject.id
+        is VerifiableAttestation -> vc.credentialSubject!!.id
+        is VerifiableAuthorization -> vc.credentialSubject.id
+        is GaiaxCredential -> vc.credentialSubject.id
+        is GaiaxSD -> vc.credentialSubject.id
+        is VerifiablePresentation -> vc.holder!!
         else -> {
-            log.warn { "No getHolder for ${vcObj.type.last()}!" }
+            log.warn { "No getHolder for ${vc.type.last()}!" }
             ""
         }
     }
@@ -52,6 +52,8 @@ object VcUtils {
         is UniversityDegree -> vc.issuanceDate
         is VerifiableAttestation -> vc.issuanceDate
         is VerifiableAuthorization -> vc.issuanceDate
+        is GaiaxCredential -> vc.issuanceDate
+        is GaiaxSD -> vc.issuanceDate
         else -> {
             log.warn { "No getIssuanceDate for ${vc.type.last()}!" }
             ""
@@ -64,6 +66,8 @@ object VcUtils {
         is VerifiableDiploma -> vc.validFrom
         is VerifiableAttestation -> vc.validFrom
         is VerifiableAuthorization -> vc.validFrom
+        is GaiaxCredential -> vc.validFrom
+        is GaiaxSD -> vc.validFrom
         else -> {
             log.warn { "No getValidFrom for ${vc.type.last()}!" }
             ""
@@ -75,6 +79,8 @@ object VcUtils {
         is VerifiableId -> vc.expirationDate
         is VerifiableDiploma -> vc.expirationDate
         is VerifiableAuthorization -> vc.expirationDate
+        is GaiaxCredential -> vc.expirationDate
+        is GaiaxSD -> vc.expirationDate
         else -> {
             log.warn { "No getExpirationDate for ${vc.type.last()}!" }
             ""

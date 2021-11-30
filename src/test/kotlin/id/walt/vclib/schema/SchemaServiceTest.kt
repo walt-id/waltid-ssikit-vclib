@@ -52,16 +52,20 @@ class SchemaServiceTest : StringSpec({
         generateSchema(Europass::class.java)
     }
 
-    "verify GaiaxCredential schema"   {
-        generateSchema(GaiaxCredential::class.java)
-    }
-
     "verify UniversityDegree schema"   {
         generateSchema(UniversityDegree::class.java)
     }
 
     "verify PermanentResidentCard schema"   {
         generateSchema(PermanentResidentCard::class.java)
+    }
+
+    "verify GaiaxCredential schema"   {
+        generateSchema(GaiaxCredential::class.java)
+    }
+
+    "verify GaiaxSD schema"   {
+        generateSchema(GaiaxSD::class.java)
     }
 })
 

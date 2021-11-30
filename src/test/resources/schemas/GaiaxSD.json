@@ -8,68 +8,50 @@
         "type" : "string"
       }
     },
-    "credentialSchema" : {
-      "type" : "object",
-      "properties" : {
-        "id" : {
-          "type" : "string"
-        },
-        "type" : {
-          "type" : "string"
-        }
-      },
-      "additionalProperties" : false
-    },
-    "credentialStatus" : {
-      "type" : "object",
-      "properties" : {
-        "id" : {
-          "type" : "string"
-        },
-        "type" : {
-          "type" : "string"
-        }
-      },
-      "additionalProperties" : false
-    },
     "credentialSubject" : {
       "type" : "object",
       "properties" : {
-        "id" : {
-          "type" : "string"
-        }
-      },
-      "additionalProperties" : false
-    },
-    "evidence" : {
-      "type" : "array",
-      "items" : {
-        "type" : "object",
-        "properties" : {
-          "documentPresence" : {
-            "type" : "string"
-          },
-          "evidenceDocument" : {
-            "type" : "string"
-          },
-          "id" : {
-            "type" : "string"
-          },
-          "subjectPresence" : {
-            "type" : "string"
-          },
-          "type" : {
-            "type" : "array",
-            "items" : {
-              "type" : "string"
-            }
-          },
-          "verifier" : {
+        "dependsOn" : {
+          "type" : "array",
+          "items" : {
             "type" : "string"
           }
         },
-        "additionalProperties" : false
-      }
+        "description" : {
+          "type" : "string"
+        },
+        "hasCertifications" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "hasMarketingImage" : {
+          "type" : "string"
+        },
+        "hasName" : {
+          "type" : "string"
+        },
+        "hasVersion" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "providedBy" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "utilizes" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      },
+      "additionalProperties" : false
     },
     "expirationDate" : {
       "type" : "string"
