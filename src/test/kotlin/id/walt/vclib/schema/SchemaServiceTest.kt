@@ -40,10 +40,6 @@ class SchemaServiceTest : StringSpec({
         generateSchema(VerifiableAuthorization::class.java)
     }
 
-    "verify VerifiablePresentation schema"   {
-        generateSchema(VerifiablePresentation::class.java)
-    }
-
     "verify VerifiableId schema"   {
         generateSchema(VerifiableId::class.java)
     }

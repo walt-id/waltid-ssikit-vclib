@@ -15,7 +15,7 @@ data class VerifiablePresentation(
     var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
     @Json(serializeNull = false) override var id: String? = null,
     @Json(serializeNull = false) var holder: String? = null,
-    @NestedVCs var verifiableCredential: List<VerifiableCredential>,
+    @NestedVCs @field:JsonIgnore var verifiableCredential: List<VerifiableCredential>,
     @Json(serializeNull = false) var proof: Proof? = null
 ) : VerifiableCredential(type) {
     companion object : VerifiableCredentialMetadata(

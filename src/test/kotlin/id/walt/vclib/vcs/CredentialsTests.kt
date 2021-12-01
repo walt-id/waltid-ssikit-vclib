@@ -19,6 +19,7 @@ class CredentialsTests : StringSpec({
         File("src/test/resources/serialized/VerifiableId.json").writeText(VerifiableId.template?.invoke()!!.encode())
         File("src/test/resources/serialized/GaiaxCredential.json").writeText(GaiaxCredential.template?.invoke()!!.encode())
         File("src/test/resources/serialized/GaiaxSelfDescription.json").writeText(GaiaxSelfDescription.template?.invoke()!!.encode())
+        File("src/test/resources/serialized/VerifiablePresentation.json").writeText(VerifiablePresentation.template?.invoke()!!.encode())
     }
 
     "parse all serialized VCs" {

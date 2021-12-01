@@ -29,4 +29,10 @@ class SchemaValidationTest : StringSpec({
         SchemaService.validateSchema(vc).errors?.forEach{e -> println(e)}
         SchemaService.validateSchema(vc).valid shouldBe true
     }
+
+    "testing VerifiablePresentation" {
+        val vc =   File("$TEST_RESOURCES/serialized/VerifiablePresentation.json").readText()
+        SchemaService.validateSchema(vc).errors?.forEach{e -> println(e)}
+        SchemaService.validateSchema(vc).valid shouldBe true
+    }
 })

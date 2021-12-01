@@ -4,6 +4,7 @@ import com.github.victools.jsonschema.generator.*
 import id.walt.vclib.Helpers.toCredential
 import id.walt.vclib.credentials.Europass
 import id.walt.vclib.credentials.VerifiableId
+import id.walt.vclib.credentials.VerifiablePresentation
 import id.walt.vclib.model.VerifiableCredential
 import net.pwall.json.schema.JSONSchema
 import java.util.*
@@ -66,7 +67,12 @@ object SchemaService {
     fun generateSchema(vc: VerifiableCredential): String = generateSchema(vc.javaClass)
 
     fun validateSchema(jsonLdCredential: String): ValidationResult =
-        validateSchema(jsonLdCredential, generateSchema(jsonLdCredential.toCredential()))
+        validateSchema(jsonLdCredential, jsonLdCredential.toCredential().let {
+            when (it) {
+                is VerifiablePresentation -> vpSchema // for VerifiablePresentations we take the pre-baked schema
+                else -> generateSchema(it)
+            }
+        })
 
     fun validateSchema(jsonLdCredential: String, schema: String): ValidationResult {
 
@@ -77,4 +83,61 @@ object SchemaService {
 
         return ValidationResult(basicOutput.valid, errors)
     }
+
+    val vpSchema = "{\n" +
+            "  \"\$schema\" : \"http://json-schema.org/draft-07/schema#\",\n" +
+            "  \"type\" : \"object\",\n" +
+            "  \"properties\" : {\n" +
+            "    \"@context\" : {\n" +
+            "      \"type\" : \"array\",\n" +
+            "      \"items\" : {\n" +
+            "        \"type\" : \"string\"\n" +
+            "      }\n" +
+            "    },\n" +
+            "    \"holder\" : {\n" +
+            "      \"type\" : \"string\"\n" +
+            "    },\n" +
+            "    \"id\" : {\n" +
+            "      \"type\" : \"string\"\n" +
+            "    },\n" +
+            "    \"proof\" : {\n" +
+            "      \"type\" : \"object\",\n" +
+            "      \"properties\" : {\n" +
+            "        \"created\" : {\n" +
+            "          \"type\" : \"string\"\n" +
+            "        },\n" +
+            "        \"creator\" : {\n" +
+            "          \"type\" : \"string\"\n" +
+            "        },\n" +
+            "        \"domain\" : {\n" +
+            "          \"type\" : \"string\"\n" +
+            "        },\n" +
+            "        \"jws\" : {\n" +
+            "          \"type\" : \"string\"\n" +
+            "        },\n" +
+            "        \"nonce\" : {\n" +
+            "          \"type\" : \"string\"\n" +
+            "        },\n" +
+            "        \"proofPurpose\" : {\n" +
+            "          \"type\" : \"string\"\n" +
+            "        },\n" +
+            "        \"type\" : {\n" +
+            "          \"type\" : \"string\"\n" +
+            "        },\n" +
+            "        \"verificationMethod\" : {\n" +
+            "          \"type\" : \"string\"\n" +
+            "        }\n" +
+            "      },\n" +
+            "      \"additionalProperties\" : false\n" +
+            "    },\n" +
+            "    \"type\" : {\n" +
+            "      \"type\" : \"array\",\n" +
+            "      \"items\" : {\n" +
+            "        \"type\" : \"string\"\n" +
+            "      }\n" +
+            "    }\n" +
+            "  },\n" +
+            "  \"required\" : [ \"@context\", \"type\" ],\n" +
+            "  \"additionalProperties\" : true\n" +
+            "}"
 }
