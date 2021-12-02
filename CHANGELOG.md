@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Fixed Json-schema verification for VerifiablePresentations
+- Added VerifiableVaccinationCertificate 
+
 ## [1.6.1] - 2021-11-30
 
 -   Added GaiaxSelfDescription credential

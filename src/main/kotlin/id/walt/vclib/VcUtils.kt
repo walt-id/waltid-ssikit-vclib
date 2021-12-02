@@ -22,6 +22,7 @@ object VcUtils {
         }
         is GaiaxCredential -> vc.issuer
         is GaiaxSelfDescription -> vc.issuer
+        is VerifiableVaccinationCertificate -> vc.issuer!!
         else -> {
             log.warn { "No getIssuer for ${vc.type.last()}!" }
             ""
@@ -38,6 +39,7 @@ object VcUtils {
         is VerifiableAuthorization -> vc.credentialSubject.id
         is GaiaxCredential -> vc.credentialSubject.id
         is GaiaxSelfDescription -> vc.credentialSubject.id
+        is VerifiableVaccinationCertificate -> vc.credentialSubject!!.id!!
         is VerifiablePresentation -> vc.holder!!
         else -> {
             log.warn { "No getHolder for ${vc.type.last()}!" }
@@ -53,6 +55,7 @@ object VcUtils {
         is VerifiableAttestation -> vc.issuanceDate
         is VerifiableAuthorization -> vc.issuanceDate
         is GaiaxCredential -> vc.issuanceDate
+        is VerifiableVaccinationCertificate -> vc.issuanceDate
         is GaiaxSelfDescription -> vc.issuanceDate
         else -> {
             log.warn { "No getIssuanceDate for ${vc.type.last()}!" }
@@ -67,6 +70,7 @@ object VcUtils {
         is VerifiableAttestation -> vc.validFrom
         is VerifiableAuthorization -> vc.validFrom
         is GaiaxCredential -> vc.validFrom
+        is VerifiableVaccinationCertificate -> vc.validFrom
         is GaiaxSelfDescription -> vc.validFrom
         else -> {
             log.warn { "No getValidFrom for ${vc.type.last()}!" }
@@ -80,6 +84,7 @@ object VcUtils {
         is VerifiableDiploma -> vc.expirationDate
         is VerifiableAuthorization -> vc.expirationDate
         is GaiaxCredential -> vc.expirationDate
+        is VerifiableVaccinationCertificate -> vc.expirationDate
         is GaiaxSelfDescription -> vc.expirationDate
         else -> {
             log.warn { "No getExpirationDate for ${vc.type.last()}!" }
@@ -93,6 +98,7 @@ object VcUtils {
         is VerifiableDiploma -> vc.credentialSchema
         is VerifiableAttestation -> vc.credentialSchema
         is VerifiableAuthorization -> vc.credentialSchema
+        is VerifiableVaccinationCertificate -> vc.credentialSchema
         else -> {
             log.warn { "No getCredentialSchema for ${vc.type.last()}!" }
             null
@@ -110,6 +116,7 @@ object VcUtils {
             is VerifiableAuthorization -> vc.proof!!.nonce
             is VerifiablePresentation -> vc.proof!!.nonce
             is GaiaxCredential -> vc.proof!!.nonce
+            is VerifiableVaccinationCertificate -> vc.proof!!.nonce
             is GaiaxSelfDescription -> vc.proof!!.nonce
             else -> {
                 log.warn { "No getCredentialSchema for ${vc.type.last()}!" }

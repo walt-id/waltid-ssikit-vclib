@@ -29,18 +29,6 @@ class TemplateTests : StringSpec({
         verifiableDiploma.type shouldBe verifiableDiplomaTemplateType
     }
 
-    "test aliases loading by type" {
-        val vaMetadata = VerifiableAuthorization.Companion
-        val primaryType = vaMetadata.type
-        val aliasType = vaMetadata.aliases.first()
-
-        val template1 = VcTemplateManager.loadTemplate(primaryType)
-        template1.type shouldBe primaryType
-
-        val template2 = VcTemplateManager.loadTemplate(aliasType)
-        template2.type shouldBe primaryType
-    }
-
     "loading default definitions by name" {
         println("Loading Europass by name")
         val europass = VcTemplateManager.loadTemplate("Europass")
@@ -48,13 +36,26 @@ class TemplateTests : StringSpec({
         europass.type shouldBe europassTemplateType
     }
 
-    "test aliases loading by name" {
-        val vaMetadata = VerifiableAuthorization.Companion
-        val primaryType = vaMetadata.type
-        val aliasType = vaMetadata.aliases.first()
-
-        val template1 = VcTemplateManager.loadTemplate("VerifiableAuthorization")
-        template1.type shouldNotBe aliasType
-        template1.type shouldBe primaryType
-    }
+//    Loading by alias is currently not required
+//    "test aliases loading by type" {
+//        val vaMetadata = VerifiableAuthorization.Companion
+//        val primaryType = vaMetadata.type
+//        val aliasType = vaMetadata.aliases.first()
+//
+//        val template1 = VcTemplateManager.loadTemplate(primaryType)
+//        template1.type shouldBe primaryType
+//
+//        val template2 = VcTemplateManager.loadTemplate(aliasType)
+//        template2.type shouldBe primaryType
+//    }
+//
+//    "test aliases loading by name" {
+//        val vaMetadata = VerifiableAuthorization.Companion
+//        val primaryType = vaMetadata.type
+//        val aliasType = vaMetadata.aliases.first()
+//
+//        val template1 = VcTemplateManager.loadTemplate("VerifiableAuthorization")
+//        template1.type shouldNotBe aliasType
+//        template1.type shouldBe primaryType
+//    }
 })
