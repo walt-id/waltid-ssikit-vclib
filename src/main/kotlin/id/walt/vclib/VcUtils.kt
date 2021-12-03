@@ -22,6 +22,7 @@ object VcUtils {
         }
         is GaiaxCredential -> vc.issuer
         is GaiaxSelfDescription -> vc.issuer
+        is GaiaxServiceOffering -> vc.issuer
         is VerifiableVaccinationCertificate -> vc.issuer!!
         else -> {
             log.warn { "No getIssuer for ${vc.type.last()}!" }
@@ -39,6 +40,7 @@ object VcUtils {
         is VerifiableAuthorization -> vc.credentialSubject.id
         is GaiaxCredential -> vc.credentialSubject.id
         is GaiaxSelfDescription -> vc.credentialSubject.id
+        is GaiaxServiceOffering -> vc.credentialSubject.id
         is VerifiableVaccinationCertificate -> vc.credentialSubject!!.id!!
         is VerifiablePresentation -> vc.holder!!
         else -> {
@@ -57,6 +59,7 @@ object VcUtils {
         is GaiaxCredential -> vc.issuanceDate
         is VerifiableVaccinationCertificate -> vc.issuanceDate
         is GaiaxSelfDescription -> vc.issuanceDate
+        is GaiaxServiceOffering -> vc.issuanceDate
         else -> {
             log.warn { "No getIssuanceDate for ${vc.type.last()}!" }
             ""
@@ -72,6 +75,7 @@ object VcUtils {
         is GaiaxCredential -> vc.validFrom
         is VerifiableVaccinationCertificate -> vc.validFrom
         is GaiaxSelfDescription -> vc.validFrom
+        is GaiaxServiceOffering -> vc.validFrom
         else -> {
             log.warn { "No getValidFrom for ${vc.type.last()}!" }
             ""
@@ -86,6 +90,7 @@ object VcUtils {
         is GaiaxCredential -> vc.expirationDate
         is VerifiableVaccinationCertificate -> vc.expirationDate
         is GaiaxSelfDescription -> vc.expirationDate
+        is GaiaxServiceOffering -> vc.expirationDate
         else -> {
             log.warn { "No getExpirationDate for ${vc.type.last()}!" }
             ""
@@ -118,6 +123,7 @@ object VcUtils {
             is GaiaxCredential -> vc.proof!!.nonce
             is VerifiableVaccinationCertificate -> vc.proof!!.nonce
             is GaiaxSelfDescription -> vc.proof!!.nonce
+            is GaiaxServiceOffering -> vc.proof!!.nonce
             else -> {
                 log.warn { "No getCredentialSchema for ${vc.type.last()}!" }
                 null
