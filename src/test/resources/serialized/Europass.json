@@ -1,1 +1,66 @@
-{"@context" : ["https://www.w3.org/2018/credentials/v1"], "credentialSchema" : {"id" : "https://essif.europa.eu/trusted-schemas-registry/v1/schemas/to_be_obtained_after_registration_of_the_schema", "type" : "JsonSchemaValidator2018"}, "credentialStatus" : {"id" : "https://essif.europa.eu/status/education#higherEducation#51e42fda-cb0a-4333-b6a6-35cb147e1a88", "type" : "CredentialsStatusList2020"}, "credentialSubject" : {"awardingOpportunity" : {"awardingBody" : {"eidasLegalIdentifier" : "Unknown", "homepage" : "https://leaston.bcdiploma.com/", "id" : "did:ebsi:2LGKvDMrNUPR6FhSNrXzQQ1h295zr4HwoX9UqvwAsenSKHe9", "preferredName" : "Leaston University", "registration" : "0597065J"}, "endedAtTime" : "2020-11-03T00:00:00Z", "id" : "https://leaston.bcdiploma.com/law-economics-management#AwardingOpportunity", "identifier" : "https://certificate-demo.bcdiploma.com/check/87ED2F2270E6C41456E94B86B9D9115B4E35BCCAD200A49B846592C14F79C86BV1Fnbllta0NZTnJkR3lDWlRmTDlSRUJEVFZISmNmYzJhUU5sZUJ5Z2FJSHpWbmZZ", "location" : "FRANCE", "startedAtTime" : "Unknown"}, "dateOfBirth" : "1993-04-08", "familyName" : "DOE", "givenNames" : "Jane", "gradingScheme" : {"id" : "https://leaston.bcdiploma.com/law-economics-management#GradingScheme", "title" : "Lower Second-Class Honours"}, "id" : "did:ebsi:22AhtW7XMssv7es4YcQTdV2MCM3c8b1VsiBfi5weHsjcCY9o", "identifier" : "0904008084H", "learningAchievement" : {"additionalNote" : ["DISTRIBUTION MANAGEMENT"], "description" : "MARKETING AND SALES", "id" : "https://leaston.bcdiploma.com/law-economics-management#LearningAchievment", "title" : "MASTERS LAW, ECONOMICS AND MANAGEMENT"}, "learningSpecification" : {"ECTSCreditPoints" : 120, "EQFLevel" : 7, "ISCEDFCode" : ["7"], "NQFLevel" : ["7"], "id" : "https://leaston.bcdiploma.com/law-economics-management#LearningSpecification"}}, "id" : "education#higherEducation#51e42fda-cb0a-4333-b6a6-35cb147e1a88", "issuanceDate" : "2020-11-03T00:00:00Z", "issuer" : "did:ebsi:2LGKvDMrNUPR6FhSNrXzQQ1h295zr4HwoX9UqvwAsenSKHe9", "validFrom" : "2020-11-03T00:00:00Z", "type" : ["VerifiableCredential", "VerifiableAttestation", "Europass"]}
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1"
+  ],
+  "credentialSchema": {
+    "id": "https://essif.europa.eu/trusted-schemas-registry/v1/schemas/to_be_obtained_after_registration_of_the_schema",
+    "type": "JsonSchemaValidator2018"
+  },
+  "credentialStatus": {
+    "id": "https://essif.europa.eu/status/education#higherEducation#51e42fda-cb0a-4333-b6a6-35cb147e1a88",
+    "type": "CredentialsStatusList2020"
+  },
+  "credentialSubject": {
+    "awardingOpportunity": {
+      "awardingBody": {
+        "eidasLegalIdentifier": "Unknown",
+        "homepage": "https://leaston.bcdiploma.com/",
+        "id": "did:ebsi:2LGKvDMrNUPR6FhSNrXzQQ1h295zr4HwoX9UqvwAsenSKHe9",
+        "preferredName": "Leaston University",
+        "registration": "0597065J"
+      },
+      "endedAtTime": "2020-11-03T00:00:00Z",
+      "id": "https://leaston.bcdiploma.com/law-economics-management#AwardingOpportunity",
+      "identifier": "https://certificate-demo.bcdiploma.com/check/87ED2F2270E6C41456E94B86B9D9115B4E35BCCAD200A49B846592C14F79C86BV1Fnbllta0NZTnJkR3lDWlRmTDlSRUJEVFZISmNmYzJhUU5sZUJ5Z2FJSHpWbmZZ",
+      "location": "FRANCE",
+      "startedAtTime": "Unknown"
+    },
+    "dateOfBirth": "1993-04-08",
+    "familyName": "DOE",
+    "givenNames": "Jane",
+    "gradingScheme": {
+      "id": "https://leaston.bcdiploma.com/law-economics-management#GradingScheme",
+      "title": "Lower Second-Class Honours"
+    },
+    "id": "did:ebsi:22AhtW7XMssv7es4YcQTdV2MCM3c8b1VsiBfi5weHsjcCY9o",
+    "identifier": "0904008084H",
+    "learningAchievement": {
+      "additionalNote": [
+        "DISTRIBUTION MANAGEMENT"
+      ],
+      "description": "MARKETING AND SALES",
+      "id": "https://leaston.bcdiploma.com/law-economics-management#LearningAchievment",
+      "title": "MASTERS LAW, ECONOMICS AND MANAGEMENT"
+    },
+    "learningSpecification": {
+      "ECTSCreditPoints": 120,
+      "EQFLevel": 7,
+      "ISCEDFCode": [
+        "7"
+      ],
+      "NQFLevel": [
+        "7"
+      ],
+      "id": "https://leaston.bcdiploma.com/law-economics-management#LearningSpecification"
+    }
+  },
+  "id": "education#higherEducation#51e42fda-cb0a-4333-b6a6-35cb147e1a88",
+  "issuanceDate": "2020-11-03T00:00:00Z",
+  "issuer": "did:ebsi:2LGKvDMrNUPR6FhSNrXzQQ1h295zr4HwoX9UqvwAsenSKHe9",
+  "validFrom": "2020-11-03T00:00:00Z",
+  "type": [
+    "VerifiableCredential",
+    "VerifiableAttestation",
+    "Europass"
+  ]
+}
