@@ -20,6 +20,7 @@ object Defaults {
             register<VerifiableDiploma>(VerifiableDiploma)
             register<GaiaxCredential>(GaiaxCredential)
             register<GaiaxSelfDescription>(GaiaxSelfDescription)
+            register<VerifiableVaccinationCertificate>(VerifiableVaccinationCertificate)
         }
     }
 
