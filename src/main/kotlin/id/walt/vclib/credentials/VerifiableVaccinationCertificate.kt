@@ -126,7 +126,7 @@ data class VerifiableVaccinationCertificate(
             @Json(serializeNull = false) var nextVaccinationDate: String? = null
         ) {
             data class DiseaseOrAgentTargeted(
-                @Json(serializeNull = false) var code: String,
+                @Json(serializeNull = false) var code: String? = null,
                 @Json(serializeNull = false) var system: String? = null,
                 @Json(serializeNull = false) var version: String? = null
             )
