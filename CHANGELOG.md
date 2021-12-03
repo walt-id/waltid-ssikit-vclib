@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 
 - Fixed Json-schema verification for VerifiablePresentations
 - Added VerifiableVaccinationCertificate 
+- Addded GaiaxServiceOffering
 
 ## [1.6.1] - 2021-11-30
 
