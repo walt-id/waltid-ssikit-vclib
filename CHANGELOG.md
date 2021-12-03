@@ -4,9 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- Fixed Json-schema verification for VerifiablePresentations
-- Added VerifiableVaccinationCertificate 
-- Addded GaiaxServiceOffering
+## [1.6.2] - 2021-12-03
+
+-   Fixed Json-schema verification for VerifiablePresentations
+-   Added VerifiableVaccinationCertificate 
+-   Addded GaiaxServiceOffering
 
 ## [1.6.1] - 2021-11-30
 
@@ -133,7 +135,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.6.1...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.6.2...HEAD
+
+[1.6.2]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.6.1...1.6.2
 
 [1.6.1]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.6.0...1.6.1
 
