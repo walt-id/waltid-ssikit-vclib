@@ -33,59 +33,45 @@ data class VerifiableVaccinationCertificate(
         type = listOf("VerifiableCredential", "VerifiableAttestation", "VerifiableVaccinationCertificate"),
         template = {
             VerifiableVaccinationCertificate(
-                id = "education#higherEducation#392ac7f6-399a-437b-a268-4691ead8f176",
+                id = "covidvaccination#392ac7f6-399a-437b-a268-4691ead8f176",
                 issuer = "did:ebsi:2A9BZ9SUe6BatacSpvs1V5CdjHvLpQ7bEsi2Jb6LdHKnQxaN",
                 issuanceDate = "2021-08-31T00:00:00Z",
                 expirationDate = "2022-08-31T00:00:00Z",
                 validFrom = "2021-08-31T00:00:00Z",
                 credentialSubject = CredentialSubject(
                     id = "did:ebsi:2AEMAqXWKYMu1JHPAgGcga4dxu7ThgfgN95VyJBJGZbSJUtp",
-                    identifier = "0904008084H",
                     givenNames = "Jane",
                     familyName = "DOE",
                     dateOfBirth = "1993-04-08",
-                    gradingScheme = CredentialSubject.GradingScheme(
-                        id = "https://leaston.bcdiploma.com/law-economics-management#GradingScheme",
-                        title = "Lower Second-Class Honours"
-                    ),
-                    learningAchievement = CredentialSubject.LearningAchievement(
-                        id = "https://leaston.bcdiploma.com/law-economics-management#LearningAchievment",
-                        title = "MASTERS LAW, ECONOMICS AND MANAGEMENT",
-                        description = "MARKETING AND SALES",
-                        additionalNote = listOf("DISTRIBUTION MANAGEMENT")
-                    ),
-                    awardingOpportunity = CredentialSubject.AwardingOpportunity(
-                        id = "https://leaston.bcdiploma.com/law-economics-management#AwardingOpportunity",
-                        identifier = "https://certificate-demo.bcdiploma.com/check/87ED2F2270E6C41456E94B86B9D9115B4E35BCCAD200A49B846592C14F79C86BV1Fnbllta0NZTnJkR3lDWlRmTDlSRUJEVFZISmNmYzJhUU5sZUJ5Z2FJSHpWbmZZ",
-                        awardingBody = CredentialSubject.AwardingOpportunity.AwardingBody(
-                            id = "did:ebsi:2A9BZ9SUe6BatacSpvs1V5CdjHvLpQ7bEsi2Jb6LdHKnQxaN",
-                            eidasLegalIdentifier = "Unknown",
-                            registration = "0597065J",
-                            preferredName = "Leaston University",
-                            homepage = "https://leaston.bcdiploma.com/"
-                        ),
-                        location = "FRANCE",
-                        startedAtTime = "2019-09-02T00:00:00Z",
-                        endedAtTime = "2020-06-26T00:00:00Z"
-                    ),
-                    learningSpecification = CredentialSubject.LearningSpecification(
-                        id = "https://leaston.bcdiploma.com/law-economics-management#LearningSpecification",
-                        iscedfCode = listOf(
-                            "7"
-                        ),
-                        ectsCreditPoints = 120,
-                        eqfLevel = 7,
-                        nqfLevel = listOf(
-                            "7"
+                    personIdentifier = "optional The type of identifier and identifier of the person, according to the policies applicable in each country. Examples are citizen ID and/or document number (ID- card/passport) or identifier within the health system/IIS/e-registry.",
+                    personSex = "optional",
+                    vaccinationProphylaxisInformation = listOf(
+                        CredentialSubject.VaccinationProphylaxisInformation(
+                            CredentialSubject.VaccinationProphylaxisInformation.DiseaseOrAgentTargeted(
+                                code = "840539006",
+                                system = "2.16.840.1.113883. 6.96",
+                                version = "2021-01-31"
+                            ),
+                            vaccineOrProphylaxis = "1119349007 COVID-19 example vaccine",
+                            vaccineMedicinalProduct = "VACCINE concentrate for dispersion for injection",
+                            marketingAuthorizationHolder = "Example Vaccine Manufacturing Company",
+                            doseNumber = "1",
+                            totalSeriesOfDoses = "2",
+                            batchNumber = "optional 1234",
+                            dateOfVaccination = "2021-02-12",
+                            administeringCentre = "Name/code of administering centre or a health authority responsible for the vaccination event",
+                            countryOfVaccination = "DE",
+                            nextVaccinationDate = "optional - 2021-03-28"
                         )
-                    )
+                    ),
+                    uniqueCertificateIdentifier = "UVCI0904008084H"
                 ),
                 credentialSchema = CredentialSchema(
                     id = "https://api.preprod.ebsi.eu/trusted-schemas-registry/v1/schemas/0xbf78fc08a7a9f28f5479f58dea269d3657f54f13ca37d380cd4e92237fb691dd",
                     type = "JsonSchemaValidator2018"
                 ),
                 credentialStatus = CredentialStatus(
-                    id = "https://essif.europa.eu/status/education#higherEducation#392ac7f6-399a-437b-a268-4691ead8f176",
+                    id = "https://essif.europa.eu/status/covidvaccination#392ac7f6-399a-437b-a268-4691ead8f176",
                     type = "CredentialStatusList2020"
                 ),
                 evidence = Evidence(
@@ -117,52 +103,34 @@ data class VerifiableVaccinationCertificate(
 
     data class CredentialSubject(
         @Json(serializeNull = false) var id: String? = null,
-        var identifier: String? = null,
-        var givenNames: String? = null,
-        var familyName: String? = null,
-        var dateOfBirth: String? = null,
-        var gradingScheme: GradingScheme? = null,
-        var learningAchievement: LearningAchievement? = null,
-        var awardingOpportunity: AwardingOpportunity? = null,
-        var learningSpecification: LearningSpecification? = null
+        @Json(serializeNull = false) var givenNames: String? = null,
+        @Json(serializeNull = false) var familyName: String? = null,
+        @Json(serializeNull = false) var dateOfBirth: String? = null,
+        @Json(serializeNull = false) var personIdentifier: String? = null,
+        @Json(serializeNull = false) var personSex: String? = null,
+        var vaccinationProphylaxisInformation: List<VaccinationProphylaxisInformation>? = null,
+        @Json(serializeNull = false) var uniqueCertificateIdentifier: String? = null,
     ) {
-        data class GradingScheme(
-            var id: String,
-            @Json(serializeNull = false) var title: String? = null,
-            @Json(serializeNull = false) var description: String? = null
-        )
 
-        data class LearningAchievement(
-            var id: String,
-            var title: String,
-            @Json(serializeNull = false) var description: String? = null,
-            @Json(serializeNull = false) var additionalNote: List<String>? = null
-        )
-
-        data class AwardingOpportunity(
-            var id: String,
-            var identifier: String,
-            var awardingBody: AwardingBody,
-            @Json(serializeNull = false) var location: String? = null,
-            @Json(serializeNull = false) var startedAtTime: String? = null,
-            @Json(serializeNull = false) var endedAtTime: String? = null
+        data class VaccinationProphylaxisInformation(
+            var diseaseOrAgentTargeted: DiseaseOrAgentTargeted,
+            @Json(serializeNull = false) var vaccineOrProphylaxis: String? = null,
+            @Json(serializeNull = false) var vaccineMedicinalProduct: String? = null,
+            @Json(serializeNull = false) var marketingAuthorizationHolder: String? = null,
+            @Json(serializeNull = false) var doseNumber: String? = null,
+            @Json(serializeNull = false) var totalSeriesOfDoses: String? = null,
+            @Json(serializeNull = false) var batchNumber: String? = null,
+            @Json(serializeNull = false) var dateOfVaccination: String? = null,
+            @Json(serializeNull = false) var administeringCentre: String? = null,
+            @Json(serializeNull = false) var countryOfVaccination: String? = null,
+            @Json(serializeNull = false) var nextVaccinationDate: String? = null
         ) {
-            data class AwardingBody(
-                var id: String,
-                @Json(serializeNull = false) var eidasLegalIdentifier: String? = null,
-                var registration: String,
-                var preferredName: String,
-                @Json(serializeNull = false) var homepage: String? = null
+            data class DiseaseOrAgentTargeted(
+                @Json(serializeNull = false) var code: String,
+                @Json(serializeNull = false) var system: String? = null,
+                @Json(serializeNull = false) var version: String? = null
             )
         }
-
-        data class LearningSpecification(
-            var id: String,
-            var iscedfCode: List<String>,
-            @Json(serializeNull = false) var ectsCreditPoints: Int? = null,
-            @Json(serializeNull = false) var eqfLevel: Int? = null,
-            var nqfLevel: List<String>
-        )
     }
 
     data class Evidence(

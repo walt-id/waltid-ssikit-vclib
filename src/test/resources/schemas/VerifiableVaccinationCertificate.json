@@ -35,48 +35,6 @@
     "credentialSubject" : {
       "type" : "object",
       "properties" : {
-        "awardingOpportunity" : {
-          "type" : "object",
-          "properties" : {
-            "awardingBody" : {
-              "type" : "object",
-              "properties" : {
-                "eidasLegalIdentifier" : {
-                  "type" : "string"
-                },
-                "homepage" : {
-                  "type" : "string"
-                },
-                "id" : {
-                  "type" : "string"
-                },
-                "preferredName" : {
-                  "type" : "string"
-                },
-                "registration" : {
-                  "type" : "string"
-                }
-              },
-              "additionalProperties" : false
-            },
-            "endedAtTime" : {
-              "type" : "string"
-            },
-            "id" : {
-              "type" : "string"
-            },
-            "identifier" : {
-              "type" : "string"
-            },
-            "location" : {
-              "type" : "string"
-            },
-            "startedAtTime" : {
-              "type" : "string"
-            }
-          },
-          "additionalProperties" : false
-        },
         "dateOfBirth" : {
           "type" : "string"
         },
@@ -86,74 +44,71 @@
         "givenNames" : {
           "type" : "string"
         },
-        "gradingScheme" : {
-          "type" : "object",
-          "properties" : {
-            "description" : {
-              "type" : "string"
-            },
-            "id" : {
-              "type" : "string"
-            },
-            "title" : {
-              "type" : "string"
-            }
-          },
-          "additionalProperties" : false
-        },
         "id" : {
           "type" : "string"
         },
-        "identifier" : {
+        "personIdentifier" : {
           "type" : "string"
         },
-        "learningAchievement" : {
-          "type" : "object",
-          "properties" : {
-            "additionalNote" : {
-              "type" : "array",
-              "items" : {
-                "type" : "string"
-              }
-            },
-            "description" : {
-              "type" : "string"
-            },
-            "id" : {
-              "type" : "string"
-            },
-            "title" : {
-              "type" : "string"
-            }
-          },
-          "additionalProperties" : false
+        "personSex" : {
+          "type" : "string"
         },
-        "learningSpecification" : {
-          "type" : "object",
-          "properties" : {
-            "ectsCreditPoints" : {
-              "type" : "integer"
-            },
-            "eqfLevel" : {
-              "type" : "integer"
-            },
-            "id" : {
-              "type" : "string"
-            },
-            "iscedfCode" : {
-              "type" : "array",
-              "items" : {
+        "uniqueCertificateIdentifier" : {
+          "type" : "string"
+        },
+        "vaccinationProphylaxisInformation" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "properties" : {
+              "administeringCentre" : {
+                "type" : "string"
+              },
+              "batchNumber" : {
+                "type" : "string"
+              },
+              "countryOfVaccination" : {
+                "type" : "string"
+              },
+              "dateOfVaccination" : {
+                "type" : "string"
+              },
+              "diseaseOrAgentTargeted" : {
+                "type" : "object",
+                "properties" : {
+                  "code" : {
+                    "type" : "string"
+                  },
+                  "system" : {
+                    "type" : "string"
+                  },
+                  "version" : {
+                    "type" : "string"
+                  }
+                },
+                "additionalProperties" : false
+              },
+              "doseNumber" : {
+                "type" : "string"
+              },
+              "marketingAuthorizationHolder" : {
+                "type" : "string"
+              },
+              "nextVaccinationDate" : {
+                "type" : "string"
+              },
+              "totalSeriesOfDoses" : {
+                "type" : "string"
+              },
+              "vaccineMedicinalProduct" : {
+                "type" : "string"
+              },
+              "vaccineOrProphylaxis" : {
                 "type" : "string"
               }
             },
-            "nqfLevel" : {
-              "type" : "array",
-              "items" : {
-                "type" : "string"
-              }
-            }
-          },
-          "additionalProperties" : false
+            "additionalProperties" : false
+          }
         }
       },
       "additionalProperties" : false
