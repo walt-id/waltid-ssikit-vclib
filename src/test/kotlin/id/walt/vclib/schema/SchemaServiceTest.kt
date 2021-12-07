@@ -68,9 +68,9 @@ class SchemaServiceTest : StringSpec({
         generateSchema(GaiaxServiceOffering::class.java)
     }
 
-    "verify VerifiableVaccinationCertificate schema"   {
-        generateSchema(VerifiableVaccinationCertificate::class.java)
-    }
+//    "verify VerifiableVaccinationCertificate schema"   {
+//        generateSchema(VerifiableVaccinationCertificate::class.java)
+//    }
 })
 
 private fun <T : VerifiableCredential> generateSchema(vc: Class<T>) {

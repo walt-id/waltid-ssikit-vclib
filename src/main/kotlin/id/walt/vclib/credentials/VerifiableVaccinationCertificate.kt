@@ -2,11 +2,9 @@ package id.walt.vclib.credentials
 
 import com.beust.klaxon.Json
 import com.nimbusds.jwt.SignedJWT
-import id.walt.vclib.model.CredentialSchema
-import id.walt.vclib.model.CredentialStatus
-import id.walt.vclib.model.Proof
-import id.walt.vclib.model.VerifiableCredential
+import id.walt.vclib.model.*
 import id.walt.vclib.registry.VerifiableCredentialMetadata
+import id.walt.vclib.registry.VerifiableCredentialMetadata2
 import id.walt.vclib.schema.SchemaService.JsonIgnore
 import id.walt.vclib.schema.SchemaService.PropertyName
 import id.walt.vclib.schema.SchemaService.Required
@@ -28,8 +26,8 @@ data class VerifiableVaccinationCertificate(
     var credentialSchema: CredentialSchema? = null,
     @Json(serializeNull = false) var evidence: Evidence? = null,
     @Json(serializeNull = false) var proof: Proof? = null
-) : VerifiableCredential(type) {
-    companion object : VerifiableCredentialMetadata(
+) : VerifiableCredential2(type) {
+    companion object : VerifiableCredentialMetadata2(
         type = listOf("VerifiableCredential", "VerifiableAttestation", "VerifiableVaccinationCertificate"),
         template = {
             VerifiableVaccinationCertificate(
@@ -99,6 +97,24 @@ data class VerifiableVaccinationCertificate(
                 expirationDate = expirationDate ?: jwtClaimsSet.expirationTime?.let { dateFormat.format(it) }
                 credentialSubject?.also { it.id = it.id ?: jwtClaimsSet.subject }
             }
+        }
+
+    @field:JsonIgnore
+    @Json(ignored = true)
+    override var internalIssuer: String? = null
+        get() = issuer
+        set(value) {
+            field = value
+            issuer = value
+        }
+
+    @field:JsonIgnore
+    @Json(ignored = true)
+    override var internalSubject: String? = null
+        get() = credentialSubject?.id
+        set(value) {
+            field = value
+            credentialSubject?.apply { id = value }
         }
 
     data class CredentialSubject(

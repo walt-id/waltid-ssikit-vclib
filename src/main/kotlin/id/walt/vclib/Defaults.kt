@@ -21,7 +21,7 @@ object Defaults {
             register<GaiaxCredential>(GaiaxCredential)
             register<GaiaxSelfDescription>(GaiaxSelfDescription)
             register<GaiaxServiceOffering>(GaiaxServiceOffering)
-            register<VerifiableVaccinationCertificate>(VerifiableVaccinationCertificate)
+           // register<VerifiableVaccinationCertificate>(VerifiableVaccinationCertificate)
         }
     }
 

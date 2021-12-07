@@ -1,12 +1,17 @@
 package id.walt.vclib.vcs
 
+import com.beust.klaxon.Klaxon
 import id.walt.vclib.Helpers.encode
 import id.walt.vclib.Helpers.toCredential
+import id.walt.vclib.NestedVCs
 import id.walt.vclib.credentials.*
+import id.walt.vclib.nestedVCsConverter
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import java.io.File
 import kotlin.reflect.jvm.jvmName
+
+private val klaxon = Klaxon().fieldConverter(NestedVCs::class, nestedVCsConverter)
 
 class CredentialsTests : StringSpec({
     "serialize all VCs" {
@@ -21,7 +26,24 @@ class CredentialsTests : StringSpec({
         File("src/test/resources/serialized/GaiaxSelfDescription.json").writeText(GaiaxSelfDescription.template?.invoke()!!.encode())
         File("src/test/resources/serialized/GaiaxServiceOffering.json").writeText(GaiaxServiceOffering.template?.invoke()!!.encode())
         File("src/test/resources/serialized/VerifiablePresentation.json").writeText(VerifiablePresentation.template?.invoke()!!.encode())
-        File("src/test/resources/serialized/VerifiableVaccinationCertificate.json").writeText(VerifiableVaccinationCertificate.template?.invoke()!!.encode())
+
+    }
+
+    "serialize defaults" {
+        val vc = VerifiableVaccinationCertificate.template?.invoke()!!
+        println(vc.internalSubject)
+        println(vc.internalIssuer)
+
+        vc.internalSubject = "asdf"
+        vc.internalIssuer = "qwer"
+
+        vc as VerifiableVaccinationCertificate
+
+        vc.credentialSubject?.id shouldBe "asdf"
+        vc.issuer shouldBe "qwer"
+
+        File("src/test/resources/serialized/VerifiableVaccinationCertificate.json").writeText(klaxon.toJsonString(vc))
+
     }
 
     "parse all serialized VCs" {
