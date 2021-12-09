@@ -74,6 +74,8 @@ abstract class VerifiableCredential3<SBJ : CredentialSubject>(@field:SchemaServi
     @Json(serializeNull = false)
     abstract var credentialSubject: SBJ?
 
+    @field:SchemaService.JsonIgnore
+    @Json(ignored = true)
     open val dateFormat = SimpleDateFormat("YYYY-MM-dd'T'HH:mm:ss'Z'").also { it.timeZone = TimeZone.getTimeZone("UTC") }
 
     @field:SchemaService.JsonIgnore
@@ -91,7 +93,8 @@ abstract class VerifiableCredential3<SBJ : CredentialSubject>(@field:SchemaServi
             }
         }
 
-    @Json(serializeNull = false)
+    @field:SchemaService.JsonIgnore
+    @Json(ignored = true)
     val challenge = when (this.jwt) {
         null -> this.proof?.nonce
         else -> SignedJWT.parse(this.jwt).jwtClaimsSet.getStringClaim("nonce")

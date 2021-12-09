@@ -68,9 +68,10 @@ class SchemaServiceTest : StringSpec({
         generateSchema(GaiaxServiceOffering::class.java)
     }
 
-//    "verify VerifiableVaccinationCertificate schema"   {
-//        generateSchema(VerifiableVaccinationCertificate::class.java)
-//    }
+    "verify VerifiableVaccinationCertificate schema"   {
+        val schema = SchemaService.generateSchema(VerifiableVaccinationCertificate::class.java)
+        File("src/test/resources/schemas/VerifiableVaccinationCertificate.json").writeText(schema)
+    }
 })
 
 private fun <T : VerifiableCredential> generateSchema(vc: Class<T>) {
