@@ -5,29 +5,28 @@ import com.nimbusds.jwt.SignedJWT
 import id.walt.vclib.model.*
 import id.walt.vclib.registry.VerifiableCredentialMetadata
 import id.walt.vclib.registry.VerifiableCredentialMetadata2
+import id.walt.vclib.registry.VerifiableCredentialMetadata3
 import id.walt.vclib.schema.SchemaService.JsonIgnore
 import id.walt.vclib.schema.SchemaService.PropertyName
 import id.walt.vclib.schema.SchemaService.Required
 import java.text.SimpleDateFormat
 import java.util.*
 
-private val dateFormat = SimpleDateFormat("YYYY-MM-dd'T'HH:mm:ss'Z'").also { it.timeZone = TimeZone.getTimeZone("UTC") }
-
 data class VerifiableVaccinationCertificate(
     @Json(name = "@context") @field:PropertyName(name = "@context") @field:Required
     var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
     @Json(serializeNull = false) override var id: String? = null, // education#higherEducation#51e42fda-cb0a-4333-b6a6-35cb147e1a88
-    @Json(serializeNull = false) var issuer: String? = null, // did:ebsi:2LGKvDMrNUPR6FhSNrXzQQ1h295zr4HwoX9UqvwAsenSKHe9
-    @Json(serializeNull = false) var issuanceDate: String? = null, // 2020-11-03T00:00:00Z
-    @Json(serializeNull = false) var validFrom: String? = null, // 2020-11-03T00:00:00Z
-    @Json(serializeNull = false) var expirationDate: String? = null,
-    var credentialSubject: CredentialSubject? = null,
-    @Json(serializeNull = false) var credentialStatus: CredentialStatus? = null,
-    var credentialSchema: CredentialSchema? = null,
+    @Json(serializeNull = false) override var issuer: String? = null, // did:ebsi:2LGKvDMrNUPR6FhSNrXzQQ1h295zr4HwoX9UqvwAsenSKHe9
+    @Json(serializeNull = false) override var issuanceDate: String? = null, // 2020-11-03T00:00:00Z
+    @Json(serializeNull = false) override var validFrom: String? = null, // 2020-11-03T00:00:00Z
+    @Json(serializeNull = false) override var expirationDate: String? = null,
+    override var credentialSubject: VaccinationCredentialSubject? = null,
+    override var credentialSchema: CredentialSchema? = null,
+    @Json(serializeNull = false) override var proof: Proof? = null,
     @Json(serializeNull = false) var evidence: Evidence? = null,
-    @Json(serializeNull = false) var proof: Proof? = null
-) : VerifiableCredential2(type) {
-    companion object : VerifiableCredentialMetadata2(
+    @Json(serializeNull = false) var credentialStatus: CredentialStatus? = null
+) : VerifiableCredential3<VerifiableVaccinationCertificate.VaccinationCredentialSubject>(type) {
+    companion object : VerifiableCredentialMetadata3(
         type = listOf("VerifiableCredential", "VerifiableAttestation", "VerifiableVaccinationCertificate"),
         template = {
             VerifiableVaccinationCertificate(
@@ -36,7 +35,7 @@ data class VerifiableVaccinationCertificate(
                 issuanceDate = "2021-08-31T00:00:00Z",
                 expirationDate = "2022-08-31T00:00:00Z",
                 validFrom = "2021-08-31T00:00:00Z",
-                credentialSubject = CredentialSubject(
+                credentialSubject = VaccinationCredentialSubject(
                     id = "did:ebsi:2AEMAqXWKYMu1JHPAgGcga4dxu7ThgfgN95VyJBJGZbSJUtp",
                     givenNames = "Jane",
                     familyName = "DOE",
@@ -44,8 +43,8 @@ data class VerifiableVaccinationCertificate(
                     personIdentifier = "optional The type of identifier and identifier of the person, according to the policies applicable in each country. Examples are citizen ID and/or document number (ID- card/passport) or identifier within the health system/IIS/e-registry.",
                     personSex = "optional",
                     vaccinationProphylaxisInformation = listOf(
-                        CredentialSubject.VaccinationProphylaxisInformation(
-                            CredentialSubject.VaccinationProphylaxisInformation.DiseaseOrAgentTargeted(
+                        VaccinationCredentialSubject.VaccinationProphylaxisInformation(
+                            VaccinationCredentialSubject.VaccinationProphylaxisInformation.DiseaseOrAgentTargeted(
                                 code = "840539006",
                                 system = "2.16.840.1.113883. 6.96",
                                 version = "2021-01-31"
@@ -84,41 +83,8 @@ data class VerifiableVaccinationCertificate(
         }
     )
 
-    @field:JsonIgnore
-    @Json(ignored = true)
-    override var jwt: String? = null
-        set(value) {
-            field = value.also {
-                val jwtClaimsSet = SignedJWT.parse(value).jwtClaimsSet
-                id = id ?: jwtClaimsSet.jwtid
-                issuer = issuer ?: jwtClaimsSet.issuer
-                issuanceDate = issuanceDate ?: jwtClaimsSet.issueTime?.let { dateFormat.format(it) }
-                validFrom = validFrom ?: jwtClaimsSet.notBeforeTime?.let { dateFormat.format(it) }
-                expirationDate = expirationDate ?: jwtClaimsSet.expirationTime?.let { dateFormat.format(it) }
-                credentialSubject?.also { it.id = it.id ?: jwtClaimsSet.subject }
-            }
-        }
-
-    @field:JsonIgnore
-    @Json(ignored = true)
-    override var internalIssuer: String? = null
-        get() = issuer
-        set(value) {
-            field = value
-            issuer = value
-        }
-
-    @field:JsonIgnore
-    @Json(ignored = true)
-    override var internalSubject: String? = null
-        get() = credentialSubject?.id
-        set(value) {
-            field = value
-            credentialSubject?.apply { id = value }
-        }
-
-    data class CredentialSubject(
-        @Json(serializeNull = false) var id: String? = null,
+    data class VaccinationCredentialSubject (
+        @Json(serializeNull = false) override var id: String? = null,
         @Json(serializeNull = false) var givenNames: String? = null,
         @Json(serializeNull = false) var familyName: String? = null,
         @Json(serializeNull = false) var dateOfBirth: String? = null,
@@ -126,7 +92,7 @@ data class VerifiableVaccinationCertificate(
         @Json(serializeNull = false) var personSex: String? = null,
         var vaccinationProphylaxisInformation: List<VaccinationProphylaxisInformation>? = null,
         @Json(serializeNull = false) var uniqueCertificateIdentifier: String? = null,
-    ) {
+    ) : id.walt.vclib.model.CredentialSubject() {
 
         data class VaccinationProphylaxisInformation(
             var diseaseOrAgentTargeted: DiseaseOrAgentTargeted,
