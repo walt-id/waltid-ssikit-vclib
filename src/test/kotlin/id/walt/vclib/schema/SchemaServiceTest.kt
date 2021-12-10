@@ -64,12 +64,16 @@ class SchemaServiceTest : StringSpec({
         generateSchema(GaiaxSelfDescription::class.java)
     }
 
-    "verify GaiaxSelfDescription schema"   {
+    "verify GaiaxServiceOffering schema"   {
         generateSchema(GaiaxServiceOffering::class.java)
     }
 
     "verify VerifiableVaccinationCertificate schema"   {
         generateSchema(VerifiableVaccinationCertificate::class.java)
+    }
+
+    "verify ProofOfResidence schema"   {
+        generateSchema(ProofOfResidence::class.java)
     }
 })
 
