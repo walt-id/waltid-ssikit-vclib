@@ -66,17 +66,19 @@ data class ProofOfResidence(
                 validFrom = "2019-06-22T14:11:44Z",
                 credentialSubject = CredentialSubject(
                     id = "id123",
-                    familyName = "Power",
-                    firstNames = "Max",
-                    gender = "male",
+                    familyName = "Beron",
+                    firstNames = "Domink",
+                    gender = "Male",
                     dateOfBirth = "1993-04-08",
-                    familyStatus = "single",
+                    familyStatus = "Single",
                     address = Address(
-                        streetAddress = "33. boulevard Roosevelt",
-                        postalCode = "L-2450",
-                        locality = "Luxembourg",
-                        countryName = "Luxembourg"
-                    )
+                        streetAddress = "16 Route D' Arlon",
+                        postalCode = "L-8410",
+                        locality = "Steinfort",
+                        countryName = "LU"
+                    ),
+                    identificationNumber = "123456789",
+                    nationality = "AT"
                 ),
                 credentialStatus = CredentialStatus(
                     id = "https://essif.europa.eu/status/identity#verifiableID#1dee355d-0432-4910-ac9c-70d89e8d674e",
