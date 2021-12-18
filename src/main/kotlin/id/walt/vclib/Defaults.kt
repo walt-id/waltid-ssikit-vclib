@@ -23,6 +23,7 @@ object Defaults {
             register<GaiaxServiceOffering>(GaiaxServiceOffering)
             register<VerifiableVaccinationCertificate>(VerifiableVaccinationCertificate)
             register<ProofOfResidence>(ProofOfResidence)
+            register<VerifiableMandate>(VerifiableMandate)
         }
     }
 

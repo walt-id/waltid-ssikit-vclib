@@ -23,6 +23,7 @@ class CredentialsTests : StringSpec({
         File("src/test/resources/serialized/VerifiablePresentation.json").writeText(VerifiablePresentation.template?.invoke()!!.encode())
         File("src/test/resources/serialized/VerifiableVaccinationCertificate.json").writeText(VerifiableVaccinationCertificate.template?.invoke()!!.encode())
         File("src/test/resources/serialized/ProofOfResidence.json").writeText(ProofOfResidence.template?.invoke()!!.encode())
+        File("src/test/resources/serialized/VerifiableMandate.json").writeText(VerifiableMandate.template?.invoke()!!.encode())
     }
 
     "parse all serialized VCs" {

@@ -24,6 +24,7 @@ object VcUtils {
         is GaiaxServiceOffering -> vc.issuer
         is VerifiableVaccinationCertificate -> vc.issuer!!
         is ProofOfResidence -> vc.issuer
+        is VerifiableMandate -> vc.issuer
         else -> throw Exception("No getIssuer for ${vc.type.last()}!")
     }
 
@@ -41,6 +42,7 @@ object VcUtils {
         is GaiaxServiceOffering -> vc.credentialSubject.id
         is VerifiableVaccinationCertificate -> vc.credentialSubject!!.id!!
         is ProofOfResidence -> vc.credentialSubject!!.id!!
+        is VerifiableMandate -> vc.credentialSubject!!.id!!
         else -> throw Exception("No getSubject for ${vc.type.last()}!")
     }
 
@@ -55,7 +57,7 @@ object VcUtils {
         is VerifiableVaccinationCertificate -> vc.issuanceDate
         is GaiaxSelfDescription -> vc.issuanceDate
         is GaiaxServiceOffering -> vc.issuanceDate
-        is ProofOfResidence -> vc.issuanceDate
+        is VerifiableMandate -> vc.issuanceDate
         else -> throw Exception("No getIssuerDate for ${vc.type.last()}!")
     }
 
@@ -69,7 +71,7 @@ object VcUtils {
         is VerifiableVaccinationCertificate -> vc.validFrom
         is GaiaxSelfDescription -> vc.validFrom
         is GaiaxServiceOffering -> vc.validFrom
-        is ProofOfResidence -> vc.validFrom
+        is VerifiableMandate -> vc.validFrom
         else -> throw Exception("No getValidForm for ${vc.type.last()}!")
     }
 
@@ -83,6 +85,7 @@ object VcUtils {
         is GaiaxSelfDescription -> vc.expirationDate
         is GaiaxServiceOffering -> vc.expirationDate
         is ProofOfResidence -> vc.expirationDate
+        is VerifiableMandate -> vc.expirationDate
         else -> throw Exception("No getExpirationDate for ${vc.type.last()}!")
     }
 
@@ -94,6 +97,7 @@ object VcUtils {
         is VerifiableAuthorization -> vc.credentialSchema
         is VerifiableVaccinationCertificate -> vc.credentialSchema
         is ProofOfResidence -> vc.credentialSchema
+        is VerifiableMandate -> vc.credentialSchema
         else -> throw Exception("No getCredentialSchemaUrl for ${vc.type.last()}!")
     }
 
@@ -112,6 +116,7 @@ object VcUtils {
             is GaiaxSelfDescription -> vc.proof!!.nonce
             is GaiaxServiceOffering -> vc.proof!!.nonce
             is ProofOfResidence -> vc.proof!!.nonce
+            is VerifiableMandate -> vc.proof!!.nonce
             else -> throw Exception("No getChallenge for ${vc.type.last()}!")
         }
         else -> SignedJWT.parse(vc.jwt).jwtClaimsSet.getClaim("nonce").toString()

@@ -75,6 +75,10 @@ class SchemaServiceTest : StringSpec({
     "verify ProofOfResidence schema"   {
         generateSchema(ProofOfResidence::class.java)
     }
+
+    "verify VerifiableMandate schema"   {
+        generateSchema(VerifiableMandate::class.java)
+    }
 })
 
 private fun <T : VerifiableCredential> generateSchema(vc: Class<T>) {
