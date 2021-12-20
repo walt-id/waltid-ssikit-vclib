@@ -6,7 +6,10 @@ import id.walt.vclib.Helpers.toMap
 import id.walt.vclib.credentials.VerifiableDiploma
 import id.walt.vclib.credentials.VerifiableId
 import id.walt.vclib.credentials.VerifiablePresentation
-import id.walt.vclib.model.*
+import id.walt.vclib.model.AbstractVerifiableCredential
+import id.walt.vclib.model.CredentialSchema
+import id.walt.vclib.model.CredentialSubject
+import id.walt.vclib.model.Proof
 import id.walt.vclib.registry.VerifiableCredentialMetadata
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe

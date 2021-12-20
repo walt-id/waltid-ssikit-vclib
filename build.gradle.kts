@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "id.walt"
-version = "1.6-SNAPSHOT-NEWVC"
+version = "1.6-SNAPSHOT-NEWVCv5"
 
 
 repositories {
@@ -37,7 +37,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.5.21")
 
     /* JWT */
-    implementation("com.nimbusds:nimbus-jose-jwt:9.15.2")
+    //implementation("com.nimbusds:nimbus-jose-jwt:9.15.2")
 
     /* Testing */
     testImplementation("io.kotest:kotest-runner-junit5:4.6.3")
@@ -78,9 +78,16 @@ publishing {
     }
 }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "13"
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(16))
+    }
 }
+
+tasks.withType<KotlinCompile> {
+    kotlinOptions.jvmTarget = "16"
+}
+
 
 jacoco.toolVersion = "0.8.7"
 

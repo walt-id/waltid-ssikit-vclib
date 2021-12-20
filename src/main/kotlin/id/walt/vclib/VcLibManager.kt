@@ -1,7 +1,6 @@
 package id.walt.vclib
 
 import com.beust.klaxon.Klaxon
-import com.nimbusds.jwt.SignedJWT
 import id.walt.vclib.model.VerifiableCredential
 import id.walt.vclib.registry.VcTypeRegistry
 import id.walt.vclib.registry.VerifiableCredentialMetadata
@@ -17,22 +16,25 @@ object VcLibManager {
         return Regex(JWT_PATTERN).matches(data)
     }
 
-    private fun vcJsonFromJwt(jwt: String): String {
-        val claims = SignedJWT.parse(jwt).jwtClaimsSet.claims
-        return when (claims.keys.contains(JWT_VP_CLAIM)) {
-            true -> claims[JWT_VP_CLAIM].toString()
-            false -> claims[JWT_VC_CLAIM].toString()
-        }
-    }
+//    private fun vcJsonFromJwt(jwt: String): String {
+//        val claims = SignedJWT.parse(jwt).jwtClaimsSet.claims
+//        return when (claims.keys.contains(JWT_VP_CLAIM)) {
+//            true -> claims[JWT_VP_CLAIM].toString()
+//            false -> claims[JWT_VC_CLAIM].toString()
+//        }
+//    }
 
     fun getVerifiableCredential(data: String): VerifiableCredential {
-        return if (!isJWT(data)) klaxon.parse<VerifiableCredential>(data)!!.also {
+        return klaxon.parse<VerifiableCredential>(data)!!.also {
             it.json = data
         }
-        else klaxon.parse<VerifiableCredential>(vcJsonFromJwt(data))!!.also {
-            it.jwt = data;
-            it.json = klaxon.toJsonString(it)
-        }
+//        return if (!isJWT(data)) klaxon.parse<VerifiableCredential>(data)!!.also {
+//            it.json = data
+//        }
+//        else klaxon.parse<VerifiableCredential>(vcJsonFromJwt(data))!!.also {
+//            it.jwt = data;
+//            it.json = klaxon.toJsonString(it)
+//        }
     }
 
     fun getVerifiableCredentialString(vc: VerifiableCredential): String {

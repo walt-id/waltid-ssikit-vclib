@@ -1,14 +1,13 @@
 package id.walt.vclib.credentials
 
 import com.beust.klaxon.Json
-import com.nimbusds.jwt.SignedJWT
-import id.walt.vclib.model.*
+import id.walt.vclib.model.AbstractVerifiableCredential
+import id.walt.vclib.model.CredentialSchema
+import id.walt.vclib.model.CredentialStatus
+import id.walt.vclib.model.Proof
 import id.walt.vclib.registry.VerifiableCredentialMetadata
-import id.walt.vclib.schema.SchemaService.JsonIgnore
 import id.walt.vclib.schema.SchemaService.PropertyName
 import id.walt.vclib.schema.SchemaService.Required
-import java.text.SimpleDateFormat
-import java.util.*
 
 data class VerifiableVaccinationCertificate(
     @Json(name = "@context") @field:PropertyName(name = "@context") @field:Required

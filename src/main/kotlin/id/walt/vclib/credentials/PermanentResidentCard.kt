@@ -1,7 +1,10 @@
 package id.walt.vclib.credentials
 
 import com.beust.klaxon.Json
-import id.walt.vclib.model.*
+import id.walt.vclib.model.AbstractVerifiableCredential
+import id.walt.vclib.model.CredentialSchema
+import id.walt.vclib.model.CredentialSubject
+import id.walt.vclib.model.Proof
 import id.walt.vclib.registry.VerifiableCredentialMetadata
 import id.walt.vclib.schema.SchemaService.PropertyName
 import id.walt.vclib.schema.SchemaService.Required

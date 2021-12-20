@@ -1,11 +1,6 @@
 package id.walt.vclib
 
-import com.nimbusds.jwt.SignedJWT
-import id.walt.vclib.credentials.*
-import id.walt.vclib.model.AbstractVerifiableCredential
-import id.walt.vclib.model.CredentialSubject
 import id.walt.vclib.model.VerifiableCredential
-import net.pwall.yaml.YAMLSimple.log
 
 
 object VcUtils {

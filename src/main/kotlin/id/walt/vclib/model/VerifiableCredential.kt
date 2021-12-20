@@ -2,7 +2,6 @@ package id.walt.vclib.model
 
 import com.beust.klaxon.Json
 import com.beust.klaxon.TypeFor
-import com.nimbusds.jwt.SignedJWT
 import id.walt.vclib.adapter.VCTypeAdapter
 import id.walt.vclib.schema.SchemaService
 import java.text.SimpleDateFormat
@@ -50,24 +49,25 @@ abstract class VerifiableCredential() {
     @field:SchemaService.JsonIgnore
     @Json(ignored = true)
     var jwt: String? = null
-        set(value) {
-            field = value.also {
-                val jwtClaimsSet = SignedJWT.parse(value).jwtClaimsSet
-                id = id ?: jwtClaimsSet.jwtid
-                issuer = issuer ?: jwtClaimsSet.issuer
-                issuanceDate = issuanceDate ?: jwtClaimsSet.issueTime?.let { dateFormat.format(it) }
-                validFrom = validFrom ?: jwtClaimsSet.notBeforeTime?.let { dateFormat.format(it) }
-                expirationDate = expirationDate ?: jwtClaimsSet.expirationTime?.let { dateFormat.format(it) }
-                subject = subject ?: jwtClaimsSet.subject
-            }
-        }
+//        set(value) {
+//            field = value.also {
+//                val jwtClaimsSet = SignedJWT.parse(value).jwtClaimsSet
+//                id = id ?: jwtClaimsSet.jwtid
+//                issuer = issuer ?: jwtClaimsSet.issuer
+//                issuanceDate = issuanceDate ?: jwtClaimsSet.issueTime?.let { dateFormat.format(it) }
+//                validFrom = validFrom ?: jwtClaimsSet.notBeforeTime?.let { dateFormat.format(it) }
+//                expirationDate = expirationDate ?: jwtClaimsSet.expirationTime?.let { dateFormat.format(it) }
+//                subject = subject ?: jwtClaimsSet.subject
+//            }
+//        }
 
     @field:SchemaService.JsonIgnore
     @Json(ignored = true)
-    val challenge = when (this.jwt) {
-        null -> this.proof?.nonce
-        else -> SignedJWT.parse(this.jwt).jwtClaimsSet.getStringClaim("nonce")
-    }
+    val challenge = this.proof?.nonce
+//    = when (this.jwt) {
+//        null -> this.proof?.nonce
+//        else -> SignedJWT.parse(this.jwt).jwtClaimsSet.getStringClaim("nonce")
+//    }
 }
 
 abstract class CredentialSubject() {
