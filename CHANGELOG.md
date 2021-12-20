@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Added ProofOfResidence credenital
+
 ## [1.6.2] - 2021-12-03
 
 -   Fixed Json-schema verification for VerifiablePresentations

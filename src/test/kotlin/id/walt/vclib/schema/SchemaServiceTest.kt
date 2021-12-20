@@ -71,13 +71,17 @@ class SchemaServiceTest : StringSpec({
         generateSchema(GaiaxSelfDescription::class.java)
     }
 
-    "verify GaiaxSelfDescription schema"   {
+    "verify GaiaxServiceOffering schema"   {
         generateSchema(GaiaxServiceOffering::class.java)
     }
 
     "verify VerifiableVaccinationCertificate schema"   {
         val schema = SchemaService.generateSchema(VerifiableVaccinationCertificate::class.java)
         File("src/test/resources/schemas/VerifiableVaccinationCertificate.json").writeText(schema)
+    }
+
+    "verify ProofOfResidence schema"   {
+        generateSchema(ProofOfResidence::class.java)
     }
 })
 

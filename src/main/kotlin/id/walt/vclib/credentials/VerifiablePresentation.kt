@@ -86,6 +86,9 @@ data class VerifiablePresentation(
         set(value) {
             holder = value
         }
+
+    @SchemaService.JsonIgnore
+    @Json(ignored = true)
     override val credentialSchema: CredentialSchema?
         get() = null
 }
