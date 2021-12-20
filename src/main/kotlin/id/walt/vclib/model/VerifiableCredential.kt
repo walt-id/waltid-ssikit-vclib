@@ -8,44 +8,12 @@ import id.walt.vclib.schema.SchemaService
 import java.text.SimpleDateFormat
 import java.util.*
 
-
 @TypeFor(field = "type", adapter = VCTypeAdapter::class)
-abstract class VerifiableCredential(@field:SchemaService.Required val type: List<String>) {
-    @field:SchemaService.JsonIgnore
-    @Json(ignored = true)
-    var json: String? = null
+abstract class VerifiableCredential() {
 
-    @field:SchemaService.JsonIgnore
-    @Json(ignored = true)
-    open var jwt: String? = null // the original JWT token, if credential was given in JWT format
+    @SchemaService.Required
+    abstract val type: List<String>
 
-    @Json(serializeNull = false)
-    abstract var id: String?
-}
-
-
-@TypeFor(field = "type", adapter = VCTypeAdapter::class)
-abstract class VerifiableCredential2(@field:SchemaService.Required val type: List<String>) {
-    @field:SchemaService.JsonIgnore
-    @Json(ignored = true)
-    var json: String? = null
-
-    @field:SchemaService.JsonIgnore
-    @Json(ignored = true)
-    open var jwt: String? = null // the original JWT token, if credential was given in JWT format
-
-    @Json(serializeNull = false)
-    abstract var id: String?
-
-    @Json(ignored = true)
-    abstract var internalIssuer: String?
-
-    @Json(ignored = true)
-    abstract var internalSubject: String?
-}
-
-@TypeFor(field = "type", adapter = VCTypeAdapter::class)
-abstract class VerifiableCredential3<SBJ : CredentialSubject>(@field:SchemaService.Required val type: List<String>) {
     @field:SchemaService.JsonIgnore
     @Json(ignored = true)
     var json: String? = null
@@ -66,13 +34,14 @@ abstract class VerifiableCredential3<SBJ : CredentialSubject>(@field:SchemaServi
     abstract var expirationDate: String?
 
     @Json(serializeNull = false)
-    abstract var credentialSchema: CredentialSchema?
-
-    @Json(serializeNull = false)
     abstract var proof: Proof?
 
+    @SchemaService.JsonIgnore
+    @Json(ignored = true)
+    abstract var subject: String?
+
     @Json(serializeNull = false)
-    abstract var credentialSubject: SBJ?
+    abstract val credentialSchema: CredentialSchema?
 
     @field:SchemaService.JsonIgnore
     @Json(ignored = true)
@@ -89,7 +58,7 @@ abstract class VerifiableCredential3<SBJ : CredentialSubject>(@field:SchemaServi
                 issuanceDate = issuanceDate ?: jwtClaimsSet.issueTime?.let { dateFormat.format(it) }
                 validFrom = validFrom ?: jwtClaimsSet.notBeforeTime?.let { dateFormat.format(it) }
                 expirationDate = expirationDate ?: jwtClaimsSet.expirationTime?.let { dateFormat.format(it) }
-                credentialSubject?.also { it.id = it.id ?: jwtClaimsSet.subject }
+                subject = subject ?: jwtClaimsSet.subject
             }
         }
 
@@ -104,4 +73,18 @@ abstract class VerifiableCredential3<SBJ : CredentialSubject>(@field:SchemaServi
 abstract class CredentialSubject() {
     @Json(serializeNull = false)
     abstract var id: String?
+}
+
+abstract class AbstractVerifiableCredential<SUBJ : CredentialSubject>(@field:SchemaService.Required override val type: List<String>) : VerifiableCredential() {
+
+    @Json(serializeNull = false)
+    abstract var credentialSubject: SUBJ?
+
+    @SchemaService.JsonIgnore
+    @Json(ignored = true)
+    override var subject: String?
+        get() = credentialSubject?.id
+        set(value) {
+            credentialSubject?.also { it.id = value }
+        }
 }

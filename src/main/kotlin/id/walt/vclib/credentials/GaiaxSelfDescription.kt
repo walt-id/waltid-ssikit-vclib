@@ -1,8 +1,7 @@
 package id.walt.vclib.credentials
 
 import com.beust.klaxon.Json
-import id.walt.vclib.model.Proof
-import id.walt.vclib.model.VerifiableCredential
+import id.walt.vclib.model.*
 import id.walt.vclib.registry.VerifiableCredentialMetadata
 import id.walt.vclib.schema.SchemaService.PropertyName
 import id.walt.vclib.schema.SchemaService.Required
@@ -11,15 +10,16 @@ data class GaiaxSelfDescription(
     @Json(name = "@context") @field:PropertyName(name = "@context") @field:Required
     var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
     override var id: String?,
-    var issuer: String,
-    @Json(serializeNull = false) var issuanceDate: String? = null,
-    @Json(serializeNull = false) var validFrom: String? = null,
-    @Json(serializeNull = false) var expirationDate: String? = null,
-    @Json(serializeNull = false) var credentialSubject: CustomCredentialSubject,
-    @Json(serializeNull = false) var proof: Proof? = null,
-) : VerifiableCredential(type) {
-    data class CustomCredentialSubject(
-        var id: String, // "Pilot004AIService"
+    override var issuer: String?,
+    @Json(serializeNull = false) override var issuanceDate: String? = null,
+    @Json(serializeNull = false) override var validFrom: String? = null,
+    @Json(serializeNull = false) override var expirationDate: String? = null,
+    @Json(serializeNull = false) override var credentialSubject: GaiaxSelfDescriptionSubject?,
+    @Json(serializeNull = false) override var credentialSchema: CredentialSchema? = null,
+    @Json(serializeNull = false) override var proof: Proof? = null,
+) : AbstractVerifiableCredential<GaiaxSelfDescription.GaiaxSelfDescriptionSubject>(type) {
+    data class GaiaxSelfDescriptionSubject(
+        override var id: String?, // "Pilot004AIService"
         var type: String, // "Service"
         var hasName: String, // "AIS"
         var description: String, // "AIS demonstrates machine learning application use case."
@@ -29,7 +29,7 @@ data class GaiaxSelfDescription(
         @Json(serializeNull = false) var hasCertifications: List<String>? = null,
         @Json(serializeNull = false) var utilizes: List<String>? = null,
         @Json(serializeNull = false) var dependsOn: List<String>? = null,
-    )
+    ) : CredentialSubject()
 
     companion object : VerifiableCredentialMetadata(
         type = listOf("VerifiableCredential", "GaiaxSelfDescription"),
@@ -38,7 +38,7 @@ data class GaiaxSelfDescription(
                 id = "did:ebsi-eth:00000001/credentials/1872",
                 issuer = "did:example:456",
                 issuanceDate = "2020-08-24T14:13:44Z",
-                credentialSubject = CustomCredentialSubject(
+                credentialSubject = GaiaxSelfDescriptionSubject(
                     id = "Pilot004AIService",
                     type = "Service",
                     hasName = "AIS",

@@ -31,10 +31,10 @@ class CredentialsTests : StringSpec({
 
     "serialize defaults" {
         val vc = VerifiableVaccinationCertificate.template?.invoke()!!
-        println(vc.credentialSubject?.id)
+        println(vc.subject)
         println(vc.issuer)
 
-        vc.credentialSubject?.id = "asdf"
+        vc.subject = "asdf"
         vc.issuer = "qwer"
 
         vc as VerifiableVaccinationCertificate

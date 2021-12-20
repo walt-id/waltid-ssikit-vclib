@@ -35,6 +35,18 @@
       },
       "additionalProperties" : false
     },
+    "credentialSchema" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        }
+      },
+      "additionalProperties" : false
+    },
     "credentialSubject" : {
       "type" : "object",
       "properties" : {

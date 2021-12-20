@@ -1,10 +1,7 @@
 package id.walt.vclib.credentials
 
 import com.beust.klaxon.Json
-import id.walt.vclib.model.CredentialSchema
-import id.walt.vclib.model.CredentialStatus
-import id.walt.vclib.model.Proof
-import id.walt.vclib.model.VerifiableCredential
+import id.walt.vclib.model.*
 import id.walt.vclib.registry.VerifiableCredentialMetadata
 import id.walt.vclib.schema.SchemaService.PropertyName
 import id.walt.vclib.schema.SchemaService.Required
@@ -13,19 +10,19 @@ data class VerifiableAttestation(
     @Json(name = "@context") @field:PropertyName(name = "@context") @field:Required
     var context: List<String>,
     override var id: String?, // education#higherEducation#3fea53a4-0432-4910-ac9c-69ah8da3c37f
-    var issuer: String, // did:ebsi:2757945549477fc571663bee12042873fe555b674bd294a3
-    @Json(serializeNull = false) var issuanceDate: String? = null, // 2019-06-22T14:11:44Z
-    @Json(serializeNull = false) var expirationDate: String? = null,
-    @Json(serializeNull = false) var validFrom: String? = null, // 2019-06-22T14:11:44Z
-    @Json(serializeNull = false) var credentialSubject: CredentialSubject? = null,
+    override var issuer: String?, // did:ebsi:2757945549477fc571663bee12042873fe555b674bd294a3
+    @Json(serializeNull = false) override var issuanceDate: String? = null, // 2019-06-22T14:11:44Z
+    @Json(serializeNull = false) override var expirationDate: String? = null,
+    @Json(serializeNull = false) override var validFrom: String? = null, // 2019-06-22T14:11:44Z
+    @Json(serializeNull = false) override var credentialSubject: VerifiableAttestationSubject? = null,
     @Json(serializeNull = false) var credentialStatus: CredentialStatus? = null,
-    @Json(serializeNull = false) var credentialSchema: CredentialSchema? = null,
+    @Json(serializeNull = false) override var credentialSchema: CredentialSchema? = null,
     @Json(serializeNull = false) var evidence: List<Evidence>? = null,
-    @Json(serializeNull = false) var proof: Proof? = null
-) : VerifiableCredential(type) {
-    data class CredentialSubject(
-        var id: String // id123
-    )
+    @Json(serializeNull = false) override var proof: Proof? = null
+) : AbstractVerifiableCredential<VerifiableAttestation.VerifiableAttestationSubject>(type) {
+    data class VerifiableAttestationSubject(
+        override var id: String? // id123
+    ) : CredentialSubject()
 
     data class Evidence(
         var id: String, // https://essif.europa.eu/tsr-va/evidence/f2aeec97-fc0d-42bf-8ca7-0548192d5678
@@ -48,7 +45,7 @@ data class VerifiableAttestation(
                 issuanceDate = "2019-06-22T14:11:44Z",
                 expirationDate = "2022-06-22T14:11:44Z",
                 validFrom = "2019-06-22T14:11:44Z",
-                credentialSubject = CredentialSubject(
+                credentialSubject = VerifiableAttestationSubject(
                     id = "id123"
                 ),
                 credentialStatus = CredentialStatus(

@@ -4,8 +4,6 @@ import com.beust.klaxon.Json
 import com.nimbusds.jwt.SignedJWT
 import id.walt.vclib.model.*
 import id.walt.vclib.registry.VerifiableCredentialMetadata
-import id.walt.vclib.registry.VerifiableCredentialMetadata2
-import id.walt.vclib.registry.VerifiableCredentialMetadata3
 import id.walt.vclib.schema.SchemaService.JsonIgnore
 import id.walt.vclib.schema.SchemaService.PropertyName
 import id.walt.vclib.schema.SchemaService.Required
@@ -25,8 +23,8 @@ data class VerifiableVaccinationCertificate(
     @Json(serializeNull = false) override var proof: Proof? = null,
     @Json(serializeNull = false) var evidence: Evidence? = null,
     @Json(serializeNull = false) var credentialStatus: CredentialStatus? = null
-) : VerifiableCredential3<VerifiableVaccinationCertificate.VaccinationCredentialSubject>(type) {
-    companion object : VerifiableCredentialMetadata3(
+) : AbstractVerifiableCredential<VerifiableVaccinationCertificate.VaccinationCredentialSubject>(type) {
+    companion object : VerifiableCredentialMetadata(
         type = listOf("VerifiableCredential", "VerifiableAttestation", "VerifiableVaccinationCertificate"),
         template = {
             VerifiableVaccinationCertificate(

@@ -3,9 +3,9 @@ package id.walt.vclib.credentials
 import com.beust.klaxon.Json
 import com.nimbusds.jwt.SignedJWT
 import id.walt.vclib.NestedVCs
-import id.walt.vclib.model.Proof
-import id.walt.vclib.model.VerifiableCredential
+import id.walt.vclib.model.*
 import id.walt.vclib.registry.VerifiableCredentialMetadata
+import id.walt.vclib.schema.SchemaService
 import id.walt.vclib.schema.SchemaService.JsonIgnore
 import id.walt.vclib.schema.SchemaService.PropertyName
 import id.walt.vclib.schema.SchemaService.Required
@@ -16,8 +16,12 @@ data class VerifiablePresentation(
     @Json(serializeNull = false) override var id: String? = null,
     @Json(serializeNull = false) var holder: String? = null,
     @NestedVCs @field:JsonIgnore var verifiableCredential: List<VerifiableCredential>,
-    @Json(serializeNull = false) var proof: Proof? = null
-) : VerifiableCredential(type) {
+    @Json(serializeNull = false) override var proof: Proof? = null,
+    @Json(serializeNull = false) override var issuanceDate: String? = null,
+    @Json(serializeNull = false) override var validFrom: String? = null,
+    @Json(serializeNull = false) override var expirationDate: String? = null
+
+) : VerifiableCredential() {
     companion object : VerifiableCredentialMetadata(
         type = listOf("VerifiablePresentation"),
         template = {
@@ -29,9 +33,9 @@ data class VerifiablePresentation(
                         id = "did:ebsi-eth:00000001/credentials/1872",
                         issuer = "did:ebsi:000001234",
                         issuanceDate = "2020-08-24T14:13:44Z",
-                        credentialSubject = VerifiableAuthorization.CredentialSubject1(
+                        credentialSubject = VerifiableAuthorization.VerifiableAuthorizationSubject(
                             "did:ebsi:00000004321",
-                            VerifiableAuthorization.CredentialSubject1.NaturalPerson("did:example:00001111")
+                            VerifiableAuthorization.VerifiableAuthorizationSubject.NaturalPerson("did:example:00001111")
                         ),
                         proof = Proof(
                             "EcdsaSecp256k1Signature2019",
@@ -41,7 +45,7 @@ data class VerifiablePresentation(
                             "eyJhbGciOiJSUzI1NiIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19."
                         )
                     ), PermanentResidentCard(
-                        credentialSubject = PermanentResidentCard.CredentialSubject2(
+                        credentialSubject = PermanentResidentCard.PermanentResidentCardSubject(
                             id = "did:example:123",
                             type = listOf(
                                 "PermanentResident",
@@ -64,14 +68,24 @@ data class VerifiablePresentation(
         }
     )
 
-    @field:JsonIgnore
+    override val type: List<String>
+        get() = VerifiablePresentation.type
+
+    @SchemaService.JsonIgnore
     @Json(ignored = true)
-    override var jwt: String? = null
+    override var issuer: String?
+        get() = holder
         set(value) {
-            field = value.also {
-                val jwtClaimsSet = SignedJWT.parse(value).jwtClaimsSet
-                id = id ?: jwtClaimsSet.jwtid
-                holder = holder ?: jwtClaimsSet.issuer
-            }
+            holder = value
         }
+
+    @SchemaService.JsonIgnore
+    @Json(ignored = true)
+    override var subject: String?
+        get() = holder
+        set(value) {
+            holder = value
+        }
+    override val credentialSchema: CredentialSchema?
+        get() = null
 }

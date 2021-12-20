@@ -15,9 +15,9 @@ private val data1 = VerifiableAuthorization(
     id = "did:ebsi-eth:00000001/credentials/1872",
     issuer = "did:ebsi:000001234",
     issuanceDate = "2020-08-24T14:13:44Z",
-    credentialSubject = VerifiableAuthorization.CredentialSubject1(
+    credentialSubject = VerifiableAuthorization.VerifiableAuthorizationSubject(
         "did:ebsi:00000004321",
-        VerifiableAuthorization.CredentialSubject1.NaturalPerson("did:example:00001111")
+        VerifiableAuthorization.VerifiableAuthorizationSubject.NaturalPerson("did:example:00001111")
     ),
     proof = Proof(
         "EcdsaSecp256k1Signature2019",
@@ -27,8 +27,8 @@ private val data1 = VerifiableAuthorization(
         "eyJhbGciOiJSUzI1NiIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19."
     )
 )
-private val data2: VerifiableCredential = PermanentResidentCard(
-    credentialSubject = PermanentResidentCard.CredentialSubject2(
+private val data2 = PermanentResidentCard(
+    credentialSubject = PermanentResidentCard.PermanentResidentCardSubject(
         id = "did:example:123",
         type = listOf(
             "PermanentResident",
