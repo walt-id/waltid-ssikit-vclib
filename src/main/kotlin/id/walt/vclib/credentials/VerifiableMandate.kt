@@ -47,7 +47,7 @@ data class VerifiableMandate(
             proxied = Proxied(
                 id = "did:ebsi:zgqR3EoNy6WuDkSs1kM8jtH",
                 permissions = Proxied.Permissions(
-                    grant = listOf("sign", "enrol"),
+                    grant = listOf("sign", "enroll"),
                     Proxied.Permissions.WhenPermission(role = "family")
                 )
             )
