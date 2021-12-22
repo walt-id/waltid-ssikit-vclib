@@ -3,9 +3,7 @@ package id.walt.vclib
 import com.beust.klaxon.Klaxon
 import com.nimbusds.jwt.JWTClaimsSet
 import com.nimbusds.jwt.JWTParser
-import id.walt.vclib.Helpers.encode
-import id.walt.vclib.Helpers.toCredential
-import id.walt.vclib.Helpers.toMap
+import id.walt.vclib.model.toCredential
 import id.walt.vclib.credentials.Europass
 import id.walt.vclib.model.VerifiableCredential
 import io.kotest.assertions.json.shouldEqualJson

@@ -1,6 +1,5 @@
 package id.walt.vclib.vcs
 
-import id.walt.vclib.Helpers.encode
 import id.walt.vclib.VcLibManager
 import id.walt.vclib.credentials.PermanentResidentCard
 import id.walt.vclib.credentials.VerifiableAuthorization

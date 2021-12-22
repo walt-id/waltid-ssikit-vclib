@@ -1,8 +1,10 @@
 package id.walt.vclib.model
 
 import com.beust.klaxon.Json
+import com.beust.klaxon.Klaxon
 import com.beust.klaxon.TypeFor
 import com.nimbusds.jwt.SignedJWT
+import id.walt.vclib.VcLibManager
 import id.walt.vclib.adapter.VCTypeAdapter
 import id.walt.vclib.schema.SchemaService
 import java.text.SimpleDateFormat
@@ -87,6 +89,9 @@ abstract class VerifiableCredential() {
         this.validFrom = validFrom?.let { dateFormat.format(it) }
         this.expirationDate = expirationDate?.let { dateFormat.format(it) }
     }
+
+    fun encode(): String = jwt ?: VcLibManager.klaxon.toJsonString(this)
+    fun toMap(): Map<String, Any> = VcLibManager.klaxon.parse(encode())!!
 }
 
 abstract class CredentialSubject() {
@@ -109,3 +114,5 @@ abstract class AbstractVerifiableCredential<SUBJ : CredentialSubject>(@field:Sch
 
     override fun newId(id: String) = "${type.last()}#${id}"
 }
+
+fun String.toCredential() = VcLibManager.getVerifiableCredential(this)

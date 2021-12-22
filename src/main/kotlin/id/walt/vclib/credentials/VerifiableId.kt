@@ -28,7 +28,7 @@ data class VerifiableId(
         type = listOf("VerifiableCredential", "VerifiableAttestation", "VerifiableId"),
         template = {
             VerifiableId(
-                id = "identity#verifiableID#${UUID.randomUUID()}",
+                id = "identity#verifiableID#3add94f4-28ec-42a1-8704-4e4aa51006b4",
                 issuer = "did:ebsi:2A9BZ9SUe6BatacSpvs1V5CdjHvLpQ7bEsi2Jb6LdHKnQxaN",
                 issuanceDate = "2021-08-31T00:00:00Z",
                 validFrom = "2021-08-31T00:00:00Z",
