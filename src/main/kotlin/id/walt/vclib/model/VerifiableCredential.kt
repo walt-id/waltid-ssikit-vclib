@@ -6,6 +6,8 @@ import com.nimbusds.jwt.SignedJWT
 import id.walt.vclib.adapter.VCTypeAdapter
 import id.walt.vclib.schema.SchemaService
 import java.text.SimpleDateFormat
+import java.time.Instant
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 @TypeFor(field = "type", adapter = VCTypeAdapter::class)
@@ -45,7 +47,7 @@ abstract class VerifiableCredential() {
 
     @field:SchemaService.JsonIgnore
     @Json(ignored = true)
-    open val dateFormat = SimpleDateFormat("YYYY-MM-dd'T'HH:mm:ss'Z'").also { it.timeZone = TimeZone.getTimeZone("UTC") }
+    open val dateFormat = DateTimeFormatter.ISO_INSTANT
 
     @field:SchemaService.JsonIgnore
     @Json(ignored = true)
@@ -55,9 +57,9 @@ abstract class VerifiableCredential() {
                 val jwtClaimsSet = SignedJWT.parse(value).jwtClaimsSet
                 id = id ?: jwtClaimsSet.jwtid
                 issuer = issuer ?: jwtClaimsSet.issuer
-                issuanceDate = issuanceDate ?: jwtClaimsSet.issueTime?.let { dateFormat.format(it) }
-                validFrom = validFrom ?: jwtClaimsSet.notBeforeTime?.let { dateFormat.format(it) }
-                expirationDate = expirationDate ?: jwtClaimsSet.expirationTime?.let { dateFormat.format(it) }
+                issuanceDate = issuanceDate ?: jwtClaimsSet.issueTime?.let { dateFormat.format(it.toInstant()) }
+                validFrom = validFrom ?: jwtClaimsSet.notBeforeTime?.let { dateFormat.format(it.toInstant()) }
+                expirationDate = expirationDate ?: jwtClaimsSet.expirationTime?.let { dateFormat.format(it.toInstant()) }
                 subject = subject ?: jwtClaimsSet.subject
             }
         }
@@ -67,6 +69,23 @@ abstract class VerifiableCredential() {
     val challenge = when (this.jwt) {
         null -> this.proof?.nonce
         else -> SignedJWT.parse(this.jwt).jwtClaimsSet.getStringClaim("nonce")
+    }
+
+    abstract fun newId(id: String) :String
+    fun newRandomId() = newId(UUID.randomUUID().toString())
+
+    open fun setMetaData(id: String? = null,
+                         issuer: String? = null,
+                         subject: String? = null,
+                         issuanceDate: Instant? = null,
+                         validFrom: Instant? = null,
+                         expirationDate: Instant? = null) {
+        this.id = id ?: newRandomId()
+        this.issuer = issuer
+        this.subject = subject
+        this.issuanceDate = issuanceDate?.let { dateFormat.format(it) }
+        this.validFrom = validFrom?.let { dateFormat.format(it) }
+        this.expirationDate = expirationDate?.let { dateFormat.format(it) }
     }
 }
 
@@ -87,4 +106,6 @@ abstract class AbstractVerifiableCredential<SUBJ : CredentialSubject>(@field:Sch
         set(value) {
             credentialSubject?.also { it.id = value }
         }
+
+    override fun newId(id: String) = "${type.last()}#${id}"
 }

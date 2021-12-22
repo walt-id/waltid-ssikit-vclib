@@ -85,4 +85,6 @@ data class VerifiableId(
         var subjectPresence: String,
         var documentPresence: List<String?>
     )
+
+    override fun newId(id: String) = "identity#verifiableID#${id}"
 }

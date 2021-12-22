@@ -8,6 +8,7 @@ import id.walt.vclib.schema.SchemaService.JsonIgnore
 import id.walt.vclib.schema.SchemaService.PropertyName
 import id.walt.vclib.schema.SchemaService.Required
 import java.text.SimpleDateFormat
+import java.time.Instant
 import java.util.*
 
 data class VerifiableDiploma(
@@ -153,4 +154,19 @@ data class VerifiableDiploma(
         @Json(serializeNull = false) var subjectPresence: String? = null,
         @Json(serializeNull = false) var documentPresence: List<String?>? = null
     )
+
+    override fun newId(id: String) = "education#higherEducation#${id}"
+
+    override fun setMetaData(
+        id: String?,
+        issuer: String?,
+        subject: String?,
+        issuanceDate: Instant?,
+        validFrom: Instant?,
+        expirationDate: Instant?
+    ) {
+        super.setMetaData(id, issuer, subject, issuanceDate, validFrom, expirationDate)
+        if (issuer != null)
+            this.credentialSubject?.awardingOpportunity?.awardingBody?.also { it.id = issuer!! }
+    }
 }

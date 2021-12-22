@@ -1,7 +1,6 @@
 package id.walt.vclib.credentials
 
 import com.beust.klaxon.Json
-import com.nimbusds.jwt.SignedJWT
 import id.walt.vclib.NestedVCs
 import id.walt.vclib.model.*
 import id.walt.vclib.registry.VerifiableCredentialMetadata
@@ -91,4 +90,6 @@ data class VerifiablePresentation(
     @Json(ignored = true)
     override val credentialSchema: CredentialSchema?
         get() = null
+
+    override fun newId(id: String) = "VerifiablePresentation#${id}"
 }
