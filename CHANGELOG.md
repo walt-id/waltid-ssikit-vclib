@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- Added ProofOfResidence credenital
+- Added ProofOfResidence credential
 
 ## [1.6.2] - 2021-12-03
 
