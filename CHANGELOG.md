@@ -4,7 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- Added ProofOfResidence credential
+## [1.6.3] - 2021-12-28
+
+-   Added ProofOfResidence credential
 
 ## [1.6.2] - 2021-12-03
 
@@ -137,7 +139,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.6.2...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.6.3...HEAD
+
+[1.6.3]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.6.2...1.6.3
 
 [1.6.2]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.6.1...1.6.2
 
