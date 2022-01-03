@@ -1,9 +1,8 @@
-package id.walt.vclib.vcs
+package id.walt.vclib.credentials
 
 import com.beust.klaxon.Klaxon
 import id.walt.vclib.model.toCredential
 import id.walt.vclib.NestedVCs
-import id.walt.vclib.credentials.*
 import id.walt.vclib.nestedVCsConverter
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
