@@ -1,5 +1,6 @@
 package id.walt.vclib.registry
 
+import id.walt.vclib.model.CredentialSubject
 import id.walt.vclib.model.VerifiableCredential
 
 abstract class VerifiableCredentialMetadata(
@@ -7,5 +8,4 @@ abstract class VerifiableCredentialMetadata(
     vararg val aliases: List<String> = emptyArray(),
     val template: (() -> VerifiableCredential)? = null
 )
-
 

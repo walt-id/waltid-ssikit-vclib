@@ -1,8 +1,7 @@
 package id.walt.vclib.credentials
 
 import com.beust.klaxon.Json
-import id.walt.vclib.model.Proof
-import id.walt.vclib.model.VerifiableCredential
+import id.walt.vclib.model.*
 import id.walt.vclib.registry.VerifiableCredentialMetadata
 import id.walt.vclib.schema.SchemaService.PropertyName
 import id.walt.vclib.schema.SchemaService.Required
@@ -22,15 +21,16 @@ data class GaiaxServiceOffering(
     val modified: String,
     val description: String,
     val billing: Billing,
-    var issuer: String,
-    @Json(serializeNull = false) var issuanceDate: String? = null,
-    @Json(serializeNull = false) var validFrom: String? = null,
-    @Json(serializeNull = false) var expirationDate: String? = null,
-    @Json(serializeNull = false) var credentialSubject: CustomCredentialSubject,
-    @Json(serializeNull = false) var proof: Proof? = null,
-) : VerifiableCredential(type) {
-    data class CustomCredentialSubject(
-        var id: String,
+    override var issuer: String?,
+    @Json(serializeNull = false) override var issuanceDate: String? = null,
+    @Json(serializeNull = false) override var validFrom: String? = null,
+    @Json(serializeNull = false) override var expirationDate: String? = null,
+    @Json(serializeNull = false) override var credentialSubject: GaiaxServiceOfferingSubject?,
+    @Json(serializeNull = false) override var credentialSchema: CredentialSchema? = null,
+    @Json(serializeNull = false) override var proof: Proof? = null,
+) : AbstractVerifiableCredential<GaiaxServiceOffering.GaiaxServiceOfferingSubject>(type) {
+    data class GaiaxServiceOfferingSubject(
+        override var id: String?,
         var type: String,
         var hasName: String,
         var description: String,
@@ -40,7 +40,7 @@ data class GaiaxServiceOffering(
         @Json(serializeNull = false) var hasCertifications: List<String>? = null,
         @Json(serializeNull = false) var utilizes: List<String>? = null,
         @Json(serializeNull = false) var dependsOn: List<String>? = null,
-    )
+    ) : CredentialSubject()
 
     data class Billing(
         var paymentModel: PaymentModel, // "PayPerUse"
@@ -79,7 +79,7 @@ data class GaiaxServiceOffering(
                 ),
                 issuer = "did:example:456",
                 issuanceDate = "2020-08-24T14:13:44Z",
-                credentialSubject = CustomCredentialSubject(
+                credentialSubject = GaiaxServiceOfferingSubject(
                     id = "Pilot004AIService",
                     type = "Service",
                     hasName = "AIS",

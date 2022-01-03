@@ -1,10 +1,7 @@
 package id.walt.vclib.credentials
 
 import com.beust.klaxon.Json
-import id.walt.vclib.model.CredentialSchema
-import id.walt.vclib.model.CredentialStatus
-import id.walt.vclib.model.Proof
-import id.walt.vclib.model.VerifiableCredential
+import id.walt.vclib.model.*
 import id.walt.vclib.registry.VerifiableCredentialMetadata
 import id.walt.vclib.schema.SchemaService.PropertyName
 import id.walt.vclib.schema.SchemaService.Required
@@ -15,19 +12,19 @@ data class ProofOfResidence(
     @Json(name = "@context") @field:PropertyName(name = "@context") @field:Required
     var context: List<String>,
     override var id: String?,
-    var issuer: String,
+    override var issuer: String?,
     var title: String = "Proof of Residence",
-    @Json(serializeNull = false) var issuanceDate: String? = null,
-    @Json(serializeNull = false) var expirationDate: String? = null,
-    @Json(serializeNull = false) var validFrom: String? = null,
-    @Json(serializeNull = false) var credentialSubject: CredentialSubject? = null,
+    @Json(serializeNull = false) override var issuanceDate: String? = null,
+    @Json(serializeNull = false) override var expirationDate: String? = null,
+    @Json(serializeNull = false) override var validFrom: String? = null,
+    @Json(serializeNull = false) override var credentialSubject: ProofOfResidenceSubject? = null,
     @Json(serializeNull = false) var credentialStatus: CredentialStatus? = null,
-    @Json(serializeNull = false) var credentialSchema: CredentialSchema? = null,
+    @Json(serializeNull = false) override var credentialSchema: CredentialSchema? = null,
     @Json(serializeNull = false) var evidence: List<Evidence>? = null,
-    @Json(serializeNull = false) var proof: Proof? = null
-) : VerifiableCredential(type) {
-    data class CredentialSubject(
-        @Json(serializeNull = false) var id: String? = null,
+    @Json(serializeNull = false) override var proof: Proof? = null
+) : AbstractVerifiableCredential<ProofOfResidence.ProofOfResidenceSubject>(type) {
+    data class ProofOfResidenceSubject(
+        @Json(serializeNull = false) override var id: String? = null,
         @Json(serializeNull = false) var familyName: String? = null,
         @Json(serializeNull = false) var firstNames: String? = null,
         @Json(serializeNull = false) var gender: String? = null,
@@ -36,7 +33,7 @@ data class ProofOfResidence(
         @Json(serializeNull = false) var familyStatus: String? = null,
         @Json(serializeNull = false) var identificationNumber: String? = null,
         @Json(serializeNull = false) var nationality: String? = null,
-    )
+    ) : CredentialSubject()
 
     data class Evidence(
         var id: String,
@@ -66,7 +63,7 @@ data class ProofOfResidence(
                 issuanceDate = "2019-06-22T14:11:44Z",
                 expirationDate = "2022-06-22T14:11:44Z",
                 validFrom = "2019-06-22T14:11:44Z",
-                credentialSubject = CredentialSubject(
+                credentialSubject = ProofOfResidenceSubject(
                     id = "id123",
                     familyName = "Beron",
                     firstNames = "Domink",

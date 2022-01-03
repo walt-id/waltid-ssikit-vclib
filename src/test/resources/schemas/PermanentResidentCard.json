@@ -8,6 +8,18 @@
         "type" : "string"
       }
     },
+    "credentialSchema" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        }
+      },
+      "additionalProperties" : false
+    },
     "credentialSubject" : {
       "type" : "object",
       "properties" : {
@@ -29,7 +41,13 @@
       },
       "additionalProperties" : false
     },
+    "expirationDate" : {
+      "type" : "string"
+    },
     "id" : {
+      "type" : "string"
+    },
+    "issuanceDate" : {
       "type" : "string"
     },
     "issuer" : {
@@ -70,6 +88,9 @@
       "items" : {
         "type" : "string"
       }
+    },
+    "validFrom" : {
+      "type" : "string"
     }
   },
   "required" : [ "@context", "type" ],

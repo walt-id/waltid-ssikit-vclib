@@ -2,10 +2,7 @@ package id.walt.vclib.credentials
 
 import com.beust.klaxon.Json
 import com.nimbusds.jwt.SignedJWT
-import id.walt.vclib.model.CredentialSchema
-import id.walt.vclib.model.CredentialStatus
-import id.walt.vclib.model.Proof
-import id.walt.vclib.model.VerifiableCredential
+import id.walt.vclib.model.*
 import id.walt.vclib.registry.VerifiableCredentialMetadata
 import id.walt.vclib.schema.SchemaService.JsonIgnore
 import id.walt.vclib.schema.SchemaService.PropertyName
@@ -13,31 +10,29 @@ import id.walt.vclib.schema.SchemaService.Required
 import java.text.SimpleDateFormat
 import java.util.*
 
-private val dateFormat = SimpleDateFormat("YYYY-MM-dd'T'HH:mm:ss'Z'").also { it.timeZone = TimeZone.getTimeZone("UTC") }
-
 data class VerifiableId(
     @Json(name = "@context") @field:PropertyName(name = "@context") @field:Required
     var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
     @Json(serializeNull = false) override var id: String? = null,
-    @Json(serializeNull = false) var issuer: String? = null,
-    @Json(serializeNull = false) var issuanceDate: String? = null,
-    @Json(serializeNull = false) var validFrom: String? = null,
-    @Json(serializeNull = false) var expirationDate: String? = null,
-    var credentialSubject: CredentialSubject? = null,
+    @Json(serializeNull = false) override var issuer: String? = null,
+    @Json(serializeNull = false) override var issuanceDate: String? = null,
+    @Json(serializeNull = false) override var validFrom: String? = null,
+    @Json(serializeNull = false) override var expirationDate: String? = null,
+    override var credentialSubject: VerifiableIdSubject? = null,
     @Json(serializeNull = false) var credentialStatus: CredentialStatus? = null,
-    var credentialSchema: CredentialSchema? = null,
+    override var credentialSchema: CredentialSchema? = null,
     var evidence: Evidence? = null,
-    @Json(serializeNull = false) var proof: Proof? = null
-) : VerifiableCredential(type) {
+    @Json(serializeNull = false) override var proof: Proof? = null
+) : AbstractVerifiableCredential<VerifiableId.VerifiableIdSubject>(type) {
     companion object : VerifiableCredentialMetadata(
         type = listOf("VerifiableCredential", "VerifiableAttestation", "VerifiableId"),
         template = {
             VerifiableId(
-                id = "identity#verifiableID#${UUID.randomUUID()}",
+                id = "identity#verifiableID#3add94f4-28ec-42a1-8704-4e4aa51006b4",
                 issuer = "did:ebsi:2A9BZ9SUe6BatacSpvs1V5CdjHvLpQ7bEsi2Jb6LdHKnQxaN",
                 issuanceDate = "2021-08-31T00:00:00Z",
                 validFrom = "2021-08-31T00:00:00Z",
-                credentialSubject = CredentialSubject(
+                credentialSubject = VerifiableIdSubject(
                     id = "did:ebsi:2AEMAqXWKYMu1JHPAgGcga4dxu7ThgfgN95VyJBJGZbSJUtp",
                     familyName = "DOE",
                     firstName = "Jane",
@@ -70,23 +65,8 @@ data class VerifiableId(
         }
     )
 
-    @field:JsonIgnore
-    @Json(ignored = true)
-    override var jwt: String? = null
-        set(value) {
-            field = value.also {
-                val jwtClaimsSet = SignedJWT.parse(value).jwtClaimsSet
-                id = id ?: jwtClaimsSet.jwtid
-                issuer = issuer ?: jwtClaimsSet.issuer
-                issuanceDate = issuanceDate ?: jwtClaimsSet.issueTime?.let { dateFormat.format(it) }
-                validFrom = validFrom ?: jwtClaimsSet.notBeforeTime?.let { dateFormat.format(it) }
-                expirationDate = expirationDate ?: jwtClaimsSet.expirationTime?.let { dateFormat.format(it) }
-                credentialSubject?.also { it.id = it.id ?: jwtClaimsSet.subject }
-            }
-        }
-
-    data class CredentialSubject(
-        @Json(serializeNull = false) var id: String? = null,
+    data class VerifiableIdSubject(
+        @Json(serializeNull = false) override var id: String? = null,
         var familyName: String? = null,
         var firstName: String? = null,
         var dateOfBirth: String? = null,
@@ -95,7 +75,7 @@ data class VerifiableId(
         @Json(serializeNull = false) var placeOfBirth: String? = null,
         @Json(serializeNull = false) var currentAddress: String? = null,
         @Json(serializeNull = false) var gender: String? = null,
-    )
+    ) : CredentialSubject()
 
     data class Evidence(
         @Json(serializeNull = false) var id: String? = null,
@@ -105,4 +85,6 @@ data class VerifiableId(
         var subjectPresence: String,
         var documentPresence: List<String?>
     )
+
+    override fun newId(id: String) = "identity#verifiableID#${id}"
 }
