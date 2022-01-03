@@ -1,6 +1,5 @@
 package id.walt.vclib.vcs
 
-import id.walt.vclib.VcLibManager
 import id.walt.vclib.credentials.PermanentResidentCard
 import id.walt.vclib.credentials.VerifiableAuthorization
 import id.walt.vclib.credentials.VerifiablePresentation
@@ -53,7 +52,7 @@ class VerifiablePresentationTest : StringSpec({
         println(vaJson)
 
         println("Parsing VerifiableAuthorization JSON...")
-        val vc = VcLibManager.getVerifiableCredential(vaJson)
+        val vc = VerifiableCredential.fromString(vaJson)
 
         println("VerifiableAuthorization JSON is VerifiableAuthorization class:")
 
@@ -77,7 +76,7 @@ class VerifiablePresentationTest : StringSpec({
 
 
         println("Parsing VerifiablePresentation...")
-        val myVp = VcLibManager.getVerifiableCredential(vpJson)
+        val myVp = VerifiableCredential.fromString(vpJson)
 
         println("VerifiablePresentation:")
         println(myVp)

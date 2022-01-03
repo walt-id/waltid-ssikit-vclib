@@ -1,6 +1,5 @@
 package id.walt.vclib.registry
 
-import id.walt.vclib.VcLibManager
 import id.walt.vclib.credentials.*
 import id.walt.vclib.model.VerifiableCredential
 import org.lighthousegames.logging.logging
