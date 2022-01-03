@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Refactoring of VerifiableCredential data model
+- removal of redundant helper and utility objects (VcLibManager, VcUtils, Helpers and Defaults)
+
 ## [1.6.3] - 2021-12-28
 
 -   Added ProofOfResidence credential
