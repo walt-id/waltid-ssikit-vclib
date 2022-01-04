@@ -29,6 +29,7 @@ object VcTypeRegistry {
         register<VerifiableVaccinationCertificate>(VerifiableVaccinationCertificate)
         register<ProofOfResidence>(ProofOfResidence)
         register<ParticipantCredential>(ParticipantCredential)
+        register<VerifiableMandate>(VerifiableMandate)
     }
 
     class TypeRegistration(
