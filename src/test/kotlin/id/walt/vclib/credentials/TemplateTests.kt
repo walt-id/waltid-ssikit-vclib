@@ -1,10 +1,8 @@
-package id.walt.vclib.vcs
+package id.walt.vclib.credentials
 
-import id.walt.vclib.credentials.VerifiableAuthorization
 import id.walt.vclib.templates.VcTemplateManager
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
-import io.kotest.matchers.shouldNotBe
 
 class TemplateTests : StringSpec({
 
