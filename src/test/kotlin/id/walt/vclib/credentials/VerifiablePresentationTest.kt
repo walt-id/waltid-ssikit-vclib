@@ -1,10 +1,5 @@
-package id.walt.vclib.vcs
+package id.walt.vclib.credentials
 
-import id.walt.vclib.Helpers.encode
-import id.walt.vclib.VcLibManager
-import id.walt.vclib.credentials.PermanentResidentCard
-import id.walt.vclib.credentials.VerifiableAuthorization
-import id.walt.vclib.credentials.VerifiablePresentation
 import id.walt.vclib.model.Proof
 import id.walt.vclib.model.VerifiableCredential
 import io.kotest.assertions.json.shouldNotContainJsonKey
@@ -15,9 +10,9 @@ private val data1 = VerifiableAuthorization(
     id = "did:ebsi-eth:00000001/credentials/1872",
     issuer = "did:ebsi:000001234",
     issuanceDate = "2020-08-24T14:13:44Z",
-    credentialSubject = VerifiableAuthorization.CredentialSubject1(
+    credentialSubject = VerifiableAuthorization.VerifiableAuthorizationSubject(
         "did:ebsi:00000004321",
-        VerifiableAuthorization.CredentialSubject1.NaturalPerson("did:example:00001111")
+        VerifiableAuthorization.VerifiableAuthorizationSubject.NaturalPerson("did:example:00001111")
     ),
     proof = Proof(
         "EcdsaSecp256k1Signature2019",
@@ -27,8 +22,8 @@ private val data1 = VerifiableAuthorization(
         "eyJhbGciOiJSUzI1NiIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19."
     )
 )
-private val data2: VerifiableCredential = PermanentResidentCard(
-    credentialSubject = PermanentResidentCard.CredentialSubject2(
+private val data2 = PermanentResidentCard(
+    credentialSubject = PermanentResidentCard.PermanentResidentCardSubject(
         id = "did:example:123",
         type = listOf(
             "PermanentResident",
@@ -54,7 +49,7 @@ class VerifiablePresentationTest : StringSpec({
         println(vaJson)
 
         println("Parsing VerifiableAuthorization JSON...")
-        val vc = VcLibManager.getVerifiableCredential(vaJson)
+        val vc = VerifiableCredential.fromString(vaJson)
 
         println("VerifiableAuthorization JSON is VerifiableAuthorization class:")
 
@@ -78,7 +73,7 @@ class VerifiablePresentationTest : StringSpec({
 
 
         println("Parsing VerifiablePresentation...")
-        val myVp = VcLibManager.getVerifiableCredential(vpJson)
+        val myVp = VerifiableCredential.fromString(vpJson)
 
         println("VerifiablePresentation:")
         println(myVp)

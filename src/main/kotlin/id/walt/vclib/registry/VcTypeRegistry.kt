@@ -1,6 +1,6 @@
 package id.walt.vclib.registry
 
-import id.walt.vclib.Defaults
+import id.walt.vclib.credentials.*
 import id.walt.vclib.model.VerifiableCredential
 import org.lighthousegames.logging.logging
 import kotlin.reflect.KClass
@@ -10,14 +10,32 @@ class CredentialTypeAlreadyRegisteredException(registration: VcTypeRegistry.Type
 
 object VcTypeRegistry {
 
+    private val log = logging()
+    private val registry = HashMap<Int, TypeRegistration>()
+
+    init {
+        log.info { "Registering default templates" }
+        register<PermanentResidentCard>(PermanentResidentCard)
+        register<VerifiableAttestation>(VerifiableAttestation)
+        register<VerifiableAuthorization>(VerifiableAuthorization)
+        register<VerifiablePresentation>(VerifiablePresentation)
+        register<Europass>(Europass)
+        register<UniversityDegree>(UniversityDegree)
+        register<VerifiableId>(VerifiableId)
+        register<VerifiableDiploma>(VerifiableDiploma)
+        register<GaiaxCredential>(GaiaxCredential)
+        register<GaiaxSelfDescription>(GaiaxSelfDescription)
+        register<GaiaxServiceOffering>(GaiaxServiceOffering)
+        register<VerifiableVaccinationCertificate>(VerifiableVaccinationCertificate)
+        register<ProofOfResidence>(ProofOfResidence)
+        register<ParticipantCredential>(ParticipantCredential)
+    }
+
     class TypeRegistration(
         val vc: KClass<out VerifiableCredential>,
         val metadata: VerifiableCredentialMetadata,
         val isPrimary: Boolean = true
     )
-
-    private val log = logging()
-    private val registry = HashMap<Int, TypeRegistration>()
 
     private fun computeKey(type: List<String>) = type.sorted().hashCode()
 
@@ -58,7 +76,5 @@ object VcTypeRegistry {
     fun getTypesWithTemplate() = registry.filterValues { it.metadata.template != null }
     fun getTemplateTypes() = getTypesWithTemplate().map { it.value.vc.simpleName!! }
 
-    init {
-        Defaults.loadVcLibDefaults()
-    }
+    inline fun <reified T : VerifiableCredential> register(metadata: VerifiableCredentialMetadata) = register(metadata, T::class)
 }

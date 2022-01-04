@@ -1,12 +1,10 @@
 package id.walt.vclib
 
 import com.beust.klaxon.Json
-import id.walt.vclib.Helpers.toCredential
-import id.walt.vclib.Helpers.toMap
 import id.walt.vclib.credentials.VerifiableDiploma
 import id.walt.vclib.credentials.VerifiableId
 import id.walt.vclib.credentials.VerifiablePresentation
-import id.walt.vclib.model.VerifiableCredential
+import id.walt.vclib.model.*
 import id.walt.vclib.registry.VerifiableCredentialMetadata
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
@@ -87,8 +85,16 @@ class HelpersTest : StringSpec({
 }) {
     data class DummyCredential(
         @Json(name = "@context") var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
-        @Json(serializeNull = false) override var id: String? = null
-    ) : VerifiableCredential(type) {
+        @Json(serializeNull = false) override var id: String? = null,
+        @Json(serializeNull = false) override var issuer: String? = null,
+        @Json(serializeNull = false) override var issuanceDate: String? = null,
+        @Json(serializeNull = false) override var validFrom: String? = null,
+        @Json(serializeNull = false) override var expirationDate: String? = null,
+        @Json(serializeNull = false) override var credentialSchema: CredentialSchema? = null,
+        @Json(serializeNull = false) override var proof: Proof? = null,
+        @Json(serializeNull = false) override var credentialSubject: DummySubject? = null
+    ) : AbstractVerifiableCredential<DummyCredential.DummySubject>(type) {
+        data class DummySubject(override var id: String?) : CredentialSubject()
         companion object :
             VerifiableCredentialMetadata(listOf("VerifiableCredential", "VerifiableAttestation", "DummyCredential"))
     }

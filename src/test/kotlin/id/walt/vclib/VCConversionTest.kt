@@ -1,12 +1,15 @@
 package id.walt.vclib
 
 import com.beust.klaxon.Klaxon
-import id.walt.vclib.Helpers.toCredential
-import id.walt.vclib.Helpers.toMap
+import com.nimbusds.jwt.JWTClaimsSet
+import com.nimbusds.jwt.JWTParser
+import id.walt.vclib.model.toCredential
+import id.walt.vclib.credentials.Europass
 import id.walt.vclib.model.VerifiableCredential
 import io.kotest.assertions.json.shouldEqualJson
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
+import java.io.File
 
 class VCConversionTest : StringSpec({
 
@@ -21,5 +24,17 @@ class VCConversionTest : StringSpec({
     "2. parse and convert vp" {
         val vp = "{\"@context\" : [\"https://www.w3.org/2018/credentials/v1\"], \"id\" : \"id\", \"holder\" : \"did:ebsi:00000004321\", \"verifiableCredential\" : [\"eyJraWQiOiJkaWQ6a2V5Ono2TWtvNDU2OTdrRGI4SnZERWR2QXpBZHM0R1FxUEphWEdEQzg1UkFUQUROdXZndyIsInR5cCI6IkpXVCIsImFsZyI6IkVkRFNBIn0.eyJpc3MiOiJkaWQ6a2V5Ono2TWtvNDU2OTdrRGI4SnZERWR2QXpBZHM0R1FxUEphWEdEQzg1UkFUQUROdXZndyIsInN1YiI6ImRpZDprZXk6ejZNa280NTY5N2tEYjhKdkRFZHZBekFkczRHUXFQSmFYR0RDODVSQVRBRE51dmd3IiwibmJmIjoxNjMxMTE3MzI1LCJpYXQiOjE2MzExMTczMjUsInZjIjp7ImNyZWRlbnRpYWxTY2hlbWEiOnsiaWQiOiJodHRwczpcL1wvYXBpLnByZXByb2QuZWJzaS5ldVwvdHJ1c3RlZC1zY2hlbWFzLXJlZ2lzdHJ5XC92MVwvc2NoZW1hc1wvMHhiZjc4ZmMwOGE3YTlmMjhmNTQ3OWY1OGRlYTI2OWQzNjU3ZjU0ZjEzY2EzN2QzODBjZDRlOTIyMzdmYjY5MWRkIiwidHlwZSI6Ikpzb25TY2hlbWFWYWxpZGF0b3IyMDE4In0sImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImxlYXJuaW5nU3BlY2lmaWNhdGlvbiI6eyJpc2NlZGZDb2RlIjpbIjciXSwiZWN0c0NyZWRpdFBvaW50cyI6MTIwLCJlcWZMZXZlbCI6NywiaWQiOiJodHRwczpcL1wvbGVhc3Rvbi5iY2RpcGxvbWEuY29tXC9sYXctZWNvbm9taWNzLW1hbmFnZW1lbnQjTGVhcm5pbmdTcGVjaWZpY2F0aW9uIiwibnFmTGV2ZWwiOlsiNyJdfSwiaWRlbnRpZmllciI6IjA5MDQwMDgwODRIIiwiYXdhcmRpbmdPcHBvcnR1bml0eSI6eyJpZGVudGlmaWVyIjoiaHR0cHM6XC9cL2NlcnRpZmljYXRlLWRlbW8uYmNkaXBsb21hLmNvbVwvY2hlY2tcLzg3RUQyRjIyNzBFNkM0MTQ1NkU5NEI4NkI5RDkxMTVCNEUzNUJDQ0FEMjAwQTQ5Qjg0NjU5MkMxNEY3OUM4NkJWMUZuYmxsdGEwTlpUbkprUjNsRFdsUm1URGxTUlVKRVZGWklTbU5tWXpKaFVVNXNaVUo1WjJGSlNIcFdibVpaIiwiZW5kZWRBdFRpbWUiOiIyMDIwLTA2LTI2VDAwOjAwOjAwWiIsInN0YXJ0ZWRBdFRpbWUiOiIyMDE5LTA5LTAyVDAwOjAwOjAwWiIsImF3YXJkaW5nQm9keSI6eyJyZWdpc3RyYXRpb24iOiIwNTk3MDY1SiIsImlkIjoiZGlkOmtleTp6Nk1rbzQ1Njk3a0RiOEp2REVkdkF6QWRzNEdRcVBKYVhHREM4NVJBVEFETnV2Z3ciLCJwcmVmZXJyZWROYW1lIjoiTGVhc3RvbiBVbml2ZXJzaXR5IiwiZWlkYXNMZWdhbElkZW50aWZpZXIiOiJVbmtub3duIiwiaG9tZXBhZ2UiOiJodHRwczpcL1wvbGVhc3Rvbi5iY2RpcGxvbWEuY29tXC8ifSwibG9jYXRpb24iOiJGUkFOQ0UiLCJpZCI6Imh0dHBzOlwvXC9sZWFzdG9uLmJjZGlwbG9tYS5jb21cL2xhdy1lY29ub21pY3MtbWFuYWdlbWVudCNBd2FyZGluZ09wcG9ydHVuaXR5In0sImZhbWlseU5hbWUiOiJET0UiLCJnaXZlbk5hbWVzIjoiSmFuZSIsImRhdGVPZkJpcnRoIjoiMTk5My0wNC0wOFQwMDowMDowMFoiLCJsZWFybmluZ0FjaGlldmVtZW50Ijp7ImFkZGl0aW9uYWxOb3RlIjpbIkRJU1RSSUJVVElPTiBNQU5BR0VNRU5UIl0sImRlc2NyaXB0aW9uIjoiTUFSS0VUSU5HIEFORCBTQUxFUyIsImlkIjoiaHR0cHM6XC9cL2xlYXN0b24uYmNkaXBsb21hLmNvbVwvbGF3LWVjb25vbWljcy1tYW5hZ2VtZW50I0xlYXJuaW5nQWNoaWV2bWVudCIsInRpdGxlIjoiTUFTVEVSUyBMQVcsIEVDT05PTUlDUyBBTkQgTUFOQUdFTUVOVCJ9LCJpZCI6ImRpZDplYnNpOjJBRU1BcVhXS1lNdTFKSFBBZ0djZ2E0ZHh1N1RoZ2ZnTjk1VnlKQkpHWmJTSlV0cCIsImdyYWRpbmdTY2hlbWUiOnsiaWQiOiJodHRwczpcL1wvbGVhc3Rvbi5iY2RpcGxvbWEuY29tXC9sYXctZWNvbm9taWNzLW1hbmFnZW1lbnQjR3JhZGluZ1NjaGVtZSIsInRpdGxlIjoiTG93ZXIgU2Vjb25kLUNsYXNzIEhvbm91cnMifX0sImlzc3VhbmNlRGF0ZSI6IjIwMjEtMDgtMzFUMDA6MDA6MDBaIiwiaWQiOiJlZHVjYXRpb24jaGlnaGVyRWR1Y2F0aW9uI2I2NDc5ZTc5LTM2YTktNGM0MS04OTgwLTcwMWZlYWEzZjAyNyIsInZhbGlkRnJvbSI6IjIwMjEtMDgtMzFUMDA6MDA6MDBaIiwidHlwZSI6WyJWZXJpZmlhYmxlQ3JlZGVudGlhbCIsIlZlcmlmaWFibGVBdHRlc3RhdGlvbiIsIlZlcmlmaWFibGVEaXBsb21hIl0sIkBjb250ZXh0IjpbImh0dHBzOlwvXC93d3cudzMub3JnXC8yMDE4XC9jcmVkZW50aWFsc1wvdjEiXSwiaXNzdWVyIjoiZGlkOmVic2k6MkE5Qlo5U1VlNkJhdGFjU3B2czFWNUNkakh2THBRN2JFc2kySmI2TGRIS25ReGFOIn19.n2JSEDA3jAeRHGRareF2ScDoVDQ1K6upbvIgszitRNyYF319H8kuKVq9Dn0IHSVO30VqbWsuvyk0U5-JL1RECw\"], \"type\" : [\"VerifiablePresentation\"]}"
         Klaxon().toJsonString(vp.toCredential().toMap()) shouldEqualJson vp
+    }
+
+    "3. Europass jwt claim" {
+        val input = File("src/test/resources/serialized/Europass.json").readText()
+        val verifiableAttestationJsonLd = input.toCredential() as Europass
+
+        val payload = JWTClaimsSet.Builder()
+            .claim("vc", verifiableAttestationJsonLd.toMap()) // TODO reduce payload of VA
+            .build().toString()
+
+        JWTClaimsSet.parse(payload).getClaim("vc").toString() shouldEqualJson input
+        JWTClaimsSet.parse(payload).getClaim("vc").toString().toCredential().encode() shouldEqualJson input
     }
 }) {}

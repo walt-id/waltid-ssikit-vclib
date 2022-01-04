@@ -4,9 +4,8 @@ import com.beust.klaxon.Converter
 import com.beust.klaxon.JsonObject
 import com.beust.klaxon.JsonValue
 import com.beust.klaxon.KlaxonException
-import id.walt.vclib.Helpers.encode
-import id.walt.vclib.Helpers.toCredential
 import id.walt.vclib.model.VerifiableCredential
+import id.walt.vclib.model.toCredential
 
 @Target(AnnotationTarget.FIELD)
 annotation class NestedVCs

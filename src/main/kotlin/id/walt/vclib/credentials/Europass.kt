@@ -2,10 +2,7 @@ package id.walt.vclib.credentials
 
 
 import com.beust.klaxon.Json
-import id.walt.vclib.model.CredentialSchema
-import id.walt.vclib.model.CredentialStatus
-import id.walt.vclib.model.Proof
-import id.walt.vclib.model.VerifiableCredential
+import id.walt.vclib.model.*
 import id.walt.vclib.registry.VerifiableCredentialMetadata
 import id.walt.vclib.schema.SchemaService.PropertyName
 import id.walt.vclib.schema.SchemaService.Required
@@ -16,17 +13,17 @@ data class Europass(
         "https://www.w3.org/2018/credentials/v1"
     ),
     @Json(serializeNull = false) override var id: String? = null, // education#higherEducation#51e42fda-cb0a-4333-b6a6-35cb147e1a88
-    @Json(serializeNull = false) var issuer: String? = null, // did:ebsi:2LGKvDMrNUPR6FhSNrXzQQ1h295zr4HwoX9UqvwAsenSKHe9
-    @Json(serializeNull = false) var issuanceDate: String? = null, // 2020-11-03T00:00:00Z
-    @Json(serializeNull = false) var validFrom: String? = null, // 2020-11-03T00:00:00Z
-    @Json(serializeNull = false) var expirationDate: String? = null,
-    @Json(serializeNull = false) var credentialSubject: CredentialSubject? = null,
+    @Json(serializeNull = false) override var issuer: String? = null, // did:ebsi:2LGKvDMrNUPR6FhSNrXzQQ1h295zr4HwoX9UqvwAsenSKHe9
+    @Json(serializeNull = false) override var issuanceDate: String? = null, // 2020-11-03T00:00:00Z
+    @Json(serializeNull = false) override var validFrom: String? = null, // 2020-11-03T00:00:00Z
+    @Json(serializeNull = false) override var expirationDate: String? = null,
+    @Json(serializeNull = false) override var credentialSubject: EuropassSubject? = null,
     @Json(serializeNull = false) var credentialStatus: CredentialStatus? = null,
-    @Json(serializeNull = false) var credentialSchema: CredentialSchema? = null,
+    @Json(serializeNull = false) override var credentialSchema: CredentialSchema? = null,
     @Json(serializeNull = false) var evidence: Evidence? = null,
     //@Json(serializeNull = false) var proof: List<Proof>? = null
-    @Json(serializeNull = false) var proof: Proof? = null
-) : VerifiableCredential(type) {
+    @Json(serializeNull = false) override var proof: Proof? = null
+) : AbstractVerifiableCredential<Europass.EuropassSubject>(type) {
     companion object : VerifiableCredentialMetadata(
         type = listOf("VerifiableCredential", "VerifiableAttestation", "Europass"),
         template = {
@@ -35,17 +32,17 @@ data class Europass(
                 issuer = "did:ebsi:2LGKvDMrNUPR6FhSNrXzQQ1h295zr4HwoX9UqvwAsenSKHe9",
                 issuanceDate = "2020-11-03T00:00:00Z",
                 validFrom = "2020-11-03T00:00:00Z",
-                credentialSubject = CredentialSubject(
+                credentialSubject = EuropassSubject(
                     id = "did:ebsi:22AhtW7XMssv7es4YcQTdV2MCM3c8b1VsiBfi5weHsjcCY9o",
                     identifier = "0904008084H",
                     givenNames = "Jane",
                     familyName = "DOE",
                     dateOfBirth = "1993-04-08",
-                    gradingScheme = CredentialSubject.GradingScheme(
+                    gradingScheme = EuropassSubject.GradingScheme(
                         id = "https://leaston.bcdiploma.com/law-economics-management#GradingScheme",
                         title = "Lower Second-Class Honours"
                     ),
-                    learningAchievement = CredentialSubject.LearningAchievement(
+                    learningAchievement = EuropassSubject.LearningAchievement(
                         id = "https://leaston.bcdiploma.com/law-economics-management#LearningAchievment",
                         title = "MASTERS LAW, ECONOMICS AND MANAGEMENT",
                         description = "MARKETING AND SALES",
@@ -53,10 +50,10 @@ data class Europass(
                             "DISTRIBUTION MANAGEMENT"
                         )
                     ),
-                    awardingOpportunity = CredentialSubject.AwardingOpportunity(
+                    awardingOpportunity = EuropassSubject.AwardingOpportunity(
                         id = "https://leaston.bcdiploma.com/law-economics-management#AwardingOpportunity",
                         identifier = "https://certificate-demo.bcdiploma.com/check/87ED2F2270E6C41456E94B86B9D9115B4E35BCCAD200A49B846592C14F79C86BV1Fnbllta0NZTnJkR3lDWlRmTDlSRUJEVFZISmNmYzJhUU5sZUJ5Z2FJSHpWbmZZ",
-                        awardingBody = CredentialSubject.AwardingOpportunity.AwardingBody(
+                        awardingBody = EuropassSubject.AwardingOpportunity.AwardingBody(
                             id = "did:ebsi:2LGKvDMrNUPR6FhSNrXzQQ1h295zr4HwoX9UqvwAsenSKHe9",
                             eidasLegalIdentifier = "Unknown",
                             registration = "0597065J",
@@ -67,7 +64,7 @@ data class Europass(
                         startedAtTime = "Unknown",
                         endedAtTime = "2020-11-03T00:00:00Z"
                     ),
-                    learningSpecification = CredentialSubject.LearningSpecification(
+                    learningSpecification = EuropassSubject.LearningSpecification(
                         id = "https://leaston.bcdiploma.com/law-economics-management#LearningSpecification",
                         ISCEDFCode = listOf(
                             "7"
@@ -100,8 +97,8 @@ data class Europass(
         @Json(serializeNull = false) var documentPresence: List<String?>? = null
     )
 
-    data class CredentialSubject(
-        @Json(serializeNull = false) var id: String? = null, // did:ebsi:22AhtW7XMssv7es4YcQTdV2MCM3c8b1VsiBfi5weHsjcCY9o
+    data class EuropassSubject(
+        @Json(serializeNull = false) override var id: String? = null, // did:ebsi:22AhtW7XMssv7es4YcQTdV2MCM3c8b1VsiBfi5weHsjcCY9o
         @Json(serializeNull = false) var identifier: String? = null, // 0904008084H
         @Json(serializeNull = false) var givenNames: String? = null, // Jane
         @Json(serializeNull = false) var familyName: String? = null, // DOE
@@ -110,7 +107,7 @@ data class Europass(
         @Json(serializeNull = false) var learningAchievement: LearningAchievement? = null,
         @Json(serializeNull = false) var awardingOpportunity: AwardingOpportunity? = null,
         @Json(serializeNull = false) var learningSpecification: LearningSpecification? = null
-    ) {
+    ) : CredentialSubject() {
         data class GradingScheme(
             var id: String, // https://leaston.bcdiploma.com/law-economics-management#GradingScheme
             @Json(serializeNull = false) var title: String? = null, // Lower Second-Class Honours

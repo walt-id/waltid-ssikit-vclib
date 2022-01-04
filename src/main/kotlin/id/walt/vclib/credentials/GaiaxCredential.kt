@@ -1,8 +1,7 @@
 package id.walt.vclib.credentials
 
 import com.beust.klaxon.Json
-import id.walt.vclib.model.Proof
-import id.walt.vclib.model.VerifiableCredential
+import id.walt.vclib.model.*
 import id.walt.vclib.registry.VerifiableCredentialMetadata
 import id.walt.vclib.schema.SchemaService.PropertyName
 import id.walt.vclib.schema.SchemaService.Required
@@ -11,15 +10,16 @@ data class GaiaxCredential(
     @Json(name = "@context") @field:PropertyName(name = "@context") @field:Required
     var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
     override var id: String?,
-    var issuer: String,
-    @Json(serializeNull = false) var issuanceDate: String? = null,
-    @Json(serializeNull = false) var validFrom: String? = null,
-    @Json(serializeNull = false) var expirationDate: String? = null,
-    @Json(serializeNull = false) var credentialSubject: CustomCredentialSubject,
-    @Json(serializeNull = false) var proof: Proof? = null,
-) : VerifiableCredential(type) {
-    data class CustomCredentialSubject(
-        var id: String, // did:key
+    override var issuer: String?,
+    @Json(serializeNull = false) override var issuanceDate: String? = null,
+    @Json(serializeNull = false) override var validFrom: String? = null,
+    @Json(serializeNull = false) override var expirationDate: String? = null,
+    @Json(serializeNull = false) override var credentialSubject: GaiaxCredentialSubject?,
+    @Json(serializeNull = false) override var credentialSchema: CredentialSchema? = null,
+    @Json(serializeNull = false) override var proof: Proof? = null,
+) : AbstractVerifiableCredential<GaiaxCredential.GaiaxCredentialSubject>(type) {
+    data class GaiaxCredentialSubject(
+        override var id: String?, // did:key
         var legallyBindingName: String, // deltaDAO AG
         var brandName: String, // deltaDAO
         var legallyBindingAddress: LegallyBindingAddress,
@@ -34,7 +34,7 @@ data class GaiaxCredential(
         var legalRegistrationNumber: String, // HRB 170364
         var ethereumAddress: EthereumAddress,
         var trustState: String // trusted
-    ) {
+    ) : CredentialSubject() {
         data class LegallyBindingAddress(
             var streetAddress: String, // Geibelstr. 46B
             var postalCode: String, // 22303
@@ -67,17 +67,17 @@ data class GaiaxCredential(
                 id = "did:ebsi-eth:00000001/credentials/1872",
                 issuer = "did:example:456",
                 issuanceDate = "2020-08-24T14:13:44Z",
-                credentialSubject = CustomCredentialSubject(
+                credentialSubject = GaiaxCredentialSubject(
                     id = "did:key:dummy",
                     legallyBindingName = "deltaDAO AG",
                     brandName = "deltaDAO",
-                    legallyBindingAddress = CustomCredentialSubject.LegallyBindingAddress(
+                    legallyBindingAddress = GaiaxCredentialSubject.LegallyBindingAddress(
                         streetAddress = "Geibelstr. 46B",
                         postalCode = "22303",
                         locality = "Hamburg",
                         countryName = "Germany"
                     ),
-                    webAddress = CustomCredentialSubject.WebAddress(
+                    webAddress = GaiaxCredentialSubject.WebAddress(
                         url = "https://www.delta-dao.com/"
                     ),
                     corporateEmailAddress = "contact@delta-dao.com",
@@ -85,7 +85,7 @@ data class GaiaxCredential(
                     individualContactTechnical = "support@delta-dao.com",
                     legalForm = "Stock Company",
                     jurisdiction = "Germany",
-                    commercialRegister = CustomCredentialSubject.CommercialRegister(
+                    commercialRegister = GaiaxCredentialSubject.CommercialRegister(
                         organizationName = "Amtsgericht Hamburg (-Mitte)",
                         organizationUnit = "Registergericht",
                         streetAddress = "Caffamacherreihe 20",
@@ -94,7 +94,7 @@ data class GaiaxCredential(
                         countryName = "Germany"
                     ),
                     legalRegistrationNumber = "HRB 170364",
-                    ethereumAddress = CustomCredentialSubject.EthereumAddress(
+                    ethereumAddress = GaiaxCredentialSubject.EthereumAddress(
                         id = "0x4C84a36fCDb7Bc750294A7f3B5ad5CA8F74C4A52"
                     ),
                     DNSpublicKey = "04:8B:CA:33:B1:A1:3A:69:E6:A2:1E:BE:CB:4E:DF:75:A9:70:8B:AA:51:83:AB:A1:B0:5A:35:20:3D:B4:29:09:AD:67:B4:12:19:3B:6A:B5:7C:12:3D:C4:CA:DD:A5:E0:DA:05:1E:5E:1A:4B:D1:F2:BA:8F:07:4D:C7:B6:AA:23:46",

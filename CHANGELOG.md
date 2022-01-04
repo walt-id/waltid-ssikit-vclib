@@ -4,8 +4,16 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- Added ProofOfResidence credential
 - Added VerifiableMandate
+
+## [1.7.0] - 2022-01-03
+
+-   Refactoring of VerifiableCredential data model
+-   removal of redundant helper and utility objects (VcLibManager, VcUtils, Helpers and Defaults)
+
+## [1.6.3] - 2021-12-28
+
+-   Added ProofOfResidence credential
 
 ## [1.6.2] - 2021-12-03
 
