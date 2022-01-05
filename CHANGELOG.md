@@ -4,7 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- fix VC challenge property
+## [1.7.1] - 2022-01-05
+
+-   fix VC challenge property
 
 ## [1.7.0] - 2022-01-03
 
@@ -146,7 +148,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.7.0...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.7.1...HEAD
+
+[1.7.1]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.7.0...1.7.1
 
 [1.7.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.6.3...1.7.0
 
