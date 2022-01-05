@@ -66,12 +66,13 @@ abstract class VerifiableCredential() {
             }
         }
 
-    @field:SchemaService.JsonIgnore
+    @SchemaService.JsonIgnore
     @Json(ignored = true)
-    val challenge = when (this.jwt) {
-        null -> this.proof?.nonce
-        else -> SignedJWT.parse(this.jwt).jwtClaimsSet.getStringClaim("nonce")
-    }
+    val challenge
+        get() = when (this.jwt) {
+            null -> this.proof?.nonce
+            else -> SignedJWT.parse(this.jwt).jwtClaimsSet.getStringClaim("nonce")
+        }
 
     abstract fun newId(id: String) :String
     fun newRandomId() = newId(UUID.randomUUID().toString())
