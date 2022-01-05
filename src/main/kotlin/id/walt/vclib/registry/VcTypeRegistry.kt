@@ -28,6 +28,7 @@ object VcTypeRegistry {
         register<GaiaxServiceOffering>(GaiaxServiceOffering)
         register<VerifiableVaccinationCertificate>(VerifiableVaccinationCertificate)
         register<ProofOfResidence>(ProofOfResidence)
+        register<ParticipantCredential>(ParticipantCredential)
     }
 
     class TypeRegistration(
