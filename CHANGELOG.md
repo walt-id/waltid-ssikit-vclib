@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- fix VC challenge property
+
 ## [1.7.0] - 2022-01-03
 
 -   Refactoring of VerifiableCredential data model
