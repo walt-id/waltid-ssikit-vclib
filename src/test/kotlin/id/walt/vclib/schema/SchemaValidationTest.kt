@@ -10,29 +10,34 @@ class SchemaValidationTest : StringSpec({
         File("$TEST_RESOURCES/serialized").listFiles { _, name -> name.endsWith(".json") }!!.forEach {
             println("Checking ${it.name}")
             val vc = it.readText()
-            SchemaService.validateSchema(vc).errors?.forEach{e -> println(e)}
+            SchemaService.validateSchema(vc).errors?.forEach { e -> println(e) }
 
             SchemaService.validateSchema(vc).valid shouldBe true
 
-            SchemaService.validateSchema(vc, File("$TEST_RESOURCES/schemas/${it.name}").readText()).valid shouldBe true
+            if (!vc.contains("VerifiablePresentation")) {
+                SchemaService.validateSchema(
+                    vc,
+                    File("$TEST_RESOURCES/schemas/${it.name}").readText()
+                ).valid shouldBe true
+            }
         }
     }
 
     "testing VerifiableDiploma" {
-        val vc =   File("$TEST_RESOURCES/serialized/VerifiableDiploma.json").readText()
+        val vc = File("$TEST_RESOURCES/serialized/VerifiableDiploma.json").readText()
 
         SchemaService.validateSchema(vc).valid shouldBe true
     }
 
     "testing Europass" {
-        val vc =   File("$TEST_RESOURCES/serialized/Europass.json").readText()
-        SchemaService.validateSchema(vc).errors?.forEach{e -> println(e)}
+        val vc = File("$TEST_RESOURCES/serialized/Europass.json").readText()
+        SchemaService.validateSchema(vc).errors?.forEach { e -> println(e) }
         SchemaService.validateSchema(vc).valid shouldBe true
     }
 
     "testing VerifiablePresentation" {
-        val vc =   File("$TEST_RESOURCES/serialized/VerifiablePresentation.json").readText()
-        SchemaService.validateSchema(vc).errors?.forEach{e -> println(e)}
+        val vc = File("$TEST_RESOURCES/serialized/VerifiablePresentation.json").readText()
+        SchemaService.validateSchema(vc).errors?.forEach { e -> println(e) }
         SchemaService.validateSchema(vc).valid shouldBe true
     }
 })

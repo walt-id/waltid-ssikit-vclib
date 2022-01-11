@@ -7,6 +7,7 @@ import id.walt.vclib.credentials.gaiax.DataSelfDescription
 import id.walt.vclib.credentials.gaiax.DataServiceOffering
 import id.walt.vclib.credentials.gaiax.ParticipantCredential
 import id.walt.vclib.model.*
+import id.walt.vclib.registry.VcTypeRegistry
 import id.walt.vclib.registry.VerifiableCredentialMetadata
 import id.walt.vclib.schema.SchemaService.DateTimeFormat
 import id.walt.vclib.schema.SchemaService.JsonIgnore
@@ -41,56 +42,15 @@ class SchemaServiceTest : StringSpec({
         generateSchema(DummyCredential::class.java)
     }
 
-    "testing VerifiableDiploma schema"   {
-        generateSchema(VerifiableDiploma::class.java)
-    }
-
-    "testing VerifiableAttestation schema"   {
-        generateSchema(VerifiableAttestation::class.java)
-    }
-
-    "testing VerifiableAuthorization schema"   {
-        generateSchema(VerifiableAuthorization::class.java)
-    }
-
-    "testing VerifiableId schema"   {
-        generateSchema(VerifiableId::class.java)
-    }
-
-    "testing Europass schema"   {
-        generateSchema(Europass::class.java)
-    }
-
-    "testing UniversityDegree schema"   {
-        generateSchema(UniversityDegree::class.java)
-    }
-
-    "testing PermanentResidentCard schema"   {
-        generateSchema(PermanentResidentCard::class.java)
-    }
-
-    "testing GaiaxCredential schema"   {
-        generateSchema(GaiaxCredential::class.java)
-    }
-
-    "testing GaiaxSelfDescription schema"   {
-        generateSchema(DataSelfDescription::class.java)
-    }
-
-    "testing GaiaxServiceOffering schema"   {
-        generateSchema(DataServiceOffering::class.java)
-    }
-
-    "testing VerifiableVaccinationCertificate schema"   {
-        generateSchema(VerifiableVaccinationCertificate::class.java)
-    }
-
-    "testing ProofOfResidence schema"   {
-        generateSchema(ProofOfResidence::class.java)
-    }
-
-    "testing ParticipantCredential schema"   {
-        generateSchema(ParticipantCredential::class.java)
+    "generate all schemas" {
+        VcTypeRegistry.getTemplateTypes().forEach { vcName ->
+            run {
+                println("Serializing $vcName")
+                val vc = VcTypeRegistry.getRegistration(vcName)
+                val schema = SchemaService.generateSchema(vc!!.metadata!!.template!!.invoke())
+                File("src/test/resources/schemas/$vcName.json").writeText(schema)
+            }
+        }
     }
 })
 
