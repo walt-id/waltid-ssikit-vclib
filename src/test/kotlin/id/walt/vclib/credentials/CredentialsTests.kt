@@ -3,6 +3,10 @@ package id.walt.vclib.credentials
 import com.beust.klaxon.Klaxon
 import id.walt.vclib.model.toCredential
 import id.walt.vclib.NestedVCs
+import id.walt.vclib.credentials.gaiax.GaiaxCredential
+import id.walt.vclib.credentials.gaiax.GaiaxSelfDescription
+import id.walt.vclib.credentials.gaiax.GaiaxServiceOffering
+import id.walt.vclib.credentials.gaiax.ParticipantCredential
 import id.walt.vclib.nestedVCsConverter
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe

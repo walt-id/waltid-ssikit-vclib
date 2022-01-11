@@ -2,6 +2,10 @@ package id.walt.vclib.schema
 
 import com.beust.klaxon.Json
 import id.walt.vclib.credentials.*
+import id.walt.vclib.credentials.gaiax.GaiaxCredential
+import id.walt.vclib.credentials.gaiax.GaiaxSelfDescription
+import id.walt.vclib.credentials.gaiax.GaiaxServiceOffering
+import id.walt.vclib.credentials.gaiax.ParticipantCredential
 import id.walt.vclib.model.*
 import id.walt.vclib.registry.VerifiableCredentialMetadata
 import id.walt.vclib.schema.SchemaService.DateTimeFormat

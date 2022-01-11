@@ -1,4 +1,4 @@
-package id.walt.vclib.credentials
+package id.walt.vclib.credentials.gaiax
 
 import com.beust.klaxon.Json
 import id.walt.vclib.model.*

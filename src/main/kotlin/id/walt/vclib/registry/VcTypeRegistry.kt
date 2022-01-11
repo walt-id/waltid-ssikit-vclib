@@ -1,6 +1,10 @@
 package id.walt.vclib.registry
 
 import id.walt.vclib.credentials.*
+import id.walt.vclib.credentials.gaiax.GaiaxCredential
+import id.walt.vclib.credentials.gaiax.GaiaxSelfDescription
+import id.walt.vclib.credentials.gaiax.GaiaxServiceOffering
+import id.walt.vclib.credentials.gaiax.ParticipantCredential
 import id.walt.vclib.model.VerifiableCredential
 import org.lighthousegames.logging.logging
 import kotlin.reflect.KClass
