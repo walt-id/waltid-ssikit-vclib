@@ -4,8 +4,8 @@ import com.beust.klaxon.Klaxon
 import id.walt.vclib.model.toCredential
 import id.walt.vclib.NestedVCs
 import id.walt.vclib.credentials.gaiax.GaiaxCredential
-import id.walt.vclib.credentials.gaiax.GaiaxSelfDescription
-import id.walt.vclib.credentials.gaiax.GaiaxServiceOffering
+import id.walt.vclib.credentials.gaiax.DataSelfDescription
+import id.walt.vclib.credentials.gaiax.DataServiceOffering
 import id.walt.vclib.credentials.gaiax.ParticipantCredential
 import id.walt.vclib.nestedVCsConverter
 import io.kotest.core.spec.style.StringSpec
@@ -25,8 +25,8 @@ class CredentialsTests : StringSpec({
         File("src/test/resources/serialized/VerifiableDiploma.json").writeText(VerifiableDiploma.template?.invoke()!!.encode())
         File("src/test/resources/serialized/VerifiableId.json").writeText(VerifiableId.template?.invoke()!!.encode())
         File("src/test/resources/serialized/GaiaxCredential.json").writeText(GaiaxCredential.template?.invoke()!!.encode())
-        File("src/test/resources/serialized/GaiaxSelfDescription.json").writeText(GaiaxSelfDescription.template?.invoke()!!.encode())
-        File("src/test/resources/serialized/GaiaxServiceOffering.json").writeText(GaiaxServiceOffering.template?.invoke()!!.encode())
+        File("src/test/resources/serialized/GaiaxSelfDescription.json").writeText(DataSelfDescription.template?.invoke()!!.encode())
+        File("src/test/resources/serialized/GaiaxServiceOffering.json").writeText(DataServiceOffering.template?.invoke()!!.encode())
         File("src/test/resources/serialized/VerifiablePresentation.json").writeText(VerifiablePresentation.template?.invoke()!!.encode())
         File("src/test/resources/serialized/VerifiableVaccinationCertificate.json").writeText(VerifiableVaccinationCertificate.template?.invoke()!!.encode())
         File("src/test/resources/serialized/ProofOfResidence.json").writeText(ProofOfResidence.template?.invoke()!!.encode())

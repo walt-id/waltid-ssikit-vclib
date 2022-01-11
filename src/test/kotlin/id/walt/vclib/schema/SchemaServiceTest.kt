@@ -3,8 +3,8 @@ package id.walt.vclib.schema
 import com.beust.klaxon.Json
 import id.walt.vclib.credentials.*
 import id.walt.vclib.credentials.gaiax.GaiaxCredential
-import id.walt.vclib.credentials.gaiax.GaiaxSelfDescription
-import id.walt.vclib.credentials.gaiax.GaiaxServiceOffering
+import id.walt.vclib.credentials.gaiax.DataSelfDescription
+import id.walt.vclib.credentials.gaiax.DataServiceOffering
 import id.walt.vclib.credentials.gaiax.ParticipantCredential
 import id.walt.vclib.model.*
 import id.walt.vclib.registry.VerifiableCredentialMetadata
@@ -74,11 +74,11 @@ class SchemaServiceTest : StringSpec({
     }
 
     "testing GaiaxSelfDescription schema"   {
-        generateSchema(GaiaxSelfDescription::class.java)
+        generateSchema(DataSelfDescription::class.java)
     }
 
     "testing GaiaxServiceOffering schema"   {
-        generateSchema(GaiaxServiceOffering::class.java)
+        generateSchema(DataServiceOffering::class.java)
     }
 
     "testing VerifiableVaccinationCertificate schema"   {

@@ -2,8 +2,8 @@ package id.walt.vclib.registry
 
 import id.walt.vclib.credentials.*
 import id.walt.vclib.credentials.gaiax.GaiaxCredential
-import id.walt.vclib.credentials.gaiax.GaiaxSelfDescription
-import id.walt.vclib.credentials.gaiax.GaiaxServiceOffering
+import id.walt.vclib.credentials.gaiax.DataSelfDescription
+import id.walt.vclib.credentials.gaiax.DataServiceOffering
 import id.walt.vclib.credentials.gaiax.ParticipantCredential
 import id.walt.vclib.model.VerifiableCredential
 import org.lighthousegames.logging.logging
@@ -28,8 +28,8 @@ object VcTypeRegistry {
         register<VerifiableId>(VerifiableId)
         register<VerifiableDiploma>(VerifiableDiploma)
         register<GaiaxCredential>(GaiaxCredential)
-        register<GaiaxSelfDescription>(GaiaxSelfDescription)
-        register<GaiaxServiceOffering>(GaiaxServiceOffering)
+        register<DataSelfDescription>(DataSelfDescription)
+        register<DataServiceOffering>(DataServiceOffering)
         register<VerifiableVaccinationCertificate>(VerifiableVaccinationCertificate)
         register<ProofOfResidence>(ProofOfResidence)
         register<ParticipantCredential>(ParticipantCredential)
