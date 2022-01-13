@@ -1,4 +1,4 @@
-package id.walt.vclib.credentials
+package id.walt.vclib.credentials.gaiax
 
 import com.beust.klaxon.Json
 import id.walt.vclib.model.*
@@ -6,7 +6,7 @@ import id.walt.vclib.registry.VerifiableCredentialMetadata
 import id.walt.vclib.schema.SchemaService.PropertyName
 import id.walt.vclib.schema.SchemaService.Required
 
-data class GaiaxServiceOffering(
+data class DataServiceOffering(
     @Json(name = "@context") @field:PropertyName(name = "@context") @field:Required
     var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
     override var id: String?,
@@ -25,11 +25,11 @@ data class GaiaxServiceOffering(
     @Json(serializeNull = false) override var issuanceDate: String? = null,
     @Json(serializeNull = false) override var validFrom: String? = null,
     @Json(serializeNull = false) override var expirationDate: String? = null,
-    @Json(serializeNull = false) override var credentialSubject: GaiaxServiceOfferingSubject?,
+    @Json(serializeNull = false) override var credentialSubject: DataServiceOfferingSubject?,
     @Json(serializeNull = false) override var credentialSchema: CredentialSchema? = null,
     @Json(serializeNull = false) override var proof: Proof? = null,
-) : AbstractVerifiableCredential<GaiaxServiceOffering.GaiaxServiceOfferingSubject>(type) {
-    data class GaiaxServiceOfferingSubject(
+) : AbstractVerifiableCredential<DataServiceOffering.DataServiceOfferingSubject>(type) {
+    data class DataServiceOfferingSubject(
         override var id: String?,
         var type: String,
         var hasName: String,
@@ -55,9 +55,9 @@ data class GaiaxServiceOffering(
     }
 
     companion object : VerifiableCredentialMetadata(
-        type = listOf("VerifiableCredential", "GaiaxGaiaxServiceOffering"),
+        type = listOf("VerifiableCredential", "DataServiceOffering"),
         template = {
-            GaiaxServiceOffering(
+            DataServiceOffering(
                 id = "did:ebsi-eth:00000001/credentials/1872",
                 serviceTitle = "safeFBDC - Dataset A for safeFBDC AML analysis",
                 version = "0.1",
@@ -79,14 +79,14 @@ data class GaiaxServiceOffering(
                 ),
                 issuer = "did:example:456",
                 issuanceDate = "2020-08-24T14:13:44Z",
-                credentialSubject = GaiaxServiceOfferingSubject(
+                credentialSubject = DataServiceOfferingSubject(
                     id = "Pilot004AIService",
                     type = "Service",
                     hasName = "AIS",
                     description = "AIS demonstrates machine learning application use case.",
                     hasVersion = "0.1.0",
                     providedBy = "GAIA-X",
-                    hasMarketingImage = "https://www.data-infrastructure.eu/GAIAX/Redaktion/EN/Bilder/UseCases/ai-marketplace-for-product-development.jpg?__blob=normal",
+                    hasMarketingImage = "https://www.data-infrastructure.eu/Data/Redaktion/EN/Bilder/UseCases/ai-marketplace-for-product-development.jpg?__blob=normal",
                     hasCertifications = listOf("ISO_27001", "GDPR_Compliance"),
                     utilizes = listOf("ExampleKubernetesService"),
                     dependsOn = listOf("Pilot004DataService"),

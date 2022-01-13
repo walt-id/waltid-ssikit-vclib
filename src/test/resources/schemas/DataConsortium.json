@@ -8,16 +8,52 @@
         "type" : "string"
       }
     },
-    "expirationDate" : {
-      "type" : "string"
+    "credentialSchema" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        }
+      },
+      "additionalProperties" : false
     },
-    "holder" : {
+    "credentialSubject" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "dataspace" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "serviceEndpoint" : {
+            "type" : "string"
+          }
+        },
+        "additionalProperties" : false
+      }
+    },
+    "expirationDate" : {
       "type" : "string"
     },
     "id" : {
       "type" : "string"
     },
     "issuanceDate" : {
+      "type" : "string"
+    },
+    "issuer" : {
       "type" : "string"
     },
     "proof" : {
@@ -50,10 +86,16 @@
       },
       "additionalProperties" : false
     },
+    "type" : {
+      "type" : "array",
+      "items" : {
+        "type" : "string"
+      }
+    },
     "validFrom" : {
       "type" : "string"
     }
   },
-  "required" : [ "@context" ],
+  "required" : [ "@context", "type" ],
   "additionalProperties" : false
 }

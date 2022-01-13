@@ -1,6 +1,7 @@
 package id.walt.vclib.registry
 
 import id.walt.vclib.credentials.*
+import id.walt.vclib.credentials.gaiax.*
 import id.walt.vclib.model.VerifiableCredential
 import org.lighthousegames.logging.logging
 import kotlin.reflect.KClass
@@ -23,11 +24,18 @@ object VcTypeRegistry {
         register<UniversityDegree>(UniversityDegree)
         register<VerifiableId>(VerifiableId)
         register<VerifiableDiploma>(VerifiableDiploma)
-        register<GaiaxCredential>(GaiaxCredential)
-        register<GaiaxSelfDescription>(GaiaxSelfDescription)
-        register<GaiaxServiceOffering>(GaiaxServiceOffering)
         register<VerifiableVaccinationCertificate>(VerifiableVaccinationCertificate)
         register<ProofOfResidence>(ProofOfResidence)
+
+        // Gaiax
+        register<GaiaxCredential>(GaiaxCredential)
+        register<DataConsortium>(DataConsortium)
+        register<DataServiceOffering>(DataServiceOffering)
+        register<DataSelfDescription>(DataSelfDescription)
+        register<Iso27001Certificate>(Iso27001Certificate)
+        register<KybCredential>(KybCredential)
+        register<KybMonoCredential>(KybMonoCredential)
+        register<KycCredential>(KycCredential)
         register<ParticipantCredential>(ParticipantCredential)
     }
 
@@ -73,7 +81,7 @@ object VcTypeRegistry {
     fun getMetadata(type: List<String>): VerifiableCredentialMetadata = registry[computeKey(type)]!!.metadata
     fun getMetadata(type: String): VerifiableCredentialMetadata = getRegistration(type)!!.metadata
 
-    fun getTypesWithTemplate() = registry.filterValues { it.metadata.template != null }
+    fun getTypesWithTemplate() = registry.filterValues { it.metadata.template != null && it.isPrimary }
     fun getTemplateTypes() = getTypesWithTemplate().map { it.value.vc.simpleName!! }
 
     inline fun <reified T : VerifiableCredential> register(metadata: VerifiableCredentialMetadata) = register(metadata, T::class)
