@@ -4,15 +4,17 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- Moved Giax credentails to a dedicated folder
-- Following Gaiax credentials were added (data-models not finalized)
-  - DataConsortium
-  - DataSelfDescription
-  - Iso27001Credential
-  - KybCredential
-  - KybMonoCredential
-  - KycCredential
-  - ParticipantCredential
+## [1.8.0] - 2022-01-13
+
+-   Moved Giax credentails to a dedicated folder
+-   Following Gaiax credentials were added (data-models not finalized)
+    -   DataConsortium
+    -   DataSelfDescription
+    -   Iso27001Credential
+    -   KybCredential
+    -   KybMonoCredential
+    -   KycCredential
+    -   ParticipantCredential
 
 ## [1.7.1] - 2022-01-05
 
@@ -108,14 +110,15 @@ All notable changes to this project will be documented in this file.
 
 ## [1.4.0] - 2021-08-14
 
-- Make TemplateManager usable with template ids
+-   Make TemplateManager usable with template ids
     -   ```kotlin
         VcTemplateManager.loadTemplate("Europass")
         VcTemplateManager.loadTemplate(listOf("VerifiableCredential, VerifiableAttestation, Europass"))
         ```
-- Added template id listing
-- Added toMap method toMap() for VCs
-- 
+-   Added template id listing
+-   Added toMap method toMap() for VCs
+-
+
 ## [1.3.0] - 2021-07-28
 
 -   reworked VC registration to allow for VC metadata
@@ -140,7 +143,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.7.1...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.8.0...HEAD
+
+[1.8.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.7.1...1.8.0
 
 [1.7.1]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.7.0...1.7.1
 
