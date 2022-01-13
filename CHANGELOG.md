@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Moved Giax credentails to a dedicated folder
+- Following Gaiax credentials were added (data-models not finalized)
+  - DataConsortium
+  - DataSelfDescription
+  - Iso27001Credential
+  - KybCredential
+  - KybMonoCredential
+  - KycCredential
+  - ParticipantCredential
+
 ## [1.7.1] - 2022-01-05
 
 -   fix VC challenge property
@@ -98,36 +108,18 @@ All notable changes to this project will be documented in this file.
 
 ## [1.4.0] - 2021-08-14
 
--   Make TemplateManager usable with template ids
+- Make TemplateManager usable with template ids
     -   ```kotlin
         VcTemplateManager.loadTemplate("Europass")
         VcTemplateManager.loadTemplate(listOf("VerifiableCredential, VerifiableAttestation, Europass"))
         ```
--   Added template id listing
-    -   ```kotlin
-        VcTemplateManager.getTemplateList()
-        ```
--   Added toMap method for VCs
-    -   ```kotlin
-        VerifiableCredential.toMap(): Map<String, Any>
-        ```
-
+- Added template id listing
+- Added toMap method toMap() for VCs
+- 
 ## [1.3.0] - 2021-07-28
 
--   reworked VC registration to allow for VC metadata, e.g.
-
-    ```kotlin
-    // => Registration
-    VcLibManager.register<UniversityDegree>(UniversityDegree)
-
-    // OR VcLibManager.register<UniversityDegree>(UniversityDegree.Companion)
-
-    // => Companion object of VC
-    companion object : VerifiableCredentialMetadata(
-        type = listOf("VerifiableCredential", "UniversityDegreeCredential"),
-    )
-    ```
--   moved TemplateManager to Walt.ID VC-Lib (see id.walt.vclib.templates.VcTemplateManager)
+-   reworked VC registration to allow for VC metadata
+-   moved TemplateManager VC-Lib (see id.walt.vclib.templates.VcTemplateManager)
 
 ## [1.2.0] - 2021-07-28
 
