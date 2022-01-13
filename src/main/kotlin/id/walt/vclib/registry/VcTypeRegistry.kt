@@ -81,7 +81,7 @@ object VcTypeRegistry {
     fun getMetadata(type: List<String>): VerifiableCredentialMetadata = registry[computeKey(type)]!!.metadata
     fun getMetadata(type: String): VerifiableCredentialMetadata = getRegistration(type)!!.metadata
 
-    fun getTypesWithTemplate() = registry.filterValues { it.metadata.template != null }
+    fun getTypesWithTemplate() = registry.filterValues { it.metadata.template != null && it.isPrimary }
     fun getTemplateTypes() = getTypesWithTemplate().map { it.value.vc.simpleName!! }
 
     inline fun <reified T : VerifiableCredential> register(metadata: VerifiableCredentialMetadata) = register(metadata, T::class)
