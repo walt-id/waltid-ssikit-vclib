@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+-   Added EuropeanBankCredential
+
 ## [1.8.0] - 2022-01-13
 
 -   Moved Giax credentails to a dedicated folder
