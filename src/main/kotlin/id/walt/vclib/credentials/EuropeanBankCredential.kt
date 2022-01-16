@@ -35,6 +35,10 @@ data class EuropeanBankCredential(
         type = listOf("VerifiableCredential", "EuropeanBankCredential"),
         template = {
             EuropeanBankCredential(
+                id = "identity#EuropeanBankCredential#3add94f4-28ec-42a1-8704-4e4aa51006b4",
+                issuer = "did:example:456",
+                issuanceDate = "2021-08-31T00:00:00Z",
+                validFrom = "2021-08-31T00:00:00Z",
                 credentialSubject = EuropeanBankCredentialSubject(
                     id = "identity#verifiableID",
                     familyName = "DOE",
@@ -42,7 +46,10 @@ data class EuropeanBankCredential(
                     birthDate = "1958-08-17",
                     placeOfBirth = PlaceOfBirth("DE", null, "Berlin")
                 ),
-                issuer = "did:example:456"
+                credentialSchema = CredentialSchema(
+                    id = "https://api.preprod.ebsi.eu/trusted-schemas-registry/v1/schemas/0x2488fd38783d65e4fd46e7889eb113743334dbc772b05df382b8eadce763101b",
+                    type = "JsonSchemaValidator2018"
+                ),
             )
         }
     )
