@@ -1,5 +1,19 @@
 {
   "$schema" : "http://json-schema.org/draft-07/schema#",
+  "definitions" : {
+    "Identifier" : {
+      "type" : "object",
+      "properties" : {
+        "schemeID" : {
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string"
+        }
+      },
+      "additionalProperties" : false
+    }
+  },
   "type" : "object",
   "properties" : {
     "@context" : {
@@ -35,6 +49,171 @@
     "credentialSubject" : {
       "type" : "object",
       "properties" : {
+        "achieved" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "properties" : {
+              "entitlesTo" : {
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "string"
+                  }
+                },
+                "additionalProperties" : false
+              },
+              "hasPart" : {
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "string"
+                  }
+                },
+                "additionalProperties" : false
+              },
+              "id" : {
+                "type" : "string"
+              },
+              "specifiedBy" : {
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "string"
+                  }
+                },
+                "additionalProperties" : false
+              },
+              "title" : {
+                "type" : "string"
+              },
+              "wasAwardedBy" : {
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "string"
+                  }
+                },
+                "additionalProperties" : false
+              },
+              "wasDerivedFrom" : {
+                "type" : "object",
+                "properties" : {
+                  "assessedBy" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "string"
+                    }
+                  },
+                  "grade" : {
+                    "type" : "string"
+                  },
+                  "id" : {
+                    "type" : "string"
+                  },
+                  "specifiedBy" : {
+                    "type" : "object",
+                    "properties" : {
+                      "gradingScheme" : {
+                        "type" : "object",
+                        "properties" : {
+                          "definition" : {
+                            "type" : "string"
+                          },
+                          "id" : {
+                            "type" : "string"
+                          },
+                          "title" : {
+                            "type" : "string"
+                          }
+                        },
+                        "additionalProperties" : false
+                      },
+                      "id" : {
+                        "type" : "string"
+                      },
+                      "title" : {
+                        "type" : "string"
+                      }
+                    },
+                    "additionalProperties" : false
+                  },
+                  "title" : {
+                    "type" : "string"
+                  }
+                },
+                "additionalProperties" : false
+              },
+              "wasInfluencedBy" : {
+                "type" : "object",
+                "properties" : {
+                  "directedBy" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "string"
+                    }
+                  },
+                  "endedAtTime" : {
+                    "type" : "string"
+                  },
+                  "id" : {
+                    "type" : "string"
+                  },
+                  "identifier" : {
+                    "type" : "array",
+                    "items" : {
+                      "$ref" : "#/definitions/Identifier"
+                    }
+                  },
+                  "location" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "string"
+                    }
+                  },
+                  "specifiedBy" : {
+                    "type" : "object",
+                    "properties" : {
+                      "id" : {
+                        "type" : "string"
+                      },
+                      "language" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "string"
+                        }
+                      },
+                      "learningActivityType" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "string"
+                        }
+                      },
+                      "title" : {
+                        "type" : "string"
+                      },
+                      "workload" : {
+                        "type" : "string"
+                      }
+                    },
+                    "additionalProperties" : false
+                  },
+                  "startedAtTime" : {
+                    "type" : "string"
+                  },
+                  "title" : {
+                    "type" : "string"
+                  },
+                  "workload" : {
+                    "type" : "string"
+                  }
+                },
+                "additionalProperties" : false
+              }
+            },
+            "additionalProperties" : false
+          }
+        },
         "awardingOpportunity" : {
           "type" : "object",
           "properties" : {
@@ -86,26 +265,11 @@
         "givenNames" : {
           "type" : "string"
         },
-        "gradingScheme" : {
-          "type" : "object",
-          "properties" : {
-            "description" : {
-              "type" : "string"
-            },
-            "id" : {
-              "type" : "string"
-            },
-            "title" : {
-              "type" : "string"
-            }
-          },
-          "additionalProperties" : false
-        },
         "id" : {
           "type" : "string"
         },
         "identifier" : {
-          "type" : "string"
+          "$ref" : "#/definitions/Identifier"
         },
         "learningAchievement" : {
           "type" : "object",
