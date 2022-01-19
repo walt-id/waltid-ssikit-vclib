@@ -32,7 +32,7 @@ data class DataSelfDescription(
     ) : CredentialSubject()
 
     companion object : VerifiableCredentialMetadata(
-        type = listOf("VerifiableCredential", "GaiaxSelfDescription"),
+        type = listOf("VerifiableCredential", "DataSelfDescription"),
         template = {
             DataSelfDescription(
                 id = "did:ebsi-eth:00000001/credentials/1872",
