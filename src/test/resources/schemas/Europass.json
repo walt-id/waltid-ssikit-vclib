@@ -57,7 +57,46 @@
               "entitlesTo" : {
                 "type" : "object",
                 "properties" : {
+                  "definition" : {
+                    "type" : "string"
+                  },
                   "id" : {
+                    "type" : "string"
+                  },
+                  "issuedDate" : {
+                    "type" : "string"
+                  },
+                  "specifiedBy" : {
+                    "type" : "object",
+                    "properties" : {
+                      "entitlementType" : {
+                        "type" : "string"
+                      },
+                      "id" : {
+                        "type" : "string"
+                      },
+                      "limitJurisdiction" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "string"
+                        }
+                      },
+                      "limitOrganisation" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "string"
+                        }
+                      },
+                      "status" : {
+                        "type" : "string"
+                      },
+                      "title" : {
+                        "type" : "string"
+                      }
+                    },
+                    "additionalProperties" : false
+                  },
+                  "title" : {
                     "type" : "string"
                   }
                 },
@@ -66,7 +105,7 @@
               "hasPart" : {
                 "type" : "object",
                 "properties" : {
-                  "id" : {
+                  "todo" : {
                     "type" : "string"
                   }
                 },
@@ -78,7 +117,31 @@
               "specifiedBy" : {
                 "type" : "object",
                 "properties" : {
+                  "eCTSCreditPoints" : {
+                    "type" : "integer"
+                  },
+                  "entryRequirementsNote" : {
+                    "type" : "string"
+                  },
+                  "eqfLevel" : {
+                    "type" : "string"
+                  },
                   "id" : {
+                    "type" : "string"
+                  },
+                  "isPartialQualification" : {
+                    "type" : "boolean"
+                  },
+                  "maximumDuration" : {
+                    "type" : "string"
+                  },
+                  "nqfLevel" : {
+                    "type" : "string"
+                  },
+                  "title" : {
+                    "type" : "string"
+                  },
+                  "volumeOfLearning" : {
                     "type" : "string"
                   }
                 },
@@ -90,6 +153,15 @@
               "wasAwardedBy" : {
                 "type" : "object",
                 "properties" : {
+                  "awardingBody" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "string"
+                    }
+                  },
+                  "awardingDate" : {
+                    "type" : "string"
+                  },
                   "id" : {
                     "type" : "string"
                   }

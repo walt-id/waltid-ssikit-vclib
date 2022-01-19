@@ -14,18 +14,45 @@
     "achieved": [
       {
         "entitlesTo": {
-          "id": ""
+          "definition": "Competences the student acquires after the completion of Graduate university study are sufficient conditions for attending the programme of Postgraduate doctoral study at the Faculty of Civil Engineering, Architecture and Geodesy in Split, as well as for attending the same or similar programmes and Postgraduate specialist studies at other faculties of Civil Engineering in Croatia. The acquired learning outcomes enable the student to attend other postgraduate study programmes in the field of technical sciences. ",
+          "id": "urn:epass:entitlement:1",
+          "issuedDate": "2019-09-20",
+          "specifiedBy": {
+            "entitlementType": "http://data.europa.eu/snb/entitlement/64aad92881",
+            "id": "urn:epass:entitlementspec:1",
+            "limitJurisdiction": [
+              "http://publications.europa.eu/resource/authority/country/HRV"
+            ],
+            "limitOrganisation": [
+              "did:ebsi:zsSgDXeYPhZ3AuKhTFneDf1"
+            ],
+            "status": "http://data.europa.eu/snb/entitlement-status/5b8d6b34fb",
+            "title": "Postgraduate doctoral study"
+          },
+          "title": "Postgraduate doctoral study"
         },
         "hasPart": {
-          "id": ""
+          "todo": "todo"
         },
         "id": "urn:epass:learningAchievement:1",
         "specifiedBy": {
-          "id": ""
+          "eCTSCreditPoints": 120,
+          "entryRequirementsNote": "The minimum educational requirement for enrolment into graduate university programmes is the completion of an undergraduate university programme. The university can allow students who have completed a professional programme to also enrol graduate university programmes, but they are allowed to set special requirements in these cases.\nThe minimum educational requirement for enrolment into specialist graduate professional programmes is the completion of an undergraduate university programme or a professional programme (first cycle).",
+          "eqfLevel": "http://data.europa.eu/snb/eqf/5",
+          "id": "urn:epass:qualification:20",
+          "isPartialQualification": false,
+          "maximumDuration": "P21M",
+          "nqfLevel": "http://data.europa.eu/snb/qdr/c_dcc9aca1",
+          "title": "Master of Science in Civil Engineering",
+          "volumeOfLearning": "PT1440H"
         },
         "title": "Master of Science in Civil Engineering",
         "wasAwardedBy": {
-          "id": ""
+          "awardingBody": [
+            "did:ebsi:zsSgDXeYPhZ3AuKhTFneDf1"
+          ],
+          "awardingDate": "2019-09-20T00:00:00+02:00",
+          "id": "urn:epass:awardingProcess:1"
         },
         "wasDerivedFrom": {
           "assessedBy": [

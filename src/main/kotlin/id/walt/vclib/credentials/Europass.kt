@@ -75,10 +75,38 @@ data class Europass(
                                     language = listOf("http://publications.europa.eu/resource/authority/language/HRV"),
                                 ),
                             ),
-                            wasAwardedBy = EuropassSubject.Achieved.WasAwardedBy(""),
-                            hasPart = EuropassSubject.Achieved.HasPart(""),
-                            entitlesTo = EuropassSubject.Achieved.EntitlesTo(""),
-                            specifiedBy = EuropassSubject.Achieved.SpecifiedBy("")
+                            wasAwardedBy = EuropassSubject.Achieved.WasAwardedBy(
+                                id = "urn:epass:awardingProcess:1",
+                                awardingBody = listOf("did:ebsi:zsSgDXeYPhZ3AuKhTFneDf1"),
+                                awardingDate = "2019-09-20T00:00:00+02:00"
+                            ),
+                            hasPart = EuropassSubject.Achieved.HasPart("todo"),
+                            entitlesTo = EuropassSubject.Achieved.EntitlesTo(
+                                id = "urn:epass:entitlement:1",
+                                title = "Postgraduate doctoral study",
+                                definition = "Competences the student acquires after the completion of Graduate university study are sufficient conditions for attending the programme of Postgraduate doctoral study at the Faculty of Civil Engineering, Architecture and Geodesy in Split, as well as for attending the same or similar programmes and Postgraduate specialist studies at other faculties of Civil Engineering in Croatia. The acquired learning outcomes enable the student to attend other postgraduate study programmes in the field of technical sciences. ",
+                                issuedDate = "2019-09-20",
+                                specifiedBy = EuropassSubject.Achieved.EntitlesTo.SpecifiedBy(
+                                    id = "urn:epass:entitlementspec:1",
+                                    title = "Postgraduate doctoral study",
+                                    entitlementType = "http://data.europa.eu/snb/entitlement/64aad92881",
+                                    status = "http://data.europa.eu/snb/entitlement-status/5b8d6b34fb",
+                                    limitOrganisation = listOf("did:ebsi:zsSgDXeYPhZ3AuKhTFneDf1"),
+                                    limitJurisdiction = listOf("http://publications.europa.eu/resource/authority/country/HRV")
+                                )
+                            ),
+                            specifiedBy = EuropassSubject.Achieved.SpecifiedBy(
+                                id = "urn:epass:qualification:20",
+                                title = "Master of Science in Civil Engineering",
+                                volumeOfLearning = "PT1440H",
+                                eCTSCreditPoints = 120,
+                                maximumDuration = "P21M",
+                                entryRequirementsNote = "The minimum educational requirement for enrolment into graduate university programmes is the completion of an undergraduate university programme. The university can allow students who have completed a professional programme to also enrol graduate university programmes, but they are allowed to set special requirements in these cases.\n" +
+                                        "The minimum educational requirement for enrolment into specialist graduate professional programmes is the completion of an undergraduate university programme or a professional programme (first cycle).",
+                                isPartialQualification = false,
+                                eqfLevel = "http://data.europa.eu/snb/eqf/5",
+                                nqfLevel = "http://data.europa.eu/snb/qdr/c_dcc9aca1"
+                            )
                         ),
                     )
                 ),
@@ -172,24 +200,47 @@ data class Europass(
 
             data class WasAwardedBy(
                 var id: String,
+                var awardingBody: List<String>,
+                var awardingDate: String
             )
 
             data class HasPart(
-                var id: String,
+                var todo: String,
             )
 
             data class EntitlesTo(
                 var id: String,
-            )
+                var title: String,
+                var definition: String,
+                var issuedDate: String,
+                var specifiedBy: SpecifiedBy,
+            ) {
+                data class SpecifiedBy(
+                    var id: String,
+                    var title: String,
+                    var entitlementType: String,
+                    var status: String,
+                    var limitOrganisation: List<String>,
+                    var limitJurisdiction: List<String>,
+                )
+            }
 
             data class SpecifiedBy(
                 var id: String,
+                var title: String,
+                var volumeOfLearning: String,
+                var eCTSCreditPoints: Int,
+                var maximumDuration: String,
+                var entryRequirementsNote: String,
+                var isPartialQualification: Boolean,
+                var eqfLevel: String,
+                var nqfLevel: String,
             )
         }
 
         data class LearningAchievement(
-            var id: String, // https://leaston.bcdiploma.com/law-economics-management#LearningAchievment
-            var title: String, // MASTERS LAW, ECONOMICS AND MANAGEMENT
+            var id: String,
+            var title: String,
             @Json(serializeNull = false) var description: String? = null, // MARKETING AND SALES
             @Json(serializeNull = false) var additionalNote: List<String>? = null
         )
