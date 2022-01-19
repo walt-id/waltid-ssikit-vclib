@@ -12,6 +12,138 @@
         }
       },
       "additionalProperties" : false
+    },
+    "WasAwardedBy" : {
+      "type" : "object",
+      "properties" : {
+        "awardingBody" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "awardingDate" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "WasDerivedFrom" : {
+      "type" : "object",
+      "properties" : {
+        "assessedBy" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "grade" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "specifiedBy" : {
+          "type" : "object",
+          "properties" : {
+            "gradingScheme" : {
+              "type" : "object",
+              "properties" : {
+                "definition" : {
+                  "type" : "string"
+                },
+                "id" : {
+                  "type" : "string"
+                },
+                "title" : {
+                  "type" : "string"
+                }
+              },
+              "additionalProperties" : false
+            },
+            "id" : {
+              "type" : "string"
+            },
+            "title" : {
+              "type" : "string"
+            }
+          },
+          "additionalProperties" : false
+        },
+        "title" : {
+          "type" : "string"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "WasInfluencedBy" : {
+      "type" : "object",
+      "properties" : {
+        "directedBy" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "endedAtTime" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "identifier" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Identifier"
+          }
+        },
+        "location" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "specifiedBy" : {
+          "type" : "object",
+          "properties" : {
+            "id" : {
+              "type" : "string"
+            },
+            "language" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            },
+            "learningActivityType" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            },
+            "title" : {
+              "type" : "string"
+            },
+            "workload" : {
+              "type" : "string"
+            }
+          },
+          "additionalProperties" : false
+        },
+        "startedAtTime" : {
+          "type" : "string"
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "workload" : {
+          "type" : "string"
+        }
+      },
+      "additionalProperties" : false
     }
   },
   "type" : "object",
@@ -105,8 +237,74 @@
               "hasPart" : {
                 "type" : "object",
                 "properties" : {
-                  "todo" : {
-                    "type" : "string"
+                  "learningAchievements" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "object",
+                      "properties" : {
+                        "id" : {
+                          "type" : "string"
+                        },
+                        "identifier" : {
+                          "type" : "array",
+                          "items" : {
+                            "$ref" : "#/definitions/Identifier"
+                          }
+                        },
+                        "specifiedBy" : {
+                          "type" : "array",
+                          "items" : {
+                            "type" : "object",
+                            "properties" : {
+                              "eCTSCreditPoints" : {
+                                "type" : "integer"
+                              },
+                              "eqfLevel" : {
+                                "type" : "string"
+                              },
+                              "id" : {
+                                "type" : "string"
+                              },
+                              "isPartialQualification" : {
+                                "type" : "boolean"
+                              },
+                              "maximumDuration" : {
+                                "type" : "string"
+                              },
+                              "nqfLevel" : {
+                                "type" : "string"
+                              },
+                              "title" : {
+                                "type" : "string"
+                              },
+                              "volumeOfLearning" : {
+                                "type" : "string"
+                              }
+                            },
+                            "additionalProperties" : false
+                          }
+                        },
+                        "title" : {
+                          "type" : "string"
+                        },
+                        "wasAwardedBy" : {
+                          "$ref" : "#/definitions/WasAwardedBy"
+                        },
+                        "wasDerivedFrom" : {
+                          "type" : "array",
+                          "items" : {
+                            "$ref" : "#/definitions/WasDerivedFrom"
+                          }
+                        },
+                        "wasInfluencedBy" : {
+                          "type" : "array",
+                          "items" : {
+                            "$ref" : "#/definitions/WasInfluencedBy"
+                          }
+                        }
+                      },
+                      "additionalProperties" : false
+                    }
                   }
                 },
                 "additionalProperties" : false
@@ -151,136 +349,13 @@
                 "type" : "string"
               },
               "wasAwardedBy" : {
-                "type" : "object",
-                "properties" : {
-                  "awardingBody" : {
-                    "type" : "array",
-                    "items" : {
-                      "type" : "string"
-                    }
-                  },
-                  "awardingDate" : {
-                    "type" : "string"
-                  },
-                  "id" : {
-                    "type" : "string"
-                  }
-                },
-                "additionalProperties" : false
+                "$ref" : "#/definitions/WasAwardedBy"
               },
               "wasDerivedFrom" : {
-                "type" : "object",
-                "properties" : {
-                  "assessedBy" : {
-                    "type" : "array",
-                    "items" : {
-                      "type" : "string"
-                    }
-                  },
-                  "grade" : {
-                    "type" : "string"
-                  },
-                  "id" : {
-                    "type" : "string"
-                  },
-                  "specifiedBy" : {
-                    "type" : "object",
-                    "properties" : {
-                      "gradingScheme" : {
-                        "type" : "object",
-                        "properties" : {
-                          "definition" : {
-                            "type" : "string"
-                          },
-                          "id" : {
-                            "type" : "string"
-                          },
-                          "title" : {
-                            "type" : "string"
-                          }
-                        },
-                        "additionalProperties" : false
-                      },
-                      "id" : {
-                        "type" : "string"
-                      },
-                      "title" : {
-                        "type" : "string"
-                      }
-                    },
-                    "additionalProperties" : false
-                  },
-                  "title" : {
-                    "type" : "string"
-                  }
-                },
-                "additionalProperties" : false
+                "$ref" : "#/definitions/WasDerivedFrom"
               },
               "wasInfluencedBy" : {
-                "type" : "object",
-                "properties" : {
-                  "directedBy" : {
-                    "type" : "array",
-                    "items" : {
-                      "type" : "string"
-                    }
-                  },
-                  "endedAtTime" : {
-                    "type" : "string"
-                  },
-                  "id" : {
-                    "type" : "string"
-                  },
-                  "identifier" : {
-                    "type" : "array",
-                    "items" : {
-                      "$ref" : "#/definitions/Identifier"
-                    }
-                  },
-                  "location" : {
-                    "type" : "array",
-                    "items" : {
-                      "type" : "string"
-                    }
-                  },
-                  "specifiedBy" : {
-                    "type" : "object",
-                    "properties" : {
-                      "id" : {
-                        "type" : "string"
-                      },
-                      "language" : {
-                        "type" : "array",
-                        "items" : {
-                          "type" : "string"
-                        }
-                      },
-                      "learningActivityType" : {
-                        "type" : "array",
-                        "items" : {
-                          "type" : "string"
-                        }
-                      },
-                      "title" : {
-                        "type" : "string"
-                      },
-                      "workload" : {
-                        "type" : "string"
-                      }
-                    },
-                    "additionalProperties" : false
-                  },
-                  "startedAtTime" : {
-                    "type" : "string"
-                  },
-                  "title" : {
-                    "type" : "string"
-                  },
-                  "workload" : {
-                    "type" : "string"
-                  }
-                },
-                "additionalProperties" : false
+                "$ref" : "#/definitions/WasInfluencedBy"
               }
             },
             "additionalProperties" : false

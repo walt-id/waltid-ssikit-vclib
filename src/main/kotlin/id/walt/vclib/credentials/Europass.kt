@@ -80,7 +80,78 @@ data class Europass(
                                 awardingBody = listOf("did:ebsi:zsSgDXeYPhZ3AuKhTFneDf1"),
                                 awardingDate = "2019-09-20T00:00:00+02:00"
                             ),
-                            hasPart = EuropassSubject.Achieved.HasPart("todo"),
+                            hasPart = EuropassSubject.Achieved.HasPart(
+                                learningAchievements = listOf(
+                                    EuropassSubject.Achieved.HasPart.LearningAchievement(
+                                        id = "",
+                                        identifier = listOf(
+                                            EuropassSubject.Identifier(
+                                                schemeID = "Achievement ID",
+                                                value = "GAB701"
+                                            )
+                                        ),
+                                        title = "",
+                                        wasDerivedFrom = listOf(
+                                            EuropassSubject.Achieved.WasDerivedFrom(
+                                                id = "urn:epass:asssessmentspec:2",
+                                                title = "Applied mathematics",
+                                                grade = "good (3)",
+                                                assessedBy = listOf("did:ebsi:zsSgDXeYPhZ3AuKhTFneDf1"),
+                                                specifiedBy = EuropassSubject.Achieved.WasDerivedFrom.SpecifiedBy(
+                                                    id = "urn:epass:asssessmentspec:2",
+                                                    title = "Applied mathematics",
+                                                    gradingScheme = EuropassSubject.Achieved.WasDerivedFrom.SpecifiedBy.GradingScheme(
+                                                        id = "urn:epass:scoringschemespec:2",
+                                                        title = "General grading scheme in Croatia",
+                                                        definition = "The Croatian national grading scheme consists of five grades with numerical equivalents: izvrstan – 5 (outstanding); vrlo dobar – 4 (very good); dobar – 3 (good); dovoljan – 2 (sufficient); nedovoljan – 1 (insufficient - fail). The minimum passing grade is dovoljan – 2."
+                                                    )
+                                                )
+                                            ),
+                                        ),
+                                        wasInfluencedBy = listOf(
+                                            EuropassSubject.Achieved.WasInfluencedBy(
+                                                id = "urn:epass:activity:1",
+                                                identifier = listOf(
+                                                    EuropassSubject.Identifier(
+                                                        schemeID = "Activity ID",
+                                                        value = "GAB701"
+                                                    )
+                                                ),
+                                                title = "Applied mathematics",
+                                                workload = "PT60H",
+                                                startedAtTime = "2017-09-04T00:00:00+02:00",
+                                                endedAtTime = "2018-01-14T00:00:00+01:00",
+                                                directedBy = listOf("did:ebsi:zsSgDXeYPhZ3AuKhTFneDf1"),
+                                                location = listOf("urn:epass:location:4"),
+                                                specifiedBy = EuropassSubject.Achieved.WasInfluencedBy.SpecifiedBy(
+                                                    id = "urn:epass:learningactivityspec:1",
+                                                    title = "Applied mathematics",
+                                                    learningActivityType = listOf("http://data.europa.eu/snb/learning-activity/fd33e234ae"),
+                                                    workload = "PT60H",
+                                                    language = listOf("http://publications.europa.eu/resource/authority/language/HRV")
+                                                )
+                                            )
+                                        ),
+                                        wasAwardedBy = EuropassSubject.Achieved.WasAwardedBy(
+                                            id = "urn:epass:awardingProcess:2",
+                                            awardingBody = listOf("did:ebsi:zsSgDXeYPhZ3AuKhTFneDf1"),
+                                            awardingDate = "2019-09-20T00:00:00+02:00"
+                                        ),
+                                        specifiedBy = listOf(
+                                            EuropassSubject.Achieved.HasPart.LearningAchievement.SpecifiedBy(
+                                                id = "urn:epass:qualification:1",
+                                                title = "Applied mathematics",
+                                                volumeOfLearning = "PT60H",
+                                                eCTSCreditPoints = 5,
+                                                maximumDuration = "P6M",
+                                                isPartialQualification = true,
+                                                eqfLevel = "http://data.europa.eu/snb/eqf/4",
+                                                nqfLevel = "http://data.europa.eu/snb/qdr/c_49672c5a",
+                                            )
+                                        )
+                                    ),
+                                ),
+                            ),
                             entitlesTo = EuropassSubject.Achieved.EntitlesTo(
                                 id = "urn:epass:entitlement:1",
                                 title = "Postgraduate doctoral study",
@@ -205,8 +276,30 @@ data class Europass(
             )
 
             data class HasPart(
-                var todo: String,
-            )
+                var learningAchievements: List<LearningAchievement>
+            ) {
+                data class LearningAchievement(
+                    var id: String,
+                    var identifier: List<Identifier>,
+                    var title: String,
+                    var wasDerivedFrom: List<WasDerivedFrom>,
+                    var wasInfluencedBy: List<WasInfluencedBy>,
+                    var wasAwardedBy: WasAwardedBy,
+                    var specifiedBy: List<SpecifiedBy>
+                ) {
+
+                    data class SpecifiedBy(
+                        var id: String,
+                        var title: String,
+                        var volumeOfLearning: String,
+                        var eCTSCreditPoints: Int,
+                        var maximumDuration: String,
+                        var isPartialQualification: Boolean,
+                        var eqfLevel: String,
+                        var nqfLevel: String,
+                    )
+                }
+            }
 
             data class EntitlesTo(
                 var id: String,
@@ -241,109 +334,33 @@ data class Europass(
         data class LearningAchievement(
             var id: String,
             var title: String,
-            @Json(serializeNull = false) var description: String? = null, // MARKETING AND SALES
+            @Json(serializeNull = false) var description: String? = null,
             @Json(serializeNull = false) var additionalNote: List<String>? = null
         )
 
         data class AwardingOpportunity(
-            var id: String, // https://leaston.bcdiploma.com/law-economics-management#AwardingOpportunity
-            var identifier: String, // https://certificate-demo.bcdiploma.com/check/87ED2F2270E6C41456E94B86B9D9115B4E35BCCAD200A49B846592C14F79C86BV1Fnbllta0NZTnJkR3lDWlRmTDlSRUJEVFZISmNmYzJhUU5sZUJ5Z2FJSHpWbmZZ
+            var id: String,
+            var identifier: String,
             var awardingBody: AwardingBody,
-            @Json(serializeNull = false) var location: String? = null, // FRANCE
-            @Json(serializeNull = false) var startedAtTime: String? = null, // Unknown
-            @Json(serializeNull = false) var endedAtTime: String? = null // 2020-11-03T00:00:00Z
+            @Json(serializeNull = false) var location: String? = null,
+            @Json(serializeNull = false) var startedAtTime: String? = null,
+            @Json(serializeNull = false) var endedAtTime: String? = null
         ) {
             data class AwardingBody(
-                var id: String, // did:ebsi:2LGKvDMrNUPR6FhSNrXzQQ1h295zr4HwoX9UqvwAsenSKHe9
-                var eidasLegalIdentifier: String, // Unknown
-                var registration: String, // 0597065J
-                var preferredName: String, // Leaston University
-                @Json(serializeNull = false) var homepage: String? = null // https://leaston.bcdiploma.com/
+                var id: String,
+                var eidasLegalIdentifier: String,
+                var registration: String,
+                var preferredName: String,
+                @Json(serializeNull = false) var homepage: String? = null
             )
         }
 
         data class LearningSpecification(
-            var id: String, // https://leaston.bcdiploma.com/law-economics-management#LearningSpecification
+            var id: String,
             @Json(name = "ISCEDFCode") var ISCEDFCode: List<String>,
-            @Json(name = "ECTSCreditPoints") var ECTSCreditPoints: Int? = null, // 120
-            @Json(name = "EQFLevel") var EQFLevel: Int? = null, // 7
+            @Json(name = "ECTSCreditPoints") var ECTSCreditPoints: Int? = null,
+            @Json(name = "EQFLevel") var EQFLevel: Int? = null,
             @Json(name = "NQFLevel") var NQFLevel: List<String>
         )
     }
 }
-
-/*
-@Serializable
-class Europass(
-    @SerialName("@context") override var context: List<String>,
-    override var id: String,
-    override var type: List<String>,
-    override var issuer: String,
-    override var issuanceDate: String,
-    override var validFrom: String,
-    @field:Nullable override var expirationDate: String? = null,
-    override var credentialSubject: EuropassCredentialSubject,
-    override var credentialStatus: CredentialStatus,
-    override var credentialSchema: CredentialSchema,
-    @field:Nullable override var evidence: Evidence? = null,
-    override var proof: Proof
-) : VerifiableCredential<EuropassCredentialSubject>() {
-    override fun encode() = Json { prettyPrint = true }.encodeToString(this)
-}
-
-@Serializable
-data class EuropassCredentialSubject(
-    var id: String,
-    var identifier: String,
-    var givenNames: String,
-    var familyName: String,
-    var dateOfBirth: String,
-    var gradingScheme: GradingScheme,
-    var learningAchievement: LearningAchievement,
-    var awardingOpportunity: AwardingOpportunity,
-    var learningSpecification: LearningSpecification
-) : CredentialSubject
-
-@Serializable
-data class GradingScheme(
-    var id: String,
-    @field:Nullable var title: String? = null,
-    @field:Nullable var description: String? = null,
-)
-
-@Serializable
-data class LearningAchievement(
-    var id: String,
-    var title: String,
-    @field:Nullable var description: String? = null,
-    @field:Nullable var additionalNote: List<String>? = null
-)
-
-@Serializable
-data class AwardingOpportunity(
-    var id: String,
-    var identifier: String,
-    var awardingBody: Organisation,
-    @field:Nullable var location: String? = null,
-    @field:Nullable var startedAtTime: String? = null,
-    @field:Nullable var endedAtTime: String? = null
-)
-
-@Serializable
-data class Organisation(
-    var id: String,
-    var eidasLegalIdentifier: String,
-    var registration: String,
-    var preferredName: String,
-    @field:Nullable var homepage: String? = null
-)
-
-@Serializable
-data class LearningSpecification(
-    var id: String,
-    @SerialName("ISCEDFCode") var iscedfCode: List<String>,
-    @SerialName("ECTSCreditPoints") @field:Nullable var ectsCreditPoints: Int? = null,
-    @SerialName("EQFLevel") @field:Nullable var eqfLevel: Int? = null,
-    @SerialName("NQFLevel") var nqfLevel: List<String>
-)
- */
