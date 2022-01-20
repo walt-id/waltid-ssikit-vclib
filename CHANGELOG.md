@@ -4,8 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- Renamed EuropeanBankCredential to EuropeanBankIdentity
-- Pretty VC encoding by: encodePretty()
+## [1.10.0] - 2022-01-20
+
+-   Renamed EuropeanBankCredential to EuropeanBankIdentity
+-   Pretty VC encoding by: encodePretty()
 
 ## [1.9.0] - 2022-01-19
 
@@ -150,7 +152,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.9.0...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.10.0...HEAD
+
+[1.10.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.9.0...1.10.0
 
 [1.9.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.8.0...1.9.0
 
