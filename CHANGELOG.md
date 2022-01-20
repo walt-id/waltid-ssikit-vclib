@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Renamed EuropeanBankCredential to EuropeanBankIdentity
 - Pretty VC encoding by: encodePretty()
 
 ## [1.9.0] - 2022-01-19
@@ -12,7 +13,7 @@ All notable changes to this project will be documented in this file.
 
 ## [1.8.0] - 2022-01-13
 
--   Moved Giax credentails to a dedicated folder
+-   Moved Gaiax credentails to a dedicated folder
 -   Following Gaiax credentials were added (data-models not finalized)
     -   DataConsortium
     -   DataSelfDescription
