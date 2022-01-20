@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Pretty VC encoding by: encodePretty()
+
 ## [1.9.0] - 2022-01-19
 
 -   Added EuropeanBankCredential
