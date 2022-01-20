@@ -26,7 +26,7 @@ object VcTypeRegistry {
         register<VerifiableDiploma>(VerifiableDiploma)
         register<VerifiableVaccinationCertificate>(VerifiableVaccinationCertificate)
         register<ProofOfResidence>(ProofOfResidence)
-        register<EuropeanBankCredential>(EuropeanBankCredential)
+        register<EuropeanBankIdentity>(EuropeanBankIdentity)
 
         // Gaiax
         register<GaiaxCredential>(GaiaxCredential)
