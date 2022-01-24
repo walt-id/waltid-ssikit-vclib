@@ -15,9 +15,7 @@ data class KycCredential(
     @Json(serializeNull = false) override var validFrom: String? = null,
     @Json(serializeNull = false) override var expirationDate: String? = null,
     override var credentialSubject: KycCredentialSubject? = null,
-    @Json(serializeNull = false) var credentialStatus: CredentialStatus? = null,
-    override var credentialSchema: CredentialSchema? = null,
-    var evidence: Evidence? = null,
+    @Json(serializeNull = false) override var credentialSchema: CredentialSchema? = null,
     @Json(serializeNull = false) override var proof: Proof? = null
 ) : AbstractVerifiableCredential<KycCredential.KycCredentialSubject>(type) {
     companion object : VerifiableCredentialMetadata(
@@ -38,22 +36,6 @@ data class KycCredential(
                     placeOfBirth = "LILLE, FRANCE",
                     currentAddress = "1 Boulevard de la Liberté, 59800 Lille",
                     gender = "FEMALE"
-                ),
-                  credentialStatus = CredentialStatus(
-                      id = "https://api.preprod.ebsi.eu/status/identity#51e42fda-cb0a-4333-b6a6-35cb147e1a88",
-                      type = "CredentialsStatusList2020"
-                  ),
-                credentialSchema = CredentialSchema(
-                    id = "https://api.preprod.ebsi.eu/trusted-schemas-registry/v1/schemas/0x2488fd38783d65e4fd46e7889eb113743334dbc772b05df382b8eadce763101b",
-                    type = "JsonSchemaValidator2018"
-                ),
-                evidence = Evidence(
-                    id = "https://example.com/law-economics-management#V_ID_evidence",
-                    type = listOf("DocumentVerification"),
-                    verifier = "did:ebsi:2A9BZ9SUe6BatacSpvs1V5CdjHvLpQ7bEsi2Jb6LdHKnQxaN",
-                    evidenceDocument = listOf("Passport"),
-                    subjectPresence = "Physical",
-                    documentPresence = listOf("Physical")
                 )
             )
         }
@@ -70,15 +52,6 @@ data class KycCredential(
         @Json(serializeNull = false) var currentAddress: String? = null,
         @Json(serializeNull = false) var gender: String? = null,
     ) : CredentialSubject()
-
-    data class Evidence(
-        @Json(serializeNull = false) var id: String? = null,
-        var type: List<String?>,
-        var verifier: String,
-        var evidenceDocument: List<String?>,
-        var subjectPresence: String,
-        var documentPresence: List<String?>
-    )
 
     override fun newId(id: String) = "identity#${id}"
 }
