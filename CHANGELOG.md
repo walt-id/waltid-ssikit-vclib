@@ -4,11 +4,18 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.10.0] - 2022-01-20
+
+-   Renamed EuropeanBankCredential to EuropeanBankIdentity
+-   Pretty VC encoding by: encodePretty()
+
+## [1.9.0] - 2022-01-19
+
 -   Added EuropeanBankCredential
 
 ## [1.8.0] - 2022-01-13
 
--   Moved Giax credentails to a dedicated folder
+-   Moved Gaiax credentails to a dedicated folder
 -   Following Gaiax credentials were added (data-models not finalized)
     -   DataConsortium
     -   DataSelfDescription
@@ -145,7 +152,11 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.8.0...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.10.0...HEAD
+
+[1.10.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.9.0...1.10.0
+
+[1.9.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.8.0...1.9.0
 
 [1.8.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.7.1...1.8.0
 
