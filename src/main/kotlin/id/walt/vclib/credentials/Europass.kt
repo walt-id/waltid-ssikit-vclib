@@ -81,7 +81,7 @@ data class Europass(
                     type = "CredentialsStatusList2020"
                 ),
                 credentialSchema = CredentialSchema(
-                    id = "https://essif.europa.eu/trusted-schemas-registry/v1/schemas/to_be_obtained_after_registration_of_the_schema",
+                    id = "https://raw.githubusercontent.com/walt-id/waltid-ssikit-vclib/master/src/test/resources/schemas/Europass.json",
                     type = "JsonSchemaValidator2018"
                 )
             )

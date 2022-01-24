@@ -62,7 +62,7 @@ data class VerifiableVaccinationCertificate(
                     uniqueCertificateIdentifier = "UVCI0904008084H"
                 ),
                 credentialSchema = CredentialSchema(
-                    id = "https://api.preprod.ebsi.eu/trusted-schemas-registry/v1/schemas/0xbf78fc08a7a9f28f5479f58dea269d3657f54f13ca37d380cd4e92237fb691dd",
+                    id = "https://raw.githubusercontent.com/walt-id/waltid-ssikit-vclib/master/src/test/resources/schemas/VerifiableVaccinationCertificate.json",
                     type = "JsonSchemaValidator2018"
                 ),
                 credentialStatus = CredentialStatus(
