@@ -3,7 +3,11 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
-- Remove dummy properties from gaiax kyc credential
+
+## [1.11.1] - 2022-01-24
+
+-   Remove dummy properties from gaiax kyc credential
+
 ## [1.11.0] - 2022-01-24
 
 -   Use github links for credential schema ids, where the actual schema id is not yet known
@@ -156,7 +160,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.11.0...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.11.1...HEAD
+
+[1.11.1]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.11.0...1.11.1
 
 [1.11.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.10.0...1.11.0
 
