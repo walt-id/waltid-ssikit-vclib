@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
-
+- Remove dummy properties from gaiax kyc credential
 ## [1.11.0] - 2022-01-24
 
 -   Use github links for credential schema ids, where the actual schema id is not yet known
