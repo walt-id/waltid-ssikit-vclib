@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+-   Use github links for credential schema ids, where the actual schema id is not yet known
+
 ## [1.10.0] - 2022-01-20
 
 -   Renamed EuropeanBankCredential to EuropeanBankIdentity
