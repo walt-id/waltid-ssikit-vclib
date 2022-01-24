@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.11.0] - 2022-01-24
+
 -   Use github links for credential schema ids, where the actual schema id is not yet known
 
 ## [1.10.0] - 2022-01-20
@@ -154,7 +156,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.10.0...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.11.0...HEAD
+
+[1.11.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.10.0...1.11.0
 
 [1.10.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.9.0...1.10.0
 
