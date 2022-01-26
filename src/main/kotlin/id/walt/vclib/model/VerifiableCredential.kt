@@ -61,7 +61,8 @@ abstract class VerifiableCredential() {
                 issuer = issuer ?: jwtClaimsSet.issuer
                 issuanceDate = issuanceDate ?: jwtClaimsSet.issueTime?.let { dateFormat.format(it.toInstant()) }
                 validFrom = validFrom ?: jwtClaimsSet.notBeforeTime?.let { dateFormat.format(it.toInstant()) }
-                expirationDate = expirationDate ?: jwtClaimsSet.expirationTime?.let { dateFormat.format(it.toInstant()) }
+                expirationDate =
+                    expirationDate ?: jwtClaimsSet.expirationTime?.let { dateFormat.format(it.toInstant()) }
                 subject = subject ?: jwtClaimsSet.subject
             }
         }
@@ -74,15 +75,17 @@ abstract class VerifiableCredential() {
             else -> SignedJWT.parse(this.jwt).jwtClaimsSet.getStringClaim("nonce")
         }
 
-    abstract fun newId(id: String) :String
+    abstract fun newId(id: String): String
     fun newRandomId() = newId(UUID.randomUUID().toString())
 
-    open fun setMetaData(id: String? = null,
-                         issuer: String? = null,
-                         subject: String? = null,
-                         issuanceDate: Instant? = null,
-                         validFrom: Instant? = null,
-                         expirationDate: Instant? = null) {
+    open fun setMetaData(
+        id: String? = null,
+        issuer: String? = null,
+        subject: String? = null,
+        issuanceDate: Instant? = null,
+        validFrom: Instant? = null,
+        expirationDate: Instant? = null
+    ) {
         this.id = id ?: newRandomId()
         this.issuer = issuer
         this.subject = subject
@@ -92,6 +95,19 @@ abstract class VerifiableCredential() {
     }
 
     fun encode(): String = jwt ?: klaxon.toJsonString(this)
+
+    fun encodePretty(): String {
+        jwt?.let {
+            return jwt!!
+        }
+        klaxon.toJsonString(this).apply {
+            if (startsWith("[")) {
+                return Klaxon().parseJsonArray(reader()).toJsonString(true)
+            }
+            return Klaxon().parseJsonObject(reader()).toJsonString(true)
+        }
+    }
+
     fun toMap(): Map<String, Any> = klaxon.parse(encode())!!
 
     companion object {
@@ -129,7 +145,8 @@ abstract class CredentialSubject() {
     abstract var id: String?
 }
 
-abstract class AbstractVerifiableCredential<SUBJ : CredentialSubject>(@field:SchemaService.Required override val type: List<String>) : VerifiableCredential() {
+abstract class AbstractVerifiableCredential<SUBJ : CredentialSubject>(@field:SchemaService.Required override val type: List<String>) :
+    VerifiableCredential() {
 
     @Json(serializeNull = false)
     abstract var credentialSubject: SUBJ?

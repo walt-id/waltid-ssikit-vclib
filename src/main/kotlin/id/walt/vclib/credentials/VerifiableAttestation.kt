@@ -53,7 +53,7 @@ data class VerifiableAttestation(
                     type = "CredentialStatusList2020"
                 ),
                 credentialSchema = CredentialSchema(
-                    id = "https://essif.europa.eu/tsr-vid/verifiableid1.json",
+                    id = "https://raw.githubusercontent.com/walt-id/waltid-ssikit-vclib/master/src/test/resources/schemas/VerifiableAttestation.json",
                     type = "JsonSchemaValidator2018"
                 ),
                 evidence = listOf(

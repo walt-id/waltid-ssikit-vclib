@@ -19,13 +19,12 @@ private val klaxon = Klaxon().fieldConverter(NestedVCs::class, nestedVCsConverte
 
 class CredentialsTests : StringSpec({
 
-
     "serialize all" {
         VcTypeRegistry.getTemplateTypes().forEach { vcName ->
             run {
                 println("Serializing $vcName")
                 val vc = VcTypeRegistry.getRegistration(vcName)
-                val serializedVc = vc!!.metadata.template!!.invoke()!!.encode()
+                val serializedVc = vc!!.metadata.template!!.invoke()!!.encodePretty()
                 File("src/test/resources/serialized/$vcName.json").writeText(serializedVc)
             }
         }
@@ -40,6 +39,8 @@ class CredentialsTests : StringSpec({
         vc.issuer = "qwer"
 
         vc as VerifiableVaccinationCertificate
+
+        println(vc.encodePretty())
 
         vc.credentialSubject?.id shouldBe "asdf"
         vc.issuer shouldBe "qwer"
@@ -61,3 +62,17 @@ class CredentialsTests : StringSpec({
         }
     }
 })
+
+fun Any.jsonToString(prettyPrint: Boolean): String{
+    var thisJsonString = Klaxon().toJsonString(this)
+    var result = thisJsonString
+    if(prettyPrint) {
+        if(thisJsonString.startsWith("[")){
+            result = Klaxon().parseJsonArray(thisJsonString.reader()).toJsonString(true)
+        } else {
+            result = Klaxon().parseJsonObject(thisJsonString.reader()).toJsonString(true)
+        }
+    }
+    return result
+}
+
