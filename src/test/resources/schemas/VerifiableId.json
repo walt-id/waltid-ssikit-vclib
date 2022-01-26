@@ -53,6 +53,21 @@
         "id" : {
           "type" : "string"
         },
+        "identifier" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "properties" : {
+              "schemeID" : {
+                "type" : "string"
+              },
+              "value" : {
+                "type" : "string"
+              }
+            },
+            "additionalProperties" : false
+          }
+        },
         "nameAndFamilyNameAtBirth" : {
           "type" : "string"
         },
