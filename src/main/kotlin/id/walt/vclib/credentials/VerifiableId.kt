@@ -21,7 +21,7 @@ data class VerifiableId(
     override var credentialSubject: VerifiableIdSubject? = null,
     @Json(serializeNull = false) var credentialStatus: CredentialStatus? = null,
     override var credentialSchema: CredentialSchema? = null,
-    var evidence: Evidence? = null,
+    @Json(serializeNull = false) var evidence: Evidence? = null,
     @Json(serializeNull = false) override var proof: Proof? = null
 ) : AbstractVerifiableCredential<VerifiableId.VerifiableIdSubject>(type) {
     companion object : VerifiableCredentialMetadata(
@@ -67,15 +67,22 @@ data class VerifiableId(
 
     data class VerifiableIdSubject(
         @Json(serializeNull = false) override var id: String? = null,
+        @Json(serializeNull = false) var identifier: List<Identifier>? = null,
         var familyName: String? = null,
         var firstName: String? = null,
         var dateOfBirth: String? = null,
-        var personalIdentifier: String? = null,
+        @Json(serializeNull = false) var personalIdentifier: String? = null,
         @Json(serializeNull = false) var nameAndFamilyNameAtBirth: String? = null,
         @Json(serializeNull = false) var placeOfBirth: String? = null,
         @Json(serializeNull = false) var currentAddress: String? = null,
         @Json(serializeNull = false) var gender: String? = null,
-    ) : CredentialSubject()
+    ) : CredentialSubject() {
+
+        data class Identifier(
+            var schemeID: String,
+            var value: String
+        )
+    }
 
     data class Evidence(
         @Json(serializeNull = false) var id: String? = null,

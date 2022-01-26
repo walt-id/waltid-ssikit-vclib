@@ -25,6 +25,9 @@
         "awardingDate" : {
           "type" : "string"
         },
+        "awardingLocation" : {
+          "type" : "string"
+        },
         "id" : {
           "type" : "string"
         }
@@ -82,6 +85,9 @@
     "WasInfluencedBy" : {
       "type" : "object",
       "properties" : {
+        "definition" : {
+          "type" : "string"
+        },
         "directedBy" : {
           "type" : "array",
           "items" : {
@@ -186,6 +192,12 @@
           "items" : {
             "type" : "object",
             "properties" : {
+              "additionalNote" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "string"
+                }
+              },
               "entitlesTo" : {
                 "type" : "object",
                 "properties" : {
@@ -259,7 +271,7 @@
                               "eCTSCreditPoints" : {
                                 "type" : "integer"
                               },
-                              "eqfLevel" : {
+                              "eqflLevel" : {
                                 "type" : "string"
                               },
                               "id" : {
@@ -271,7 +283,7 @@
                               "maximumDuration" : {
                                 "type" : "string"
                               },
-                              "nqfLevel" : {
+                              "nqflLevel" : {
                                 "type" : "string"
                               },
                               "title" : {
@@ -312,38 +324,53 @@
               "id" : {
                 "type" : "string"
               },
+              "identifier" : {
+                "type" : "array",
+                "items" : {
+                  "$ref" : "#/definitions/Identifier"
+                }
+              },
               "specifiedBy" : {
-                "type" : "object",
-                "properties" : {
-                  "eCTSCreditPoints" : {
-                    "type" : "integer"
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "properties" : {
+                    "eCTSCreditPoints" : {
+                      "type" : "integer"
+                    },
+                    "entryRequirementsNote" : {
+                      "type" : "string"
+                    },
+                    "eqflLevel" : {
+                      "type" : "string"
+                    },
+                    "iSCEDFCode" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "string"
+                      }
+                    },
+                    "id" : {
+                      "type" : "string"
+                    },
+                    "isPartialQualification" : {
+                      "type" : "boolean"
+                    },
+                    "maximumDuration" : {
+                      "type" : "string"
+                    },
+                    "nqflLevel" : {
+                      "type" : "string"
+                    },
+                    "title" : {
+                      "type" : "string"
+                    },
+                    "volumeOfLearning" : {
+                      "type" : "string"
+                    }
                   },
-                  "entryRequirementsNote" : {
-                    "type" : "string"
-                  },
-                  "eqfLevel" : {
-                    "type" : "string"
-                  },
-                  "id" : {
-                    "type" : "string"
-                  },
-                  "isPartialQualification" : {
-                    "type" : "boolean"
-                  },
-                  "maximumDuration" : {
-                    "type" : "string"
-                  },
-                  "nqfLevel" : {
-                    "type" : "string"
-                  },
-                  "title" : {
-                    "type" : "string"
-                  },
-                  "volumeOfLearning" : {
-                    "type" : "string"
-                  }
-                },
-                "additionalProperties" : false
+                  "additionalProperties" : false
+                }
               },
               "title" : {
                 "type" : "string"
@@ -352,10 +379,16 @@
                 "$ref" : "#/definitions/WasAwardedBy"
               },
               "wasDerivedFrom" : {
-                "$ref" : "#/definitions/WasDerivedFrom"
+                "type" : "array",
+                "items" : {
+                  "$ref" : "#/definitions/WasDerivedFrom"
+                }
               },
               "wasInfluencedBy" : {
-                "$ref" : "#/definitions/WasInfluencedBy"
+                "type" : "array",
+                "items" : {
+                  "$ref" : "#/definitions/WasInfluencedBy"
+                }
               }
             },
             "additionalProperties" : false

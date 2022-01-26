@@ -38,7 +38,7 @@ data class Europass(
                         EuropassSubject.Achieved(
                             id = "urn:epass:learningAchievement:1",
                             title = "Master of Science in Civil Engineering",
-                            wasDerivedFrom = EuropassSubject.Achieved.WasDerivedFrom(
+                            wasDerivedFrom = listOf(EuropassSubject.Achieved.WasDerivedFrom(
                                 id = "urn:epass:assessment:1",
                                 title = "Overall Diploma Assessment",
                                 grade = "excellent (5)",
@@ -51,9 +51,9 @@ data class Europass(
                                         title = "General grading scheme in Croatia",
                                         definition = "The Croatian national grading scheme consists of five grades with numerical equivalents: izvrstan – 5 (outstanding); vrlo dobar – 4 (very good); dobar – 3 (good); dovoljan – 2 (sufficient); nedovoljan – 1 (insufficient - fail). The minimum passing grade is dovoljan – 2."
                                     )
-                                )
+                                ))
                             ),
-                            wasInfluencedBy = EuropassSubject.Achieved.WasInfluencedBy(
+                            wasInfluencedBy = listOf(EuropassSubject.Achieved.WasInfluencedBy(
                                 id = "urn:epass:learningAchievement:1",
                                 identifier = listOf(
                                     EuropassSubject.Identifier(
@@ -74,7 +74,7 @@ data class Europass(
                                     workload = "PT60H",
                                     language = listOf("http://publications.europa.eu/resource/authority/language/HRV"),
                                 ),
-                            ),
+                            )),
                             wasAwardedBy = EuropassSubject.Achieved.WasAwardedBy(
                                 id = "urn:epass:awardingProcess:1",
                                 awardingBody = listOf("did:ebsi:zsSgDXeYPhZ3AuKhTFneDf1"),
@@ -145,8 +145,8 @@ data class Europass(
                                                 eCTSCreditPoints = 5,
                                                 maximumDuration = "P6M",
                                                 isPartialQualification = true,
-                                                eqfLevel = "http://data.europa.eu/snb/eqf/4",
-                                                nqfLevel = "http://data.europa.eu/snb/qdr/c_49672c5a",
+                                                eqflLevel = "http://data.europa.eu/snb/eqf/4",
+                                                nqflLevel = "http://data.europa.eu/snb/qdr/c_49672c5a",
                                             )
                                         )
                                     ),
@@ -166,7 +166,7 @@ data class Europass(
                                     limitJurisdiction = listOf("http://publications.europa.eu/resource/authority/country/HRV")
                                 )
                             ),
-                            specifiedBy = EuropassSubject.Achieved.SpecifiedBy(
+                            specifiedBy = listOf(EuropassSubject.Achieved.SpecifiedBy(
                                 id = "urn:epass:qualification:20",
                                 title = "Master of Science in Civil Engineering",
                                 volumeOfLearning = "PT1440H",
@@ -175,10 +175,10 @@ data class Europass(
                                 entryRequirementsNote = "The minimum educational requirement for enrolment into graduate university programmes is the completion of an undergraduate university programme. The university can allow students who have completed a professional programme to also enrol graduate university programmes, but they are allowed to set special requirements in these cases.\n" +
                                         "The minimum educational requirement for enrolment into specialist graduate professional programmes is the completion of an undergraduate university programme or a professional programme (first cycle).",
                                 isPartialQualification = false,
-                                eqfLevel = "http://data.europa.eu/snb/eqf/5",
-                                nqfLevel = "http://data.europa.eu/snb/qdr/c_dcc9aca1"
+                                eqflLevel = "http://data.europa.eu/snb/eqf/5",
+                                nqflLevel = "http://data.europa.eu/snb/qdr/c_dcc9aca1"
                             )
-                        ),
+                        )),
                     )
                 ),
                 credentialStatus = CredentialStatus(
@@ -222,19 +222,21 @@ data class Europass(
         data class Achieved(
             var id: String,
             var title: String,
-            var wasDerivedFrom: WasDerivedFrom,
-            var wasInfluencedBy: WasInfluencedBy,
+            @Json(serializeNull = false) var additionalNote: List<String>? = null,
+            @Json(serializeNull = false) var identifier: List<Identifier>? = null,
+            var wasDerivedFrom: List<WasDerivedFrom>,
+            @Json(serializeNull = false) var wasInfluencedBy: List<WasInfluencedBy>? = null,
             var wasAwardedBy: WasAwardedBy,
-            var hasPart: HasPart,
-            var entitlesTo: EntitlesTo,
-            var specifiedBy: SpecifiedBy,
+            @Json(serializeNull = false) var hasPart: HasPart? = null,
+            @Json(serializeNull = false) var entitlesTo: EntitlesTo? = null,
+            var specifiedBy: List<SpecifiedBy>,
         ) {
             data class WasDerivedFrom(
                 var id: String,
                 var title: String,
                 var grade: String,
-                var assessedBy: List<String>,
-                var specifiedBy: SpecifiedBy
+                @Json(serializeNull = false) var assessedBy: List<String>? = null,
+                @Json(serializeNull = false) var specifiedBy: SpecifiedBy? = null
             ) {
                 data class SpecifiedBy(
                     var id: String,
@@ -251,14 +253,15 @@ data class Europass(
 
             data class WasInfluencedBy(
                 var id: String,
-                var identifier: List<Identifier>,
+                @Json(serializeNull = false) var identifier: List<Identifier>? = null,
                 var title: String,
-                var workload: String,
+                @Json(serializeNull = false) var definition: String? = null,
+                @Json(serializeNull = false) var workload: String? = null,
                 var startedAtTime: String,
-                var endedAtTime: String,
-                var directedBy: List<String>,
-                var location: List<String>,
-                var specifiedBy: SpecifiedBy
+                @Json(serializeNull = false) var endedAtTime: String? = null,
+                @Json(serializeNull = false) var directedBy: List<String>? = null,
+                @Json(serializeNull = false) var location: List<String>? = null,
+                @Json(serializeNull = false) var specifiedBy: SpecifiedBy? = null
             ) {
                 data class SpecifiedBy(
                     var id: String,
@@ -272,7 +275,8 @@ data class Europass(
             data class WasAwardedBy(
                 var id: String,
                 var awardingBody: List<String>,
-                var awardingDate: String
+                var awardingDate: String,
+                @Json(serializeNull = false) var awardingLocation: String? = null
             )
 
             data class HasPart(
@@ -295,8 +299,8 @@ data class Europass(
                         var eCTSCreditPoints: Int,
                         var maximumDuration: String,
                         var isPartialQualification: Boolean,
-                        var eqfLevel: String,
-                        var nqfLevel: String,
+                        var eqflLevel: String,
+                        var nqflLevel: String,
                     )
                 }
             }
@@ -320,14 +324,15 @@ data class Europass(
 
             data class SpecifiedBy(
                 var id: String,
-                var title: String,
-                var volumeOfLearning: String,
-                var eCTSCreditPoints: Int,
-                var maximumDuration: String,
-                var entryRequirementsNote: String,
-                var isPartialQualification: Boolean,
-                var eqfLevel: String,
-                var nqfLevel: String,
+                @Json(serializeNull = false) var title: String? = null,
+                @Json(serializeNull = false) var volumeOfLearning: String? = null,
+                @Json(serializeNull = false) var eCTSCreditPoints: Int? = null,
+                @Json(serializeNull = false) var maximumDuration: String? = null,
+                @Json(serializeNull = false) var entryRequirementsNote: String? = null,
+                @Json(serializeNull = false) var isPartialQualification: Boolean? = null,
+                @Json(serializeNull = false) var eqflLevel: String? = null,
+                @Json(serializeNull = false) var nqflLevel: String? = null,
+                @Json(serializeNull = false) var iSCEDFCode: List<String>? = null
             )
         }
 
