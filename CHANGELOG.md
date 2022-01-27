@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- https://github.com/walt-id/waltid-ssikit-vclib/pull/33
+- Updated Eurpass and ParticipantCredential
+
 ## [1.11.1] - 2022-01-24
 
 -   Remove dummy properties from gaiax kyc credential
