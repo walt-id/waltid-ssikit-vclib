@@ -276,7 +276,7 @@ data class Europass(
                 var id: String,
                 var awardingBody: List<String>,
                 var awardingDate: String,
-                @Json(serializeNull = false) var awardingLocation: String? = null
+                @Json(serializeNull = false) var awardingLocation: List<String>? = null
             )
 
             data class HasPart(

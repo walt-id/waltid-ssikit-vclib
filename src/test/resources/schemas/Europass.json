@@ -26,7 +26,10 @@
           "type" : "string"
         },
         "awardingLocation" : {
-          "type" : "string"
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
         },
         "id" : {
           "type" : "string"
