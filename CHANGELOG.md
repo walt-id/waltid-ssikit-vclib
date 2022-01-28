@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.12.0] - 2022-01-27
+
+-   <https://github.com/walt-id/waltid-ssikit-vclib/pull/33>
+-   Updated Eurpass and ParticipantCredential
+
 ## [1.11.1] - 2022-01-24
 
 -   Remove dummy properties from gaiax kyc credential
@@ -160,7 +165,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.11.1...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.12.0...HEAD
+
+[1.12.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.11.1...1.12.0
 
 [1.11.1]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.11.0...1.11.1
 
