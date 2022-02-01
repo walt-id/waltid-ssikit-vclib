@@ -224,29 +224,30 @@ data class Europass(
             var title: String,
             @Json(serializeNull = false) var additionalNote: List<String>? = null,
             @Json(serializeNull = false) var identifier: List<Identifier>? = null,
-            var wasDerivedFrom: List<WasDerivedFrom>,
+            @Json(serializeNull = false) var wasDerivedFrom: List<WasDerivedFrom>? = null,
             @Json(serializeNull = false) var wasInfluencedBy: List<WasInfluencedBy>? = null,
-            var wasAwardedBy: WasAwardedBy,
+            @Json(serializeNull = false) var wasAwardedBy: WasAwardedBy? = null,
             @Json(serializeNull = false) var hasPart: HasPart? = null,
             @Json(serializeNull = false) var entitlesTo: EntitlesTo? = null,
-            var specifiedBy: List<SpecifiedBy>,
+            @Json(serializeNull = false) var specifiedBy: List<SpecifiedBy>? = null,
         ) {
             data class WasDerivedFrom(
                 var id: String,
                 var title: String,
                 var grade: String,
                 @Json(serializeNull = false) var assessedBy: List<String>? = null,
+                @Json(serializeNull = false) var hasPart: List<WasDerivedFrom>? = null,
                 @Json(serializeNull = false) var specifiedBy: SpecifiedBy? = null
             ) {
                 data class SpecifiedBy(
                     var id: String,
                     var title: String,
-                    var gradingScheme: GradingScheme?
+                    @Json(serializeNull = false) var gradingScheme: GradingScheme? = null
                 ) {
                     data class GradingScheme(
                         var id: String,
-                        var title: String? = null,
-                        var definition: String? = null
+                        @Json(serializeNull = false) var title: String? = null,
+                        @Json(serializeNull = false) var definition: String? = null
                     )
                 }
             }
@@ -275,7 +276,7 @@ data class Europass(
             data class WasAwardedBy(
                 var id: String,
                 var awardingBody: List<String>,
-                var awardingDate: String,
+                @Json(serializeNull = false) var awardingDate: String? = null,
                 @Json(serializeNull = false) var awardingLocation: List<String>? = null
             )
 
