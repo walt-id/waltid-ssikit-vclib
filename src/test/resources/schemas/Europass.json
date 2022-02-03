@@ -49,6 +49,12 @@
         "grade" : {
           "type" : "string"
         },
+        "hasPart" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/WasDerivedFrom"
+          }
+        },
         "id" : {
           "type" : "string"
         },
