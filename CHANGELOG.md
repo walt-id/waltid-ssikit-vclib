@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.4.1] - 2022-02-03
+
 ## [1.14.0] - 2022-02-03
 
 -   Europass update <https://github.com/walt-id/waltid-ssikit-vclib/pull/35> thanks to @ohylli
@@ -172,7 +174,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.14.0...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.1...HEAD
+
+[1.4.1]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.14.0...1.4.1
 
 [1.14.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.13.0...1.14.0
 
