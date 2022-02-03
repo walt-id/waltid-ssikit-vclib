@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Europass update https://github.com/walt-id/waltid-ssikit-vclib/pull/35 thanks to @ohylli
+- Support of recursive references in JSON schema validation by @atuffreau-bcd https://github.com/walt-id/waltid-ssikit-vclib/pull/36
+
 ## [1.13.0] - 2022-01-31
 
 ## [1.12.0] - 2022-01-27
