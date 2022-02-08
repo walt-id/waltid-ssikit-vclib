@@ -2,6 +2,8 @@ package id.walt.vclib.credentials
 
 import com.beust.klaxon.Json
 import com.nimbusds.jwt.SignedJWT
+import id.walt.vclib.adapter.ListOrReadSingleValue
+import id.walt.vclib.adapter.ListOrSingleValue
 import id.walt.vclib.model.*
 import id.walt.vclib.registry.VerifiableCredentialMetadata
 import id.walt.vclib.schema.SchemaService.JsonIgnore
@@ -20,7 +22,7 @@ data class VerifiableId(
     override var credentialSubject: VerifiableIdSubject? = null,
     @Json(serializeNull = false) var credentialStatus: CredentialStatus? = null,
     override var credentialSchema: CredentialSchema? = null,
-    @Json(serializeNull = false) var evidence: Evidence? = null,
+    @ListOrReadSingleValue @Json(serializeNull = false) var evidence: List<Evidence>? = null,
     @Json(serializeNull = false) override var proof: Proof? = null
 ) : AbstractVerifiableCredential<VerifiableId.VerifiableIdSubject>(type) {
     companion object : VerifiableCredentialMetadata(
@@ -51,7 +53,7 @@ data class VerifiableId(
                     id = "https://api.preprod.ebsi.eu/trusted-schemas-registry/v1/schemas/0x2488fd38783d65e4fd46e7889eb113743334dbc772b05df382b8eadce763101b",
                     type = "JsonSchemaValidator2018"
                 ),
-                evidence = Evidence(
+                evidence = listOf(Evidence(
                     // EBSI does not support evidence id yet
                     // id = "https://leaston.bcdiploma.com/law-economics-management#V_ID_evidence",
                     type = listOf("DocumentVerification"),
@@ -59,7 +61,7 @@ data class VerifiableId(
                     evidenceDocument = listOf("Passport"),
                     subjectPresence = "Physical",
                     documentPresence = listOf("Physical")
-                )
+                ))
             )
         }
     )
