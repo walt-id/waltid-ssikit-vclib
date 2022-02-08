@@ -53,7 +53,7 @@ abstract class VerifiableCredential() {
 
     @field:SchemaService.JsonIgnore
     @Json(ignored = true)
-    var jwt: String? = null
+    open var jwt: String? = null
         set(value) {
             field = value.also {
                 val jwtClaimsSet = SignedJWT.parse(value).jwtClaimsSet

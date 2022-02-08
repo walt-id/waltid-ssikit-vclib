@@ -2,8 +2,10 @@ package id.walt.vclib.credentials
 
 
 import com.beust.klaxon.Json
+import com.nimbusds.jwt.SignedJWT
 import id.walt.vclib.model.*
 import id.walt.vclib.registry.VerifiableCredentialMetadata
+import id.walt.vclib.schema.SchemaService
 import id.walt.vclib.schema.SchemaService.PropertyName
 import id.walt.vclib.schema.SchemaService.Required
 
@@ -15,6 +17,7 @@ data class Europass(
     @Json(serializeNull = false) override var id: String? = null,
     @Json(serializeNull = false) override var issuer: String? = null,
     @Json(serializeNull = false) override var issuanceDate: String? = null,
+    @Json(serializeNull = false) var issued: String? = null,
     @Json(serializeNull = false) override var validFrom: String? = null,
     @Json(serializeNull = false) override var expirationDate: String? = null,
     @Json(serializeNull = false) override var credentialSubject: EuropassSubject? = null,
@@ -369,4 +372,13 @@ data class Europass(
             @Json(name = "NQFLevel") var NQFLevel: List<String>
         )
     }
+
+    @field:SchemaService.JsonIgnore
+    @Json(ignored = true)
+    override var jwt: String? = null
+        set(value) {
+            super.jwt = value
+            issuanceDate = validFrom
+            issued = issued ?: SignedJWT.parse(value).jwtClaimsSet.issueTime?.let { dateFormat.format(it.toInstant()) }
+        }
 }

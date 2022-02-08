@@ -7,8 +7,6 @@ import id.walt.vclib.registry.VerifiableCredentialMetadata
 import id.walt.vclib.schema.SchemaService.JsonIgnore
 import id.walt.vclib.schema.SchemaService.PropertyName
 import id.walt.vclib.schema.SchemaService.Required
-import java.text.SimpleDateFormat
-import java.util.*
 
 data class VerifiableId(
     @Json(name = "@context") @field:PropertyName(name = "@context") @field:Required
@@ -16,6 +14,7 @@ data class VerifiableId(
     @Json(serializeNull = false) override var id: String? = null,
     @Json(serializeNull = false) override var issuer: String? = null,
     @Json(serializeNull = false) override var issuanceDate: String? = null,
+    @Json(serializeNull = false) var issued: String? = null,
     @Json(serializeNull = false) override var validFrom: String? = null,
     @Json(serializeNull = false) override var expirationDate: String? = null,
     override var credentialSubject: VerifiableIdSubject? = null,
@@ -94,4 +93,13 @@ data class VerifiableId(
     )
 
     override fun newId(id: String) = "identity#verifiableID#${id}"
+
+    @field:JsonIgnore
+    @Json(ignored = true)
+    override var jwt: String? = null
+        set(value) {
+            super.jwt = value
+            issuanceDate = validFrom
+            issued = issued ?: SignedJWT.parse(value).jwtClaimsSet.issueTime?.let { dateFormat.format(it.toInstant()) }
+        }
 }

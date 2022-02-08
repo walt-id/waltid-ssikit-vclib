@@ -38,14 +38,16 @@ class HelpersTest : StringSpec({
 
         vId.id shouldBe V_ID_ID
         vId.issuer shouldBe ISSUER_DID
-        vId.issuanceDate shouldBe ISSUANCE_DATE
+        vId.issued shouldBe ISSUANCE_DATE
+        vId.issuanceDate shouldBe VALID_FROM
         vId.validFrom shouldBe VALID_FROM
         vId.expirationDate shouldBe null
         vId.credentialSubject!!.id shouldBe SUBJECT_DID
 
         vId.json shouldContain "\"id\" : \"$V_ID_ID\""
         vId.json shouldContain "\"issuer\" : \"$ISSUER_DID\""
-        vId.json shouldContain "\"issuanceDate\" : \"$ISSUANCE_DATE\""
+        vId.json shouldContain "\"issued\" : \"$ISSUANCE_DATE\""
+        vId.json shouldContain "\"issuanceDate\" : \"$VALID_FROM\""
         vId.json shouldContain "\"validFrom\" : \"$VALID_FROM\""
         vId.json shouldNotContain "\"expirationDate\""
         vId.json shouldContain "\"id\" : \"$SUBJECT_DID\""
