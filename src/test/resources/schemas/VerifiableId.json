@@ -81,37 +81,40 @@
       "additionalProperties" : false
     },
     "evidence" : {
-      "type" : "object",
-      "properties" : {
-        "documentPresence" : {
-          "type" : "array",
-          "items" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "documentPresence" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "evidenceDocument" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "id" : {
+            "type" : "string"
+          },
+          "subjectPresence" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "verifier" : {
             "type" : "string"
           }
         },
-        "evidenceDocument" : {
-          "type" : "array",
-          "items" : {
-            "type" : "string"
-          }
-        },
-        "id" : {
-          "type" : "string"
-        },
-        "subjectPresence" : {
-          "type" : "string"
-        },
-        "type" : {
-          "type" : "array",
-          "items" : {
-            "type" : "string"
-          }
-        },
-        "verifier" : {
-          "type" : "string"
-        }
-      },
-      "additionalProperties" : false
+        "additionalProperties" : false
+      }
     },
     "expirationDate" : {
       "type" : "string"

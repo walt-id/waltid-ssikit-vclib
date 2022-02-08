@@ -5,7 +5,7 @@ import com.beust.klaxon.Klaxon
 import com.beust.klaxon.TypeFor
 import com.nimbusds.jwt.SignedJWT
 import id.walt.vclib.NestedVCs
-import id.walt.vclib.adapter.VCTypeAdapter
+import id.walt.vclib.adapter.*
 import id.walt.vclib.nestedVCsConverter
 import id.walt.vclib.schema.SchemaService
 import java.time.Instant
@@ -111,7 +111,7 @@ abstract class VerifiableCredential() {
     fun toMap(): Map<String, Any> = klaxon.parse(encode())!!
 
     companion object {
-        val klaxon = Klaxon().fieldConverter(NestedVCs::class, nestedVCsConverter)
+        val klaxon = Klaxon().fieldConverter(NestedVCs::class, nestedVCsConverter).fieldConverter(ListOrSingleValue::class, ListOrSingleValueConverter(false)).fieldConverter(ListOrReadSingleValue::class, ListOrSingleValueConverter(true))
         val JWT_PATTERN = "(^[A-Za-z0-9-_]*\\.[A-Za-z0-9-_]*\\.[A-Za-z0-9-_]*\$)"
         val JWT_VC_CLAIM = "vc"
         val JWT_VP_CLAIM = "vp"
