@@ -34,9 +34,10 @@
   }],
   "expirationDate": "2022-06-22T14:11:44Z",
   "id": "residence#3fea53a4-0432-4910-ac9c-69ah8da3c37f",
-  "issuanceDate": "2019-06-22T14:11:44Z",
+  "issued": "2019-06-22T14:11:44Z",
   "issuer": "did:ebsi:2757945549477fc571663bee12042873fe555b674bd294a3",
   "title": "Proof of Residence",
   "validFrom": "2019-06-22T14:11:44Z",
+  "issuanceDate": "2019-06-22T14:11:44Z",
   "type": ["VerifiableCredential", "VerifiableAttestation", "ProofOfResidence"]
 }

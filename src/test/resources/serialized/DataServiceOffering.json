@@ -23,7 +23,7 @@
   },
   "description": "he data contains the basic information to build a transaction graph for later analysis by the safeFBDC algorithm. Is is one of multiple data sources to be analyzed.",
   "id": "did:ebsi-eth:00000001/credentials/1872",
-  "issuanceDate": "2020-08-24T14:13:44Z",
+  "issued": "2020-08-24T14:13:44Z",
   "issuer": "did:example:456",
   "keywords": ["Analytics", "AML", "safeFBDC", "finance", "dataset", "graph"],
   "modified": "2020-12-02T23:00:00+01:00",

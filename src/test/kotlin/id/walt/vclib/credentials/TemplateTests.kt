@@ -65,9 +65,9 @@ class TemplateTests : StringSpec({
             .readText()
             .toCredential() as VerifiableId
 
-        vId.issued shouldBe "2021-08-20T00:00:00Z"
-        vId.issuanceDate shouldBe "2020-06-01T00:00:00Z"
-        vId.validFrom shouldBe "2020-06-01T00:00:00Z"
+        vId.issued shouldBe "2020-11-03T00:00:00Z"
+        vId.issuanceDate shouldBe "2020-10-31T00:00:00Z"
+        vId.validFrom shouldBe "2020-10-31T00:00:00Z"
 
         val europass = File(Path.of("src", "test", "resources", "jwt", "Europass.txt").toUri())
             .readText()

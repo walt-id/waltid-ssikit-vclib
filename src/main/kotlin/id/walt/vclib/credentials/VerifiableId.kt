@@ -15,8 +15,7 @@ data class VerifiableId(
     var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
     @Json(serializeNull = false) override var id: String? = null,
     @Json(serializeNull = false) override var issuer: String? = null,
-    @Json(serializeNull = false) override var issuanceDate: String? = null,
-    @Json(serializeNull = false) var issued: String? = null,
+    @Json(serializeNull = false) override var issued: String? = null,
     @Json(serializeNull = false) override var validFrom: String? = null,
     @Json(serializeNull = false) override var expirationDate: String? = null,
     override var credentialSubject: VerifiableIdSubject? = null,
@@ -29,9 +28,9 @@ data class VerifiableId(
         type = listOf("VerifiableCredential", "VerifiableAttestation", "VerifiableId"),
         template = {
             VerifiableId(
-                id = "identity#verifiableID#3add94f4-28ec-42a1-8704-4e4aa51006b4",
+                id = "urn:uuid:3add94f4-28ec-42a1-8704-4e4aa51006b4",
                 issuer = "did:ebsi:2A9BZ9SUe6BatacSpvs1V5CdjHvLpQ7bEsi2Jb6LdHKnQxaN",
-                issuanceDate = "2021-08-31T00:00:00Z",
+                issued = "2021-08-31T00:00:00Z",
                 validFrom = "2021-08-31T00:00:00Z",
                 credentialSubject = VerifiableIdSubject(
                     id = "did:ebsi:2AEMAqXWKYMu1JHPAgGcga4dxu7ThgfgN95VyJBJGZbSJUtp",
@@ -41,7 +40,7 @@ data class VerifiableId(
                     personalIdentifier = "0904008084H",
                     nameAndFamilyNameAtBirth = "Jane DOE",
                     placeOfBirth = "LILLE, FRANCE",
-                    currentAddress = "1 Boulevard de la Liberté, 59800 Lille",
+                    currentAddress = listOf("1 Boulevard de la Liberté, 59800 Lille"),
                     gender = "FEMALE"
                 ),
                 //  EBSI does not support credentialStatus yet
@@ -50,8 +49,8 @@ data class VerifiableId(
                 //      type = "CredentialsStatusList2020"
                 //  ),
                 credentialSchema = CredentialSchema(
-                    id = "https://api.preprod.ebsi.eu/trusted-schemas-registry/v1/schemas/0x2488fd38783d65e4fd46e7889eb113743334dbc772b05df382b8eadce763101b",
-                    type = "JsonSchemaValidator2018"
+                    id = "https://api.preprod.ebsi.eu/trusted-schemas-registry/v1/schemas/0xb77f8516a965631b4f197ad54c65a9e2f9936ebfb76bae4906d33744dbcc60ba",
+                    type = "FullJsonSchemaValidator2021"
                 ),
                 evidence = listOf(Evidence(
                     // EBSI does not support evidence id yet
@@ -75,7 +74,7 @@ data class VerifiableId(
         @Json(serializeNull = false) var personalIdentifier: String? = null,
         @Json(serializeNull = false) var nameAndFamilyNameAtBirth: String? = null,
         @Json(serializeNull = false) var placeOfBirth: String? = null,
-        @Json(serializeNull = false) var currentAddress: String? = null,
+        @Json(serializeNull = false) var currentAddress: List<String>? = null,
         @Json(serializeNull = false) var gender: String? = null,
     ) : CredentialSubject() {
 
@@ -94,14 +93,5 @@ data class VerifiableId(
         var documentPresence: List<String?>
     )
 
-    override fun newId(id: String) = "identity#verifiableID#${id}"
-
-    @field:JsonIgnore
-    @Json(ignored = true)
-    override var jwt: String? = null
-        set(value) {
-            super.jwt = value
-            issuanceDate = validFrom
-            issued = issued ?: SignedJWT.parse(value).jwtClaimsSet.issueTime?.let { dateFormat.format(it.toInstant()) }
-        }
+    override fun newId(id: String) = "urn:uuid:${id}"
 }

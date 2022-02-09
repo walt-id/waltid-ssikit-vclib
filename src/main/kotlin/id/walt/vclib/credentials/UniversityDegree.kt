@@ -16,7 +16,7 @@ data class UniversityDegree(
     ),
     override var id: String?, // http://example.gov/credentials/3732
     @field:SchemaService.PropertyName("issuer") @Json(name = "issuer") var issuerObject: Issuer,
-    @Json(serializeNull = false) override var issuanceDate: String?, // 2020-03-10T04:24:12.164Z
+    @Json(serializeNull = false) override var issued: String?, // 2020-03-10T04:24:12.164Z
     override var credentialSubject: UniversityDegreeSubject?,
     @Json(serializeNull = false) override var proof: Proof? = null,
     @Json(serializeNull = false) override var validFrom: String? = null,
@@ -31,7 +31,7 @@ data class UniversityDegree(
             UniversityDegree(
                 id= "http://example.gov/credentials/3732",
                 issuerObject = Issuer("did:example:456"),
-                issuanceDate = "2020-03-10T04:24:12.164Z",
+                issued = "2020-03-10T04:24:12.164Z",
                 credentialSubject = UniversityDegree.UniversityDegreeSubject(
                     id = "did:example:123",
                     UniversityDegreeSubject.Degree (

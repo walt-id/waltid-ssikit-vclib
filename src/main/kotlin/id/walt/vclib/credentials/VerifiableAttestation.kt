@@ -11,7 +11,7 @@ data class VerifiableAttestation(
     var context: List<String>,
     override var id: String?, // education#higherEducation#3fea53a4-0432-4910-ac9c-69ah8da3c37f
     override var issuer: String?, // did:ebsi:2757945549477fc571663bee12042873fe555b674bd294a3
-    @Json(serializeNull = false) override var issuanceDate: String? = null, // 2019-06-22T14:11:44Z
+    @Json(serializeNull = false) override var issued: String? = null, // 2019-06-22T14:11:44Z
     @Json(serializeNull = false) override var expirationDate: String? = null,
     @Json(serializeNull = false) override var validFrom: String? = null, // 2019-06-22T14:11:44Z
     @Json(serializeNull = false) override var credentialSubject: VerifiableAttestationSubject? = null,
@@ -42,7 +42,7 @@ data class VerifiableAttestation(
                 ),
                 id = "education#higherEducation#3fea53a4-0432-4910-ac9c-69ah8da3c37f",
                 issuer = "did:ebsi:2757945549477fc571663bee12042873fe555b674bd294a3",
-                issuanceDate = "2019-06-22T14:11:44Z",
+                issued = "2019-06-22T14:11:44Z",
                 expirationDate = "2022-06-22T14:11:44Z",
                 validFrom = "2019-06-22T14:11:44Z",
                 credentialSubject = VerifiableAttestationSubject(

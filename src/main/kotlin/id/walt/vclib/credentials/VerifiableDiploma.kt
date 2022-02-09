@@ -16,7 +16,7 @@ data class VerifiableDiploma(
     var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
     @Json(serializeNull = false) override var id: String? = null, // education#higherEducation#51e42fda-cb0a-4333-b6a6-35cb147e1a88
     @Json(serializeNull = false) override var issuer: String? = null, // did:ebsi:2LGKvDMrNUPR6FhSNrXzQQ1h295zr4HwoX9UqvwAsenSKHe9
-    @Json(serializeNull = false) override var issuanceDate: String? = null, // 2020-11-03T00:00:00Z
+    @Json(serializeNull = false) override var issued: String? = null, // 2020-11-03T00:00:00Z
     @Json(serializeNull = false) override var validFrom: String? = null, // 2020-11-03T00:00:00Z
     @Json(serializeNull = false) override var expirationDate: String? = null,
     override var credentialSubject: VerifiableDiplomaSubject? = null,
@@ -31,7 +31,7 @@ data class VerifiableDiploma(
             VerifiableDiploma(
                 id = "education#higherEducation#392ac7f6-399a-437b-a268-4691ead8f176",
                 issuer = "did:ebsi:2A9BZ9SUe6BatacSpvs1V5CdjHvLpQ7bEsi2Jb6LdHKnQxaN",
-                issuanceDate = "2021-08-31T00:00:00Z",
+                issued = "2021-08-31T00:00:00Z",
                 expirationDate = "2022-08-31T00:00:00Z",
                 validFrom = "2021-08-31T00:00:00Z",
                 credentialSubject = VerifiableDiplomaSubject(

@@ -3,15 +3,11 @@ package id.walt.vclib.credentials
 import com.beust.klaxon.Klaxon
 import id.walt.vclib.model.toCredential
 import id.walt.vclib.NestedVCs
-import id.walt.vclib.credentials.gaiax.GaiaxCredential
-import id.walt.vclib.credentials.gaiax.DataSelfDescription
-import id.walt.vclib.credentials.gaiax.DataServiceOffering
-import id.walt.vclib.credentials.gaiax.ParticipantCredential
-import id.walt.vclib.model.VerifiableCredential
 import id.walt.vclib.nestedVCsConverter
 import id.walt.vclib.registry.VcTypeRegistry
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.string.shouldContain
 import java.io.File
 import kotlin.reflect.jvm.jvmName
 
@@ -60,6 +56,12 @@ class CredentialsTests : StringSpec({
             vc::class.simpleName shouldBe name
             println("PASS: ${it.name} corresponds to ${vc::class.jvmName}")
         }
+    }
+
+    "verifiableCredential's issuanceDate is validFrom" {
+        val vc = Europass(validFrom = "2022-02-08T22:12:00Z")
+        vc.encode() shouldContain "\"validFrom\" : \"2022-02-08T22:12:00Z\""
+        vc.encode() shouldContain "\"issuanceDate\" : \"2022-02-08T22:12:00Z\""
     }
 })
 

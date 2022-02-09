@@ -15,7 +15,7 @@ data class ParticipantCredential(
     ),
     override var id: String?,
     override var issuer: String?,
-    @Json(serializeNull = false) override var issuanceDate: String? = null,
+    @Json(serializeNull = false) override var issued: String? = null,
     @Json(serializeNull = false) override var validFrom: String? = null,
     @Json(serializeNull = false) override var expirationDate: String? = null,
     @Json(serializeNull = false) override var credentialSubject: ParticipantCredentialSubject?,
@@ -37,7 +37,7 @@ data class ParticipantCredential(
             ParticipantCredential(
                 id = "vc.gaia-x.eu//membership/first.last@gaia-x.eu",
                 issuer = "did:web:vc.gaia-x.eu:issuer",
-                issuanceDate = "2022-01-03T20:38:38Z",
+                issued = "2022-01-03T20:38:38Z",
                 expirationDate = "2022-01-06T20:38:38Z",
                 credentialSubject = ParticipantCredentialSubject(
                     id = "mailto:first.last@gaia-x.eu",
