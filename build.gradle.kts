@@ -1,8 +1,8 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.5.21"
-    kotlin("plugin.serialization") version "1.5.21"
+    kotlin("jvm") version "1.6.10"
+    kotlin("plugin.serialization") version "1.6.10"
     jacoco
     application
     `maven-publish`
@@ -27,7 +27,7 @@ dependencies {
 
     /* Logging */
     implementation("org.lighthousegames:logging-jvm:1.0.0")
-    implementation("org.slf4j:slf4j-simple:1.7.33")
+    implementation("org.slf4j:slf4j-simple:1.7.35")
 
     /* Kotlin */
 
