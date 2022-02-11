@@ -15,7 +15,7 @@ object VcTypeRegistry {
     private val registry = HashMap<Int, TypeRegistration>()
 
     init {
-        log.info { "Registering default templates" }
+        log.debug { "Registering default templates" }
         register<PermanentResidentCard>(PermanentResidentCard)
         register<VerifiableAttestation>(VerifiableAttestation)
         register<VerifiableAuthorization>(VerifiableAuthorization)
