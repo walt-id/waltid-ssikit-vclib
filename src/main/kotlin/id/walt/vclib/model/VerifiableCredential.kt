@@ -13,7 +13,7 @@ import java.time.format.DateTimeFormatter
 import java.util.*
 
 @TypeFor(field = "type", adapter = VCTypeAdapter::class)
-abstract class VerifiableCredential() {
+abstract class VerifiableCredential {
 
     @SchemaService.Required
     abstract val type: List<String>
@@ -133,14 +133,14 @@ abstract class VerifiableCredential() {
                 it.json = data
             }
             else klaxon.parse<VerifiableCredential>(vcJsonFromJwt(data))!!.also {
-                it.jwt = data;
+                it.jwt = data
                 it.json = klaxon.toJsonString(it)
             }
         }
     }
 }
 
-abstract class CredentialSubject() {
+abstract class CredentialSubject {
     @Json(serializeNull = false)
     abstract var id: String?
 }
