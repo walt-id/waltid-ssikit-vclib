@@ -23,7 +23,7 @@ data class VerifiableId(
     override var credentialSubject: VerifiableIdSubject? = null,
     @Json(serializeNull = false) var credentialStatus: CredentialStatus? = null,
     override var credentialSchema: CredentialSchema? = null,
-    @ListOrReadSingleValue @Json(serializeNull = false) var evidence: List<Evidence>? = null,
+    @Json(serializeNull = false) var evidence: List<Evidence>? = null,
     @Json(serializeNull = false) override var proof: Proof? = null
 ) : AbstractVerifiableCredential<VerifiableId.VerifiableIdSubject>(type) {
     companion object : VerifiableCredentialMetadata(

@@ -6,6 +6,7 @@ import id.walt.vclib.credentials.VerifiableId
 import id.walt.vclib.credentials.VerifiablePresentation
 import id.walt.vclib.model.*
 import id.walt.vclib.registry.VerifiableCredentialMetadata
+import io.kotest.core.spec.Spec
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldContain
@@ -15,9 +16,9 @@ import java.nio.file.Path
 
 private const val V_ID_ID = "identity#verifiableID#93308ff1-c335-43c0-94da-a6863fb4bb9d"
 private const val V_DIPLOMA_ID = "education#higherEducation#87ED2F2270E6C41456E94B86B9D9115B4E35BCCAD200A49B846592C14F79C86BV1Fnbllta0NZTnJkR3lDWlRmTDlSRUJEVFZISmNmYzJhUU5sZUJ5Z2FJSHpWbmZZ"
-private const val V_PRESENTATION_ID = "urn:uuid:935c1af4-1ffa-4698-b509-807bed675123"
-private const val ISSUER_DID = "did:ebsi:z242pBrKr3KdTwEEZxEdVtVq"
-private const val SUBJECT_DID = "did:ebsi:zsT2x3C1LZpsYmztjzjL354"
+private const val V_PRESENTATION_ID = "urn:uuid:5da1c7cb-e673-45bc-8b47-baf44b69ddd4"
+private const val ISSUER_DID = "did:ebsi:z23Li4aiNsWGu98jU9RzQvJ7"
+private const val SUBJECT_DID = "did:ebsi:zmBFvnWW5WSTC6NLUuYScwg"
 private const val ISSUANCE_DATE = "2021-08-20T00:00:00Z"
 private const val VALID_FROM = "2020-06-01T00:00:00Z"
 
