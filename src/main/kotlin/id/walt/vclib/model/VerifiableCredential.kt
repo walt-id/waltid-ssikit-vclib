@@ -29,7 +29,12 @@ abstract class VerifiableCredential() {
     abstract var issuer: String?
 
     @Json(serializeNull = false)
-    abstract var issuanceDate: String?
+    abstract var issued: String?
+
+    @Json(serializeNull = false)
+    var issuanceDate: String? = null
+        get() = validFrom
+        set(value) { field = validFrom }
 
     @Json(serializeNull = false)
     abstract var validFrom: String?
@@ -59,10 +64,9 @@ abstract class VerifiableCredential() {
                 val jwtClaimsSet = SignedJWT.parse(value).jwtClaimsSet
                 id = id ?: jwtClaimsSet.jwtid
                 issuer = issuer ?: jwtClaimsSet.issuer
-                issuanceDate = issuanceDate ?: jwtClaimsSet.issueTime?.let { dateFormat.format(it.toInstant()) }
+                issued = issued ?: jwtClaimsSet.issueTime?.let { dateFormat.format(it.toInstant()) }
                 validFrom = validFrom ?: jwtClaimsSet.notBeforeTime?.let { dateFormat.format(it.toInstant()) }
-                expirationDate =
-                    expirationDate ?: jwtClaimsSet.expirationTime?.let { dateFormat.format(it.toInstant()) }
+                expirationDate = expirationDate ?: jwtClaimsSet.expirationTime?.let { dateFormat.format(it.toInstant()) }
                 subject = subject ?: jwtClaimsSet.subject
             }
         }
@@ -82,14 +86,14 @@ abstract class VerifiableCredential() {
         id: String? = null,
         issuer: String? = null,
         subject: String? = null,
-        issuanceDate: Instant? = null,
+        issued: Instant? = null,
         validFrom: Instant? = null,
         expirationDate: Instant? = null
     ) {
         this.id = id ?: newRandomId()
         this.issuer = issuer
         this.subject = subject
-        this.issuanceDate = issuanceDate?.let { dateFormat.format(it) }
+        this.issued = issued?.let { dateFormat.format(it) }
         this.validFrom = validFrom?.let { dateFormat.format(it) }
         this.expirationDate = expirationDate?.let { dateFormat.format(it) }
     }

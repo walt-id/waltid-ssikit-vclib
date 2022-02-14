@@ -24,7 +24,7 @@
     "certificateNr": "123",
     "scope": ["consulting service", "software development", "IT operations"]
   },
-  "issuanceDate": "2020-08-24T14:13:44Z",
+  "issued": "2020-08-24T14:13:44Z",
   "issuer": "did:example:456",
   "type": ["VerifiableCredential", "VerifiableAttestation", "Iso27001Certificate"]
 }

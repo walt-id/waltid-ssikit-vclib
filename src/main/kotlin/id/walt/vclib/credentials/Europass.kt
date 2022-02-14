@@ -14,7 +14,7 @@ data class Europass(
     ),
     @Json(serializeNull = false) override var id: String? = null,
     @Json(serializeNull = false) override var issuer: String? = null,
-    @Json(serializeNull = false) override var issuanceDate: String? = null,
+    @Json(serializeNull = false) override var issued: String? = null,
     @Json(serializeNull = false) override var validFrom: String? = null,
     @Json(serializeNull = false) override var expirationDate: String? = null,
     @Json(serializeNull = false) override var credentialSubject: EuropassSubject? = null,
@@ -29,7 +29,7 @@ data class Europass(
             Europass(
                 id = "urn:credential:5a4d5412-27e3-4540-a5e5-f1aa4d55b20c",
                 issuer = "did:epass:org:1",
-                issuanceDate = "2020-07-20T13:58:53+02:00",
+                issued = "2020-07-20T13:58:53+02:00",
                 validFrom = "2019-09-20T00:00:00+02:00",
                 credentialSubject = EuropassSubject(
                     id = "did:epass:person:1",

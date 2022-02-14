@@ -20,7 +20,7 @@ data class DummyCredential(
         "https://www.w3.org/2018/credentials/v1"
     ),
     @Json(serializeNull = false) @field:SchemaService.Required override var id: String? = null,
-    @Json(serializeNull = false) @field:DateTimeFormat override var issuanceDate: String? = null,
+    @Json(serializeNull = false) @field:DateTimeFormat override var issued: String? = null,
     @field:JsonIgnore var toIgnore: String? = null,
     @Json(serializeNull = false) override var issuer: String? = null,
     @Json(serializeNull = false) override var validFrom: String? = null,

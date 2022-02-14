@@ -11,7 +11,7 @@ data class KycCredential(
     var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
     @Json(serializeNull = false) override var id: String? = null,
     @Json(serializeNull = false) override var issuer: String? = null,
-    @Json(serializeNull = false) override var issuanceDate: String? = null,
+    @Json(serializeNull = false) override var issued: String? = null,
     @Json(serializeNull = false) override var validFrom: String? = null,
     @Json(serializeNull = false) override var expirationDate: String? = null,
     override var credentialSubject: KycCredentialSubject? = null,
@@ -24,7 +24,7 @@ data class KycCredential(
             KycCredential(
                 id = "identity#KycCredential#3add94f4-28ec-42a1-8704-4e4aa51006b4",
                 issuer = "did:ebsi:2A9BZ9SUe6BatacSpvs1V5CdjHvLpQ7bEsi2Jb6LdHKnQxaN",
-                issuanceDate = "2021-08-31T00:00:00Z",
+                issued = "2021-08-31T00:00:00Z",
                 validFrom = "2021-08-31T00:00:00Z",
                 credentialSubject = KycCredentialSubject(
                     id = "did:ebsi:2AEMAqXWKYMu1JHPAgGcga4dxu7ThgfgN95VyJBJGZbSJUtp",

@@ -15,7 +15,7 @@ data class PermanentResidentCard(
     @Json(serializeNull = false) override var credentialSubject: PermanentResidentCardSubject? = null,
     @Json(serializeNull = false) override var issuer: String? = null,
     @Json(serializeNull = false) override var proof: Proof? = null,
-    @Json(serializeNull = false) override var issuanceDate: String? = null,
+    @Json(serializeNull = false) override var issued: String? = null,
     @Json(serializeNull = false) override var validFrom: String? = null,
     @Json(serializeNull = false) override var expirationDate: String? = null,
     @Json(serializeNull = false) override var credentialSchema: CredentialSchema? = null,

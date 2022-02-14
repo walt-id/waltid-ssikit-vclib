@@ -200,6 +200,9 @@
     "issuanceDate" : {
       "type" : "string"
     },
+    "issued" : {
+      "type" : "string"
+    },
     "issuer" : {
       "type" : "string"
     },

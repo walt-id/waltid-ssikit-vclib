@@ -12,7 +12,7 @@
   }],
   "expirationDate": "2022-01-06T20:38:38Z",
   "id": "1234",
-  "issuanceDate": "2022-01-03T20:38:38Z",
+  "issued": "2022-01-03T20:38:38Z",
   "issuer": "did:web:vc.gaia-x.eu:issuer",
   "type": ["VerifiableCredential", "DataConsortiumCredential"]
 }

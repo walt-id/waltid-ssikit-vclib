@@ -145,8 +145,9 @@
     }
   },
   "id": "urn:credential:5a4d5412-27e3-4540-a5e5-f1aa4d55b20c",
-  "issuanceDate": "2020-07-20T13:58:53+02:00",
+  "issued": "2020-07-20T13:58:53+02:00",
   "issuer": "did:epass:org:1",
   "validFrom": "2019-09-20T00:00:00+02:00",
+  "issuanceDate": "2019-09-20T00:00:00+02:00",
   "type": ["VerifiableCredential", "VerifiableAttestation", "Europass"]
 }

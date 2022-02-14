@@ -16,6 +16,7 @@ object SchemaService {
     annotation class Required
     annotation class DateTimeFormat
     annotation class JsonIgnore
+    annotation class ReadOnly
 
     private val generator = SchemaGeneratorConfigBuilder(
         SchemaVersion.DRAFT_7,

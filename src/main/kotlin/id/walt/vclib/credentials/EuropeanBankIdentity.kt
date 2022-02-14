@@ -9,7 +9,7 @@ data class EuropeanBankIdentity(
     @Json(name = "@context") @field:SchemaService.PropertyName(name = "@context")
     var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
     @Json(serializeNull = false) override var id: String? = null,
-    @Json(serializeNull = false) override var issuanceDate: String? = null,
+    @Json(serializeNull = false) override var issued: String? = null,
     @Json(serializeNull = false) override var validFrom: String? = null,
     @Json(serializeNull = false) override var expirationDate: String? = null,
     @Json(serializeNull = false) override var credentialSubject: EuropeanBankIdentitySubject? = null,
@@ -37,7 +37,7 @@ data class EuropeanBankIdentity(
             EuropeanBankIdentity(
                 id = "identity#EuropeanBankIdentity#3add94f4-28ec-42a1-8704-4e4aa51006b4",
                 issuer = "did:example:456",
-                issuanceDate = "2021-08-31T00:00:00Z",
+                issued = "2021-08-31T00:00:00Z",
                 validFrom = "2021-08-31T00:00:00Z",
                 credentialSubject = EuropeanBankIdentitySubject(
                     id = "identity#verifiableID",

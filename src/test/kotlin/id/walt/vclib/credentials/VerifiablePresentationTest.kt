@@ -9,7 +9,7 @@ import io.kotest.matchers.shouldBe
 private val data1 = VerifiableAuthorization(
     id = "did:ebsi-eth:00000001/credentials/1872",
     issuer = "did:ebsi:000001234",
-    issuanceDate = "2020-08-24T14:13:44Z",
+    issued = "2020-08-24T14:13:44Z",
     credentialSubject = VerifiableAuthorization.VerifiableAuthorizationSubject(
         "did:ebsi:00000004321",
         VerifiableAuthorization.VerifiableAuthorizationSubject.NaturalPerson("did:example:00001111")
