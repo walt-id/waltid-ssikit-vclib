@@ -258,7 +258,7 @@ data class Europass(
                 var title: String,
                 @Json(serializeNull = false) var definition: String? = null,
                 @Json(serializeNull = false) var workload: String? = null,
-                var startedAtTime: String,
+                @Json(serializeNull = false) var startedAtTime: String? = null,
                 @Json(serializeNull = false) var endedAtTime: String? = null,
                 @Json(serializeNull = false) var directedBy: List<String>? = null,
                 @Json(serializeNull = false) var location: List<String>? = null,
@@ -266,10 +266,10 @@ data class Europass(
             ) {
                 data class SpecifiedBy(
                     var id: String,
-                    var title: String,
-                    var learningActivityType: List<String>,
-                    var workload: String,
-                    var language: List<String>,
+                    @Json(serializeNull = false) var title: String? = null,
+                    @Json(serializeNull = false) var learningActivityType: List<String>? = null,
+                    @Json(serializeNull = false) var workload: String? = null,
+                    @Json(serializeNull = false) var language: List<String>? = null,
                 )
             }
 
@@ -325,6 +325,7 @@ data class Europass(
 
             data class SpecifiedBy(
                 var id: String,
+                @Json(serializeNull = false) var identifier: Identifier? = null,
                 @Json(serializeNull = false) var title: String? = null,
                 @Json(serializeNull = false) var volumeOfLearning: String? = null,
                 @Json(serializeNull = false) var eCTSCreditPoints: Int? = null,
@@ -333,8 +334,49 @@ data class Europass(
                 @Json(serializeNull = false) var isPartialQualification: Boolean? = null,
                 @Json(serializeNull = false) var eqflLevel: String? = null,
                 @Json(serializeNull = false) var nqflLevel: String? = null,
-                @Json(serializeNull = false) var iSCEDFCode: List<String>? = null
-            )
+                @Json(serializeNull = false) var iSCEDFCode: List<String>? = null,
+                @Json(serializeNull = false) var learningOutcome: List<LearningOutcome>? = null,
+                @Json(serializeNull = false) var learningOpportunityType: List<String>? = null,
+                @Json(serializeNull = false) var alternativeLabel: List<String>? = null,
+                @Json(serializeNull = false) var definition: String? = null,
+                @Json(serializeNull = false) var learningOutcomeDescription: String? = null,
+                @Json(serializeNull = false) var additionalNote: List<String>? = null,
+                @Json(serializeNull = false) var homePage: String? = null,
+                @Json(serializeNull = false) var suplementaryDocument: List<String>? = null,
+                @Json(serializeNull = false) var educationSubject: List<String>? = null,
+                @Json(serializeNull = false) var creditPoints: Int? = null,
+                @Json(serializeNull = false) var educationLevel: List<String>? = null,
+                @Json(serializeNull = false) var language: List<String>? = null,
+                @Json(serializeNull = false) var mode: List<String>? = null,
+                @Json(serializeNull = false) var learningSetting: String? = null,
+                @Json(serializeNull = false) var targetGroup: List<String>? = null,
+                @Json(serializeNull = false) var learningActivitySpecification: WasInfluencedBy.SpecifiedBy? = null,
+                @Json(serializeNull = false) var assessmentSpecification: WasDerivedFrom.SpecifiedBy? = null,
+                @Json(serializeNull = false) var entitlementSpecification: List<EntitlesTo.SpecifiedBy>? = null,
+                @Json(serializeNull = false) var awardingOpportunity: List<AwardingOpportunity>? = null,
+                @Json(serializeNull = false) var hasPart: List<SpecifiedBy>? = null,
+                @Json(serializeNull = false) var specialisationOf: List<SpecifiedBy>? = null
+            ) {
+                data class LearningOutcome(
+                    var id: String,
+                    var name: String,
+                    @Json(serializeNull = false) var identifier: Identifier? = null,
+                    @Json(serializeNull = false) var definition: String? = null,
+                    @Json(serializeNull = false) var learningOutcomeType: String? = null,
+                    @Json(serializeNull = false) var reusabilityLevel: String? = null,
+                    @Json(serializeNull = false) var relatedSkill: List<String>? = null,
+                    @Json(serializeNull = false) var relatedESCOSkill: List<String>? = null
+                )
+
+                data class AwardingOpportunity(
+                    var id: String,
+                    @Json(serializeNull = false) var identifier: Identifier? = null,
+                    @Json(serializeNull = false) var awardingBody: List<String>? = null,
+                    @Json(serializeNull = false) var location: String? = null,
+                    @Json(serializeNull = false) var startedAtTime: String? = null,
+                    @Json(serializeNull = false) var endedAtTime: String? = null
+                )
+            }
         }
 
         data class LearningAchievement(
