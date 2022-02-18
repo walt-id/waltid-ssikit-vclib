@@ -27,7 +27,7 @@ dependencies {
 
     /* Logging */
     implementation("org.lighthousegames:logging-jvm:1.0.0")
-    implementation("org.slf4j:slf4j-simple:1.7.35")
+    implementation("org.slf4j:slf4j-simple:1.7.36")
 
     /* Kotlin */
 
@@ -38,7 +38,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.0")
 
     /* JWT */
-    implementation("com.nimbusds:nimbus-jose-jwt:9.18")
+    implementation("com.nimbusds:nimbus-jose-jwt:9.19")
 
     /* Testing */
     testImplementation("io.kotest:kotest-runner-junit5:5.1.0")
