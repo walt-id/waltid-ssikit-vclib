@@ -80,7 +80,7 @@ publishing {
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "13"
+    kotlinOptions.jvmTarget = "17"
 }
 
 jacoco.toolVersion = "0.8.7"
