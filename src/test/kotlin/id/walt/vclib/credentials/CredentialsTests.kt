@@ -20,7 +20,7 @@ class CredentialsTests : StringSpec({
             run {
                 println("Serializing $vcName")
                 val vc = VcTypeRegistry.getRegistration(vcName)
-                val serializedVc = vc!!.metadata.template!!.invoke()!!.encodePretty()
+                val serializedVc = vc!!.metadata.template!!.invoke().encodePretty()
                 File("src/test/resources/serialized/$vcName.json").writeText(serializedVc)
             }
         }
