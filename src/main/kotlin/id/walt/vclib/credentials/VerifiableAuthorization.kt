@@ -13,7 +13,7 @@ data class VerifiableAuthorization(
     ),
     override var id: String?,
     override var issuer: String?,
-    @Json(serializeNull = false) override var issuanceDate: String? = null,
+    @Json(serializeNull = false) override var issued: String? = null,
     @Json(serializeNull = false) override var validFrom: String? = null,
     @Json(serializeNull = false) override var expirationDate: String? = null,
     override var credentialSubject: VerifiableAuthorizationSubject?,
@@ -37,7 +37,7 @@ data class VerifiableAuthorization(
             VerifiableAuthorization(
                 id = "did:ebsi-eth:00000001/credentials/1872",
                 issuer = "did:ebsi:000001234",
-                issuanceDate = "2020-08-24T14:13:44Z",
+                issued = "2020-08-24T14:13:44Z",
                 credentialSubject = VerifiableAuthorizationSubject(
                     "did:ebsi:00000004321",
                     VerifiableAuthorizationSubject.NaturalPerson("did:example:00001111")

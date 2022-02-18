@@ -22,7 +22,7 @@ data class DataServiceOffering(
     val description: String,
     val billing: Billing,
     override var issuer: String?,
-    @Json(serializeNull = false) override var issuanceDate: String? = null,
+    @Json(serializeNull = false) override var issued: String? = null,
     @Json(serializeNull = false) override var validFrom: String? = null,
     @Json(serializeNull = false) override var expirationDate: String? = null,
     @Json(serializeNull = false) override var credentialSubject: DataServiceOfferingSubject?,
@@ -78,7 +78,7 @@ data class DataServiceOffering(
                     unit = "EUR"
                 ),
                 issuer = "did:example:456",
-                issuanceDate = "2020-08-24T14:13:44Z",
+                issued = "2020-08-24T14:13:44Z",
                 credentialSubject = DataServiceOfferingSubject(
                     id = "Pilot004AIService",
                     type = "Service",

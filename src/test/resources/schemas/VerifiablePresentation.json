@@ -20,6 +20,9 @@
     "issuanceDate" : {
       "type" : "string"
     },
+    "issued" : {
+      "type" : "string"
+    },
     "proof" : {
       "type" : "object",
       "properties" : {

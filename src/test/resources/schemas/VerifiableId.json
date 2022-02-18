@@ -36,7 +36,10 @@
       "type" : "object",
       "properties" : {
         "currentAddress" : {
-          "type" : "string"
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
         },
         "dateOfBirth" : {
           "type" : "string"
@@ -123,6 +126,9 @@
       "type" : "string"
     },
     "issuanceDate" : {
+      "type" : "string"
+    },
+    "issued" : {
       "type" : "string"
     },
     "issuer" : {

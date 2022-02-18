@@ -1,8 +1,11 @@
 package id.walt.vclib.credentials
 
+import id.walt.vclib.model.toCredential
 import id.walt.vclib.templates.VcTemplateManager
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
+import java.io.File
+import java.nio.file.Path
 
 class TemplateTests : StringSpec({
 
@@ -56,4 +59,22 @@ class TemplateTests : StringSpec({
 //        template1.type shouldNotBe aliasType
 //        template1.type shouldBe primaryType
 //    }
+
+    "test VerifiableId and Europass issued = iat and validFrom as well as issuanceDate = nbf JWT claims" {
+        val vId = File(Path.of("src", "test", "resources", "jwt", "VerifiableId.txt").toUri())
+            .readText()
+            .toCredential() as VerifiableId
+
+        vId.issued shouldBe "2020-11-03T00:00:00Z"
+        vId.issuanceDate shouldBe "2020-10-31T00:00:00Z"
+        vId.validFrom shouldBe "2020-10-31T00:00:00Z"
+
+        val europass = File(Path.of("src", "test", "resources", "jwt", "Europass.txt").toUri())
+            .readText()
+            .toCredential() as Europass
+
+        europass.issued shouldBe "2022-02-08T00:00:00Z"
+        europass.issuanceDate shouldBe "2022-02-09T00:00:00Z"
+        europass.validFrom shouldBe "2022-02-09T00:00:00Z"
+    }
 })

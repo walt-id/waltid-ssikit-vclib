@@ -16,7 +16,7 @@ data class VerifiablePresentation(
     @Json(serializeNull = false) var holder: String? = null,
     @NestedVCs @field:JsonIgnore var verifiableCredential: List<VerifiableCredential>,
     @Json(serializeNull = false) override var proof: Proof? = null,
-    @Json(serializeNull = false) override var issuanceDate: String? = null,
+    @Json(serializeNull = false) override var issued: String? = null,
     @Json(serializeNull = false) override var validFrom: String? = null,
     @Json(serializeNull = false) override var expirationDate: String? = null
 
@@ -31,7 +31,7 @@ data class VerifiablePresentation(
                     VerifiableAuthorization(
                         id = "did:ebsi-eth:00000001/credentials/1872",
                         issuer = "did:ebsi:000001234",
-                        issuanceDate = "2020-08-24T14:13:44Z",
+                        issued = "2020-08-24T14:13:44Z",
                         credentialSubject = VerifiableAuthorization.VerifiableAuthorizationSubject(
                             "did:ebsi:00000004321",
                             VerifiableAuthorization.VerifiableAuthorizationSubject.NaturalPerson("did:example:00001111")

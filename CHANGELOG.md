@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.15.0] - 2022-02-16
+
+-   Add missing fields to europass learning specification <https://github.com/walt-id/waltid-ssikit-vclib/pull/40>
+
 ## [1.4.1] - 2022-02-03
 
 ## [1.14.0] - 2022-02-03
@@ -174,7 +178,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.1...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.15.0...HEAD
+
+[1.15.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.4.1...1.15.0
 
 [1.4.1]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.14.0...1.4.1
 

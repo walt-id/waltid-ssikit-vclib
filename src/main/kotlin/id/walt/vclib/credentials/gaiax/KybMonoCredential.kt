@@ -11,7 +11,7 @@ data class KybMonoCredential(
     var context: List<String> = listOf("https://www.w3.org/2018/credentials/v1"),
     override var id: String?,
     override var issuer: String?,
-    @Json(serializeNull = false) override var issuanceDate: String? = null,
+    @Json(serializeNull = false) override var issued: String? = null,
     @Json(serializeNull = false) override var validFrom: String? = null,
     @Json(serializeNull = false) override var expirationDate: String? = null,
     @Json(serializeNull = false) override var credentialSubject: KybMonoCredentialSubject?,
@@ -29,7 +29,7 @@ data class KybMonoCredential(
             KybMonoCredential(
                 id = "did:ebsi-eth:00000001/credentials/1872",
                 issuer = "did:example:456",
-                issuanceDate = "2020-08-24T14:13:44Z",
+                issued = "2020-08-24T14:13:44Z",
                 credentialSubject = KybMonoCredentialSubject(
                     id = "did:key:dummy",
                     kybValidationPassed = true,

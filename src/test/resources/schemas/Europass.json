@@ -13,6 +13,294 @@
       },
       "additionalProperties" : false
     },
+    "SpecifiedBy-1" : {
+      "type" : "object",
+      "properties" : {
+        "entitlementType" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "limitJurisdiction" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "limitOrganisation" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "title" : {
+          "type" : "string"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "SpecifiedBy-2" : {
+      "type" : "object",
+      "properties" : {
+        "gradingScheme" : {
+          "type" : "object",
+          "properties" : {
+            "definition" : {
+              "type" : "string"
+            },
+            "id" : {
+              "type" : "string"
+            },
+            "title" : {
+              "type" : "string"
+            }
+          },
+          "additionalProperties" : false
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "title" : {
+          "type" : "string"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "SpecifiedBy-3" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "language" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "learningActivityType" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "workload" : {
+          "type" : "string"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "SpecifiedBy-4" : {
+      "type" : "object",
+      "properties" : {
+        "additionalNote" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "alternativeLabel" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "assessmentSpecification" : {
+          "$ref" : "#/definitions/SpecifiedBy-2"
+        },
+        "awardingOpportunity" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "properties" : {
+              "awardingBody" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "string"
+                }
+              },
+              "endedAtTime" : {
+                "type" : "string"
+              },
+              "id" : {
+                "type" : "string"
+              },
+              "identifier" : {
+                "$ref" : "#/definitions/Identifier"
+              },
+              "location" : {
+                "type" : "string"
+              },
+              "startedAtTime" : {
+                "type" : "string"
+              }
+            },
+            "additionalProperties" : false
+          }
+        },
+        "creditPoints" : {
+          "type" : "integer"
+        },
+        "definition" : {
+          "type" : "string"
+        },
+        "eCTSCreditPoints" : {
+          "type" : "integer"
+        },
+        "educationLevel" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "educationSubject" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "entitlementSpecification" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/SpecifiedBy-1"
+          }
+        },
+        "entryRequirementsNote" : {
+          "type" : "string"
+        },
+        "eqflLevel" : {
+          "type" : "string"
+        },
+        "hasPart" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/SpecifiedBy-4"
+          }
+        },
+        "homePage" : {
+          "type" : "string"
+        },
+        "iSCEDFCode" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "identifier" : {
+          "$ref" : "#/definitions/Identifier"
+        },
+        "isPartialQualification" : {
+          "type" : "boolean"
+        },
+        "language" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "learningActivitySpecification" : {
+          "$ref" : "#/definitions/SpecifiedBy-3"
+        },
+        "learningOpportunityType" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "learningOutcome" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "properties" : {
+              "definition" : {
+                "type" : "string"
+              },
+              "id" : {
+                "type" : "string"
+              },
+              "identifier" : {
+                "$ref" : "#/definitions/Identifier"
+              },
+              "learningOutcomeType" : {
+                "type" : "string"
+              },
+              "name" : {
+                "type" : "string"
+              },
+              "relatedESCOSkill" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "string"
+                }
+              },
+              "relatedSkill" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "string"
+                }
+              },
+              "reusabilityLevel" : {
+                "type" : "string"
+              }
+            },
+            "additionalProperties" : false
+          }
+        },
+        "learningOutcomeDescription" : {
+          "type" : "string"
+        },
+        "learningSetting" : {
+          "type" : "string"
+        },
+        "maximumDuration" : {
+          "type" : "string"
+        },
+        "mode" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "nqflLevel" : {
+          "type" : "string"
+        },
+        "specialisationOf" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/SpecifiedBy-4"
+          }
+        },
+        "suplementaryDocument" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "targetGroup" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "volumeOfLearning" : {
+          "type" : "string"
+        }
+      },
+      "additionalProperties" : false
+    },
     "WasAwardedBy" : {
       "type" : "object",
       "properties" : {
@@ -59,31 +347,7 @@
           "type" : "string"
         },
         "specifiedBy" : {
-          "type" : "object",
-          "properties" : {
-            "gradingScheme" : {
-              "type" : "object",
-              "properties" : {
-                "definition" : {
-                  "type" : "string"
-                },
-                "id" : {
-                  "type" : "string"
-                },
-                "title" : {
-                  "type" : "string"
-                }
-              },
-              "additionalProperties" : false
-            },
-            "id" : {
-              "type" : "string"
-            },
-            "title" : {
-              "type" : "string"
-            }
-          },
-          "additionalProperties" : false
+          "$ref" : "#/definitions/SpecifiedBy-2"
         },
         "title" : {
           "type" : "string"
@@ -122,31 +386,7 @@
           }
         },
         "specifiedBy" : {
-          "type" : "object",
-          "properties" : {
-            "id" : {
-              "type" : "string"
-            },
-            "language" : {
-              "type" : "array",
-              "items" : {
-                "type" : "string"
-              }
-            },
-            "learningActivityType" : {
-              "type" : "array",
-              "items" : {
-                "type" : "string"
-              }
-            },
-            "title" : {
-              "type" : "string"
-            },
-            "workload" : {
-              "type" : "string"
-            }
-          },
-          "additionalProperties" : false
+          "$ref" : "#/definitions/SpecifiedBy-3"
         },
         "startedAtTime" : {
           "type" : "string"
@@ -220,34 +460,7 @@
                     "type" : "string"
                   },
                   "specifiedBy" : {
-                    "type" : "object",
-                    "properties" : {
-                      "entitlementType" : {
-                        "type" : "string"
-                      },
-                      "id" : {
-                        "type" : "string"
-                      },
-                      "limitJurisdiction" : {
-                        "type" : "array",
-                        "items" : {
-                          "type" : "string"
-                        }
-                      },
-                      "limitOrganisation" : {
-                        "type" : "array",
-                        "items" : {
-                          "type" : "string"
-                        }
-                      },
-                      "status" : {
-                        "type" : "string"
-                      },
-                      "title" : {
-                        "type" : "string"
-                      }
-                    },
-                    "additionalProperties" : false
+                    "$ref" : "#/definitions/SpecifiedBy-1"
                   },
                   "title" : {
                     "type" : "string"
@@ -342,43 +555,7 @@
               "specifiedBy" : {
                 "type" : "array",
                 "items" : {
-                  "type" : "object",
-                  "properties" : {
-                    "eCTSCreditPoints" : {
-                      "type" : "integer"
-                    },
-                    "entryRequirementsNote" : {
-                      "type" : "string"
-                    },
-                    "eqflLevel" : {
-                      "type" : "string"
-                    },
-                    "iSCEDFCode" : {
-                      "type" : "array",
-                      "items" : {
-                        "type" : "string"
-                      }
-                    },
-                    "id" : {
-                      "type" : "string"
-                    },
-                    "isPartialQualification" : {
-                      "type" : "boolean"
-                    },
-                    "maximumDuration" : {
-                      "type" : "string"
-                    },
-                    "nqflLevel" : {
-                      "type" : "string"
-                    },
-                    "title" : {
-                      "type" : "string"
-                    },
-                    "volumeOfLearning" : {
-                      "type" : "string"
-                    }
-                  },
-                  "additionalProperties" : false
+                  "$ref" : "#/definitions/SpecifiedBy-4"
                 }
               },
               "title" : {
@@ -551,6 +728,9 @@
       "type" : "string"
     },
     "issuanceDate" : {
+      "type" : "string"
+    },
+    "issued" : {
       "type" : "string"
     },
     "issuer" : {
