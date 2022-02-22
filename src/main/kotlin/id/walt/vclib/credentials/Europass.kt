@@ -267,9 +267,19 @@ data class Europass(
                 data class SpecifiedBy(
                     var id: String,
                     @Json(serializeNull = false) var title: String? = null,
+                    @Json(serializeNull = false) var identifier: List<Identifier>? = null,
                     @Json(serializeNull = false) var learningActivityType: List<String>? = null,
                     @Json(serializeNull = false) var workload: String? = null,
                     @Json(serializeNull = false) var language: List<String>? = null,
+                    @Json(serializeNull = false) var alternativeLabel: List<String>? = null,
+                    @Json(serializeNull = false) var definition: String? = null,
+                    @Json(serializeNull = false) var additionalNote: List<String>? = null,
+                    @Json(serializeNull = false) var homePage: String? = null,
+                    @Json(serializeNull = false) var suplementaryDocument: List<String>? = null,
+                    @Json(serializeNull = false) var mode: List<String>? = null,
+                    @Json(serializeNull = false) var teaches: List<Achieved.SpecifiedBy>? = null,
+                    @Json(serializeNull = false) var hasPart: List<SpecifiedBy>? = null,
+                    @Json(serializeNull = false) var specialisationOf: List<SpecifiedBy>? = null
                 )
             }
 

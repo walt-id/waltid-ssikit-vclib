@@ -73,8 +73,38 @@
     "SpecifiedBy-3" : {
       "type" : "object",
       "properties" : {
+        "additionalNote" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "alternativeLabel" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "definition" : {
+          "type" : "string"
+        },
+        "hasPart" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/SpecifiedBy-3"
+          }
+        },
+        "homePage" : {
+          "type" : "string"
+        },
         "id" : {
           "type" : "string"
+        },
+        "identifier" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Identifier"
+          }
         },
         "language" : {
           "type" : "array",
@@ -86,6 +116,30 @@
           "type" : "array",
           "items" : {
             "type" : "string"
+          }
+        },
+        "mode" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "specialisationOf" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/SpecifiedBy-3"
+          }
+        },
+        "suplementaryDocument" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "teaches" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/SpecifiedBy-4"
           }
         },
         "title" : {
