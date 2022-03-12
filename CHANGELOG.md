@@ -4,7 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
--  Added missing fields to Europass Credential https://github.com/walt-id/waltid-ssikit-vclib/pull/41
+## [1.16.0] - 2022-03-12
+
+-   Added missing fields to Europass Credential <https://github.com/walt-id/waltid-ssikit-vclib/pull/41>
 
 ## [1.15.0] - 2022-02-16
 
@@ -180,7 +182,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.15.0-SNAPSHOT...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.16.0...HEAD
+
+[1.16.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.15.0...1.16.0
 
 [1.15.0-SNAPSHOT]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.15.0-SNAPSHOT...1.15.0-SNAPSHOT
 
