@@ -4,11 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [1.15.0-SNAPSHOT] - 2022-02-18
-
-## [1.15.0-SNAPSHOT] - 2022-02-18
-
-## [1.15.0-SNAPSHOT] - 2022-02-18
+-  Added missing fields to Europass Credential https://github.com/walt-id/waltid-ssikit-vclib/pull/41
 
 ## [1.15.0] - 2022-02-16
 
