@@ -23,12 +23,29 @@ data class ParticipantCredential(
     @Json(serializeNull = false) var credentialStatus: CredentialStatus? = null,
     @Json(serializeNull = false) override var proof: Proof? = null,
 ) : AbstractVerifiableCredential<ParticipantCredential.ParticipantCredentialSubject>(type) {
-    data class ParticipantCredentialSubject(
+/*    data class ParticipantCredentialSubjectOld(
         override var id: String?,
         @Json(serializeNull = false) var type: String? = null,
         @Json(serializeNull = false) var programName: String? = null,
         @Json(serializeNull = false) val domain: String? = null,
-        @Json(serializeNull = false )val ethereumAddress: String? = null,
+        @Json(serializeNull = false) val ethereumAddress: String? = null,
+    ) : CredentialSubject()
+
+    data class ParticipantCredentialNaturalSubject(
+        override var id: String?,
+        @Json(serializeNull = false) val taxAddress: List<String>? = null,
+        @Json(serializeNull = false) val livingAddress: List<String>? = null,
+    ) : CredentialSubject()*/
+
+    data class ParticipantCredentialSubject(
+        override var id: String?,
+        @Json(serializeNull = false) val companyNumber: String? = null,
+        @Json(serializeNull = false) val companyName: String? = null,
+        @Json(serializeNull = false) val headquarterCountry: String? = null,
+        @Json(serializeNull = false) val legalCountry: String? = null,
+        @Json(serializeNull = false) val lei: String? = null,
+        @Json(serializeNull = false) val parentOrganisation: String? = null,
+        @Json(serializeNull = false) val subOrganisation: String? = null,
     ) : CredentialSubject()
 
     companion object : VerifiableCredentialMetadata(
@@ -41,10 +58,13 @@ data class ParticipantCredential(
                 expirationDate = "2022-01-06T20:38:38Z",
                 credentialSubject = ParticipantCredentialSubject(
                     id = "mailto:first.last@gaia-x.eu",
-                    type = "ProgramMembership",
-                    programName = "Gaia-X AISBL",
-                    domain = "https://example.com",
-                    ethereumAddress = "0x4C84a36fCDb7Bc750294A7f3B5ad5CA8F74C4A52"
+                    companyNumber = "HRB 170364",
+                    companyName = "deltaDAO AG",
+                    headquarterCountry = "GER",
+                    legalCountry = "GER",
+                    lei = "5299004GII7NEZFIFE28",
+                    parentOrganisation = "",
+                    subOrganisation = "",
                 ),
                 credentialSchema = CredentialSchema(
                     id = "https://raw.githubusercontent.com/walt-id/waltid-ssikit-vclib/master/src/test/resources/schemas/ParticipantCredential.json",

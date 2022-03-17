@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+-   Updated Gaia-X Participant Credential according to https://github.com/walt-id/waltid-ssikit-vclib/issues/43
+
 ## [1.16.0] - 2022-03-12
 
 -   Added missing fields to Europass Credential <https://github.com/walt-id/waltid-ssikit-vclib/pull/41>
