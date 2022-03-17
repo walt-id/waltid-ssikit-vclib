@@ -23,7 +23,7 @@ data class ParticipantCredential(
     @Json(serializeNull = false) var credentialStatus: CredentialStatus? = null,
     @Json(serializeNull = false) override var proof: Proof? = null,
 ) : AbstractVerifiableCredential<ParticipantCredential.ParticipantCredentialSubject>(type) {
-    data class ParticipantCredentialSubjectOld(
+/*    data class ParticipantCredentialSubjectOld(
         override var id: String?,
         @Json(serializeNull = false) var type: String? = null,
         @Json(serializeNull = false) var programName: String? = null,
@@ -35,7 +35,7 @@ data class ParticipantCredential(
         override var id: String?,
         @Json(serializeNull = false) val taxAddress: List<String>? = null,
         @Json(serializeNull = false) val livingAddress: List<String>? = null,
-    ) : CredentialSubject()
+    ) : CredentialSubject()*/
 
     data class ParticipantCredentialSubject(
         override var id: String?,
