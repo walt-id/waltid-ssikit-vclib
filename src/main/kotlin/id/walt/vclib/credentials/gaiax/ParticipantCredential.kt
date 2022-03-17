@@ -21,21 +21,15 @@ data class ParticipantCredential(
     @Json(serializeNull = false) override var credentialSubject: ParticipantCredentialSubject?,
     @Json(serializeNull = false) override var credentialSchema: CredentialSchema? = null,
     @Json(serializeNull = false) var credentialStatus: CredentialStatus? = null,
+    @Json(serializeNull = false) val ethereumAddress: String? = null,
     @Json(serializeNull = false) override var proof: Proof? = null,
 ) : AbstractVerifiableCredential<ParticipantCredential.ParticipantCredentialSubject>(type) {
 /*    data class ParticipantCredentialSubjectOld(
         override var id: String?,
         @Json(serializeNull = false) var type: String? = null,
         @Json(serializeNull = false) var programName: String? = null,
-        @Json(serializeNull = false) val domain: String? = null,
-        @Json(serializeNull = false) val ethereumAddress: String? = null,
+        @Json(serializeNull = false) val domain: String? = null,      
     ) : CredentialSubject()
-
-    data class ParticipantCredentialNaturalSubject(
-        override var id: String?,
-        @Json(serializeNull = false) val taxAddress: List<String>? = null,
-        @Json(serializeNull = false) val livingAddress: List<String>? = null,
-    ) : CredentialSubject()*/
 
     data class ParticipantCredentialSubject(
         override var id: String?,
@@ -52,17 +46,16 @@ data class ParticipantCredential(
         type = listOf("VerifiableCredential", "ParticipantCredential"),
         template = {
             ParticipantCredential(
-                id = "vc.gaia-x.eu//membership/first.last@gaia-x.eu",
                 issuer = "did:web:vc.gaia-x.eu:issuer",
                 issued = "2022-01-03T20:38:38Z",
                 expirationDate = "2022-01-06T20:38:38Z",
                 credentialSubject = ParticipantCredentialSubject(
-                    id = "mailto:first.last@gaia-x.eu",
                     companyNumber = "HRB 170364",
                     companyName = "deltaDAO AG",
                     headquarterCountry = "GER",
                     legalCountry = "GER",
-                    lei = "5299004GII7NEZFIFE28",
+                    lei = "391200FJBNU0YW987L26",
+                    ethereumAddress = "0x4C84a36fCDb7Bc750294A7f3B5ad5CA8F74C4A52"
                     parentOrganisation = "",
                     subOrganisation = "",
                 ),
