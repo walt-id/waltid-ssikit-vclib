@@ -40,13 +40,15 @@ data class ParticipantCredential(
         type = listOf("VerifiableCredential", "ParticipantCredential"),
         template = {
             ParticipantCredential(
+                id = "vc.gaia-x.eu/participant-credential#392ac7f6-399a-437b-a268-4691ead8f176",
                 issuer = "did:web:vc.gaia-x.eu:issuer",
                 issued = "2022-01-03T20:38:38Z",
                 expirationDate = "2022-01-06T20:38:38Z",
                 credentialSubject = ParticipantCredentialSubject(
+                    id = "did:web:delta-dao.com",                  
                     hasRegistrationNumber = "DEK1101R.HRB170364",
                     hasLegallyBindingName = "deltaDAO AG",
-                    hasJurisdiction = "GER",
+                    headquarterCountry = "GER", 
                     hasCountry = "GER",
                     leiCode = "391200FJBNU0YW987L26",
                     ethereumAddress = "0x4C84a36fCDb7Bc750294A7f3B5ad5CA8F74C4A52"
