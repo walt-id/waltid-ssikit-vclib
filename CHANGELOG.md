@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 ## [1.17.1] - 2022-03-22
 
+## [1.17.1] - 2022-03-22
+
 ## [1.17.0] - 2022-03-17
 
 -   Updated Gaia-X Participant Credential according to <https://github.com/walt-id/waltid-ssikit-vclib/issues/43>
@@ -189,6 +191,8 @@ All notable changes to this project will be documented in this file.
 -   Initial release
 
 [Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.17.1...HEAD
+
+[1.17.1]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.17.1...1.17.1
 
 [1.17.1]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.17.0...1.17.1
 
