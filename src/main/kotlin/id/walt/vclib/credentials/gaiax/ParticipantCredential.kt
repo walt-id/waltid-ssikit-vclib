@@ -39,25 +39,25 @@ data class ParticipantCredential(
 
     data class ParticipantCredentialSubject(
         override var id: String?,
-        @Json(serializeNull = false) val companyNumber: String? = null,
-        @Json(serializeNull = false) val companyName: String? = null,
-        @Json(serializeNull = false) val headquarterCountry: String? = null,
-        @Json(serializeNull = false) val legalCountry: String? = null,
-        @Json(serializeNull = false) val lei: String? = null,
-        @Json(serializeNull = false) val parentOrganisation: String? = null,
-        @Json(serializeNull = false) val subOrganisation: String? = null,
+        @Json(serializeNull = false) var companyNumber: String? = null,
+        @Json(serializeNull = false) var companyName: String? = null,
+        @Json(serializeNull = false) var headquarterCountry: String? = null,
+        @Json(serializeNull = false) var legalCountry: String? = null,
+        @Json(serializeNull = false) var lei: String? = null,
+        @Json(serializeNull = false) var parentOrganisation: String? = null,
+        @Json(serializeNull = false) var subOrganisation: String? = null,
     ) : CredentialSubject()
 
     companion object : VerifiableCredentialMetadata(
         type = listOf("VerifiableCredential", "ParticipantCredential"),
         template = {
             ParticipantCredential(
-                id = "vc.gaia-x.eu//membership/first.last@gaia-x.eu",
+                id = "vc.gaia-x.eu/participant-credential#392ac7f6-399a-437b-a268-4691ead8f176",
                 issuer = "did:web:vc.gaia-x.eu:issuer",
                 issued = "2022-01-03T20:38:38Z",
                 expirationDate = "2022-01-06T20:38:38Z",
                 credentialSubject = ParticipantCredentialSubject(
-                    id = "mailto:first.last@gaia-x.eu",
+                    id = "did:web:delta-dao.com",
                     companyNumber = "HRB 170364",
                     companyName = "deltaDAO AG",
                     headquarterCountry = "GER",
