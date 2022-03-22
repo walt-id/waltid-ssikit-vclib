@@ -26,14 +26,14 @@ data class ParticipantCredential(
 
     data class ParticipantCredentialSubject(
         override var id: String?,
-        @Json(serializeNull = false) val hasRegistrationNumber: String? = null,
-        @Json(serializeNull = false) val hasLegallyBindingName: String? = null,
-        @Json(serializeNull = false) val headquarterCountry: String? = null,
-        @Json(serializeNull = false) val hasCountry: String? = null,
-        @Json(serializeNull = false) val leiCode: String? = null,
-        @Json(serializeNull = false) val ethereumAddress: String? = null,
-        @Json(serializeNull = false) val parentOrganisation: String? = null,
-        @Json(serializeNull = false) val subOrganisation: String? = null,
+        @Json(serializeNull = false) var hasRegistrationNumber: String? = null,
+        @Json(serializeNull = false) var hasLegallyBindingName: String? = null,
+        @Json(serializeNull = false) var headquarterCountry: String? = null,
+        @Json(serializeNull = false) var hasCountry: String? = null,
+        @Json(serializeNull = false) var leiCode: String? = null,
+        @Json(serializeNull = false) var ethereumAddress: String? = null,
+        @Json(serializeNull = false) var parentOrganisation: String? = null,
+        @Json(serializeNull = false) var subOrganisation: String? = null,
     ) : CredentialSubject()
 
     companion object : VerifiableCredentialMetadata(
@@ -45,13 +45,13 @@ data class ParticipantCredential(
                 issued = "2022-01-03T20:38:38Z",
                 expirationDate = "2022-01-06T20:38:38Z",
                 credentialSubject = ParticipantCredentialSubject(
-                    id = "did:web:delta-dao.com",                  
+                    id = "did:web:delta-dao.com",
                     hasRegistrationNumber = "DEK1101R.HRB170364",
                     hasLegallyBindingName = "deltaDAO AG",
-                    headquarterCountry = "GER", 
+                    headquarterCountry = "GER",
                     hasCountry = "GER",
                     leiCode = "391200FJBNU0YW987L26",
-                    ethereumAddress = "0x4C84a36fCDb7Bc750294A7f3B5ad5CA8F74C4A52"
+                    ethereumAddress = "0x4C84a36fCDb7Bc750294A7f3B5ad5CA8F74C4A52",
                     parentOrganisation = "",
                     subOrganisation = "",
                 ),
