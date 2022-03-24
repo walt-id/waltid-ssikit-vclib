@@ -1,0 +1,143 @@
+{
+  "$schema" : "http://json-schema.org/draft-07/schema#",
+  "type" : "object",
+  "properties" : {
+    "@context" : {
+      "type" : "array",
+      "items" : {
+        "type" : "string"
+      }
+    },
+    "credentialSchema" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "credentialSubject" : {
+      "type" : "object",
+      "properties" : {
+        "completedDate" : {
+          "type" : "string"
+        },
+        "groupingKey" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "measurements" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "properties" : {
+              "indicators" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "properties" : {
+                    "category" : {
+                      "type" : "string"
+                    },
+                    "name" : {
+                      "type" : "string"
+                    },
+                    "type" : {
+                      "type" : "string"
+                    }
+                  },
+                  "additionalProperties" : false
+                }
+              },
+              "name" : {
+                "type" : "string"
+              },
+              "numberValue" : {
+                "type" : "integer"
+              },
+              "scale" : {
+                "type" : "string"
+              },
+              "type" : {
+                "type" : "string"
+              }
+            },
+            "additionalProperties" : false
+          }
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "providerName" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "expirationDate" : {
+      "type" : "string"
+    },
+    "id" : {
+      "type" : "string"
+    },
+    "issuanceDate" : {
+      "type" : "string"
+    },
+    "issued" : {
+      "type" : "string"
+    },
+    "issuer" : {
+      "type" : "string"
+    },
+    "proof" : {
+      "type" : "object",
+      "properties" : {
+        "created" : {
+          "type" : "string"
+        },
+        "creator" : {
+          "type" : "string"
+        },
+        "domain" : {
+          "type" : "string"
+        },
+        "jws" : {
+          "type" : "string"
+        },
+        "nonce" : {
+          "type" : "string"
+        },
+        "proofPurpose" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "verificationMethod" : {
+          "type" : "string"
+        }
+      },
+      "additionalProperties" : false
+    },
+    "type" : {
+      "type" : "array",
+      "items" : {
+        "type" : "string"
+      }
+    },
+    "validFrom" : {
+      "type" : "string"
+    }
+  },
+  "required" : [ "type" ],
+  "additionalProperties" : false
+}
