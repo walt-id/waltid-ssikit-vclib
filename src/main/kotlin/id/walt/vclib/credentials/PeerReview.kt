@@ -73,7 +73,7 @@ data class PeerReview(
                     )
                 ),
                 credentialSchema = CredentialSchema(
-                    id = "https://github.com/walt-id/waltid-ssikit-vclib/blob/master/src/test/resources/serialized/PeerReview.json",
+                    id = "https://raw.githubusercontent.com/walt-id/waltid-ssikit-vclib/master/src/test/resources/serialized/PeerReview.json",
                     type = "JsonSchemaValidator2018"
                 ),
             )
