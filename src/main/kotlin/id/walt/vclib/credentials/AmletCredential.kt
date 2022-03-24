@@ -61,7 +61,11 @@ data class AmletCredential(
                         )
                     )
 
-            )
+                ),
+                credentialSchema = CredentialSchema(
+                    id = "https://raw.githubusercontent.com/walt-id/waltid-ssikit-vclib/master/src/test/resources/schemas/AmletCredential.json",
+                    type = "JsonSchemaValidator2018"
+                ),
             )
         }
     )
