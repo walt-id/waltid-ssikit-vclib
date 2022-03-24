@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [1.17.1] - 2022-03-22
+- Added AmletCredential https://github.com/walt-id/waltid-ssikit-vclib/pull/46
 
 ## [1.17.1] - 2022-03-22
 
