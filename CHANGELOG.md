@@ -4,7 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- Bump dependencies 
+## [1.18.1] - 2022-05-08
+
+-   Bump dependencies 
 
 ## [1.18.0] - 2022-03-24
 
@@ -195,7 +197,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.18.0...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.18.1...HEAD
+
+[1.18.1]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.18.0...1.18.1
 
 [1.18.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.8.0...1.18.0
 
