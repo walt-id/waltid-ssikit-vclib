@@ -1,7 +1,7 @@
 {
   "@context": ["https://www.w3.org/2018/credentials/v1"],
   "credentialSchema": {
-    "id": "https://github.com/walt-id/waltid-ssikit-vclib/blob/master/src/test/resources/serialized/PeerReview.json",
+    "id": "https://raw.githubusercontent.com/walt-id/waltid-ssikit-vclib/master/src/test/resources/serialized/PeerReview.json",
     "type": "JsonSchemaValidator2018"
   },
   "credentialSubject": {

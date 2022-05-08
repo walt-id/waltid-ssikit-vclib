@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Bump dependencies 
+
 ## [1.18.0] - 2022-03-24
 
 -   Added AmletCredential <https://github.com/walt-id/waltid-ssikit-vclib/pull/46>
