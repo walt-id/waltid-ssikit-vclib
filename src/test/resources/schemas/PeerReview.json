@@ -20,46 +20,64 @@
       },
       "additionalProperties" : false
     },
-    "credentialStatus" : {
-      "type" : "object",
-      "properties" : {
-        "id" : {
-          "type" : "string"
-        },
-        "type" : {
-          "type" : "string"
-        }
-      },
-      "additionalProperties" : false
-    },
     "credentialSubject" : {
       "type" : "object",
       "properties" : {
-        "ethereumAddress" : {
+        "completedDate" : {
           "type" : "string"
         },
-        "hasCountry" : {
-          "type" : "string"
-        },
-        "hasJurisdiction" : {
-          "type" : "string"
-        },
-        "hasLegallyBindingName" : {
-          "type" : "string"
-        },
-        "hasRegistrationNumber" : {
+        "groupingKey" : {
           "type" : "string"
         },
         "id" : {
           "type" : "string"
         },
-        "leiCode" : {
+        "measurements" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "properties" : {
+              "indicators" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "properties" : {
+                    "category" : {
+                      "type" : "string"
+                    },
+                    "name" : {
+                      "type" : "string"
+                    },
+                    "type" : {
+                      "type" : "string"
+                    }
+                  },
+                  "additionalProperties" : false
+                }
+              },
+              "name" : {
+                "type" : "string"
+              },
+              "numberValue" : {
+                "type" : "integer"
+              },
+              "scale" : {
+                "type" : "string"
+              },
+              "type" : {
+                "type" : "string"
+              }
+            },
+            "additionalProperties" : false
+          }
+        },
+        "name" : {
           "type" : "string"
         },
-        "parentOrganisation" : {
+        "providerName" : {
           "type" : "string"
         },
-        "subOrganisation" : {
+        "type" : {
           "type" : "string"
         }
       },
@@ -120,6 +138,6 @@
       "type" : "string"
     }
   },
-  "required" : [ "@context", "type" ],
+  "required" : [ "type" ],
   "additionalProperties" : false
 }

@@ -47,7 +47,7 @@ data class EuropeanBankIdentity(
                     placeOfBirth = PlaceOfBirth("DE", null, "Berlin")
                 ),
                 credentialSchema = CredentialSchema(
-                    id = "https://raw.githubusercontent.com/walt-id/waltid-ssikit-vclib/master/src/test/resources/schemas/EuropeanBankCredential.json",
+                    id = "https://raw.githubusercontent.com/walt-id/waltid-ssikit-vclib/master/src/test/resources/serialized/EuropeanBankIdentity.json",
                     type = "JsonSchemaValidator2018"
                 ),
             )

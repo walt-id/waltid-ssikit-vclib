@@ -28,6 +28,9 @@ object VcTypeRegistry {
         register<ProofOfResidence>(ProofOfResidence)
         register<EuropeanBankIdentity>(EuropeanBankIdentity)
 
+        //Amlet
+        register<AmletCredential>(AmletCredential)
+
         // Gaiax
         register<GaiaxCredential>(GaiaxCredential)
         register<DataConsortium>(DataConsortium)
@@ -38,6 +41,8 @@ object VcTypeRegistry {
         register<KybMonoCredential>(KybMonoCredential)
         register<KycCredential>(KycCredential)
         register<ParticipantCredential>(ParticipantCredential)
+
+        register<PeerReview>(PeerReview)
     }
 
     class TypeRegistration(

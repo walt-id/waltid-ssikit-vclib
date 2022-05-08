@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.18.0] - 2022-03-24
+
+-   Added AmletCredential <https://github.com/walt-id/waltid-ssikit-vclib/pull/46>
+-   Added PeerReview credential <https://github.com/walt-id/waltid-ssikit-vclib/pull/47>
+
+## [1.8.0] - 2022-03-22
+
 ## [1.17.0] - 2022-03-17
 
 -   Updated Gaia-X Participant Credential according to <https://github.com/walt-id/waltid-ssikit-vclib/issues/43>
@@ -186,7 +193,13 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.17.0...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.18.0...HEAD
+
+[1.18.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.8.0...1.18.0
+
+[1.17.1]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.17.1...1.17.1
+
+[1.17.1]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.17.0...1.17.1
 
 [1.17.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.16.0...1.17.0
 
