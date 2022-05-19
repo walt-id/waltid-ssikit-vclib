@@ -43,6 +43,9 @@ object VcTypeRegistry {
         register<ParticipantCredential>(ParticipantCredential)
 
         register<PeerReview>(PeerReview)
+
+        // Verifiable mandates
+        register<VerifiableMandate>(VerifiableMandate)
     }
 
     class TypeRegistration(
