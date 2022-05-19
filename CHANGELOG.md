@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Added Verifiable Mandate https://github.com/walt-id/waltid-ssikit-vclib/pull/49
+
 ## [1.18.1] - 2022-05-08
 
 -   Bump dependencies 

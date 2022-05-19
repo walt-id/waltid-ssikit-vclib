@@ -7,12 +7,12 @@
   "credentialSubject": {
     "holder": {
       "constraints": {},
-      "grant": "",
+      "grant": "apply_to_masters",
       "id": "",
-      "role": ""
+      "role": "family"
     },
     "id": "",
-    "policySchemaURI": ""
+    "policySchemaURI": "https://raw.githubusercontent.com/walt-id/waltid-ssikit/master/src/test/resources/verifiable-mandates/test-policy.rego"
   },
   "evidence": [{
     "evidenceValue": "",
