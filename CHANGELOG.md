@@ -4,7 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- Added Verifiable Mandate https://github.com/walt-id/waltid-ssikit-vclib/pull/49
+## [1.19.0] - 2022-05-19
+
+-   Added Verifiable Mandate <https://github.com/walt-id/waltid-ssikit-vclib/pull/49>
 
 ## [1.18.1] - 2022-05-08
 
@@ -199,7 +201,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.18.1...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.19.0...HEAD
+
+[1.19.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.18.1...1.19.0
 
 [1.18.1]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.18.0...1.18.1
 
