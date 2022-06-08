@@ -46,6 +46,8 @@ object VcTypeRegistry {
 
         // Verifiable mandates
         register<VerifiableMandate>(VerifiableMandate)
+
+        register<OpenBadgeCredential>(OpenBadgeCredential)
     }
 
     class TypeRegistration(
