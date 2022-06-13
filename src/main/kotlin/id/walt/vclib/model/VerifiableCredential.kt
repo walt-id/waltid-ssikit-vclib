@@ -32,7 +32,7 @@ abstract class VerifiableCredential {
     abstract var issued: String?
 
     @Json(serializeNull = false)
-    var issuanceDate: String? = null
+    open var issuanceDate: String? = null
         get() = validFrom
         set(value) { field = validFrom }
 
