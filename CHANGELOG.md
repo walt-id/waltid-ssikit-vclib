@@ -4,7 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- Added Open Badge 3.0 credential https://github.com/walt-id/waltid-ssikit-vclib/pull/51
+## [1.20.0] - 2022-06-13
+
+-   Added Open Badge 3.0 credential <https://github.com/walt-id/waltid-ssikit-vclib/pull/51>
 
 ## [1.19.0] - 2022-05-19
 
@@ -203,7 +205,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.19.0...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.20.0...HEAD
+
+[1.20.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.19.0...1.20.0
 
 [1.19.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.18.1...1.19.0
 
