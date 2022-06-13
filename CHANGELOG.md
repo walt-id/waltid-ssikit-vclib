@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Added Open Badge 3.0 credential https://github.com/walt-id/waltid-ssikit-vclib/pull/51
+
 ## [1.19.0] - 2022-05-19
 
 -   Added Verifiable Mandate <https://github.com/walt-id/waltid-ssikit-vclib/pull/49>
