@@ -1,6 +1,5 @@
 package id.walt.vclib.credentials
 
-
 import com.beust.klaxon.Json
 import id.walt.vclib.model.*
 import id.walt.vclib.registry.VerifiableCredentialMetadata
@@ -31,7 +30,12 @@ data class OpenBadgeCredential(
         template = {
             OpenBadgeCredential(
                 id = null,
-                issuerObject = Issuer("Profile", "did:example:456", "Jobs for the Future (JFF)"),
+                issuerObject = Issuer(
+                    "Profile",
+                    "did:key:z6MkrHKzgsahxBLyNAbLQyB1pcWNYC9GmywiWPgkrvntAZcj",
+                    "Jobs for the Future (JFF)",
+                    "https://kayaelle.github.io/vc-ed/plugfest-1-2022/images/JFF_LogoLockup.png"
+                ),
                 issued = null,
                 issuanceDate = "2020-03-10T04:24:12.164Z",
                 credentialSubject = OpenBadgeCredentialSubject(
@@ -55,7 +59,9 @@ data class OpenBadgeCredential(
     data class Issuer(
         var type: String,
         var id: String,
-        var name: String
+        var name: String,
+        @Json(serializeNull = false) var url: String? = null,
+        @Json(serializeNull = false) var image: String? = null
     )
 
     data class OpenBadgeCredentialSubject(
@@ -66,13 +72,13 @@ data class OpenBadgeCredential(
         data class Achievement(
             var type: String,
             var name: String,
-            var description: String,
+            @Json(serializeNull = false) var description: String? = null,
             var criteria: Criteria,
-            var image: String,
+            @Json(serializeNull = false) var image: String? = null,
         ){
             data class Criteria(
                 var type: String,
-                var narrative: String
+                @Json(serializeNull = false) var narrative: String? = null,
             )
         }
     }
