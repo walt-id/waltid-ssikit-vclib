@@ -21,7 +21,10 @@ data class OpenBadgeCredential(
     @Json(serializeNull = false) override var validFrom: String? = null,
     @Json(serializeNull = false) override var issuanceDate: String? = null,
     @Json(serializeNull = false) override var expirationDate: String? = null,
-    @Json(serializeNull = false) override var credentialSchema: CredentialSchema? = null,
+    @Json(ignored = true) override var credentialSchema: CredentialSchema? = CredentialSchema(
+        id = "https://github.com/walt-id/waltid-ssikit-vclib/blob/master/src/test/resources/schemas/OpenBadgeCredential.json",
+        type = "FullJsonSchemaValidator2021"
+    ),
     @Json(serializeNull = false) override var proof: Proof? = null
     ) : AbstractVerifiableCredential<OpenBadgeCredential.OpenBadgeCredentialSubject>(type) {
 

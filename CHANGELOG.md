@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Instructions how to add VC templates including link to https://vc-creator.walt.id/
+
 ## [1.20.0] - 2022-06-13
 
 -   Added Open Badge 3.0 credential <https://github.com/walt-id/waltid-ssikit-vclib/pull/51>
