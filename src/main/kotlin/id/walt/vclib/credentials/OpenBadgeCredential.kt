@@ -37,6 +37,7 @@ data class OpenBadgeCredential(
                     "Profile",
                     "did:key:z6MkrHKzgsahxBLyNAbLQyB1pcWNYC9GmywiWPgkrvntAZcj",
                     "Jobs for the Future (JFF)",
+                    "https://kayaelle.github.io/vc-ed/plugfest-1-2022/images/JFF_LogoLockup.png",
                     "https://kayaelle.github.io/vc-ed/plugfest-1-2022/images/JFF_LogoLockup.png"
                 ),
                 issued = null,
