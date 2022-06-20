@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 - Added Gaia-X LegalPerson Credential 
+- Updated ParticipantCredential and added "hash"
 
 ## [1.21.0] - 2022-06-15
 

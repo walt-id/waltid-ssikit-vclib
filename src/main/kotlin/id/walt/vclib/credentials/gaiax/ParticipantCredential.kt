@@ -34,6 +34,7 @@ data class ParticipantCredential(
         @Json(serializeNull = false) var ethereumAddress: String? = null,
         @Json(serializeNull = false) var parentOrganisation: String? = null,
         @Json(serializeNull = false) var subOrganisation: String? = null,
+        @Json(serializeNull = false) var hash: String? = null
     ) : CredentialSubject()
 
     companion object : VerifiableCredentialMetadata(
@@ -54,6 +55,7 @@ data class ParticipantCredential(
                     ethereumAddress = "0x4C84a36fCDb7Bc750294A7f3B5ad5CA8F74C4A52",
                     parentOrganisation = "",
                     subOrganisation = "",
+                    hash = "9ecf754ffdad0c6de238f60728a90511780b2f7dbe2f0ea015115515f3f389cd"
                 ),
                 credentialSchema = CredentialSchema(
                     id = "https://raw.githubusercontent.com/walt-id/waltid-ssikit-vclib/master/src/test/resources/schemas/ParticipantCredential.json",
