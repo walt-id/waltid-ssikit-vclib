@@ -1,0 +1,65 @@
+{
+  "@context": ["https://www.w3.org/2018/credentials/v1", "http://www.w3.org/ns/shacl#", "http://www.w3.org/2001/XMLSchema#", "http://w3id.org/gaia-x/participant#"],
+  "credentialSchema": {
+    "id": "https://raw.githubusercontent.com/walt-id/waltid-ssikit-vclib/master/src/test/resources/schemas/ParticipantCredential.json",
+    "type": "JsonSchemaValidator2018"
+  },
+  "credentialSubject": {
+    "gx-participant:headquarterAddress": {
+      "gx-participant:country": {
+        "@type": "xsd:string",
+        "@value": "BE"
+      },
+      "gx-participant:locality": {
+        "@type": "xsd:string",
+        "@value": "Bruxelles/Brussels"
+      },
+      "gx-participant:postal-code": {
+        "@type": "xsd:string",
+        "@value": "1210"
+      },
+      "gx-participant:street-address": {
+        "@type": "xsd:string",
+        "@value": "Avenue des Arts 6-9"
+      },
+      "@type": "gx-participant:Address"
+    },
+    "gx-participant:legalAddress": {
+      "gx-participant:country": {
+        "@type": "xsd:string",
+        "@value": "BE"
+      },
+      "gx-participant:locality": {
+        "@type": "xsd:string",
+        "@value": "Bruxelles/Brussels"
+      },
+      "gx-participant:postal-code": {
+        "@type": "xsd:string",
+        "@value": "1210"
+      },
+      "gx-participant:street-address": {
+        "@type": "xsd:string",
+        "@value": "Avenue des Arts 6-9"
+      },
+      "@type": "gx-participant:Address"
+    },
+    "gx-participant:legalName": {
+      "@type": "xsd:string",
+      "@value": "Gaia-X European Association for Data and Cloud AISBL"
+    },
+    "gx-participant:name": {
+      "@type": "xsd:string",
+      "@value": "Gaia-X AISBL"
+    },
+    "gx-participant:registrationNumber": {
+      "@type": "xsd:string",
+      "@value": "0762747721"
+    },
+    "id": "did:compliance.gaia-x.eu"
+  },
+  "expirationDate": "2022-01-06T20:38:38Z",
+  "@id": "vc.gaia-x.eu/participant-credential#392ac7f6-399a-437b-a268-4691ead8f176",
+  "issued": "2022-01-03T20:38:38Z",
+  "issuer": "did:web:vc.gaia-x.eu:issuer",
+  "type": ["VerifiableCredential", "LegalPerson"]
+}

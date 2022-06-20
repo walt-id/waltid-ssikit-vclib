@@ -41,6 +41,7 @@ object VcTypeRegistry {
         register<KybMonoCredential>(KybMonoCredential)
         register<KycCredential>(KycCredential)
         register<ParticipantCredential>(ParticipantCredential)
+        register<LegalPerson>(LegalPerson)
 
         register<PeerReview>(PeerReview)
 

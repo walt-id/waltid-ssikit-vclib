@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Added Gaia-X LegalPerson Credential 
+
 ## [1.21.0] - 2022-06-15
 
 -   Instructions how to add VC templates including link to <https://vc-creator.walt.id/>
