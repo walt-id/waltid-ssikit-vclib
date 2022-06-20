@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 ## [1.22.0] - 2022-06-20
 
+## [1.22.0] - 2022-06-20
+
 -   Added Gaia-X LegalPerson Credential 
 -   Updated ParticipantCredential and added "hash"
 
@@ -215,6 +217,8 @@ All notable changes to this project will be documented in this file.
 -   Initial release
 
 [Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.22.0...HEAD
+
+[1.22.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.22.0...1.22.0
 
 [1.22.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.21.0...1.22.0
 
