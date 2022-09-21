@@ -19,10 +19,10 @@ repositories {
 
 dependencies {
     /* JSON */
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
-    implementation("com.github.victools:jsonschema-generator:4.24.2")
-    implementation("com.networknt:json-schema-validator:1.0.69")
-    implementation("net.pwall.json:json-kotlin-schema:0.34")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
+    implementation("com.github.victools:jsonschema-generator:4.26.0")
+    implementation("com.networknt:json-schema-validator:1.0.72")
+    implementation("net.pwall.json:json-kotlin-schema:0.36")
     implementation("com.beust:klaxon:5.6")
 
     /* Logging */
