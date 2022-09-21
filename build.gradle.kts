@@ -38,7 +38,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.7.10")
 
     /* JWT */
-    implementation("com.nimbusds:nimbus-jose-jwt:9.22")
+    implementation("com.nimbusds:nimbus-jose-jwt:9.24.4")
 
     /* Testing */
     testImplementation("io.kotest:kotest-runner-junit5:5.4.2")
