@@ -8,9 +8,6 @@
         "type" : "string"
       }
     },
-    "@id" : {
-      "type" : "string"
-    },
     "credentialSchema" : {
       "type" : "object",
       "properties" : {
@@ -26,155 +23,62 @@
     "credentialSubject" : {
       "type" : "object",
       "properties" : {
-        "gx-participant:headquarterAddress" : {
-          "type" : "object",
-          "properties" : {
-            "@type" : {
-              "type" : "string"
-            },
-            "gx-participant:country" : {
-              "type" : "object",
-              "properties" : {
-                "@type" : {
-                  "type" : "string"
-                },
-                "@value" : {
-                  "type" : "string"
-                }
-              },
-              "additionalProperties" : false
-            },
-            "gx-participant:locality" : {
-              "type" : "object",
-              "properties" : {
-                "@type" : {
-                  "type" : "string"
-                },
-                "@value" : {
-                  "type" : "string"
-                }
-              },
-              "additionalProperties" : false
-            },
-            "gx-participant:postal-code" : {
-              "type" : "object",
-              "properties" : {
-                "@type" : {
-                  "type" : "string"
-                },
-                "@value" : {
-                  "type" : "string"
-                }
-              },
-              "additionalProperties" : false
-            },
-            "gx-participant:street-address" : {
-              "type" : "object",
-              "properties" : {
-                "@type" : {
-                  "type" : "string"
-                },
-                "@value" : {
-                  "type" : "string"
-                }
-              },
-              "additionalProperties" : false
-            }
-          },
-          "additionalProperties" : false
+        "gxParticipantBlockchainAccountId" : {
+          "type" : "string"
         },
-        "gx-participant:legalAddress" : {
+        "gxParticipantHeadquarterAddress" : {
           "type" : "object",
           "properties" : {
-            "@type" : {
+            "gxParticipantAddressCode" : {
               "type" : "string"
             },
-            "gx-participant:country" : {
-              "type" : "object",
-              "properties" : {
-                "@type" : {
-                  "type" : "string"
-                },
-                "@value" : {
-                  "type" : "string"
-                }
-              },
-              "additionalProperties" : false
-            },
-            "gx-participant:locality" : {
-              "type" : "object",
-              "properties" : {
-                "@type" : {
-                  "type" : "string"
-                },
-                "@value" : {
-                  "type" : "string"
-                }
-              },
-              "additionalProperties" : false
-            },
-            "gx-participant:postal-code" : {
-              "type" : "object",
-              "properties" : {
-                "@type" : {
-                  "type" : "string"
-                },
-                "@value" : {
-                  "type" : "string"
-                }
-              },
-              "additionalProperties" : false
-            },
-            "gx-participant:street-address" : {
-              "type" : "object",
-              "properties" : {
-                "@type" : {
-                  "type" : "string"
-                },
-                "@value" : {
-                  "type" : "string"
-                }
-              },
-              "additionalProperties" : false
-            }
-          },
-          "additionalProperties" : false
-        },
-        "gx-participant:legalName" : {
-          "type" : "object",
-          "properties" : {
-            "@type" : {
+            "gxParticipantAddressCountryCode" : {
               "type" : "string"
             },
-            "@value" : {
+            "gxParticipantPostalCode" : {
+              "type" : "string"
+            },
+            "gxParticipantStreetAddress" : {
               "type" : "string"
             }
           },
           "additionalProperties" : false
         },
-        "gx-participant:name" : {
+        "gxParticipantLegalAddress" : {
           "type" : "object",
           "properties" : {
-            "@type" : {
+            "gxParticipantAddressCode" : {
               "type" : "string"
             },
-            "@value" : {
+            "gxParticipantAddressCountryCode" : {
+              "type" : "string"
+            },
+            "gxParticipantPostalCode" : {
+              "type" : "string"
+            },
+            "gxParticipantStreetAddress" : {
               "type" : "string"
             }
           },
           "additionalProperties" : false
         },
-        "gx-participant:registrationNumber" : {
+        "gxParticipantLegalName" : {
+          "type" : "string"
+        },
+        "gxParticipantRegistrationNumber" : {
           "type" : "object",
           "properties" : {
-            "@type" : {
+            "gxParticipantRegistrationNumberNumber" : {
               "type" : "string"
             },
-            "@value" : {
+            "gxParticipantRegistrationNumberType" : {
               "type" : "string"
             }
           },
           "additionalProperties" : false
+        },
+        "gxParticipantTermsAndConditions" : {
+          "type" : "string"
         },
         "id" : {
           "type" : "string"
@@ -183,6 +87,9 @@
       "additionalProperties" : false
     },
     "expirationDate" : {
+      "type" : "string"
+    },
+    "id" : {
       "type" : "string"
     },
     "issuanceDate" : {
