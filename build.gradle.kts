@@ -41,9 +41,9 @@ dependencies {
     implementation("com.nimbusds:nimbus-jose-jwt:9.22")
 
     /* Testing */
-    testImplementation("io.kotest:kotest-runner-junit5:5.3.0")
-    testImplementation("io.kotest:kotest-assertions-core:5.3.0")
-    testImplementation("io.kotest:kotest-assertions-json:5.3.0")
+    testImplementation("io.kotest:kotest-runner-junit5:5.4.2")
+    testImplementation("io.kotest:kotest-assertions-core:5.4.2")
+    testImplementation("io.kotest:kotest-assertions-json:5.4.2")
 }
 
 tasks.withType<Test> {
