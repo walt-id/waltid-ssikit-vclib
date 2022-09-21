@@ -4,7 +4,28 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [1.22.0] - 2022-06-20
+- Added new Gaia-X LegalPerson
+- Added new Gaia-X ParticipantCredential
+- Added new Gaia-X ServiceOfferingCredential
+- Removed legacy LegalPerson
+- Update VCConversionTest to new JWT library version
+- Updated LegalPerson credential type
+- Added explicit blacklisting feature to SchemaValidationTest
+- Updated LegalPerson testing schemas
+- Updated ServiceOffering testing schemas
+- Registered new Gaia-X credential types in VcTypeRegistry
+- Updated vcJsonFromJwt / fromString functions from VerifiableCredential to correspond to work with new JWT & JSON libraries
+- Add debug logging in test mode
+
+- Updated nimbus-jose-jwt from 9.22 to 9.24.4
+- Updated kotlinx-serialization-json from 1.3.2 to 1.4.0
+- Updated jsonschema-generator from 4.24.2 to 4.26.0
+- Updated json-schema-validator from 1.0.69 to 1.0.72
+- Updated json-kotlin-schema from 0.34 to 0.36
+- Updated Kotlin and serialization plugin versions from 1.6.21 to 1.7.10
+- Updated slf4j-simple from 1.7.36 to 2.0.0
+- Updated kotest from 5.3.0 to 5.4.2
+- Updated kotlin-reflect and kotlin-stdlib from 1.6.21 to 1.7.10
 
 ## [1.22.0] - 2022-06-20
 
