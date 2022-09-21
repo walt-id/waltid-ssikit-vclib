@@ -1,10 +1,11 @@
 package id.walt.vclib.credentials.gaiax
-
+/*
 import com.beust.klaxon.Json
 import id.walt.vclib.model.AbstractVerifiableCredential
 import id.walt.vclib.model.CredentialSchema
 import id.walt.vclib.registry.VerifiableCredentialMetadata
 import id.walt.vclib.schema.SchemaService
+
 
 data class LegalPerson(
     @Json(name = "@context") @field:SchemaService.PropertyName(name = "@context") @field:SchemaService.Required
@@ -171,4 +172,4 @@ data class LegalPerson(
                 )
             )
         })
-}
+} */

@@ -1,15 +1,15 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.6.21"
-    kotlin("plugin.serialization") version "1.6.21"
+    kotlin("jvm") version "1.7.10"
+    kotlin("plugin.serialization") version "1.7.10"
     jacoco
     application
     `maven-publish`
 }
 
 group = "id.walt"
-version = "1.22.0"
+version = "1.23.0"
 
 
 repositories {
@@ -19,31 +19,31 @@ repositories {
 
 dependencies {
     /* JSON */
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
-    implementation("com.github.victools:jsonschema-generator:4.24.2")
-    implementation("com.networknt:json-schema-validator:1.0.69")
-    implementation("net.pwall.json:json-kotlin-schema:0.34")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
+    implementation("com.github.victools:jsonschema-generator:4.26.0")
+    implementation("com.networknt:json-schema-validator:1.0.72")
+    implementation("net.pwall.json:json-kotlin-schema:0.36")
     implementation("com.beust:klaxon:5.6")
 
     /* Logging */
     implementation("org.lighthousegames:logging-jvm:1.2.0")
-    implementation("org.slf4j:slf4j-simple:1.7.36")
+    implementation("org.slf4j:slf4j-simple:2.0.0")
 
     /* Kotlin */
 
     // Reflection
-    implementation("org.jetbrains.kotlin:kotlin-reflect:1.6.21")
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.7.10")
 
     // Kotlin
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.21")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.7.10")
 
     /* JWT */
-    implementation("com.nimbusds:nimbus-jose-jwt:9.22")
+    implementation("com.nimbusds:nimbus-jose-jwt:9.24.4")
 
     /* Testing */
-    testImplementation("io.kotest:kotest-runner-junit5:5.3.0")
-    testImplementation("io.kotest:kotest-assertions-core:5.3.0")
-    testImplementation("io.kotest:kotest-assertions-json:5.3.0")
+    testImplementation("io.kotest:kotest-runner-junit5:5.4.2")
+    testImplementation("io.kotest:kotest-assertions-core:5.4.2")
+    testImplementation("io.kotest:kotest-assertions-json:5.4.2")
 }
 
 tasks.withType<Test> {

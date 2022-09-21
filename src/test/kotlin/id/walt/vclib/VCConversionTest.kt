@@ -2,7 +2,6 @@ package id.walt.vclib
 
 import com.beust.klaxon.Klaxon
 import com.nimbusds.jwt.JWTClaimsSet
-import com.nimbusds.jwt.JWTParser
 import id.walt.vclib.model.toCredential
 import id.walt.vclib.credentials.Europass
 import id.walt.vclib.model.VerifiableCredential
@@ -34,7 +33,10 @@ class VCConversionTest : StringSpec({
             .claim("vc", verifiableAttestationJsonLd.toMap()) // TODO reduce payload of VA
             .build().toString()
 
-        JWTClaimsSet.parse(payload).getClaim("vc").toString() shouldEqualJson input
-        JWTClaimsSet.parse(payload).getClaim("vc").toString().toCredential().encode() shouldEqualJson input
+        val vcClaim = JWTClaimsSet.parse(payload).getClaim("vc") as Map<String, Any>
+        val vcClaimJson = VerifiableCredential.klaxon.toJsonString(vcClaim)
+
+        vcClaimJson shouldEqualJson input
+        vcClaimJson.toCredential().encode() shouldEqualJson input
     }
-}) {}
+})

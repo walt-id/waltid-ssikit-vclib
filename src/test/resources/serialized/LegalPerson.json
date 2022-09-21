@@ -1,65 +1,29 @@
 {
-  "@context": ["https://www.w3.org/2018/credentials/v1", "http://www.w3.org/ns/shacl#", "http://www.w3.org/2001/XMLSchema#", "http://w3id.org/gaia-x/participant#"],
-  "credentialSchema": {
-    "id": "https://raw.githubusercontent.com/walt-id/waltid-ssikit-vclib/master/src/test/resources/schemas/ParticipantCredential.json",
-    "type": "JsonSchemaValidator2018"
-  },
+  "@context": ["http://www.w3.org/ns/shacl#", "http://www.w3.org/2001/XMLSchema#", "https://registry.gaia-x.eu/api/v2206/shape/files?file=participant&type=ttl#"],
   "credentialSubject": {
+    "gx-participant:blockchainAccountId": "0x4C84a36fCDb7Bc750294A7f3B5ad5CA8F74C4A52",
     "gx-participant:headquarterAddress": {
-      "gx-participant:country": {
-        "@type": "xsd:string",
-        "@value": "BE"
-      },
-      "gx-participant:locality": {
-        "@type": "xsd:string",
-        "@value": "Bruxelles/Brussels"
-      },
-      "gx-participant:postal-code": {
-        "@type": "xsd:string",
-        "@value": "1210"
-      },
-      "gx-participant:street-address": {
-        "@type": "xsd:string",
-        "@value": "Avenue des Arts 6-9"
-      },
-      "@type": "gx-participant:Address"
+      "gx-participant:addressCode": "DE-HH",
+      "gx-participant:addressCountryCode": "DE",
+      "gx-participant:postal-code": "22303",
+      "gx-participant:street-address": "Geibelstraße 46b"
     },
     "gx-participant:legalAddress": {
-      "gx-participant:country": {
-        "@type": "xsd:string",
-        "@value": "BE"
-      },
-      "gx-participant:locality": {
-        "@type": "xsd:string",
-        "@value": "Bruxelles/Brussels"
-      },
-      "gx-participant:postal-code": {
-        "@type": "xsd:string",
-        "@value": "1210"
-      },
-      "gx-participant:street-address": {
-        "@type": "xsd:string",
-        "@value": "Avenue des Arts 6-9"
-      },
-      "@type": "gx-participant:Address"
+      "gx-participant:addressCode": "DE-HH",
+      "gx-participant:addressCountryCode": "DE",
+      "gx-participant:postal-code": "22303",
+      "gx-participant:street-address": "Geibelstraße 46b"
     },
-    "gx-participant:legalName": {
-      "@type": "xsd:string",
-      "@value": "Gaia-X European Association for Data and Cloud AISBL"
-    },
-    "gx-participant:name": {
-      "@type": "xsd:string",
-      "@value": "Gaia-X AISBL"
-    },
+    "gx-participant:legalName": "deltaDAO AG",
     "gx-participant:registrationNumber": {
-      "@type": "xsd:string",
-      "@value": "0762747721"
+      "gx-participant:registrationNumberNumber": "391200FJBNU0YW987L26",
+      "gx-participant:registrationNumberType": "leiCode"
     },
-    "id": "did:compliance.gaia-x.eu"
+    "gx-participant:termsAndConditions": "70c1d713215f95191a11d38fe2341faed27d19e083917bc8732ca4fea4976700",
+    "id": "did:web:delta-dao.com"
   },
-  "expirationDate": "2022-01-06T20:38:38Z",
-  "@id": "vc.gaia-x.eu/participant-credential#392ac7f6-399a-437b-a268-4691ead8f176",
-  "issued": "2022-01-03T20:38:38Z",
-  "issuer": "did:web:vc.gaia-x.eu:issuer",
+  "id": "https://delta-dao.com/.well-known/participant.json",
+  "issuanceDate": "2022-09-15T20:05:20.997Z",
+  "issuer": "did:web:delta-dao.com",
   "type": ["VerifiableCredential", "LegalPerson"]
 }

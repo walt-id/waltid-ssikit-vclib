@@ -2,6 +2,8 @@ package id.walt.vclib.registry
 
 import id.walt.vclib.credentials.*
 import id.walt.vclib.credentials.gaiax.*
+import id.walt.vclib.credentials.gaiax.n.LegalPerson
+import id.walt.vclib.credentials.gaiax.n.ServiceOfferingCredential
 import id.walt.vclib.model.VerifiableCredential
 import org.lighthousegames.logging.logging
 import kotlin.reflect.KClass
@@ -40,10 +42,15 @@ object VcTypeRegistry {
         register<KybCredential>(KybCredential)
         register<KybMonoCredential>(KybMonoCredential)
         register<KycCredential>(KycCredential)
-        register<ParticipantCredential>(ParticipantCredential)
-        register<LegalPerson>(LegalPerson)
+        // register<ParticipantCredential>(ParticipantCredential) // conflicting type
+        // register<LegalPerson>(LegalPerson) // conflicting type
 
         register<PeerReview>(PeerReview)
+
+        // Gaia-X new
+        register<LegalPerson>(LegalPerson)
+        register<ParticipantCredential>(ParticipantCredential)
+        register<ServiceOfferingCredential>(ServiceOfferingCredential)
 
         // Verifiable mandates
         register<VerifiableMandate>(VerifiableMandate)

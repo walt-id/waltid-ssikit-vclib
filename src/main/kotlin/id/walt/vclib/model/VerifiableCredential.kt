@@ -11,10 +11,13 @@ import id.walt.vclib.adapter.ListOrSingleValueConverter
 import id.walt.vclib.adapter.VCTypeAdapter
 import id.walt.vclib.nestedVCsConverter
 import id.walt.vclib.schema.SchemaService
+import org.lighthousegames.logging.logging
 import java.time.Instant
 import java.time.format.DateTimeFormatterBuilder
 import java.time.format.ResolverStyle
 import java.util.*
+
+private val log = logging()
 
 @TypeFor(field = "type", adapter = VCTypeAdapter::class)
 abstract class VerifiableCredential {
@@ -38,7 +41,9 @@ abstract class VerifiableCredential {
     @Json(serializeNull = false)
     open var issuanceDate: String? = null
         get() = validFrom
-        set(value) { field = validFrom }
+        set(value) {
+            field = validFrom
+        }
 
     @Json(serializeNull = false)
     abstract var validFrom: String?
@@ -122,7 +127,9 @@ abstract class VerifiableCredential {
     fun toMap(): Map<String, Any> = klaxon.parse(encode())!!
 
     companion object {
-        val klaxon = Klaxon().fieldConverter(NestedVCs::class, nestedVCsConverter).fieldConverter(ListOrSingleValue::class, ListOrSingleValueConverter(false)).fieldConverter(ListOrReadSingleValue::class, ListOrSingleValueConverter(true))
+        val klaxon = Klaxon().fieldConverter(NestedVCs::class, nestedVCsConverter)
+            .fieldConverter(ListOrSingleValue::class, ListOrSingleValueConverter(false))
+            .fieldConverter(ListOrReadSingleValue::class, ListOrSingleValueConverter(true))
         val JWT_PATTERN = "(^[A-Za-z0-9-_]*\\.[A-Za-z0-9-_]*\\.[A-Za-z0-9-_]*\$)"
         val JWT_VC_CLAIM = "vc"
         val JWT_VP_CLAIM = "vp"
@@ -131,21 +138,36 @@ abstract class VerifiableCredential {
             return Regex(JWT_PATTERN).matches(data)
         }
 
+        val possibleClaimKeys = listOf(JWT_VP_CLAIM, JWT_VC_CLAIM)
+
         private fun vcJsonFromJwt(jwt: String): String {
             val claims = SignedJWT.parse(jwt).jwtClaimsSet.claims
-            return when (claims.keys.contains(JWT_VP_CLAIM)) {
-                true -> claims[JWT_VP_CLAIM].toString()
-                false -> claims[JWT_VC_CLAIM].toString()
-            }
+
+            val claimKey = possibleClaimKeys.first { it in claims }
+
+            val claim = claims[claimKey] as Map<String, Any>
+            val serialized = klaxon.toJsonString(claim)
+            log.debug { "$claimKey Claim: $serialized" }
+            return serialized
         }
 
         fun fromString(data: String): VerifiableCredential {
-            return if (!isJWT(data)) klaxon.parse<VerifiableCredential>(data)!!.also {
-                it.json = data
-            }
-            else klaxon.parse<VerifiableCredential>(vcJsonFromJwt(data))!!.also {
-                it.jwt = data
-                it.json = klaxon.toJsonString(it)
+            return when {
+                isJWT(data) -> {
+                    log.debug { "Parsing JWT credential from String" }
+                    log.debug { "VCJSON FROM JWT: ${vcJsonFromJwt(data)}" }
+                    klaxon.parse<VerifiableCredential>(vcJsonFromJwt(data))!!.also {
+                        it.jwt = data
+                        it.json = klaxon.toJsonString(it)
+                    }
+                }
+
+                else -> {
+                    log.debug { "Parsing (non-JWT) credential from String" }
+                    klaxon.parse<VerifiableCredential>(data)!!.also {
+                        it.json = data
+                    }
+                }
             }
         }
     }
