@@ -32,10 +32,10 @@ dependencies {
     /* Kotlin */
 
     // Reflection
-    implementation("org.jetbrains.kotlin:kotlin-reflect:1.6.21")
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.7.10")
 
     // Kotlin
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.21")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.7.10")
 
     /* JWT */
     implementation("com.nimbusds:nimbus-jose-jwt:9.22")
