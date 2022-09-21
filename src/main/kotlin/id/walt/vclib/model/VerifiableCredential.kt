@@ -5,11 +5,15 @@ import com.beust.klaxon.Klaxon
 import com.beust.klaxon.TypeFor
 import com.nimbusds.jwt.SignedJWT
 import id.walt.vclib.NestedVCs
-import id.walt.vclib.adapter.*
+import id.walt.vclib.adapter.ListOrReadSingleValue
+import id.walt.vclib.adapter.ListOrSingleValue
+import id.walt.vclib.adapter.ListOrSingleValueConverter
+import id.walt.vclib.adapter.VCTypeAdapter
 import id.walt.vclib.nestedVCsConverter
 import id.walt.vclib.schema.SchemaService
 import java.time.Instant
-import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeFormatterBuilder
+import java.time.format.ResolverStyle
 import java.util.*
 
 @TypeFor(field = "type", adapter = VCTypeAdapter::class)
@@ -54,7 +58,10 @@ abstract class VerifiableCredential {
 
     @field:SchemaService.JsonIgnore
     @Json(ignored = true)
-    open val dateFormat = DateTimeFormatter.ISO_INSTANT
+    open val dateFormat = DateTimeFormatterBuilder()
+        .parseCaseInsensitive()
+        .appendInstant(0)
+        .toFormatter()
 
     @field:SchemaService.JsonIgnore
     @Json(ignored = true)
