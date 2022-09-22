@@ -3,6 +3,8 @@ package id.walt.vclib.schema
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import java.io.File
+import kotlin.io.path.Path
+import kotlin.io.path.readText
 
 class SchemaValidationTest : StringSpec({
     val TEST_RESOURCES = "src/test/resources/"
@@ -14,7 +16,7 @@ class SchemaValidationTest : StringSpec({
 
     "validate all Schemas" {
         File("$TEST_RESOURCES/serialized").listFiles { _, name -> name.endsWith(".json") }!!.forEach {
-            println("Checking ${it.name}")
+            println("Checking ${it.name} at: $it")
             val vc = it.readText()
 
             if (BLACKLIST.any { vc.contains(it) }) {
@@ -29,9 +31,12 @@ class SchemaValidationTest : StringSpec({
             validationResult.valid shouldBe true
 
             if (!vc.contains("VerifiablePresentation")) {
+                val path = Path("$TEST_RESOURCES/schemas/${it.name}")
+                println("Checking schema: $path")
+
                 SchemaService.validateSchema(
-                    vc,
-                    File("$TEST_RESOURCES/schemas/${it.name}").readText()
+                    jsonLdCredential = vc,
+                    schema = path.readText()
                 ).valid shouldBe true
             }
         }
