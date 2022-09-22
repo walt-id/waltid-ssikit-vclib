@@ -4,7 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- Updated LegalPerson template to v2206
+## [1.23.4] - 2022-09-22
+
+-   Updated LegalPerson template to v2206
 
 ## [1.23.3] - 2022-09-22
 
@@ -275,7 +277,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.23.3...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.23.4...HEAD
+
+[1.23.4]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.23.3...1.23.4
 
 [1.23.3]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.23.2...1.23.3
 
