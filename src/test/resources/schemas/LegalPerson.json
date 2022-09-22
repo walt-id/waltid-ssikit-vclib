@@ -23,61 +23,61 @@
     "credentialSubject" : {
       "type" : "object",
       "properties" : {
-        "gxParticipantBlockchainAccountId" : {
+        "gx-participant:blockchainAccountId" : {
           "type" : "string"
         },
-        "gxParticipantHeadquarterAddress" : {
+        "gx-participant:headquarterAddress" : {
           "type" : "object",
           "properties" : {
-            "gxParticipantAddressCode" : {
+            "gx-participant:addressCode" : {
               "type" : "string"
             },
-            "gxParticipantAddressCountryCode" : {
+            "gx-participant:addressCountryCode" : {
               "type" : "string"
             },
-            "gxParticipantPostalCode" : {
+            "gx-participant:postal-code" : {
               "type" : "string"
             },
-            "gxParticipantStreetAddress" : {
+            "gx-participant:street-address" : {
               "type" : "string"
             }
           },
           "additionalProperties" : false
         },
-        "gxParticipantLegalAddress" : {
+        "gx-participant:legalAddress" : {
           "type" : "object",
           "properties" : {
-            "gxParticipantAddressCode" : {
+            "gx-participant:addressCode" : {
               "type" : "string"
             },
-            "gxParticipantAddressCountryCode" : {
+            "gx-participant:addressCountryCode" : {
               "type" : "string"
             },
-            "gxParticipantPostalCode" : {
+            "gx-participant:postal-code" : {
               "type" : "string"
             },
-            "gxParticipantStreetAddress" : {
+            "gx-participant:street-address" : {
               "type" : "string"
             }
           },
           "additionalProperties" : false
         },
-        "gxParticipantLegalName" : {
+        "gx-participant:legalName" : {
           "type" : "string"
         },
-        "gxParticipantRegistrationNumber" : {
+        "gx-participant:registrationNumber" : {
           "type" : "object",
           "properties" : {
-            "gxParticipantRegistrationNumberNumber" : {
+            "gx-participant:registrationNumberNumber" : {
               "type" : "string"
             },
-            "gxParticipantRegistrationNumberType" : {
+            "gx-participant:registrationNumberType" : {
               "type" : "string"
             }
           },
           "additionalProperties" : false
         },
-        "gxParticipantTermsAndConditions" : {
+        "gx-participant:termsAndConditions" : {
           "type" : "string"
         },
         "id" : {
