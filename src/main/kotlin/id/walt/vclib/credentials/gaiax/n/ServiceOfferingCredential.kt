@@ -8,11 +8,12 @@ import id.walt.vclib.model.CredentialSchema
 import id.walt.vclib.model.CredentialSubject
 import id.walt.vclib.model.Proof
 import id.walt.vclib.registry.VerifiableCredentialMetadata
+import id.walt.vclib.schema.SchemaService
 import kotlinx.serialization.SerialName
 
 data class ServiceOfferingCredential(
-    @Json(name = "@context", serializeNull = false) @JsonProperty("@context") @SerialName("@context")
-    var context: List<String>,
+    @Json(name = "@context", serializeNull = false) @JsonProperty("@context") @field:SchemaService.PropertyName("@context") @SerialName("@context")
+    var context: List <String>,
 
     @Json(serializeNull = false) override var issued: String? = null,
     @Json(serializeNull = false) override var issuer: String? = null,
@@ -29,47 +30,47 @@ data class ServiceOfferingCredential(
         @Json(
             name = "gx-service-offering:dataExport",
             serializeNull = false
-        ) @JsonProperty("gx-service-offering:dataExport") @SerialName("gx-service-offering:dataExport")
+        ) @JsonProperty("gx-service-offering:dataExport") @SerialName("gx-service-offering:dataExport") @field:SchemaService.PropertyName("gx-service-offering:dataExport")
         var gxServiceOfferingDataExport: List<GxServiceOfferingDataExport>?,
         @Json(
             name = "gx-service-offering:dataProtectionRegime",
             serializeNull = false
-        ) @JsonProperty("gx-service-offering:dataProtectionRegime") @SerialName("gx-service-offering:dataProtectionRegime")
+        ) @JsonProperty("gx-service-offering:dataProtectionRegime") @SerialName("gx-service-offering:dataProtectionRegime") @field:SchemaService.PropertyName("gx-service-offering:dataProtectionRegime")
         var gxServiceOfferingDataProtectionRegime: List<String>?,
         @Json(
             name = "gx-service-offering:dependsOn",
             serializeNull = false
-        ) @JsonProperty("gx-service-offering:dependsOn") @SerialName("gx-service-offering:dependsOn")
+        ) @JsonProperty("gx-service-offering:dependsOn") @SerialName("gx-service-offering:dependsOn") @field:SchemaService.PropertyName("gx-service-offering:dependsOn")
         var gxServiceOfferingDependsOn: List<String>?,
         @Json(
             name = "gx-service-offering:description",
             serializeNull = false
-        ) @JsonProperty("gx-service-offering:description") @SerialName("gx-service-offering:description")
+        ) @JsonProperty("gx-service-offering:description") @SerialName("gx-service-offering:description") @field:SchemaService.PropertyName("gx-service-offering:description")
         var gxServiceOfferingDescription: String?, // The Compliance Service will validate the shape and content of Self Descriptions. Required fields and consistency rules are defined in the Gaia-X Trust Framework.
         @Json(
             name = "gx-service-offering:gdpr",
             serializeNull = false
-        ) @JsonProperty("gx-service-offering:gdpr") @SerialName("gx-service-offering:gdpr")
+        ) @JsonProperty("gx-service-offering:gdpr") @SerialName("gx-service-offering:gdpr") @field:SchemaService.PropertyName("gx-service-offering:gdpr")
         var gxServiceOfferingGdpr: List<GxServiceOfferingGdpr>?,
         @Json(
             name = "gx-service-offering:name",
             serializeNull = false
-        ) @JsonProperty("gx-service-offering:name") @SerialName("gx-service-offering:name")
+        ) @JsonProperty("gx-service-offering:name") @SerialName("gx-service-offering:name") @field:SchemaService.PropertyName("gx-service-offering:name")
         var gxServiceOfferingName: String?, // Gaia-X Lab Compliance Service
         @Json(
             name = "gx-service-offering:providedBy",
             serializeNull = false
-        ) @JsonProperty("gx-service-offering:providedBy") @SerialName("gx-service-offering:providedBy")
+        ) @JsonProperty("gx-service-offering:providedBy") @SerialName("gx-service-offering:providedBy") @field:SchemaService.PropertyName("gx-service-offering:providedBy")
         var gxServiceOfferingProvidedBy: String?, // https://compliance.gaia-x.eu/.well-known/participant.json
         @Json(
             name = "gx-service-offering:termsAndConditions",
             serializeNull = false
-        ) @JsonProperty("gx-service-offering:termsAndConditions") @SerialName("gx-service-offering:termsAndConditions")
+        ) @JsonProperty("gx-service-offering:termsAndConditions") @SerialName("gx-service-offering:termsAndConditions") @field:SchemaService.PropertyName("gx-service-offering:termsAndConditions")
         var gxServiceOfferingTermsAndConditions: List<GxServiceOfferingTermsAndCondition>?,
         @Json(
             name = "gx-service-offering:webAddress",
             serializeNull = false
-        ) @JsonProperty("gx-service-offering:webAddress") @SerialName("gx-service-offering:webAddress")
+        ) @JsonProperty("gx-service-offering:webAddress") @SerialName("gx-service-offering:webAddress") @field:SchemaService.PropertyName("gx-service-offering:webAddress")
         var gxServiceOfferingWebAddress: String?, // https://compliance.gaia-x.eu/
         override var id: String? // https://compliance.gaia-x.eu/.well-known/serviceComplianceService.json
     ) : CredentialSubject() {
@@ -77,17 +78,17 @@ data class ServiceOfferingCredential(
             @Json(
                 name = "gx-service-offering:accessType",
                 serializeNull = false
-            ) @JsonProperty("gx-service-offering:accessType") @SerialName("gx-service-offering:accessType")
+            ) @JsonProperty("gx-service-offering:accessType") @SerialName("gx-service-offering:accessType") @field:SchemaService.PropertyName("gx-service-offering:accessType")
             var gxServiceOfferingAccessType: String?, // digital
             @Json(
                 name = "gx-service-offering:formatType",
                 serializeNull = false
-            ) @JsonProperty("gx-service-offering:formatType") @SerialName("gx-service-offering:formatType")
+            ) @JsonProperty("gx-service-offering:formatType") @SerialName("gx-service-offering:formatType") @field:SchemaService.PropertyName("gx-service-offering:formatType")
             var gxServiceOfferingFormatType: String?, // mime/png
             @Json(
                 name = "gx-service-offering:requestType",
                 serializeNull = false
-            ) @JsonProperty("gx-service-offering:requestType") @SerialName("gx-service-offering:requestType")
+            ) @JsonProperty("gx-service-offering:requestType") @SerialName("gx-service-offering:requestType") @field:SchemaService.PropertyName("gx-service-offering:requestType")
             var gxServiceOfferingRequestType: String? // emails
         )
 
@@ -95,12 +96,12 @@ data class ServiceOfferingCredential(
             @Json(
                 name = "gx-service-offering:imprint",
                 serializeNull = false
-            ) @JsonProperty("gx-service-offering:imprint") @SerialName("gx-service-offering:imprint")
+            ) @JsonProperty("gx-service-offering:imprint") @SerialName("gx-service-offering:imprint") @field:SchemaService.PropertyName("gx-service-offering:imprint")
             var gxServiceOfferingImprint: String?, // https://gaia-x.eu/imprint/
             @Json(
                 name = "gx-service-offering:privacyPolicy",
                 serializeNull = false
-            ) @JsonProperty("gx-service-offering:privacyPolicy") @SerialName("gx-service-offering:privacyPolicy")
+            ) @JsonProperty("gx-service-offering:privacyPolicy") @SerialName("gx-service-offering:privacyPolicy") @field:SchemaService.PropertyName("gx-service-offering:privacyPolicy")
             var gxServiceOfferingPrivacyPolicy: String? // https://gaia-x.eu/privacy-policy/
         )
 
@@ -108,11 +109,9 @@ data class ServiceOfferingCredential(
             @Json(
                 name = "gx-service-offering:hash",
                 serializeNull = false
-            ) @JsonProperty("gx-service-offering:hash") @SerialName("gx-service-offering:hash")
+            ) @JsonProperty("gx-service-offering:hash") @SerialName("gx-service-offering:hash") @field:SchemaService.PropertyName("gx-service-offering:hash")
             var gxServiceOfferingHash: String?, // myrandomhash
-            @Json(name = "gx-service-offering:url", serializeNull = false) @JsonProperty("gx-service-offering:url") @SerialName(
-                "gx-service-offering:url"
-            )
+            @Json(name = "gx-service-offering:url", serializeNull = false) @JsonProperty("gx-service-offering:url") @SerialName("gx-service-offering:url") @field:SchemaService.PropertyName("gx-service-offering:url")
             var gxServiceOfferingUrl: String? // https://compliance.gaia-x.eu/terms
         )
     }
