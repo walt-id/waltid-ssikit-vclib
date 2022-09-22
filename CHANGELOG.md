@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Updated LegalPerson template to v2206
+
 ## [1.23.3] - 2022-09-22
 
 -   Updated LegalPerson template
