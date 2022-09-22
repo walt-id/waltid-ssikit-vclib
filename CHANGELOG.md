@@ -17,6 +17,9 @@ All notable changes to this project will be documented in this file.
 - Updated vcJsonFromJwt / fromString functions from VerifiableCredential to correspond to work with new JWT & JSON libraries
 - Add debug logging in test mode
 
+- Fix EuropeanBankIdentity schema URL
+- Update serialized bank identity credential
+
 - Updated nimbus-jose-jwt from 9.22 to 9.24.4
 - Updated kotlinx-serialization-json from 1.3.2 to 1.4.0
 - Updated jsonschema-generator from 4.24.2 to 4.26.0
