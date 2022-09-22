@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Remove invalid contexts from Gaia-X credentials
+- Update Gradle version
+- Change logging type
+
 ## [1.23.0] - 2022-09-22
 
 -   Added new Gaia-X LegalPerson
