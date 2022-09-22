@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Updated LegalPerson template
+
 ## [1.23.2] - 2022-09-22
 
 -   Remove invalid contexts from Gaia-X credentials
