@@ -1,5 +1,5 @@
 {
-  "@context": ["http://www.w3.org/ns/shacl#", "http://www.w3.org/2001/XMLSchema#", "https://registry.gaia-x.eu/api/v2206/shape/files?file=participant&type=ttl#"],
+  "@context": ["https://www.w3.org/2018/credentials/v1"],
   "credentialSubject": {
     "gx-participant:blockchainAccountId": "0x4C84a36fCDb7Bc750294A7f3B5ad5CA8F74C4A52",
     "gx-participant:headquarterAddress": {

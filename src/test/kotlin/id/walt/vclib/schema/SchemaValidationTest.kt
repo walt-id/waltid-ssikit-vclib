@@ -22,9 +22,11 @@ class SchemaValidationTest : StringSpec({
                 return@forEach
             }
 
-            SchemaService.validateSchema(vc).errors?.forEach { e -> println(e) }
+            val validationResult = SchemaService.validateSchema(vc)
 
-            SchemaService.validateSchema(vc).valid shouldBe true
+            validationResult.errors?.forEach { e -> println("Error in ${it.name}: $e") }
+
+            validationResult.valid shouldBe true
 
             if (!vc.contains("VerifiablePresentation")) {
                 SchemaService.validateSchema(
