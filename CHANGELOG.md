@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 - Remove invalid contexts from Gaia-X credentials
 - Update Gradle version
 - Change logging type
+- Update schema metadata about Gaia-X credentials
 
 ## [1.23.0] - 2022-09-22
 
