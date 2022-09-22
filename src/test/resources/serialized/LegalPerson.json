@@ -23,5 +23,7 @@
     "id": "did:web:delta-dao.com"
   },
   "id": "https://delta-dao.com/.well-known/participant.json",
+  "issuanceDate": "2022-09-15T20:05:20.997Z",
+  "issuer": "did:web:delta-dao.com",
   "type": ["VerifiableCredential", "LegalPerson"]
 }
