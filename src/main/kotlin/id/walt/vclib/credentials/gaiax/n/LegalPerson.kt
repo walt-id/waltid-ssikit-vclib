@@ -37,8 +37,14 @@ data class LegalPerson(
                     //"https://registry.gaia-x.eu/api/v2206/shape/files?file=participant&type=ttl#"
                 ),
                 id = "https://delta-dao.com/.well-known/participant.json",
-                issuer = "did:web:delta-dao.com",
-                issuanceDate = "2022-09-15T20:05:20.997Z",
+                //issuer = "did:web:delta-dao.com",
+                issuer = null,
+
+                issued = null,
+                validFrom = null,
+
+                //issuanceDate = "2022-09-15T20:05:20.997Z",
+                issuanceDate = null,
                 credentialSubject = LegalPersonCredentialSubject(
                     id = "did:web:delta-dao.com",
                     gxParticipantLegalName = "deltaDAO AG",
