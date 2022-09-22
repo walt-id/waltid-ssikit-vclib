@@ -70,56 +70,68 @@ data class LegalPerson(
         @SerialName("gx-participant:blockchainAccountId") @Json(
             name = "gx-participant:blockchainAccountId",
             serializeNull = false
-        )
+        ) @field:SchemaService.PropertyName("gx-participant:blockchainAccountId")
         var gxParticipantBlockchainAccountId: String? = null, // 0x4C84a36fCDb7Bc750294A7f3B5ad5CA8F74C4A52
         @SerialName("gx-participant:headquarterAddress") @Json(
             name = "gx-participant:headquarterAddress",
             serializeNull = false
-        )
+        ) @field:SchemaService.PropertyName("gx-participant:headquarterAddress")
         var gxParticipantHeadquarterAddress: GxParticipantHeadquarterAddress? = null,
         @SerialName("gx-participant:legalAddress") @Json(name = "gx-participant:legalAddress", serializeNull = false)
+        @field:SchemaService.PropertyName("gx-participant:legalAddress")
         var gxParticipantLegalAddress: GxParticipantLegalAddress? = null,
         @SerialName("gx-participant:legalName") @Json(name = "gx-participant:legalName", serializeNull = false)
+        @field:SchemaService.PropertyName("gx-participant:legalName")
         var gxParticipantLegalName: String? = null, // deltaDAO AG
         @SerialName("gx-participant:registrationNumber") @Json(
             name = "gx-participant:registrationNumber",
             serializeNull = false
         )
+        @field:SchemaService.PropertyName("gx-participant:registrationNumber")
         var gxParticipantRegistrationNumber: GxParticipantRegistrationNumber? = null,
         @SerialName("gx-participant:termsAndConditions") @Json(
             name = "gx-participant:termsAndConditions",
             serializeNull = false
         )
+        @field:SchemaService.PropertyName("gx-participant:termsAndConditions")
         var gxParticipantTermsAndConditions: String? = null, // 70c1d713215f95191a11d38fe2341faed27d19e083917bc8732ca4fea4976700
         @Json(serializeNull = false) override var id: String? = null // did:web:delta-dao.com
     ) : CredentialSubject() {
         @Serializable
         data class GxParticipantHeadquarterAddress(
             @SerialName("gx-participant:addressCode") @Json(name = "gx-participant:addressCode", serializeNull = false)
+            @field:SchemaService.PropertyName("gx-participant:addressCode")
             var gxParticipantAddressCode: String? = null, // DE-HH
             @SerialName("gx-participant:addressCountryCode") @Json(
                 name = "gx-participant:addressCountryCode",
                 serializeNull = false
             )
+            @field:SchemaService.PropertyName("gx-participant:addressCountryCode")
             var gxParticipantAddressCountryCode: String? = null, // DE
             @SerialName("gx-participant:postal-code") @Json(name = "gx-participant:postal-code", serializeNull = false)
+            @field:SchemaService.PropertyName("gx-participant:postal-code")
             var gxParticipantPostalCode: String? = null, // 22303
             @SerialName("gx-participant:street-address") @Json(name = "gx-participant:street-address", serializeNull = false)
+            @field:SchemaService.PropertyName("gx-participant:street-address")
             var gxParticipantStreetAddress: String? = null // Geibelstraße 46b
         )
 
         @Serializable
         data class GxParticipantLegalAddress(
             @SerialName("gx-participant:addressCode") @Json(name = "gx-participant:addressCode", serializeNull = false)
+            @field:SchemaService.PropertyName("gx-participant:addressCode")
             var gxParticipantAddressCode: String? = null, // DE-HH
             @SerialName("gx-participant:addressCountryCode") @Json(
                 name = "gx-participant:addressCountryCode",
                 serializeNull = false
             )
+            @field:SchemaService.PropertyName("gx-participant:addressCountryCode")
             var gxParticipantAddressCountryCode: String? = null, // DE
             @SerialName("gx-participant:postal-code") @Json(name = "gx-participant:postal-code", serializeNull = false)
+            @field:SchemaService.PropertyName("gx-participant:postal-code")
             var gxParticipantPostalCode: String? = null, // 22303
             @SerialName("gx-participant:street-address") @Json(name = "gx-participant:street-address", serializeNull = false)
+            @field:SchemaService.PropertyName("gx-participant:street-address")
             var gxParticipantStreetAddress: String? = null // Geibelstraße 46b
         )
 
@@ -129,11 +141,13 @@ data class LegalPerson(
                 name = "gx-participant:registrationNumberNumber",
                 serializeNull = false
             )
+            @field:SchemaService.PropertyName("gx-participant:registrationNumberNumber")
             var gxParticipantRegistrationNumberNumber: String? = null, // 391200FJBNU0YW987L26
             @SerialName("gx-participant:registrationNumberType") @Json(
                 name = "gx-participant:registrationNumberType",
                 serializeNull = false
             )
+            @field:SchemaService.PropertyName("gx-participant:registrationNumberType")
             var gxParticipantRegistrationNumberType: String? = null // leiCode
         )
     }
