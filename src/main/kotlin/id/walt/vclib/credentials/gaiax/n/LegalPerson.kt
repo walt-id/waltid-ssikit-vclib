@@ -31,9 +31,10 @@ data class LegalPerson(
         template = {
             LegalPerson(
                 context = listOf(
-                    "http://www.w3.org/ns/shacl#",
-                    "http://www.w3.org/2001/XMLSchema#",
-                    "https://registry.gaia-x.eu/api/v2206/shape/files?file=participant&type=ttl#"
+                    "https://www.w3.org/2018/credentials/v1"
+                    //"http://www.w3.org/ns/shacl#",
+                    //"http://www.w3.org/2001/XMLSchema#",
+                    //"https://registry.gaia-x.eu/api/v2206/shape/files?file=participant&type=ttl#"
                 ),
                 id = "https://delta-dao.com/.well-known/participant.json",
                 issuer = "did:web:delta-dao.com",

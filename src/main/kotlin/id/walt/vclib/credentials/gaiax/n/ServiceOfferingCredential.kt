@@ -124,11 +124,12 @@ data class ServiceOfferingCredential(
                 // Start
 
                 context = listOf(
-                    "http://www.w3.org/ns/shacl#",
-                    "http://www.w3.org/2001/XMLSchema#",
-                    "https://registry.gaia-x.eu/api/v2206/shape/files?file=resource&type=ttl#",
-                    "https://registry.gaia-x.eu/api/v2206/shape/files?file=participant&type=ttl#",
-                    "https://registry.gaia-x.eu/api/v2206/shape/files?file=service-offering&type=ttl#"
+                    "https://www.w3.org/2018/credentials/v1"
+                    //"http://www.w3.org/ns/shacl#",
+                    //"http://www.w3.org/2001/XMLSchema#",
+                    //"https://registry.gaia-x.eu/api/v2206/shape/files?file=resource&type=ttl#",
+                    //"https://registry.gaia-x.eu/api/v2206/shape/files?file=participant&type=ttl#",
+                    //"https://registry.gaia-x.eu/api/v2206/shape/files?file=service-offering&type=ttl#"
                 ),
                 id = "https://compliance.gaia-x.eu/.well-known/serviceComplianceService.json",
                 credentialSubject = ServiceOfferingCredentialSubject(
