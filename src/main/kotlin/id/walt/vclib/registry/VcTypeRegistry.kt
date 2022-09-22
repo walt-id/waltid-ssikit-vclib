@@ -4,6 +4,7 @@ import id.walt.vclib.credentials.*
 import id.walt.vclib.credentials.gaiax.*
 import id.walt.vclib.credentials.gaiax.n.LegalPerson
 import id.walt.vclib.credentials.gaiax.n.ServiceOfferingCredential
+import id.walt.vclib.credentials.velocity.Email
 import id.walt.vclib.model.VerifiableCredential
 import org.lighthousegames.logging.logging
 import kotlin.reflect.KClass
@@ -51,6 +52,9 @@ object VcTypeRegistry {
         register<LegalPerson>(LegalPerson)
         register<ParticipantCredential>(ParticipantCredential)
         register<ServiceOfferingCredential>(ServiceOfferingCredential)
+
+        // Velocity
+        register<Email>(Email)
 
         // Verifiable mandates
         register<VerifiableMandate>(VerifiableMandate)
