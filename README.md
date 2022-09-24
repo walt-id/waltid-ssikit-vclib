@@ -6,14 +6,14 @@ Typesafe implementation of W3C Verifiable Credentials in order to facilitate int
 
 Add the dependency using Gradle:
 
-    implementation("id.walt:waltid-ssikit-vclib:1.22.0")
+    implementation("id.walt:waltid-ssikit-vclib:1.23.4")
     
 or Maven:
 
     <dependency>
         <groupId>id.walt</groupId>
         <artifactId>waltid-ssikit-vclib</artifactId>
-        <version>1.22.0</version>
+        <version>1.23.4</version>
     </dependency>
     
 ### Create a credential
@@ -67,7 +67,7 @@ val issuer = when (credential) {
 ## Adding VC Templates
 
 1. Visit https://vc-creator.walt.id to generate a VC template.
-2. Add it to package: id.walt.vclib.credentials.
+2. Add it to package: id.walt.vclib.credentials.*, compare it to the other templates and complete the implementation.
 3. Add the new class to id.walt.vclib.registry.VcTypeRegistry.
 4. Run all test-cases, which will generate the JsonSchema and the serialized version of the credential template.
 5. Open a Pull-Request on GitHub
