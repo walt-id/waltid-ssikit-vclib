@@ -3,6 +3,7 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+- Added velocity email credential
 
 ## [1.23.4] - 2022-09-22
 
