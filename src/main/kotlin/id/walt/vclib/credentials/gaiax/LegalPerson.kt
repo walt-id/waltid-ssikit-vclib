@@ -20,19 +20,19 @@ data class LegalPerson(
     @Json(serializeNull = false) override var expirationDate: String? = null,
 
     @Json(serializeNull = false, name = "@id") @field:SchemaService.PropertyName(name = "@id") override var id: String? = null, // "https://compliance.gaia-x.eu/.well-known/participant.json"
-    @Json(serializeNull = false) override var credentialSubject: CredentialSubject? = null,
+    @Json(serializeNull = false) override var credentialSubject: EmailCredentialSubject? = null,
     @Json(serializeNull = false) override val credentialSchema: id.walt.vclib.model.CredentialSchema? = null,
     @Json(serializeNull = false) override var validFrom: String? = null,
     @Json(serializeNull = false) override var proof: id.walt.vclib.model.Proof? = null
-) : AbstractVerifiableCredential<LegalPerson.CredentialSubject>(type)  {
-    data class CredentialSubject(
+) : AbstractVerifiableCredential<LegalPerson.EmailCredentialSubject>(type)  {
+    data class EmailCredentialSubject(
         @Json(serializeNull = false) override var id: String? = null, // "did:compliance.gaia-x.eu"
         @Json(serializeNull = false, name = "gx-participant:name") @field:SchemaService.PropertyName(name = "gx-participant:name") var gxParticipantName: GxParticipantName? = null,
         @Json(serializeNull = false, name = "gx-participant:legalName") @field:SchemaService.PropertyName(name = "gx-participant:legalName") var gxParticipantLegalName: GxParticipantLegalName? = null,
         @Json(serializeNull = false, name = "gx-participant:registrationNumber") @field:SchemaService.PropertyName(name = "gx-participant:registrationNumber") var gxParticipantRegistrationNumber: GxParticipantRegistrationNumber? = null,
         @Json(serializeNull = false, name = "gx-participant:headquarterAddress") @field:SchemaService.PropertyName(name = "gx-participant:headquarterAddress") var gxParticipantHeadquarterAddress: GxParticipantHeadquarterAddress? = null,
         @Json(serializeNull = false, name = "gx-participant:legalAddress") @field:SchemaService.PropertyName(name = "gx-participant:legalAddress")  var gxParticipantLegalAddress: GxParticipantLegalAddress? = null
-    ) : id.walt.vclib.model.CredentialSubject() {
+    ) : id.walt.vclib.model.EmailCredentialSubject() {
         data class GxParticipantName(
             @Json(serializeNull = false, name = "@value") @field:SchemaService.PropertyName(name = "@value") var value: String? = null, // "Gaia-X AISBL"
             @Json(serializeNull = false, name = "@type") @field:SchemaService.PropertyName(name = "@type") var type: String? = null // "xsd:string"
@@ -113,54 +113,54 @@ data class LegalPerson(
                 issuer = "did:web:vc.gaia-x.eu:issuer",
                 issued = "2022-01-03T20:38:38Z",
                 expirationDate = "2022-01-06T20:38:38Z",
-                credentialSubject = LegalPerson.CredentialSubject(
+                credentialSubject = LegalPerson.EmailCredentialSubject(
                     id = "did:compliance.gaia-x.eu",
-                    gxParticipantName = CredentialSubject.GxParticipantName(
+                    gxParticipantName = EmailCredentialSubject.GxParticipantName(
                         value = "Gaia-X AISBL",
                         type = "xsd:string"
                     ),
-                    gxParticipantLegalName = CredentialSubject.GxParticipantLegalName(
+                    gxParticipantLegalName = EmailCredentialSubject.GxParticipantLegalName(
                         value = "Gaia-X European Association for Data and Cloud AISBL",
                         type = "xsd:string"
                     ),
-                    gxParticipantRegistrationNumber = CredentialSubject.GxParticipantRegistrationNumber(
+                    gxParticipantRegistrationNumber = EmailCredentialSubject.GxParticipantRegistrationNumber(
                         value = "0762747721",
                         type = "xsd:string"
                     ),
-                    gxParticipantHeadquarterAddress = CredentialSubject.GxParticipantHeadquarterAddress(
+                    gxParticipantHeadquarterAddress = EmailCredentialSubject.GxParticipantHeadquarterAddress(
                         type = "gx-participant:Address",
-                        gxParticipantCountry = CredentialSubject.GxParticipantHeadquarterAddress.GxParticipantCountry(
+                        gxParticipantCountry = EmailCredentialSubject.GxParticipantHeadquarterAddress.GxParticipantCountry(
                             value = "BE",
                             type = "xsd:string"
                         ),
-                        gxParticipantStreetAddress = CredentialSubject.GxParticipantHeadquarterAddress.GxParticipantStreetAddress(
+                        gxParticipantStreetAddress = EmailCredentialSubject.GxParticipantHeadquarterAddress.GxParticipantStreetAddress(
                             value = "Avenue des Arts 6-9",
                             type = "xsd:string"
                         ),
-                        gxParticipantPostalCode = CredentialSubject.GxParticipantHeadquarterAddress.GxParticipantPostalCode(
+                        gxParticipantPostalCode = EmailCredentialSubject.GxParticipantHeadquarterAddress.GxParticipantPostalCode(
                             value = "1210",
                             type = "xsd:string"
                         ),
-                        gxParticipantLocality = CredentialSubject.GxParticipantHeadquarterAddress.GxParticipantLocality(
+                        gxParticipantLocality = EmailCredentialSubject.GxParticipantHeadquarterAddress.GxParticipantLocality(
                             value = "Bruxelles/Brussels",
                             type = "xsd:string"
                         )
                     ),
-                    gxParticipantLegalAddress = CredentialSubject.GxParticipantLegalAddress(
+                    gxParticipantLegalAddress = EmailCredentialSubject.GxParticipantLegalAddress(
                         type = "gx-participant:Address",
-                        gxParticipantCountry = CredentialSubject.GxParticipantLegalAddress.GxParticipantCountry(
+                        gxParticipantCountry = EmailCredentialSubject.GxParticipantLegalAddress.GxParticipantCountry(
                             value = "BE",
                             type = "xsd:string"
                         ),
-                        gxParticipantStreetAddress = CredentialSubject.GxParticipantLegalAddress.GxParticipantStreetAddress(
+                        gxParticipantStreetAddress = EmailCredentialSubject.GxParticipantLegalAddress.GxParticipantStreetAddress(
                             value = "Avenue des Arts 6-9",
                             type = "xsd:string"
                         ),
-                        gxParticipantPostalCode = CredentialSubject.GxParticipantLegalAddress.GxParticipantPostalCode(
+                        gxParticipantPostalCode = EmailCredentialSubject.GxParticipantLegalAddress.GxParticipantPostalCode(
                             value = "1210",
                             type = "xsd:string"
                         ),
-                        gxParticipantLocality = CredentialSubject.GxParticipantLegalAddress.GxParticipantLocality(
+                        gxParticipantLocality = EmailCredentialSubject.GxParticipantLegalAddress.GxParticipantLocality(
                             value = "Bruxelles/Brussels",
                             type = "xsd:string"
                         )

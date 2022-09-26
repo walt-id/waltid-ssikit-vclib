@@ -31,7 +31,8 @@ data class LegalPerson(
         template = {
             LegalPerson(
                 context = listOf(
-                    "https://www.w3.org/2018/credentials/v1"
+                    "https://www.w3.org/2018/credentials/v1",
+                    //"https://registry.lab.gaia-x.eu/v2206/api/shape"
                     //"http://www.w3.org/ns/shacl#",
                     //"http://www.w3.org/2001/XMLSchema#",
                     //"https://registry.gaia-x.eu/api/v2206/shape/files?file=participant&type=ttl#"

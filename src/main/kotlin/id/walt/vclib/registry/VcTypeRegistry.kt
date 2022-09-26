@@ -88,7 +88,7 @@ object VcTypeRegistry {
     }
 
     fun register(metadata: VerifiableCredentialMetadata, vc: KClass<out VerifiableCredential>) {
-        log.debug { "Registering ${vc.simpleName}..." }
+        log.verbose { "Registering ${vc.simpleName}..." }
 
         registerDefinition(metadata.type, TypeRegistration(vc, metadata))
 
