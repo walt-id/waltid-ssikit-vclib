@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 ## [1.23.5] - 2022-09-26
 
+## [1.23.5] - 2022-09-26
+
 -   Added velocity email credential
 
 ## [1.23.4] - 2022-09-22
@@ -282,6 +284,8 @@ All notable changes to this project will be documented in this file.
 -   Initial release
 
 [Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.23.5...HEAD
+
+[1.23.5]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.23.5...1.23.5
 
 [1.23.5]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.23.4...1.23.5
 
