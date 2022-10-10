@@ -44,7 +44,7 @@ data class OpenBadgeCredential(
                 issuanceDate = "2020-03-10T04:24:12.164Z",
                 credentialSubject = OpenBadgeCredentialSubject(
                     type = "AchievementSubject",
-                    id = "did:example:123",
+                    id = "did:jwk:1235667890",
                     OpenBadgeCredentialSubject.Achievement (
                         type = "Achievement",
                         name = "Our Wallet Passed JFF Plugfest #1 2022",
