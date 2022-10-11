@@ -21,15 +21,17 @@ data class OpenBadgeCredential(
     @Json(serializeNull = false) override var validFrom: String? = null,
     @Json(serializeNull = false) override var issuanceDate: String? = null,
     @Json(serializeNull = false) override var expirationDate: String? = null,
-    @Json(ignored = true) override var credentialSchema: CredentialSchema? = CredentialSchema(
-        id = "https://github.com/walt-id/waltid-ssikit-vclib/blob/master/src/test/resources/schemas/OpenBadgeCredential.json",
-        type = "FullJsonSchemaValidator2021"
+    @Json(serializeNull = false) override var credentialSchema: CredentialSchema? = CredentialSchema(
+        id = "https://ngiatlantic.info/schema/V-2022-1/OpenBadgeCredential.json",
+        type = "https://json-schema.org/draft/2019-09/schema"
     ),
     @Json(serializeNull = false) override var proof: Proof? = null
     ) : AbstractVerifiableCredential<OpenBadgeCredential.OpenBadgeCredentialSubject>(type) {
 
+
     companion object : VerifiableCredentialMetadata(
         type = listOf("VerifiableCredential", "OpenBadgeCredential"),
+
         template = {
             OpenBadgeCredential(
                 id = null,
@@ -44,7 +46,7 @@ data class OpenBadgeCredential(
                 issuanceDate = "2020-03-10T04:24:12.164Z",
                 credentialSubject = OpenBadgeCredentialSubject(
                     type = "AchievementSubject",
-                    id = "did:example:123",
+                    id = "did:jwk:1235667890",
                     OpenBadgeCredentialSubject.Achievement (
                         type = "Achievement",
                         name = "Our Wallet Passed JFF Plugfest #1 2022",
@@ -55,6 +57,10 @@ data class OpenBadgeCredential(
                         ),
                         image = "https://w3c-ccg.github.io/vc-ed/plugfest-1-2022/images/plugfest-1-badge-image.png",
                     )
+                ),
+                credentialSchema = CredentialSchema(
+                    id = "https://ngiatlantic.info/schema/V-2022-1/OpenBadgeCredential.json",
+                    type = "https://json-schema.org/draft/2019-09/schema"
                 )
             )
         }
