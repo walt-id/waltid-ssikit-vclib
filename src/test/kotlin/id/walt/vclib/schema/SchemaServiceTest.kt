@@ -1,11 +1,6 @@
 package id.walt.vclib.schema
 
 import com.beust.klaxon.Json
-import id.walt.vclib.credentials.*
-import id.walt.vclib.credentials.gaiax.GaiaxCredential
-import id.walt.vclib.credentials.gaiax.DataSelfDescription
-import id.walt.vclib.credentials.gaiax.DataServiceOffering
-import id.walt.vclib.credentials.gaiax.ParticipantCredential
 import id.walt.vclib.model.*
 import id.walt.vclib.registry.VcTypeRegistry
 import id.walt.vclib.registry.VerifiableCredentialMetadata

@@ -1,12 +1,8 @@
 package id.walt.vclib.credentials
 
 import com.beust.klaxon.Json
-import com.nimbusds.jwt.SignedJWT
-import id.walt.vclib.adapter.ListOrReadSingleValue
-import id.walt.vclib.adapter.ListOrSingleValue
 import id.walt.vclib.model.*
 import id.walt.vclib.registry.VerifiableCredentialMetadata
-import id.walt.vclib.schema.SchemaService.JsonIgnore
 import id.walt.vclib.schema.SchemaService.PropertyName
 import id.walt.vclib.schema.SchemaService.Required
 
