@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "id.walt"
-version = "1.24.0"
+version = "1.24.0-SNAPSHOT"
 
 
 repositories {
