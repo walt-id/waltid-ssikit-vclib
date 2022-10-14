@@ -4,7 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- Updated OpenBadgeCredential due to new JFF requirements
+## [1.24.0] - 2022-10-14
+
+-   Updated OpenBadgeCredential due to new JFF requirements
 
 ## [1.23.5] - 2022-09-26
 
@@ -285,7 +287,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.23.5...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.24.0...HEAD
+
+[1.24.0]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.23.5...1.24.0
 
 [1.23.5]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.23.5...1.23.5
 
