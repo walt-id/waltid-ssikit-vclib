@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Updated OpenBadgeCredential due to new JFF requirements
+
 ## [1.23.5] - 2022-09-26
 
 ## [1.23.5] - 2022-09-26

@@ -6,7 +6,7 @@ Typesafe implementation of W3C Verifiable Credentials in order to facilitate int
 
 Add the dependency using Gradle:
 
-    implementation("id.walt:waltid-ssikit-vclib:1.23.4")
+    implementation("id.walt:waltid-ssikit-vclib:1.24.0")
     
 or Maven:
 
