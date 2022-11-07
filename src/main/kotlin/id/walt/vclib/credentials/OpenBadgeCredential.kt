@@ -19,7 +19,6 @@ data class OpenBadgeCredential(
     @Json(serializeNull = false) override var issued: String?,
     override var credentialSubject: OpenBadgeCredentialSubject?,
     @Json(serializeNull = false) override var validFrom: String? = null,
-    @Json(serializeNull = false) override var issuanceDate: String? = null,
     @Json(serializeNull = false) override var expirationDate: String? = null,
     @Json(serializeNull = false) override var credentialSchema: CredentialSchema? = CredentialSchema(
         id = "https://ngiatlantic.info/schema/V-2022-1/OpenBadgeCredential.json",
@@ -28,6 +27,11 @@ data class OpenBadgeCredential(
     @Json(serializeNull = false) override var proof: Proof? = null
     ) : AbstractVerifiableCredential<OpenBadgeCredential.OpenBadgeCredentialSubject>(type) {
 
+    override var issuanceDate: String?
+        get() = issued
+        set(value) {
+            issued = value
+        }
 
     companion object : VerifiableCredentialMetadata(
         type = listOf("VerifiableCredential", "OpenBadgeCredential"),
@@ -42,8 +46,7 @@ data class OpenBadgeCredential(
                     "https://kayaelle.github.io/vc-ed/plugfest-1-2022/images/JFF_LogoLockup.png",
                     "https://kayaelle.github.io/vc-ed/plugfest-1-2022/images/JFF_LogoLockup.png"
                 ),
-                issued = null,
-                issuanceDate = "2020-03-10T04:24:12.164Z",
+                issued = "2020-03-10T04:24:12.164Z",
                 credentialSubject = OpenBadgeCredentialSubject(
                     type = "AchievementSubject",
                     id = "did:jwk:1235667890",
