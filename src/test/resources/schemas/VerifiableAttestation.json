@@ -47,10 +47,16 @@
         "type" : "object",
         "properties" : {
           "documentPresence" : {
-            "type" : "string"
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
           },
           "evidenceDocument" : {
-            "type" : "string"
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
           },
           "id" : {
             "type" : "string"
