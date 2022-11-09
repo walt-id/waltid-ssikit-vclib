@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.24.3] - 2022-11-08
+
 ## [1.24.2] - 2022-11-08
 
 ## [1.24.1] - 2022-11-07
@@ -291,7 +293,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release
 
-[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.24.2...HEAD
+[Unreleased]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.24.3...HEAD
+
+[1.24.3]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.24.2...1.24.3
 
 [1.24.2]: https://github.com/walt-id/waltid-ssikit-vclib/compare/1.24.1...1.24.2
 
