@@ -3,11 +3,16 @@ package id.walt.vclib.credentials
 import com.beust.klaxon.Klaxon
 import id.walt.vclib.model.toCredential
 import id.walt.vclib.NestedVCs
+import id.walt.vclib.credentials.w3c.AnyCredential
 import id.walt.vclib.nestedVCsConverter
 import id.walt.vclib.registry.VcTypeRegistry
+import io.kotest.assertions.json.shouldMatchJson
 import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.string.shouldContain
+import io.kotest.matchers.types.instanceOf
 import java.io.File
 import kotlin.reflect.jvm.jvmName
 
@@ -62,6 +67,165 @@ class CredentialsTests : StringSpec({
         val vc = Europass(validFrom = "2022-02-08T22:12:00Z")
         vc.encode() shouldContain "\"validFrom\" : \"2022-02-08T22:12:00Z\""
         vc.encode() shouldContain "\"issuanceDate\" : \"2022-02-08T22:12:00Z\""
+    }
+
+    "generic w3c credential 0" {
+        val credentialString =
+"""
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/security/suites/jws-2020/v1",
+    { "@vocab": "https://example.com/#" }
+  ],
+  "type": ["VerifiableCredential"],
+  "issuer": "did:example:123",
+  "issuanceDate": "2022-03-19T15:20:55Z",
+  "credentialSubject": {
+    "foo": "bar"
+  }
+}
+""".trimIndent()
+        val credential = credentialString.toCredential()
+        credential shouldNotBe null
+        credential shouldBe instanceOf<AnyCredential>()
+        credential.issuer shouldBe "did:example:123"
+        credential.subject shouldBe null
+        (credential as AnyCredential).credentialSubject!!.customProperties!!.keys shouldContain "foo"
+
+        credential.encode() shouldMatchJson credentialString
+    }
+
+    "generic w3c credential 1" {
+        val credentialString =
+"""
+    {
+      "@context": [
+        "https://www.w3.org/2018/credentials/v1",
+        "https://w3id.org/security/suites/jws-2020/v1",
+        { "@vocab": "https://example.com/#" }
+      ],
+      "type": ["VerifiableCredential"],
+      "issuer": "did:example:123",
+      "issuanceDate": "2021-01-01T19:23:24Z",
+      "expirationDate": "2031-01-01T19:23:24Z",
+      "credentialSubject": {
+        "id": "did:example:456",
+        "type": "Person"
+      }
+    }
+""".trimIndent()
+        val credential = credentialString.toCredential()
+        credential shouldNotBe null
+        credential shouldBe instanceOf<AnyCredential>()
+        credential.issuer shouldBe "did:example:123"
+        credential.subject shouldBe "did:example:456"
+        (credential as AnyCredential).credentialSubject!!.customProperties!!.keys shouldContain "type"
+
+        credential.encode() shouldMatchJson credentialString
+    }
+
+    "generic w3c credential 2" {
+        val credentialString =
+            """
+    {
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/security/suites/jws-2020/v1",
+    { "@vocab": "https://example.com/#" }
+  ],
+  "type": ["VerifiableCredential"],
+  "issuer": "did:example:123",
+  "issuanceDate": "2021-01-01T19:23:24Z",
+  "credentialSubject": {
+    "id": "did:example:456"
+  },
+  "evidence": [
+    {
+      "id": "https://example.edu/evidence/f2aeec97-fc0d-42bf-8ca7-0548192d4231",
+      "type": ["DocumentVerification"],
+      "verifier": "https://example.edu/issuers/14",
+      "evidenceDocument": "DriversLicense",
+      "subjectPresence": "Physical",
+      "documentPresence": "Physical"
+    },
+    {
+      "id": "https://example.edu/evidence/f2aeec97-fc0d-42bf-8ca7-0548192dxyzab",
+      "type": ["SupportingActivity"],
+      "verifier": "https://example.edu/issuers/14",
+      "evidenceDocument": "Fluid Dynamics Focus",
+      "subjectPresence": "Digital",
+      "documentPresence": "Digital"
+    }
+  ]
+}
+""".trimIndent()
+        val credential = credentialString.toCredential()
+        credential shouldNotBe null
+        credential shouldBe instanceOf<AnyCredential>()
+        credential.issuer shouldBe "did:example:123"
+        credential.subject shouldBe "did:example:456"
+        (credential as AnyCredential).customProperties!!.keys shouldContain "evidence"
+
+        credential.encode() shouldMatchJson credentialString
+    }
+
+    "generic w3c credential 3" {
+        val credentialString =
+            """
+    {
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/security/suites/jws-2020/v1",
+    { "@vocab": "https://example.com/#" }
+  ],
+  "id": "https://example.com/credential/123456",
+  "type": ["VerifiableCredential", "VerifiableBusinessCard"],
+  "name": "Verifiable Business Card",
+  "relatedLink": [
+    {
+      "type": "LinkRole",
+      "target": "https://example.com/organizations/example-org/presentations/available",
+      "linkRelationship": "OrganizationPresentationEndpoint"
+    }
+  ],
+  "issuanceDate": "2016-12-31T23:59:59Z",
+  "expirationDate": "2038-01-19T03:14:08Z",
+  "issuer": {
+    "id": "did:example:123",
+    "type": "Organization",
+    "name": "Grady, Purdy and Pacocha",
+    "description": "Secured 24/7 neural-net",
+    "address": {
+      "type": "PostalAddress",
+      "streetAddress": "0516 Kendrick Heights",
+      "addressLocality": "Port Reba",
+      "addressRegion": "South Carolina",
+      "postalCode": "53062-7356",
+      "addressCountry": "Austria"
+    },
+    "email": "Cora31@example.net",
+    "phoneNumber": "555-158-2528",
+    "faxNumber": "555-577-3567"
+  },
+  "credentialSubject": {
+    "type": ["Organization"],
+    "name": "Steel Manufacturer Org",
+    "url": "https://www.example.com/"
+  }
+}
+
+""".trimIndent()
+        val credential = credentialString.toCredential()
+        credential shouldNotBe null
+        credential shouldBe instanceOf<AnyCredential>()
+        credential.issuer shouldBe "did:example:123"
+        (credential as AnyCredential).issuerObject!!.customProperties!!.keys shouldContain "type"
+        credential.subject shouldBe null
+        (credential as AnyCredential).credentialSubject!!.customProperties!!.keys shouldContain "name"
+        (credential as AnyCredential).customProperties!!.keys shouldContain "relatedLink"
+
+        credential.encode() shouldMatchJson credentialString
     }
 })
 

@@ -9,12 +9,16 @@ import id.walt.vclib.adapter.ListOrReadSingleValue
 import id.walt.vclib.adapter.ListOrSingleValue
 import id.walt.vclib.adapter.ListOrSingleValueConverter
 import id.walt.vclib.adapter.VCTypeAdapter
+import id.walt.vclib.credentials.w3c.AnyCredential
 import id.walt.vclib.nestedVCsConverter
+import id.walt.vclib.registry.VcTypeRegistry
 import id.walt.vclib.schema.SchemaService
+import kotlinx.serialization.json.jsonArray
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
 import org.lighthousegames.logging.logging
 import java.time.Instant
 import java.time.format.DateTimeFormatterBuilder
-import java.time.format.ResolverStyle
 import java.util.*
 
 private val log = logging()
@@ -110,7 +114,10 @@ abstract class VerifiableCredential {
         this.expirationDate = expirationDate?.let { dateFormat.format(it) }
     }
 
-    fun encode(): String = jwt ?: klaxon.toJsonString(this)
+    fun encode(): String = jwt ?: when(this) {
+        is AnyCredential -> toJson()
+        else -> klaxon.toJsonString(this)
+    }
 
     fun encodePretty(): String {
         jwt?.let {
@@ -151,12 +158,20 @@ abstract class VerifiableCredential {
             return serialized
         }
 
+        private fun parseJson(json: String): VerifiableCredential {
+            return if(VcTypeRegistry.contains(kotlinx.serialization.json.Json.parseToJsonElement(json).jsonObject["type"]!!.jsonArray.map { item -> item.jsonPrimitive.content })) {
+                klaxon.parse<VerifiableCredential>(json) ?: throw Exception("Error parsing registered credential")
+            } else {
+                AnyCredential.fromJson(json)
+            }
+        }
+
         fun fromString(data: String): VerifiableCredential {
             return when {
                 isJWT(data) -> {
                     log.debug { "Parsing JWT credential from String" }
                     log.debug { "VCJSON FROM JWT: ${vcJsonFromJwt(data)}" }
-                    klaxon.parse<VerifiableCredential>(vcJsonFromJwt(data))!!.also {
+                    parseJson(vcJsonFromJwt(data)).also {
                         it.jwt = data
                         it.json = klaxon.toJsonString(it)
                     }
@@ -164,7 +179,7 @@ abstract class VerifiableCredential {
 
                 else -> {
                     log.debug { "Parsing (non-JWT) credential from String" }
-                    klaxon.parse<VerifiableCredential>(data)!!.also {
+                    parseJson(data).also {
                         it.json = data
                     }
                 }
