@@ -26,6 +26,12 @@ class AnyCredential(
             issuerObject = value?.let { v -> issuerObject?.apply { id = v } ?: W3CIssuer(v, _isObject = false) }
         }
 
+    override var subject: String?
+        get() = super.subject
+        set(value) {
+            credentialSubject = value?.let { v -> credentialSubject?.apply { id = v } ?: AnyCredentialSubject(v, null) }
+        }
+
     fun toJsonObject() = buildJsonObject {
         type.let { put("type", JsonBuilder.toJsonElement(it)) }
         context.let { put("@context",
