@@ -3,20 +3,27 @@ package id.walt.vclib.credentials.builder
 import id.walt.vclib.credentials.w3c.*
 import id.walt.vclib.model.CredentialSchema
 import id.walt.vclib.model.Proof
-import kotlinx.serialization.json.JsonElement
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.*
 import java.time.Instant
 import java.time.format.DateTimeFormatterBuilder
 
 class AnyCredentialBuilder(type: List<String>):
-  CredentialBuilder<AnyCredential, AnyCredentialBuilder>(type, AnyCredential)
+  CredentialBuilder<AnyCredential, AnyCredentialBuilder>(type, AnyCredential) {
+    companion object {
+      fun fromPartial(partialCredential: AnyCredential) = AnyCredentialBuilder(listOf()).fromJsonObject(partialCredential.toJsonObject())
+      fun fromPartial(partialJson: String) = fromPartial(AnyCredential.fromJson(partialJson))
+    }
+  }
 
 open class CredentialBuilder<C: AnyCredential, B: CredentialBuilder<C, B>>(
-  val type: List<String>,
+  type: List<String>,
   val credentialFactory: CredentialFactory<C>)
     : BasicBuilder<C, B>() {
 
+  init {
+    setProperty("type", type)
+    setProperty("@context", listOf("https://www.w3.org/2018/credentials/v1"))
+  }
   protected val dateFormat = DateTimeFormatterBuilder()
     .parseCaseInsensitive()
     .appendInstant(0)
@@ -24,10 +31,8 @@ open class CredentialBuilder<C: AnyCredential, B: CredentialBuilder<C, B>>(
 
   protected val subjectBuilder = SubjectBuilder()
 
-  val context = mutableListOf<JsonContext>(JsonContext("https://www.w3.org/2018/credentials/v1"))
-
   fun addContext(contextItem: JsonContext): B {
-    context.add(contextItem)
+    setProperty("@context", properties["@context"]!!.jsonArray.plus(contextItem.toJsonElement()))
     return this as B
   }
   fun setId(id: String) = setProperty("id", id)
@@ -44,11 +49,14 @@ open class CredentialBuilder<C: AnyCredential, B: CredentialBuilder<C, B>>(
   }
   fun setProof(proof: Proof) = setProperty("proof", proof.toJsonObject() as JsonElement)
 
+  override fun fromJsonObject(jsonObject: JsonObject): B {
+    super.fromJsonObject(jsonObject)
+    properties["credentialSubject"]?.let { subjectBuilder.fromJsonObject(it.jsonObject) }
+    return this as B
+  }
+
   override fun build(): C {
-    setProperty("type", type)
-    setProperty("@context", context.map { it.toJsonElement() }.toList())
     setProperty("credentialSubject", subjectBuilder.build().toJsonObject() as JsonElement)
     return credentialFactory.fromJsonObject(JsonObject(properties))
   }
-
 }

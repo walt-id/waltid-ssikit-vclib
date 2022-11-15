@@ -21,6 +21,8 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.string.shouldContain
 import io.kotest.matchers.types.instanceOf
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.jsonObject
 import java.io.File
 import java.time.Instant
 import java.util.Calendar
@@ -316,6 +318,74 @@ class CredentialsTests : StringSpec({
     vidAny.credentialSubject?.properties?.get("firstName") shouldBe vid.firstName
 
     vidAny.toJson() shouldMatchJson vidJson
+  }
+
+  "test build from partial" {
+    val partial =
+      """
+    {
+      "@context": [
+        "https://www.w3.org/2018/credentials/v1",
+        "https://w3id.org/security/suites/jws-2020/v1",
+        { "@vocab": "https://example.com/#" }
+      ],
+      "type": ["VerifiableCredential"],
+      "issuer": {
+        "id": "did:example:123",
+        "type": "Organization",
+        "name": "Grady, Purdy and Pacocha"
+      },
+      "issuanceDate": "2021-01-01T19:23:24Z",
+      "expirationDate": "2031-01-01T19:23:24Z",
+      "credentialSubject": {
+        "id": "did:example:456",
+        "type": "Person"
+      },
+      "name": "Verifiable Business Card"
+    }
+""".trimIndent()
+
+    val target =
+      """
+    {
+      "@context": [
+        "https://www.w3.org/2018/credentials/v1",
+        "https://w3id.org/security/suites/jws-2020/v1",
+        { "@vocab": "https://example.com/#" }
+      ],
+      "type": ["VerifiableCredential"],
+      "issuer": {
+        "id": "did:example:123",
+        "type": "Organization",
+        "name": "Grady, Purdy and Pacocha"
+      },
+      "issuanceDate": "2022-01-01T00:00:00Z",
+      "expirationDate": "2031-01-01T19:23:24Z",
+      "credentialSubject": {
+        "id": "did:example:789",
+        "type": "Person",
+        "role": "user"
+      },
+      "name": "Verifiable Business Card",
+      "custom": "value"
+    }
+""".trimIndent()
+
+    val cred = AnyCredentialBuilder
+      .fromPartial(partial)
+      .setIssuanceDate(Instant.parse("2022-01-01T00:00:00Z"))
+      .setSubjectId("did:example:789")
+      .buildSubject {
+        setProperty("role", "user")
+      }
+      .setProperty("custom", "value")
+      .build()
+
+    cred.subject shouldBe "did:example:789"
+    cred.credentialSubject!!.properties["role"] shouldBe "user"
+    cred.properties["custom"] shouldBe "value"
+
+    cred.toJson() shouldMatchJson target
   }
 })
 
