@@ -1,24 +1,45 @@
 package id.walt.vclib.credentials.w3c
 
+import id.walt.vclib.credentials.builder.CredentialFactory
 import id.walt.vclib.model.AbstractVerifiableCredential
 import id.walt.vclib.model.CredentialSchema
 import id.walt.vclib.model.Proof
 import kotlinx.serialization.json.*
 
-class AnyCredential(
+open class AnyCredential internal constructor (
     type: List<String>,
     var context: List<JsonContext> = listOf(JsonContext("https://www.w3.org/2018/credentials/v1", false)),
-    override var id: String?,
-    var issuerObject: W3CIssuer?,
-    override var issued: String?,
-    override var validFrom: String?,
-    override var expirationDate: String?,
-    override var proof: Proof?,
-    override val credentialSchema: CredentialSchema?,
-    override var credentialSubject: AnyCredentialSubject?,
-    val customProperties: Map<String, Any?>?
+    override var id: String? = null,
+    var issuerObject: W3CIssuer? = null,
+    override var issuanceDate: String? = null,
+    override var issued: String? = null,
+    override var validFrom: String? = null,
+    override var expirationDate: String? = null,
+    override var proof: Proof? = null,
+    override val credentialSchema: CredentialSchema? = null,
+    override var credentialSubject: AnyCredentialSubject? = null,
+    override val properties: Map<String, Any?> = mapOf()
+): AbstractVerifiableCredential<AnyCredentialSubject>(type), ICredentialElement {
 
-): AbstractVerifiableCredential<AnyCredentialSubject>(type) {
+    internal constructor(jsonObject: JsonObject) : this(
+        type = jsonObject["type"]?.jsonArray?.map { it.jsonPrimitive.content }?.toList() ?: throw Exception("type list missing"),
+        context = jsonObject["@context"]?.let { ctx ->
+            when(ctx) {
+                is JsonArray -> ctx.map { JsonContext.fromJsonElement(it) }.toList()
+                else -> listOf(JsonContext.fromJsonElement(ctx))
+            }
+        } ?: throw Exception("Context missing"),
+        id = jsonObject["id"]?.jsonPrimitive?.contentOrNull,
+        issuerObject = jsonObject["issuer"]?.let { W3CIssuer.fromJsonElement(it) },
+        issuanceDate = jsonObject["issuanceDate"]?.jsonPrimitive?.contentOrNull,
+        issued = jsonObject["issued"]?.jsonPrimitive?.contentOrNull,
+        validFrom = jsonObject["validFrom"]?.jsonPrimitive?.contentOrNull,
+        expirationDate = jsonObject["expirationDate"]?.jsonPrimitive?.contentOrNull,
+        proof = jsonObject["proof"]?.let { it as? JsonObject }?.let { Proof.fromJsonObject(it) },
+        credentialSchema = jsonObject["credentialSchema"]?.let { it as? JsonObject }?.let { CredentialSchema.fromJsonObject(it) },
+        credentialSubject = jsonObject["credentialSubject"]?.let { it as? JsonObject }?.let { AnyCredentialSubject.fromJsonObject(it) },
+        properties = jsonObject.filterKeys { k -> !PREDEFINED_PROPERTY_KEYS.contains(k) }.mapValues { entry -> JsonBuilder.fromJsonElement(entry.value) }
+    )
 
     override var issuer: String?
         get() = issuerObject?.id
@@ -29,45 +50,38 @@ class AnyCredential(
     override var subject: String?
         get() = super.subject
         set(value) {
-            credentialSubject = value?.let { v -> credentialSubject?.apply { id = v } ?: AnyCredentialSubject(v, null) }
+            credentialSubject = value?.let { v -> credentialSubject?.apply { id = v } ?: AnyCredentialSubject(v) }
         }
 
     fun toJsonObject() = buildJsonObject {
-        type.let { put("type", JsonBuilder.toJsonElement(it)) }
-        context.let { put("@context",
-            if(context.size == 1) {
-                context.first().toJsonElement()
-            } else {
-                buildJsonArray {
-                    context.forEach { add(it.toJsonElement()) }
-                }
-            }
-        )}
+        put("type", JsonBuilder.toJsonElement(type))
+        put("@context",buildJsonArray {
+            context.forEach { add(it.toJsonElement()) }
+        })
         id?.let { put("id", JsonBuilder.toJsonElement(it)) }
         issuerObject?.let { put("issuer", it.toJsonElement()) }
-        issued?.let { put("issuanceDate", JsonBuilder.toJsonElement(it)) }
+        issuanceDate?.let { put("issuanceDate", JsonBuilder.toJsonElement(it)) }
+        issued?.let { put("issued", JsonBuilder.toJsonElement(it)) }
         validFrom?.let { put("validFrom", JsonBuilder.toJsonElement(it)) }
         expirationDate?.let { put("expirationDate", JsonBuilder.toJsonElement(it)) }
         proof?.let { put("proof", it.toJsonObject()) }
         credentialSchema?.let { put("credentialSchema", it.toJsonObject()) }
         credentialSubject?.let { put("credentialSubject", it.toJsonObject()) }
-        customProperties?.let { props ->
-            props.keys.forEach { key ->
-                put(key, JsonBuilder.toJsonElement(props[key]))
-            }
+        properties.keys.forEach { key ->
+            put(key, JsonBuilder.toJsonElement(properties[key]))
         }
     }
 
     fun toJson() = toJsonObject().toString()
 
-    companion object {
+    companion object : CredentialFactory<AnyCredential> {
         val PREDEFINED_PROPERTY_KEYS = setOf(
             "type",
             "@context",
             "id",
             "issuer",
-            "issuanceDate",
             "issued",
+            "issuanceDate",
             "validFrom",
             "expirationDate",
             "proof",
@@ -75,27 +89,8 @@ class AnyCredential(
             "credentialSubject"
         )
 
-        fun fromJsonObject(jsonObject: JsonObject): AnyCredential {
-            return AnyCredential(
-                type = jsonObject["type"]?.jsonArray?.map { it.jsonPrimitive.content }?.toList() ?: throw Exception("type list missing"),
-                context = jsonObject["@context"]?.let { ctx ->
-                    when(ctx) {
-                        is JsonArray -> ctx.map { JsonContext.fromJsonElement(it) }.toList()
-                        else -> listOf(JsonContext.fromJsonElement(ctx))
-                    }
-                } ?: throw Exception("Context missing"),
-                id = jsonObject["id"]?.jsonPrimitive?.contentOrNull,
-                issuerObject = jsonObject["issuer"]?.let { W3CIssuer.fromJsonElement(it) },
-                issued = jsonObject["issuanceDate"]?.jsonPrimitive?.contentOrNull,
-                validFrom = jsonObject["validFrom"]?.jsonPrimitive?.contentOrNull,
-                expirationDate = jsonObject["expirationDate"]?.jsonPrimitive?.contentOrNull,
-                proof = jsonObject["proof"]?.let { it as? JsonObject }?.let { Proof.fromJsonObject(it) },
-                credentialSchema = jsonObject["credentialSchema"]?.let { it as? JsonObject }?.let { CredentialSchema.fromJsonObject(it) },
-                credentialSubject = jsonObject["credentialSubject"]?.let { it as? JsonObject }?.let { AnyCredentialSubject.fromJsonObject(it) },
-                customProperties = jsonObject.filterKeys { k -> !PREDEFINED_PROPERTY_KEYS.contains(k) }.mapValues { entry -> JsonBuilder.fromJsonElement(entry.value) }
-            )
+        override fun fromJsonObject(jsonObject: JsonObject): AnyCredential {
+            return AnyCredential(jsonObject)
         }
-
-        fun fromJson(json: String) = fromJsonObject(Json.parseToJsonElement(json).jsonObject)
     }
 }

@@ -7,6 +7,9 @@ class JsonContext(
     val _isObject: Boolean,
     val customProperties: Map<String, Any?>? = null
 ) {
+    constructor(uri: String): this(uri, false)
+    constructor(properties: Map<String, Any?>): this(null, true, properties)
+
     fun toJsonElement(): JsonElement {
         return if(_isObject) {
             buildJsonObject {

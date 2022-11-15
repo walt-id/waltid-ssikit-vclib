@@ -17,6 +17,7 @@ object JsonBuilder {
                     put(key.toString(), toJsonElement(value[key]))
                 }
             }
+            is JsonElement -> value
             null -> JsonNull
             else -> throw Exception("Json values can only be Number, String, List or Map")
         }

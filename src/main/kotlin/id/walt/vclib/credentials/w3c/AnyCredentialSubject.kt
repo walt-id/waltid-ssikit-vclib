@@ -3,11 +3,12 @@ package id.walt.vclib.credentials.w3c
 import id.walt.vclib.model.CredentialSubject
 import kotlinx.serialization.json.*
 
-class AnyCredentialSubject(override var id: String?, val customProperties: Map<String, Any?>?) : CredentialSubject() {
+open class AnyCredentialSubject(override var id: String? = null, override val properties: Map<String, Any?> = mapOf())
+    : CredentialSubject(), ICredentialElement {
 
     fun toJsonObject() = buildJsonObject {
         id?.let { put("id", it) }
-        customProperties?.let { props ->
+        properties?.let { props ->
             props.keys.forEach { key ->
                 put(key, JsonBuilder.toJsonElement(props[key]))
             }

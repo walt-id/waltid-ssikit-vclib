@@ -3,7 +3,15 @@ package id.walt.vclib.credentials
 import com.beust.klaxon.Klaxon
 import id.walt.vclib.model.toCredential
 import id.walt.vclib.NestedVCs
+import id.walt.vclib.credentials.builder.AnyCredentialBuilder
+import id.walt.vclib.credentials.builder.CredentialBuilder
+import id.walt.vclib.credentials.builder.SubjectBuilder
+import id.walt.vclib.credentials.typed.VerifiableIdBuilder
+import id.walt.vclib.credentials.typed.VerifiableIdCredential
 import id.walt.vclib.credentials.w3c.AnyCredential
+import id.walt.vclib.credentials.w3c.AnyCredentialSubject
+import id.walt.vclib.credentials.w3c.JsonContext
+import id.walt.vclib.credentials.w3c.W3CIssuer
 import id.walt.vclib.nestedVCsConverter
 import id.walt.vclib.registry.VcTypeRegistry
 import io.kotest.assertions.json.shouldMatchJson
@@ -14,6 +22,8 @@ import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.string.shouldContain
 import io.kotest.matchers.types.instanceOf
 import java.io.File
+import java.time.Instant
+import java.util.Calendar
 import kotlin.reflect.jvm.jvmName
 
 private val klaxon = Klaxon().fieldConverter(NestedVCs::class, nestedVCsConverter)
@@ -91,7 +101,7 @@ class CredentialsTests : StringSpec({
         credential shouldBe instanceOf<AnyCredential>()
         credential.issuer shouldBe "did:example:123"
         credential.subject shouldBe null
-        (credential as AnyCredential).credentialSubject!!.customProperties!!.keys shouldContain "foo"
+        (credential as AnyCredential).credentialSubject!!.properties.keys shouldContain "foo"
 
         credential.encode() shouldMatchJson credentialString
     }
@@ -120,7 +130,7 @@ class CredentialsTests : StringSpec({
         credential shouldBe instanceOf<AnyCredential>()
         credential.issuer shouldBe "did:example:123"
         credential.subject shouldBe "did:example:456"
-        (credential as AnyCredential).credentialSubject!!.customProperties!!.keys shouldContain "type"
+        (credential as AnyCredential).credentialSubject!!.properties!!.keys shouldContain "type"
 
         credential.encode() shouldMatchJson credentialString
     }
@@ -165,7 +175,7 @@ class CredentialsTests : StringSpec({
         credential shouldBe instanceOf<AnyCredential>()
         credential.issuer shouldBe "did:example:123"
         credential.subject shouldBe "did:example:456"
-        (credential as AnyCredential).customProperties!!.keys shouldContain "evidence"
+        (credential as AnyCredential).properties!!.keys shouldContain "evidence"
 
         credential.encode() shouldMatchJson credentialString
     }
@@ -222,11 +232,91 @@ class CredentialsTests : StringSpec({
         credential.issuer shouldBe "did:example:123"
         (credential as AnyCredential).issuerObject!!.customProperties!!.keys shouldContain "type"
         credential.subject shouldBe null
-        (credential as AnyCredential).credentialSubject!!.customProperties!!.keys shouldContain "name"
-        (credential as AnyCredential).customProperties!!.keys shouldContain "relatedLink"
+        (credential as AnyCredential).credentialSubject!!.properties!!.keys shouldContain "name"
+        (credential as AnyCredential).properties!!.keys shouldContain "relatedLink"
 
         credential.encode() shouldMatchJson credentialString
     }
+
+  "any credential builder test" {
+    val credentialString =
+      """
+    {
+      "@context": [
+        "https://www.w3.org/2018/credentials/v1",
+        "https://w3id.org/security/suites/jws-2020/v1",
+        { "@vocab": "https://example.com/#" }
+      ],
+      "type": ["VerifiableCredential"],
+      "issuer": {
+        "id": "did:example:123",
+        "type": "Organization",
+        "name": "Grady, Purdy and Pacocha"
+      },
+      "issuanceDate": "2021-01-01T19:23:24Z",
+      "expirationDate": "2031-01-01T19:23:24Z",
+      "credentialSubject": {
+        "id": "did:example:456",
+        "type": "Person"
+      },
+      "name": "Verifiable Business Card"
+    }
+""".trimIndent()
+
+    AnyCredentialBuilder(listOf("VerifiableCredential"))
+      .addContext(JsonContext("https://w3id.org/security/suites/jws-2020/v1"))
+      .addContext(JsonContext(mapOf("@vocab" to "https://example.com/#")))
+      .setIssuer(W3CIssuer(
+        "did:example:123", true,
+        mapOf(
+          "type" to "Organization",
+          "name" to "Grady, Purdy and Pacocha"
+        )
+      ))
+      .setIssuanceDate(Instant.parse("2021-01-01T19:23:24Z"))
+      .setExpirationDate(Instant.parse("2031-01-01T19:23:24Z"))
+      .buildSubject {
+        setId("did:example:456")
+        setProperty("type", "Person")
+      }
+      .setProperty("name", "Verifiable Business Card")
+      .build().toJson() shouldMatchJson credentialString
+  }
+
+  "verifiable ID builder test" {
+    val vid = VerifiableIdBuilder()
+      .setIssuer("did:example:1234")
+      .setSubjectId("did:example:567")
+      .setFirstName("John")
+      .setFamilyName("Doe")
+      .build()
+
+    println(vid.toJson())
+
+    vid shouldBe instanceOf<VerifiableIdCredential>()
+    vid.firstName shouldBe "John"
+    vid.familyName shouldBe "Doe"
+  }
+
+  "test parse VerifiableId" {
+    // parse as typed VerifiableIdCredential
+    val vidJson = File("src/test/resources/serialized/VerifiableId.json").readText()
+    val vid = VerifiableIdCredential.fromJson(vidJson)
+    vid shouldBe instanceOf<VerifiableIdCredential>()
+    vid.subject shouldBe "did:ebsi:2AEMAqXWKYMu1JHPAgGcga4dxu7ThgfgN95VyJBJGZbSJUtp"
+    vid.firstName shouldBe "Jane"
+    vid.familyName shouldBe "DOE"
+
+    vid.toJson() shouldMatchJson vidJson
+
+    // parse as AnyCredential
+    val vidAny = AnyCredential.fromJson(vidJson)
+    vidAny shouldBe instanceOf<AnyCredential>()
+    vidAny.subject shouldBe vid.subject
+    vidAny.credentialSubject?.properties?.get("firstName") shouldBe vid.firstName
+
+    vidAny.toJson() shouldMatchJson vidJson
+  }
 })
 
 fun Any.jsonToString(prettyPrint: Boolean): String{
