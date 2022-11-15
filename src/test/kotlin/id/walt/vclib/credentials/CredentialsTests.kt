@@ -14,6 +14,7 @@ import id.walt.vclib.credentials.w3c.JsonContext
 import id.walt.vclib.credentials.w3c.W3CIssuer
 import id.walt.vclib.nestedVCsConverter
 import id.walt.vclib.registry.VcTypeRegistry
+import id.walt.vclib.templates.VcTemplateManager
 import io.kotest.assertions.json.shouldMatchJson
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.collections.shouldContain
@@ -386,6 +387,30 @@ class CredentialsTests : StringSpec({
     cred.properties["custom"] shouldBe "value"
 
     cred.toJson() shouldMatchJson target
+  }
+
+  "test populate template" {
+    val vidTemplate = File("src/test/resources/serialized/VerifiableId.json").readText()
+    val vidData = """
+      {
+        "credentialSubject": {
+          "familyName": "LATE",
+          "firstName": "Popu"
+        }
+      }
+    """.trimIndent()
+    val cred = AnyCredentialBuilder
+      .fromPartial(vidTemplate)
+      .setFromJson(vidData)
+      .setSubjectId("did:example:123")
+      .build()
+
+    cred.subject shouldBe "did:example:123"
+    cred.credentialSubject!!.properties["dateOfBirth"] shouldBe "1993-04-08" // data taken from template
+    cred.credentialSubject!!.properties["familyName"] shouldBe "LATE" // data taken from population data
+    cred.credentialSubject!!.properties["firstName"] shouldBe "Popu"
+
+    println(cred.toJson())
   }
 })
 

@@ -2,10 +2,7 @@ package id.walt.vclib.credentials.builder
 
 import id.walt.vclib.credentials.w3c.ICredentialElement
 import id.walt.vclib.credentials.w3c.JsonBuilder
-import kotlinx.serialization.json.JsonElement
-import kotlinx.serialization.json.JsonNull
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.buildJsonObject
+import kotlinx.serialization.json.*
 
 abstract class BasicBuilder<T : ICredentialElement, B : BasicBuilder<T, B>>() {
   protected val properties = mutableMapOf<String, JsonElement>()
@@ -22,10 +19,12 @@ abstract class BasicBuilder<T : ICredentialElement, B : BasicBuilder<T, B>>() {
   fun setProperty(key: String, value: List<Any?>?) = setAnyProperty(key, value)
   fun setProperty(key: String, value: JsonElement) = setAnyProperty(key, value)
 
-  open fun fromJsonObject(jsonObject: JsonObject): B {
+  open fun setFromJsonObject(jsonObject: JsonObject): B {
     properties.putAll(jsonObject)
     return this as B
   }
+
+  fun setFromJson(json: String) = setFromJsonObject(Json.parseToJsonElement(json).jsonObject)
 
   abstract fun build(): T
 }

@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatterBuilder
 class AnyCredentialBuilder(type: List<String>):
   CredentialBuilder<AnyCredential, AnyCredentialBuilder>(type, AnyCredential) {
     companion object {
-      fun fromPartial(partialCredential: AnyCredential) = AnyCredentialBuilder(listOf()).fromJsonObject(partialCredential.toJsonObject())
+      fun fromPartial(partialCredential: AnyCredential) = AnyCredentialBuilder(listOf()).setFromJsonObject(partialCredential.toJsonObject())
       fun fromPartial(partialJson: String) = fromPartial(AnyCredential.fromJson(partialJson))
     }
   }
@@ -49,9 +49,9 @@ open class CredentialBuilder<C: AnyCredential, B: CredentialBuilder<C, B>>(
   }
   fun setProof(proof: Proof) = setProperty("proof", proof.toJsonObject() as JsonElement)
 
-  override fun fromJsonObject(jsonObject: JsonObject): B {
-    super.fromJsonObject(jsonObject)
-    properties["credentialSubject"]?.let { subjectBuilder.fromJsonObject(it.jsonObject) }
+  override fun setFromJsonObject(jsonObject: JsonObject): B {
+    super.setFromJsonObject(jsonObject)
+    properties["credentialSubject"]?.let { subjectBuilder.setFromJsonObject(it.jsonObject) }
     return this as B
   }
 
