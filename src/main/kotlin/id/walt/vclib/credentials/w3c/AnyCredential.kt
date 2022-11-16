@@ -7,7 +7,7 @@ import id.walt.vclib.model.Proof
 import kotlinx.serialization.json.*
 
 open class AnyCredential internal constructor (
-    type: List<String>,
+    type: List<String> = listOf("VerifiableCredential"),
     var context: List<JsonContext> = listOf(JsonContext("https://www.w3.org/2018/credentials/v1", false)),
     override var id: String? = null,
     var issuerObject: W3CIssuer? = null,
@@ -22,13 +22,13 @@ open class AnyCredential internal constructor (
 ): AbstractVerifiableCredential<AnyCredentialSubject>(type), ICredentialElement {
 
     internal constructor(jsonObject: JsonObject) : this(
-        type = jsonObject["type"]?.jsonArray?.map { it.jsonPrimitive.content }?.toList() ?: throw Exception("type list missing"),
+        type = jsonObject["type"]?.jsonArray?.map { it.jsonPrimitive.content }?.toList() ?: listOf("VerifiableCredential"),
         context = jsonObject["@context"]?.let { ctx ->
             when(ctx) {
                 is JsonArray -> ctx.map { JsonContext.fromJsonElement(it) }.toList()
                 else -> listOf(JsonContext.fromJsonElement(ctx))
             }
-        } ?: throw Exception("Context missing"),
+        } ?: listOf(JsonContext("https://www.w3.org/2018/credentials/v1", false)),
         id = jsonObject["id"]?.jsonPrimitive?.contentOrNull,
         issuerObject = jsonObject["issuer"]?.let { W3CIssuer.fromJsonElement(it) },
         issuanceDate = jsonObject["issuanceDate"]?.jsonPrimitive?.contentOrNull,
@@ -44,7 +44,7 @@ open class AnyCredential internal constructor (
     override var issuer: String?
         get() = issuerObject?.id
         set(value) {
-            issuerObject = value?.let { v -> issuerObject?.apply { id = v } ?: W3CIssuer(v, _isObject = false) }
+            issuerObject = value?.let { v -> issuerObject?.apply { id = v } ?: W3CIssuer(v) }
         }
 
     override var subject: String?

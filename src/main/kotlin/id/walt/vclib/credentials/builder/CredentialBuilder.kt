@@ -7,7 +7,7 @@ import kotlinx.serialization.json.*
 import java.time.Instant
 import java.time.format.DateTimeFormatterBuilder
 
-class AnyCredentialBuilder(type: List<String>):
+class AnyCredentialBuilder(type: List<String> = listOf("VerifiableCredential")):
   CredentialBuilder<AnyCredential, AnyCredentialBuilder>(type, AnyCredential) {
     companion object {
       fun fromPartial(partialCredential: AnyCredential) = AnyCredentialBuilder(listOf()).setFromJsonObject(partialCredential.toJsonObject())
@@ -38,6 +38,10 @@ open class CredentialBuilder<C: AnyCredential, B: CredentialBuilder<C, B>>(
   fun setId(id: String) = setProperty("id", id)
   fun setIssuer(issuer: String) = setProperty("issuer", issuer)
   fun setIssuer(issuer: W3CIssuer) = setProperty("issuer", issuer.toJsonElement())
+  fun setIssuerId(issuerId: String) = setIssuer(properties["issuer"]?.let {
+    W3CIssuer.fromJsonElement(it).apply {
+      id = issuerId
+    } } ?: W3CIssuer(issuerId))
   fun setIssuanceDate(date: Instant) = setProperty("issuanceDate", dateFormat.format(date))
   fun setValidFrom(date: Instant) = setProperty("validFrom", dateFormat.format(date))
   fun setExpirationDate(date: Instant) = setProperty("expirationDate", dateFormat.format(date))

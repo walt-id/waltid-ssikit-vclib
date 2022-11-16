@@ -412,6 +412,47 @@ class CredentialsTests : StringSpec({
 
     println(cred.toJson())
   }
+
+  "test setIssuerId" {
+    val credIssuerString = """
+      {
+        "issuer": "did:example:123"
+      }
+    """.trimIndent()
+    val credIssuerObject = """
+      {
+        "issuer": {
+          "id": "did:example:123",
+          "custom": "property"
+        }
+      }
+    """.trimIndent()
+
+    // test set on empty credential
+    AnyCredentialBuilder(listOf("VerifiableCredential"))
+      .setIssuerId("did:example:456")
+      .build().also {
+        it.issuer shouldBe "did:example:456"
+        it.issuerObject?._isObject shouldBe false
+      }
+
+    // test set on issuer string
+    AnyCredentialBuilder.fromPartial(credIssuerString)
+      .setIssuerId("did:example:456")
+      .build().also {
+        it.issuer shouldBe "did:example:456"
+        it.issuerObject?._isObject shouldBe false
+      }
+
+    // test set on issuer object
+    AnyCredentialBuilder.fromPartial(credIssuerObject)
+      .setIssuerId("did:example:456")
+      .build().also {
+        it.issuer shouldBe "did:example:456"
+        it.issuerObject?._isObject shouldBe true
+        it.issuerObject?.customProperties?.get("custom") shouldBe "property"
+      }
+  }
 })
 
 fun Any.jsonToString(prettyPrint: Boolean): String{
