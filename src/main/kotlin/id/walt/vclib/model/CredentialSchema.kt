@@ -1,13 +1,12 @@
 package id.walt.vclib.model
 
-import id.walt.vclib.credentials.w3c.JsonBuilder
 import kotlinx.serialization.json.*
 
 data class CredentialSchema(
     var id: String, // https://essif.europa.eu/tsr-vid/verifiableid1.json
     var type: String // JsonSchemaValidator2018
 ) {
-    fun toJsonObject() = buildJsonObject {
+    /*fun toJsonObject() = buildJsonObject {
         id.let { put("id", it) }
         type.let { put("type", it) }
     }
@@ -27,5 +26,5 @@ data class CredentialSchema(
         }
 
         fun fromJson(json: String) = fromJsonObject(kotlinx.serialization.json.Json.parseToJsonElement(json).jsonObject)
-    }
+    }*/
 }

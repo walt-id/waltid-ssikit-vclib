@@ -9,13 +9,8 @@ import id.walt.vclib.adapter.ListOrReadSingleValue
 import id.walt.vclib.adapter.ListOrSingleValue
 import id.walt.vclib.adapter.ListOrSingleValueConverter
 import id.walt.vclib.adapter.VCTypeAdapter
-import id.walt.vclib.credentials.w3c.AnyCredential
 import id.walt.vclib.nestedVCsConverter
-import id.walt.vclib.registry.VcTypeRegistry
 import id.walt.vclib.schema.SchemaService
-import kotlinx.serialization.json.jsonArray
-import kotlinx.serialization.json.jsonObject
-import kotlinx.serialization.json.jsonPrimitive
 import org.lighthousegames.logging.logging
 import java.time.Instant
 import java.time.format.DateTimeFormatterBuilder
@@ -114,10 +109,7 @@ abstract class VerifiableCredential {
         this.expirationDate = expirationDate?.let { dateFormat.format(it) }
     }
 
-    fun encode(): String = jwt ?: when(this) {
-        is AnyCredential -> toJson()
-        else -> klaxon.toJsonString(this)
-    }
+    fun encode(): String = jwt ?: klaxon.toJsonString(this)
 
     fun encodePretty(): String {
         jwt?.let {
@@ -159,11 +151,7 @@ abstract class VerifiableCredential {
         }
 
         private fun parseJson(json: String): VerifiableCredential {
-            return if(VcTypeRegistry.contains(kotlinx.serialization.json.Json.parseToJsonElement(json).jsonObject["type"]!!.jsonArray.map { item -> item.jsonPrimitive.content })) {
-                klaxon.parse<VerifiableCredential>(json) ?: throw Exception("Error parsing registered credential")
-            } else {
-                AnyCredential.fromJson(json)
-            }
+            return klaxon.parse<VerifiableCredential>(json) ?: throw Exception("Error parsing registered credential")
         }
 
         fun fromString(data: String): VerifiableCredential {

@@ -3,18 +3,8 @@ package id.walt.vclib.credentials
 import com.beust.klaxon.Klaxon
 import id.walt.vclib.model.toCredential
 import id.walt.vclib.NestedVCs
-import id.walt.vclib.credentials.builder.AnyCredentialBuilder
-import id.walt.vclib.credentials.builder.CredentialBuilder
-import id.walt.vclib.credentials.builder.SubjectBuilder
-import id.walt.vclib.credentials.typed.VerifiableIdBuilder
-import id.walt.vclib.credentials.typed.VerifiableIdCredential
-import id.walt.vclib.credentials.w3c.AnyCredential
-import id.walt.vclib.credentials.w3c.AnyCredentialSubject
-import id.walt.vclib.credentials.w3c.JsonContext
-import id.walt.vclib.credentials.w3c.W3CIssuer
 import id.walt.vclib.nestedVCsConverter
 import id.walt.vclib.registry.VcTypeRegistry
-import id.walt.vclib.templates.VcTemplateManager
 import io.kotest.assertions.json.shouldMatchJson
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.collections.shouldContain
@@ -22,11 +12,8 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.string.shouldContain
 import io.kotest.matchers.types.instanceOf
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.jsonObject
 import java.io.File
 import java.time.Instant
-import java.util.Calendar
 import kotlin.reflect.jvm.jvmName
 
 private val klaxon = Klaxon().fieldConverter(NestedVCs::class, nestedVCsConverter)
@@ -82,7 +69,7 @@ class CredentialsTests : StringSpec({
         vc.encode() shouldContain "\"issuanceDate\" : \"2022-02-08T22:12:00Z\""
     }
 
-    "generic w3c credential 0" {
+    /*"generic w3c credential 0" {
         val credentialString =
 """
 {
@@ -452,7 +439,7 @@ class CredentialsTests : StringSpec({
         it.issuerObject?._isObject shouldBe true
         it.issuerObject?.customProperties?.get("custom") shouldBe "property"
       }
-  }
+  }*/
 })
 
 fun Any.jsonToString(prettyPrint: Boolean): String{
