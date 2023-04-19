@@ -1,76 +1,16 @@
-# waltid-ssikit-vclib
-Typesafe implementation of W3C Verifiable Credentials in order to facilitate interoperability among various applications.
+# Project Sunset: waltid-ssikit-vclib
+
+## Introduction
+
+We would like to inform you that the VC-Lib has been officially sunsetted and is no longer supported. We have replaced it with our new and improved offering, [Custom Credential Templates](https://docs.walt.id/v/ssikit/concepts/credential-templates) directly available in the SSI-Kit. We have made this transition to provide our users with a more efficient, feature-rich, and seamless experience. We appreciate your support and understanding throughout this process.
+
+## What does this mean for you?
+As the VC-Lib has been sunsetted, we will no longer be providing updates, bug fixes, or customer support for it. We encourage you to transition to the [Custom Credential Templates](https://docs.walt.id/v/ssikit/concepts/credential-templates), as soon as possible to continue receiving the best possible service and support. The new version offers several benefits, including:
+
+- It is direcly integrated into the SSI-Kit
+- It offers great felxibility when it comes to default and dynamic data
 
 
-### Setup
-
-Add the dependency using Gradle:
-
-    implementation("id.walt:waltid-ssikit-vclib:1.24.0")
-    
-or Maven:
-
-    <dependency>
-        <groupId>id.walt</groupId>
-        <artifactId>waltid-ssikit-vclib</artifactId>
-        <version>1.24.0</version>
-    </dependency>
-    
-### Create a credential
-```kotlin
-val verifiableAuthorization: VerifiableCredential = VerifiableAuthorization(
-    id = "did:ebsi-eth:00000001/credentials/1872",
-    issuer = "did:ebsi:000001234",
-    issuanceDate = "2020-08-24T14:13:44Z",
-    credentialSubject = VerifiableAuthorization.CredentialSubject1(
-        "did:ebsi:00000004321",
-        VerifiableAuthorization.CredentialSubject1.NaturalPerson("did:example:00001111")
-    ),
-    proof = Proof(
-        "EcdsaSecp256k1Signature2019",
-        "2020-08-24T14:13:44Z",
-        "assertionMethod",
-        "did:ebsi-eth:000001234#key-1",
-        "eyJhbGciOiJSUzI1NiIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19."
-    )
-)
-```
-
-### Encode a credential to JSON
-```kotlin
-val json: String = verifiableAuthorization.encode()
-// {"@context" : ["https://www.w3.org/2018/credentials/v1", "https://ess ...
-```
-
-### Decode a JSON credential
-```kotlin
-val unknownJson: String = fromInput()
-
-val credential: VerifiableCredential = unknownJson.toCredential()
-
-val issuer = when (credential) {
-    is PermanentResidentCard -> credential.issuer
-    is VerifiablePresentation -> {
-        val vcsInVP = credential.verifiableCredential
-        val permanentResidentCardInVP = vcsInVP.any { it is PermanentResidentCard }
-
-        if (permanentResidentCardInVP) {
-            (vcsInVP.first { it is PermanentResidentCard } as PermanentResidentCard).issuer
-        } else throw IllegalArgumentException("This VP does not contain a PermanentResidentCard")
-    }
-    else -> throw IllegalArgumentException("No vc of type PermanentResidentCard was found!")
-}
-
-// extendable to e.g. take the users address from the PermanentResidentCard, or an Europass (if supplied), or a VerifiableUtilityBill etc...
-```
-
-## Adding VC Templates
-
-1. Visit https://vc-creator.walt.id to generate a VC template.
-2. Add it to package: id.walt.vclib.credentials.*, compare it to the other templates and complete the implementation.
-3. Add the new class to id.walt.vclib.registry.VcTypeRegistry.
-4. Run all test-cases, which will generate the JsonSchema and the serialized version of the credential template.
-5. Open a Pull-Request on GitHub
 
 ## License
 
