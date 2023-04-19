@@ -8,7 +8,7 @@ We would like to inform you that the VC-Lib has been officially sunsetted and is
 As the VC-Lib has been sunsetted, we will no longer be providing updates, bug fixes, or customer support for it. We encourage you to transition to the [Custom Credential Templates](https://docs.walt.id/v/ssikit/concepts/credential-templates), as soon as possible to continue receiving the best possible service and support. The new version offers several benefits, including:
 
 - It is direcly integrated into the SSI-Kit
-- It offers great felxibility when it comes to default and dynamic data
+- It offers great flexibility when it comes to default and dynamic data
 
 
 
